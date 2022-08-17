@@ -16,6 +16,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertaComponent } from './alerta/alerta.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { FormsModule } from '@angular/forms';
+import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     EntrarComponent,
     CadastrarComponent,
     AlertaComponent,
-    InicioComponent
+    InicioComponent,
+    NavegacaoBarComponent
   ],
   imports: [
     BrowserModule,

@@ -41,8 +41,6 @@ export class EntrarComponent implements OnInit {
   }
 
   verificaLogin() {
-    alert(this.usuarioLogin.usuario);
-    alert(this.usuarioLogin.senha)
     this.authService.entrar(this.usuarioLogin).subscribe(
       (usuario: UsuarioLogin) => {
         this.usuarioLogin = usuario;
