@@ -17,6 +17,7 @@ import { AlertaComponent } from './alerta/alerta.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { FormsModule } from '@angular/forms';
 import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
+import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
     CadastrarComponent,
     AlertaComponent,
     InicioComponent,
-    NavegacaoBarComponent
+    NavegacaoBarComponent,
+    AtualizarUsuarioComponent
   ],
   imports: [
     BrowserModule,

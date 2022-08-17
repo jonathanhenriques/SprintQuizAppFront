@@ -1,23 +1,20 @@
-import { AlertasService } from './../service/alertas.service';
-import { AlertaComponent } from './../alerta/alerta.component';
-import { Questao } from './../model/Questao';
-import { AuthService } from './../service/auth.service';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from '../model/Usuario';
-import { Prova } from '../model/Prova';
+import { AlertasService } from '../service/alertas.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
-  selector: 'app-cadastrar',
-  templateUrl: './cadastrar.component.html',
-  styleUrls: ['./cadastrar.component.scss']
+  selector: 'app-atualizar-usuario',
+  templateUrl: './atualizar-usuario.component.html',
+  styleUrls: ['./atualizar-usuario.component.scss']
 })
-export class CadastrarComponent implements OnInit {
+export class AtualizarUsuarioComponent implements OnInit {
 
 
   usuario: Usuario = new Usuario();
   senhaInserida: string;
-  tipoUsuario: string;
+  // tipoUsuario: string;
   tipoCampoSenha: string = 'password';
   mostrarSenha: boolean = false;
 
@@ -25,14 +22,14 @@ export class CadastrarComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private alertas: AlertasService
-
-
   ) { }
 
   ngOnInit(){
-    console.log('passou em cadastrar');
-    window.scroll(0,0);
+
+     // if(environment.token == '')
+    //   this.router.navigate(['/entrar']);
   }
+
 
   exibirSenha(){
     if(this.mostrarSenha){
@@ -49,7 +46,7 @@ export class CadastrarComponent implements OnInit {
     this.senhaInserida = event.target.value;
   }
 
-  cadastrar(){
+  atualizar(){
 
     if(this.usuario.senha != this.senhaInserida)
       this.alertas.showAlertDanger('As senhas estão diferentes!');
@@ -67,10 +64,10 @@ export class CadastrarComponent implements OnInit {
 
 
 
-      this.authService.cadastrar(this.usuario).subscribe((usuarioResposta: Usuario) => {
+      this.authService.atualizar(this.usuario).subscribe((usuarioResposta: Usuario) => {
         this.usuario = usuarioResposta;
         this.router.navigate(['/entrar']);
-        this.alertas.showAlertSuccess('Usuário cadastrado com sucesso!');
+        this.alertas.showAlertSuccess('Usuário atualizado com sucesso!');
       }, erro => {
         if(erro.status == 400)
           this.alertas.showAlertDanger('Revise os campos!');
@@ -79,8 +76,8 @@ export class CadastrarComponent implements OnInit {
 
   }
 
-  pegaTipoUsuario(event: any) {
-    this.tipoUsuario = event.target.value;
-  }
+  // pegaTipoUsuario(event: any) {
+  //   this.tipoUsuario = event.target.value;
+  // }
 
 }
