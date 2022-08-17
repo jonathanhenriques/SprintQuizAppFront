@@ -5,6 +5,7 @@ import { BoasVindasComponent } from './boas-vindas/boas-vindas.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
+import { ProvaComponent } from './prova/prova.component';
 
 const routes: Routes = [
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'entrar', component: EntrarComponent },
   { path: 'cadastrar', component: CadastrarComponent },
   { path: 'boas-vindas', component: BoasVindasComponent },
-  { path: 'atualizar-usuario', component: AtualizarUsuarioComponent }
+  { path: 'atualizar-usuario', component: AtualizarUsuarioComponent },
+  { path: 'prova', component: ProvaComponent }
 ];
 
 @NgModule({
