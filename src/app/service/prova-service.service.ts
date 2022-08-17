@@ -34,6 +34,10 @@ export class ProvaServiceService {
     return this.http.post<Prova>('https://sprintquiz.herokuapp.com/provas', prova, this.token);
   }
 
+  // putProva(prova: Prova):Observable<Prova>{
+  //   return this.http.put<Prova>('https://sprintquiz.herokuapp.com/provas', prova, this.token);
+  // }
+
   deleteProva(id: number){
     return this.http.delete(`https://sprintquiz.herokuapp.com/provas/${id}`, this.token);
   }
