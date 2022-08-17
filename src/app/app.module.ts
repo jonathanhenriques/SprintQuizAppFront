@@ -18,6 +18,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { FormsModule } from '@angular/forms';
 import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
 import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
+import { ProvaComponent } from './prova/prova.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario
     AlertaComponent,
     InicioComponent,
     NavegacaoBarComponent,
-    AtualizarUsuarioComponent
+    AtualizarUsuarioComponent,
+    ProvaComponent
   ],
   imports: [
     BrowserModule,

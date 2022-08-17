@@ -30,7 +30,6 @@ export class CadastrarComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    console.log('passou em cadastrar');
     window.scroll(0,0);
   }
 
