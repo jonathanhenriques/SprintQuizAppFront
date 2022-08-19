@@ -6,16 +6,26 @@ li {
     font-size: 25px;
 }
 
-.fs-16 {
-    font-size: 16px;
-    font-weight: 400;
-}
-
-.fs-14 {
-    font-size: 14px;
-    font-weight: 300;
-}
-
 .nav {
     position: absolute !important ;
+}
+
+.dropdown-menu li {
+    position: relative;
+}
+
+.dropdown-menu .dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+}
+
+.dropdown-menu .dropdown-submenu-left {
+    right: 100%;
+    left: auto;
+}
+
+.dropdown-menu>li:hover>.dropdown-submenu {
+    display: block;
 }
