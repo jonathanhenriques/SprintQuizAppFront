@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaProva } from 'src/app/model/CategoriaProva';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
@@ -22,6 +22,7 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private alertas: AlertasService,
     private categoriaProvaService: CategoriaProvaService
   ) { }
