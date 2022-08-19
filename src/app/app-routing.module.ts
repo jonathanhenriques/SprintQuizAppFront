@@ -1,15 +1,15 @@
 import { InicioComponent } from './inicio/inicio.component';
-import { CadastrarUsuarioComponent } from './cadastrar/cadastrarUsuario/cadastrar-usuario.component';
+import { CadastrarUsuarioComponent } from './cadastrar/cadastrar-usuario/cadastrar-usuario.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { BoasVindasComponent } from './boas-vindas/boas-vindas.component';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
-import { ProvaComponent } from './prova/prova.component';
+import { AtualizarUsuarioComponent } from './atualizar/atualizar-usuario/atualizar-usuario.component';
+import { CadastrarProvaComponent } from './cadastrar/cadastrar-prova/cadastrar-prova.component';
 import { CriarComponent } from './criar/criar.component';
 import { AtualizarCategoriaProvaComponent } from './atualizar/atualizar-categoria-prova/atualizar-categoria-prova.component';
 import { CadastrarCategoriaProvaComponent } from './cadastrar/cadastrar-categoria-prova/cadastrar-categoria-prova.component';
-import { DeletarCategoriaProvaComponent } from './deletar/categoria-prova/deletar-categoria-prova.component';
+import { DeletarCategoriaProvaComponent } from './deletar/deletar-categoria-prova/deletar-categoria-prova.component';
 
 const routes: Routes = [
 
@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'cadastrar-usuario', component: CadastrarUsuarioComponent },
   { path: 'boas-vindas', component: BoasVindasComponent },
   { path: 'atualizar-usuario', component: AtualizarUsuarioComponent },
-  { path: 'prova', component: ProvaComponent },
+  { path: 'cadastrar-prova', component: CadastrarProvaComponent },
   { path: 'criar', component: CriarComponent },
   { path: 'cadastrar-categoria-prova', component: CadastrarCategoriaProvaComponent },
   { path: 'atualizar-categoria-prova', component: AtualizarCategoriaProvaComponent },

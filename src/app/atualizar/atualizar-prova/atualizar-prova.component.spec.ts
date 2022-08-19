@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProvaComponent } from './prova.component';
+import { AtualizarProvaComponent } from './atualizar-prova.component';
 
-describe('ProvaComponent', () => {
-  let component: ProvaComponent;
-  let fixture: ComponentFixture<ProvaComponent>;
+describe('AtualizarProvaComponent', () => {
+  let component: AtualizarProvaComponent;
+  let fixture: ComponentFixture<AtualizarProvaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProvaComponent ]
+      declarations: [ AtualizarProvaComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProvaComponent);
+    fixture = TestBed.createComponent(AtualizarProvaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

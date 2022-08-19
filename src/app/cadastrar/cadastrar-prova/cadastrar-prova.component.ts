@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
-import { Alternativa } from '../model/Alternativa';
-import { CategoriaProva } from '../model/CategoriaProva';
-import { CategoriaQuestao } from '../model/CategoriaQuestao';
-import { Prova } from '../model/Prova';
-import { Questao } from '../model/Questao';
-import { Usuario } from '../model/Usuario';
-import { AlertasService } from '../service/alertas.service';
-import { AuthService } from '../service/auth.service';
-import { CategoriaProvaService } from '../service/categoria-prova.service';
-import { CategoriaQuestaoService } from '../service/categoria-questao.service';
-import { ProvaServiceService } from '../service/prova-service.service';
+import { Alternativa } from '../../model/Alternativa';
+import { CategoriaProva } from '../../model/CategoriaProva';
+import { CategoriaQuestao } from '../../model/CategoriaQuestao';
+import { Prova } from '../../model/Prova';
+import { Questao } from '../../model/Questao';
+import { Usuario } from '../../model/Usuario';
+import { AlertasService } from '../../service/alertas.service';
+import { AuthService } from '../../service/auth.service';
+import { CategoriaProvaService } from '../../service/categoria-prova.service';
+import { CategoriaQuestaoService } from '../../service/categoria-questao.service';
+import { ProvaServiceService } from '../../service/prova-service.service';
 
 @Component({
-  selector: 'app-prova',
-  templateUrl: './prova.component.html',
-  styleUrls: ['./prova.component.scss']
+  selector: 'app-cadastrar-prova',
+  templateUrl: './cadastrar-prova.component.html',
+  styleUrls: ['./cadastrar-prova.component.scss']
 })
-export class ProvaComponent implements OnInit {
+export class CadastrarProvaComponent implements OnInit {
 
 
   usuario: Usuario = new Usuario();
