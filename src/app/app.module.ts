@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
 import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
 import { ProvaComponent } from './prova/prova.component';
+import { CriarComponent } from './criar/criar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProvaComponent } from './prova/prova.component';
     InicioComponent,
     NavegacaoBarComponent,
     AtualizarUsuarioComponent,
-    ProvaComponent
+    ProvaComponent,
+    CriarComponent
   ],
   imports: [
     BrowserModule,

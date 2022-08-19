@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
 import { ProvaComponent } from './prova/prova.component';
+import { CriarComponent } from './criar/criar.component';
 
 const routes: Routes = [
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'cadastrar', component: CadastrarComponent },
   { path: 'boas-vindas', component: BoasVindasComponent },
   { path: 'atualizar-usuario', component: AtualizarUsuarioComponent },
-  { path: 'prova', component: ProvaComponent }
+  { path: 'prova', component: ProvaComponent },
+  { path: 'criar', component: CriarComponent }
 ];
 
 @NgModule({

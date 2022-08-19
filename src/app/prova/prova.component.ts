@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { Alternativa } from '../model/Alternativa';
 import { CategoriaProva } from '../model/CategoriaProva';
 import { CategoriaQuestao } from '../model/CategoriaQuestao';
 import { Prova } from '../model/Prova';
@@ -33,6 +34,9 @@ export class ProvaComponent implements OnInit {
   listaCategoriaProva: CategoriaProva[] = [];
   listaCategoriaQuestao: CategoriaQuestao[] = [];
 
+  qtdItens: number = 3;
+  listaAlternativas: Alternativa[] = [];
+
   constructor(
     private router: Router,
     private provaService: ProvaServiceService,
@@ -50,7 +54,14 @@ export class ProvaComponent implements OnInit {
     this.findAllCategoriaProva();
     this.findByIdUsuario();
     this.findByICategoriaProva();
+    this.qtdAlternativas(3);
     
+  }
+
+  qtdAlternativas(qtd: number){
+    for(let i = 0; i < qtd; i++){
+      this.listaAlternativas.push(new Alternativa());
+    }
   }
 
   pegaCategoriaProvaSelecionada(event: any) {
