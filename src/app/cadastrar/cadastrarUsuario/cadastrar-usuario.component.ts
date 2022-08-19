@@ -1,18 +1,15 @@
-import { AlertasService } from './../service/alertas.service';
-import { AlertaComponent } from './../alerta/alerta.component';
-import { Questao } from './../model/Questao';
-import { AuthService } from './../service/auth.service';
+import { AlertasService } from '../../service/alertas.service';
+import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../model/Usuario';
-import { Prova } from '../model/Prova';
+import { Usuario } from '../../model/Usuario';
 
 @Component({
-  selector: 'app-cadastrar',
-  templateUrl: './cadastrar.component.html',
-  styleUrls: ['./cadastrar.component.scss']
+  selector: 'app-cadastrar-usuario',
+  templateUrl: './cadastrar-usuario.component.html',
+  styleUrls: ['./cadastrar-usuario.component.scss']
 })
-export class CadastrarComponent implements OnInit {
+export class CadastrarUsuarioComponent implements OnInit {
 
 
   usuario: Usuario = new Usuario();
@@ -31,6 +28,10 @@ export class CadastrarComponent implements OnInit {
 
   ngOnInit(){
     window.scroll(0,0);
+    // if(environment.token == '') {
+    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
+    //   this.router.navigate(['/entrar']);
+    // }
   }
 
   exibirSenha(){

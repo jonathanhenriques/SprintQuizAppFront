@@ -1,0 +1,104 @@
+<div class="container-fluid m-5">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-12">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-5 ">
+                    <div class="card ">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="nomeCategoriaProva">nome da Categoria da Prova a ser registrada</label>
+                                    <input [(ngModel)]="categoriaProva.titulo" type="text" name="nomeCategoriaProva" id="nomeCategoriaProva"
+                                        class="form-control" placeholder="nome da categoria...">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="descricaoCategoriaProva">descrição da Categoria da Prova a ser
+                                        registrada</label>
+                                    <input [(ngModel)]="categoriaProva.descritivos" type="text" name="descricaoCategoriaProva" id="descricaoCategoriaProva"
+                                        class="form-control" placeholder="descrição da categoria...">
+                                </div>
+
+                                <div class="btn-group " role="group">
+                                    <button class="btn btn-success mr-5" type="submit" (click)="cadastrarCategoria()">Cadastrar</button>
+                                    <button class="btn btn-danger" type="reset">Apagar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Descritivo</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let cat of listaCategoriaProva">
+                    <th scope="row">{{ cat.id }}</th>
+                    <td>{{ cat.titulo }}</td>
+                    <td>{{ cat.descritivos }}</td>
+                    <td class="d-flex justify-content-end">
+                        <button class="btn btn-info mr-3" [routerLink]="['/atualizar-categoria-prova', cat.id]" >Editar</button>
+                        <button class="btn btn-danger" [routerLink]="['/deletar-categoria-prova', cat.id]" >Apagar</button>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-12">
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                    <th mat-header-cell *matHeaderCellDef> Weight </th>
+                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="symbol">
+                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+
+        </div>
+    </div>
+</div>

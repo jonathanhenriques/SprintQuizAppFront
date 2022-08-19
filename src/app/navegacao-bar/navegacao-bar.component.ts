@@ -23,6 +23,11 @@ export class NavegacaoBarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // window.scroll(0,0);
+    // if(environment.token == '') {
+    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
+    //   this.router.navigate(['/entrar']);
+    // }
   }
 
   sair() {

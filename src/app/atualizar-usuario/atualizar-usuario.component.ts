@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { Usuario } from '../model/Usuario';
 import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
@@ -24,15 +25,18 @@ export class AtualizarUsuarioComponent implements OnInit {
     private alertas: AlertasService
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
-     // if(environment.token == '')
+    window.scroll(0,0);
+    // if(environment.token == '') {
+    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
     //   this.router.navigate(['/entrar']);
+    // }
   }
 
 
-  exibirSenha(){
-    if(this.mostrarSenha){
+  exibirSenha() {
+    if (this.mostrarSenha) {
       this.tipoCampoSenha = 'password'
       this.mostrarSenha = false;
     } else {
@@ -46,13 +50,13 @@ export class AtualizarUsuarioComponent implements OnInit {
     this.senhaInserida = event.target.value;
   }
 
-  atualizar(){
+  atualizar() {
 
-    if(this.usuario.senha != this.senhaInserida)
+    if (this.usuario.senha != this.senhaInserida)
       this.alertas.showAlertDanger('As senhas estão diferentes!');
     else {
-      if(this.usuario.foto == null)
-      this.usuario.foto = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png';
+      if (this.usuario.foto == null)
+        this.usuario.foto = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png';
 
       alert(this.usuario.nome);
       alert(this.usuario.usuario);
@@ -69,7 +73,7 @@ export class AtualizarUsuarioComponent implements OnInit {
         this.router.navigate(['/entrar']);
         this.alertas.showAlertSuccess('Usuário atualizado com sucesso!');
       }, erro => {
-        if(erro.status == 400)
+        if (erro.status == 400)
           this.alertas.showAlertDanger('Revise os campos!');
       })
     }

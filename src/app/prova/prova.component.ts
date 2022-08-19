@@ -48,8 +48,10 @@ export class ProvaComponent implements OnInit {
 
   ngOnInit(){
     window.scroll(0,0);
-     // if(environment.token == '')
+    // if(environment.token == '') {
+    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
     //   this.router.navigate(['/entrar']);
+    // }
 
     this.findAllCategoriaProva();
     this.findByIdUsuario();

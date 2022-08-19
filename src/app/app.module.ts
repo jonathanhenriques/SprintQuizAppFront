@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoasVindasComponent } from './boas-vindas/boas-vindas.component';
 import { EntrarComponent } from './entrar/entrar.component';
-import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { CadastrarUsuarioComponent } from './cadastrar/cadastrarUsuario/cadastrar-usuario.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertaComponent } from './alerta/alerta.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -20,19 +20,26 @@ import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
 import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
 import { ProvaComponent } from './prova/prova.component';
 import { CriarComponent } from './criar/criar.component';
+import { DeletarCategoriaProvaComponent } from './deletar/categoria-prova/deletar-categoria-prova.component';
+import { CadastrarCategoriaProvaComponent } from './cadastrar/cadastrar-categoria-prova/cadastrar-categoria-prova.component';
+import { AtualizarCategoriaProvaComponent } from './atualizar/atualizar-categoria-prova/atualizar-categoria-prova.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoasVindasComponent,
     EntrarComponent,
-    CadastrarComponent,
+    CadastrarUsuarioComponent,
     AlertaComponent,
     InicioComponent,
     NavegacaoBarComponent,
     AtualizarUsuarioComponent,
     ProvaComponent,
-    CriarComponent
+    CriarComponent,
+    DeletarCategoriaProvaComponent,
+    CadastrarCategoriaProvaComponent,
+    AtualizarCategoriaProvaComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,8 @@ import { CriarComponent } from './criar/criar.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
