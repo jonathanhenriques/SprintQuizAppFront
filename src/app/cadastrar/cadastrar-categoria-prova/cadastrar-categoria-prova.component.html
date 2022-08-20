@@ -15,7 +15,7 @@
                                 <div class="form-group">
                                     <label for="descricaoCategoriaProva">descrição da Categoria da Prova a ser
                                         registrada</label>
-                                    <input [(ngModel)]="categoriaProva.descritivos" type="text" name="descricaoCategoriaProva" id="descricaoCategoriaProva"
+                                    <input [(ngModel)]="categoriaProva.descricao" type="text" name="descricaoCategoriaProva" id="descricaoCategoriaProva"
                                         class="form-control" placeholder="descrição da categoria...">
                                 </div>
 
@@ -48,9 +48,9 @@
                   <tr *ngFor="let cat of listaCategoriaProva">
                     <th scope="row">{{ cat.id }}</th>
                     <td>{{ cat.titulo }}</td>
-                    <td>{{ cat.descritivos }}</td>
+                    <td>{{ cat.descricao }}</td>
                     <td class="d-flex justify-content-end">
-                        <button class="btn btn-info mr-3" [routerLink]="['/atualizar-categoria-prova', cat.id]" >Editar</button>
+                        <button class="btn btn-info mr-3"[routerLink]="['/atualizar-categoria-prova', cat.id]">Editor</button>
                         <button class="btn btn-danger" [routerLink]="['/deletar-categoria-prova', cat.id]" >Apagar</button>
                     </td>
                   </tr>

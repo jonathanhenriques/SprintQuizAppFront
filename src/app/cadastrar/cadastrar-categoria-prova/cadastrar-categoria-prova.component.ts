@@ -5,6 +5,7 @@ import { AlertasService } from 'src/app/service/alertas.service';
 import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
 import { MatTableModule } from '@angular/material/table';
 import { environment } from 'src/environments/environment.prod';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-cadastrar-categoria-prova',
@@ -24,15 +25,16 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
   constructor(
     private router: Router,
     private alertas: AlertasService,
-    private categoriaProvaService: CategoriaProvaService
+    private categoriaProvaService: CategoriaProvaService,
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    if(environment.token == '') {
-      this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
-      this.router.navigate(['/entrar']);
-    }
+    // if(environment.token == '') {
+    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
+    //   this.router.navigate(['/entrar']);
+    // }
+    AuthService.verificaLogado(this.alertas, this.router);
 
 
     this.findAllCategoriaProva();
@@ -50,7 +52,7 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
 
   cadastrarCategoria() {
     alert(this.categoriaProva.titulo);
-    alert(this.categoriaProva.descritivos);
+    alert(this.categoriaProva.descricao);
     this.categoriaProvaService.postCategoriaProva(this.categoriaProva).subscribe((categoriaProvaResp: CategoriaProva) => {
       this.categoriaProva = categoriaProvaResp;
 

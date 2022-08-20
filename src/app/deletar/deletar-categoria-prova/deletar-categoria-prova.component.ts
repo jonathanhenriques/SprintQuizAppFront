@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 import { CategoriaProva } from '../../model/CategoriaProva';
 import { AlertasService } from '../../service/alertas.service';
@@ -20,16 +21,14 @@ export class DeletarCategoriaProvaComponent implements OnInit {
   constructor(
     private router: Router,
     private alertas: AlertasService,
+    // private authService: AuthService,
     private categoriaProvaService: CategoriaProvaService
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    // if(environment.token == '') {
-    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
-    //   this.router.navigate(['/entrar']);
-    // }
-      
+    
+    AuthService.verificaLogado(this.alertas, this.router);
 
     this.findAllCategoriaProva();
 

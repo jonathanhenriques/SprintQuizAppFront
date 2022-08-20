@@ -1,9 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Usuario } from '../model/Usuario';
 import { UsuarioLogin } from '../model/UsuarioLogin';
+import { AlertasService } from './alertas.service';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +35,13 @@ export class AuthService {
       'https://sprintquiz.herokuapp.com/usuarios/atualizar',
       usuario
     );
+  }
+
+  static verificaLogado(alertas: AlertasService, router: Router){
+    if(environment.token == '') {
+      alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
+      router.navigate(['/entrar']);
+    }
   }
 
   logado() {

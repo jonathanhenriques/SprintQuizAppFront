@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertasService } from '../service/alertas.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-criar',
@@ -9,15 +11,12 @@ import { Router } from '@angular/router';
 export class CriarComponent implements OnInit {
 
   constructor(
+    private alertas: AlertasService,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    window.scroll(0,0);
-    // if(environment.token == '') {
-    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
-    //   this.router.navigate(['/entrar']);
-    // }
+  ngOnInit(){
+    AuthService.verificaLogado(this.alertas, this.router);
   }
 
 }

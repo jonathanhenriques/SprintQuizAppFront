@@ -1,1 +1,32 @@
-<p>atualizar-categoria-prova works!</p>
+<div class="container m-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <h1 class="text-center text-secondary">Atualizar Categoria: {{ categoriaProva.titulo }}</h1>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+
+            <form>
+                <div class="form-group">
+                    <label for="nomeCategoriaProva">nome da Categoria da Prova a ser registrada</label>
+                    <input [(ngModel)]="categoriaProva.titulo" type="text" name="nomeCategoriaProva" id="nomeCategoriaProva"
+                        class="form-control" placeholder="nome da categoria...">
+                </div>
+
+                <div class="form-group">
+                    <label for="descricaoCategoriaProva">descrição da Categoria da Prova a ser
+                        registrada</label>
+                    <input [(ngModel)]="categoriaProva.descricao" type="text" name="descricaoCategoriaProva" id="descricaoCategoriaProva"
+                        class="form-control" placeholder="descrição da categoria...">
+                </div>
+
+                <div class="btn-group " role="group">
+                    <button class="btn btn-success mr-5" type="submit" (click)="putCategoria()">Confirmar</button>
+                    <button class="btn btn-danger" type="reset">Cancelar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

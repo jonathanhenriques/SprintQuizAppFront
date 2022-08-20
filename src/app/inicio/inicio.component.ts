@@ -1,6 +1,7 @@
 import { AlertasService } from './../service/alertas.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-inicio',
@@ -10,14 +11,14 @@ import { Router } from '@angular/router';
 export class InicioComponent implements OnInit {
 
   constructor(
-    private router: Router,
+    private alertas: AlertasService,
+    private router: Router
   ) { }
 
-  ngOnInit(): void {
-
-    window.scroll(0,0);
-
+  ngOnInit(){
+    AuthService.verificaLogado(this.alertas, this.router);
   }
+
 
 
 

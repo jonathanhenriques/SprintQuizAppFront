@@ -1,1 +1,32 @@
-<p>atualizar-categoria-questao works!</p>
+<div class="container m-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <h1 class="text-center text-secondary">Atualizar Categoria: {{ categoriaQuestao.titulo }}</h1>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+
+            <form>
+                <div class="form-group">
+                    <label for="nomeCategoriaQuestao">nome da Categoria da Questão a ser registrada</label>
+                    <input [(ngModel)]="categoriaQuestao.titulo" type="text" name="nomeCategoriaQuestao" id="nomeCategoriaQuestao"
+                        class="form-control" placeholder="nome da categoria...">
+                </div>
+
+                <div class="form-group">
+                    <label for="descricaoCategoriaQuestao">descrição da Categoria da Questão a ser
+                        registrada</label>
+                    <input [(ngModel)]="categoriaQuestao.descricao" type="text" name="descricaoCategoriaQuestao" id="descricaoCategoriaQuestao"
+                        class="form-control" placeholder="descrição da categoria...">
+                </div>
+
+                <div class="btn-group " role="group">
+                    <button class="btn btn-success mr-5" type="submit" (click)="putCategoria()">Confirmar</button>
+                    <button class="btn btn-danger" type="reset">Cancelar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

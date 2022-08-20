@@ -21,17 +21,12 @@ export class AtualizarUsuarioComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
-    private alertas: AlertasService
+    private alertas: AlertasService,
+    private router: Router
   ) { }
 
-  ngOnInit() {
-
-    window.scroll(0,0);
-    // if(environment.token == '') {
-    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
-    //   this.router.navigate(['/entrar']);
-    // }
+  ngOnInit(){
+    AuthService.verificaLogado(this.alertas, this.router);
   }
 
 

@@ -51,15 +51,15 @@ const routes: Routes = [
   { path: 'atualizar-prova', component: AtualizarProvaComponent },
   { path: 'atualizar-questao', component: AtualizarQuestaoComponent },
   { path: 'atualizar-alternativa', component: AtualizarAlternativaComponent },
-  { path: 'atualizar-categoria-prova', component: AtualizarCategoriaProvaComponent },
-  { path: 'atualizar-categoria-questao', component: AtualizarCategoriaQuestaoComponent },
+  { path: 'atualizar-categoria-prova/:id', component: AtualizarCategoriaProvaComponent },
+  { path: 'atualizar-categoria-questao/:id', component: AtualizarCategoriaQuestaoComponent },
 
 
   { path: 'deletar-prova', component: DeletarProvaComponent },
   { path: 'deletar-questao', component: DeletarQuestaoComponent },
   { path: 'deletar-alternativa', component: DeletarAlternativaComponent },
-  { path: 'deletar-categoria-prova', component: DeletarCategoriaProvaComponent },
-  { path: 'deletar-categoria-questao', component: DeletarCategoriaQuestaoComponent },
+  { path: 'deletar-categoria-prova/:id', component: DeletarCategoriaProvaComponent },
+  { path: 'deletar-categoria-questao/:id', component: DeletarCategoriaQuestaoComponent },
 
   
 ];
