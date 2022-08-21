@@ -19,8 +19,7 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
 
   listaCategoriaProva: CategoriaProva[];
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource: CategoriaProva[] = [];
+  
 
   constructor(
     private router: Router,
@@ -39,20 +38,16 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
 
     this.findAllCategoriaProva();
     
-    // this.dataSource = this.listaCategoriaProva;
 
   }
 
   findAllCategoriaProva() {
     this.categoriaProvaService.getAllCategoriaProva().subscribe((resp: CategoriaProva[]) => {
       this.listaCategoriaProva = resp;
-      alert(this.listaCategoriaProva.length);
     })
   }
 
   cadastrarCategoria() {
-    alert(this.categoriaProva.titulo);
-    alert(this.categoriaProva.descricao);
     this.categoriaProvaService.postCategoriaProva(this.categoriaProva).subscribe((categoriaProvaResp: CategoriaProva) => {
       this.categoriaProva = categoriaProvaResp;
 

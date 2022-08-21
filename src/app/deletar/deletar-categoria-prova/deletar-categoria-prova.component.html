@@ -1,12 +1,34 @@
-<div class="container m-5">
-    <div class="row d-flex aligm-items-center">
+<div class="container-fluid my-5">
+    <div class="row d-flex align-items-center m-5">
+        <div class="col-md-12 my-5">
+           <div class="row d-flex justify-content-center">
+            <div class="col-md-5">
+                <h1 class="text-center my-5">APAGAR CATEGORIA</h1>
+            </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid my-5">
+    <div class="row d-flex align-items-center">
         <div class="col-md-12">
-            <h1>Tem certeza que deseja excluir está categoria?</h1>
-            <!-- <p>{{ categoriaProva.titulo }}</p> -->
-            <div class="btn-group">
-                <button class="btn-success">Excluir</button>
-                <button class="btn-danger">Cancelar</button>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-5 ">
+                    <div class="card d-flex aligm-items-center justify-content-center text-center">
+                        <h1 class="text-center">Tem certeza que deseja excluir esta categoria?</h1>
+                        <h1 class="text-center text-secondary">{{ categoriaProva.titulo }}</h1>
+                        <div class="card-body mt-auto">
+                            <div class="btn-group">
+                                <button class="btn btn-success" (click)="deletarCategoriaProva()" routerLink="/cadastrar-categoria-prova">Excluir</button>
+                                <button class="btn btn-danger" routerLink="/cadastrar-categoria-prova">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+

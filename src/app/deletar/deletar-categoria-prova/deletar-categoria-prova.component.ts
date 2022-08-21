@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 import { CategoriaProva } from '../../model/CategoriaProva';
@@ -14,14 +14,16 @@ import { CategoriaProvaService } from '../../service/categoria-prova.service';
 export class DeletarCategoriaProvaComponent implements OnInit {
 
 
-  categoria: CategoriaProva = new CategoriaProva();
+  categoriaProva: CategoriaProva = new CategoriaProva();
+
+  idCategoria: number;
 
   listaCategoriaProva: CategoriaProva[];
 
   constructor(
     private router: Router,
     private alertas: AlertasService,
-    // private authService: AuthService,
+    private activatedRoute :ActivatedRoute,
     private categoriaProvaService: CategoriaProvaService
   ) { }
 
@@ -30,19 +32,22 @@ export class DeletarCategoriaProvaComponent implements OnInit {
     
     AuthService.verificaLogado(this.alertas, this.router);
 
-    this.findAllCategoriaProva();
+    this.idCategoria = this.activatedRoute.snapshot.params['id'];
+
+    this.findCategoriaProva();
 
   }
 
-findAllCategoriaProva(){
-  return this.categoriaProvaService.getAllCategoriaProva().subscribe((categorias: CategoriaProva[]) => {
-    this.listaCategoriaProva = categorias;
+findCategoriaProva(){
+  return this.categoriaProvaService.getByIdCategoriaProva(this.idCategoria).subscribe((categoriaProvaResp: CategoriaProva) => {
+    this.categoriaProva = categoriaProvaResp;
   })
 }
 
-puCategoriaProva(categoriaProva: CategoriaProva){
-  return this.categoriaProvaService.putCategoriaProva(categoriaProva).subscribe((categoria: CategoriaProva) => {
-
+deletarCategoriaProva(){
+  return this.categoriaProvaService.deleteCategoriaProva(this.idCategoria).subscribe(() => {
+    this.alertas.showAlertSuccess('Categoria apagada com sucesso!');
+    this.router.navigate(['/cadastrar-categoria-prova']);
   })
 }
 
