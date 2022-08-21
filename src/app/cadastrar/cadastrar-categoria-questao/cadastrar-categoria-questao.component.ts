@@ -16,8 +16,7 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
 
   listaCategoriaQuestao: CategoriaQuestao[];
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource: CategoriaQuestao[] = [];
+  
 
   constructor(
     private router: Router,
@@ -27,31 +26,26 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0);
-    // if(environment.token == '') {
-    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
-    //   this.router.navigate(['/entrar']);
-    // }
+   
     AuthService.verificaLogado(this.alertas, this.router);
 
 
-    this.findAllCategoriaProva();
+    this.findAllCategoriaQuestao();
     
-    // this.dataSource = this.listaCategoriaProva;
 
   }
 
-  findAllCategoriaProva() {
-    this.categoriaQuestaoService.getAllCategoriaQuestao().subscribe((resp: CategoriaQuestao[]) => {
-      this.listaCategoriaQuestao = resp;
-      alert(this.listaCategoriaQuestao.length);
+  findAllCategoriaQuestao() {
+    this.categoriaQuestaoService.getAllCategoriaQuestao().subscribe((categoriaQuestaoResp: CategoriaQuestao[]) => {
+      this.listaCategoriaQuestao = categoriaQuestaoResp;
     })
   }
 
-  cadastrarCategoria() {
+  cadastrarCategoriaQuestao() {
     this.categoriaQuestaoService.postCategoriaQuestao(this.categoriaQuestao).subscribe((categoriaQuestaoResp: CategoriaQuestao) => {
       this.categoriaQuestao = categoriaQuestaoResp;
 
-      this.findAllCategoriaProva();
+      this.findAllCategoriaQuestao();
       this.categoriaQuestao = new CategoriaQuestao();
 
     })

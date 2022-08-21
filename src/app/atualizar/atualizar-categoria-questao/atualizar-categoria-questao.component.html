@@ -1,32 +1,39 @@
-<div class="container m-5">
+
+<div class="container-fluid my-5">
     <div class="row d-flex justify-content-center">
-        <div class="col-md-12">
-            <h1 class="text-center text-secondary">Atualizar Categoria: {{ categoriaQuestao.titulo }}</h1>
+        <div class="col-md-5">
+            <h1 class="text-center my-5">Atualizar Categoria: {{ categoriaQuestao.titulo }}</h1>
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-12">
+</div>
 
+<div class="container my-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 ">
+            <div class="card p-5 ">
+                
             <form>
-                <div class="form-group">
-                    <label for="nomeCategoriaQuestao">nome da Categoria da Questão a ser registrada</label>
+                <div class="form-group my-4">
+                    <!-- <label for="nomeCategoriaQuestao">nome da Categoria da Questão a ser registrada</label> -->
                     <input [(ngModel)]="categoriaQuestao.titulo" type="text" name="nomeCategoriaQuestao" id="nomeCategoriaQuestao"
                         class="form-control" placeholder="nome da categoria...">
                 </div>
 
                 <div class="form-group">
-                    <label for="descricaoCategoriaQuestao">descrição da Categoria da Questão a ser
-                        registrada</label>
+                    <!-- <label for="descricaoCategoriaQuestao">descrição da Categoria da Questão a ser registrada</label> -->
                     <input [(ngModel)]="categoriaQuestao.descricao" type="text" name="descricaoCategoriaQuestao" id="descricaoCategoriaQuestao"
                         class="form-control" placeholder="descrição da categoria...">
                 </div>
 
-                <div class="btn-group " role="group">
-                    <button class="btn btn-success mr-5" type="submit" (click)="putCategoria()">Confirmar</button>
-                    <button class="btn btn-danger" type="reset">Cancelar</button>
+                <div class=" mt-5 text-center" role="group">
+                    <button class="btn btn-success mr-5" type="submit" (click)="putCategoriaQuestao()">Confirmar</button>
+                    <button class="btn btn-danger mr-5" type="reset">Apagar</button>
+                    <button class="btn btn-warning" type="reset" routerLink="/cadastrar-categoria-questao">Cancelar</button>
                 </div>
             </form>
+            </div>
 
         </div>
     </div>
 </div>
+

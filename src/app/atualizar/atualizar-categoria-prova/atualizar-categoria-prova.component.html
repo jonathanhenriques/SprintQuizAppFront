@@ -1,33 +1,39 @@
-<div class="container m-5">
+
+<div class="container-fluid my-5">
     <div class="row d-flex justify-content-center">
-        <div class="col-md-12">
-            <h1 class="text-center text-secondary">Atualizar Categoria: {{ categoriaProva.titulo }}</h1>
+        <div class="col-md-5">
+            <h1 class="text-center my-5">Atualizar Categoria: {{ categoriaProva.titulo }}</h1>
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-12">
+</div>
 
+<div class="container my-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 ">
+            <div class="card p-5 ">
+                
             <form>
-                <div class="form-group">
-                    <label for="nomeCategoriaProva">nome da Categoria da Prova a ser registrada</label>
+                <div class="form-group my-4">
+                    <!-- <label for="nomeCategoriaProva">nome da Categoria da Prova a ser registrada</label> -->
                     <input [(ngModel)]="categoriaProva.titulo" type="text" name="nomeCategoriaProva" id="nomeCategoriaProva"
                         class="form-control" placeholder="nome da categoria...">
                 </div>
 
                 <div class="form-group">
-                    <label for="descricaoCategoriaProva">descrição da Categoria da Prova a ser
-                        registrada</label>
+                    <!-- <label for="descricaoCategoriaProva">descrição da Categoria da Prova a ser registrada</label> -->
                     <input [(ngModel)]="categoriaProva.descricao" type="text" name="descricaoCategoriaProva" id="descricaoCategoriaProva"
                         class="form-control" placeholder="descrição da categoria...">
                 </div>
 
-                <div class="btn-group " role="group">
-                    <button class="btn btn-success mr-5" type="submit" (click)="putCategoria()">Confirmar</button>
+                <div class=" mt-5 text-center" role="group">
+                    <button class="btn btn-success mr-5" type="submit" (click)="putCategoriaProva()">Confirmar</button>
                     <button class="btn btn-danger mr-5" type="reset">Apagar</button>
                     <button class="btn btn-warning" type="reset" routerLink="/cadastrar-categoria-prova">Cancelar</button>
                 </div>
             </form>
+            </div>
 
         </div>
     </div>
 </div>
+

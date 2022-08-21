@@ -11,6 +11,7 @@ import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.servi
   styleUrls: ['./atualizar-categoria-questao.component.scss']
 })
 export class AtualizarCategoriaQuestaoComponent implements OnInit {
+
   categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
 
   constructor(
@@ -22,13 +23,8 @@ export class AtualizarCategoriaQuestaoComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0);
-    // if (environment.token == '') {
-    //   this.alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
-    //   this.router.navigate(['/entrar']);
 
-    // }
-
-    AuthService.verificaLogado(this.alertas, this.router);
+    // AuthService.verificaLogado(this.alertas, this.router);
 
     let id: number = this.activatedRoute.snapshot.params['id'];
     this.findByIdCategoriaProvaService(id);
@@ -46,7 +42,7 @@ export class AtualizarCategoriaQuestaoComponent implements OnInit {
     }
   }
 
-  putCategoria() {
+  putCategoriaQuestao() {
     this.categoriaQuestaoService.putCategoriaQuestao(this.categoriaQuestao).subscribe((categoriaQuestaoResp: CategoriaQuestao) => {
       this.categoriaQuestao = categoriaQuestaoResp;
       this.alertas.showAlertSuccess('Categoria atualizada com sucesso!');

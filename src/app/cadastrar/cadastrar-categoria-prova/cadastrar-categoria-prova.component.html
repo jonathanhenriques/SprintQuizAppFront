@@ -1,34 +1,32 @@
 <div class="container-fluid my-5">
     <div class="row d-flex align-items-center">
-        
         <div class="col-md-12">
             <h1 class="text-center my-4">Cadastrar uma nova Categoria para Provas</h1>
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-5 ">
-                    <div class="card ">
-                        
-                        <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="nomeCategoriaProva">nome da Categoria da Prova a ser registrada</label>
-                                    <input [(ngModel)]="categoriaProva.titulo" type="text" name="nomeCategoriaProva" id="nomeCategoriaProva"
-                                        class="form-control" placeholder="nome da categoria...">
-                                </div>
+        </div>
+    </div>
 
-                                <div class="form-group">
-                                    <label for="descricaoCategoriaProva">descrição da Categoria da Prova a ser
-                                        registrada</label>
-                                    <input [(ngModel)]="categoriaProva.descricao" type="text" name="descricaoCategoriaProva" id="descricaoCategoriaProva"
-                                        class="form-control" placeholder="descrição da categoria...">
-                                </div>
-
-                                <div class="btn-group " role="group">
-                                    <button class="btn btn-success mr-5" type="submit" (click)="cadastrarCategoria()">Cadastrar</button>
-                                    <button class="btn btn-danger" type="reset">Apagar</button>
-                                </div>
-                            </form>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-5 ">
+            <div class="card ">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <!-- <label for="nomeCategoriaProva">nome da Categoria da Questão a ser registrada</label> -->
+                            <input [(ngModel)]="categoriaProva.titulo" type="text" name="nomeCategoriaProva" id="nomeCategoriaProva"
+                                class="form-control" placeholder="nome da categoria...">
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                            <!-- <label for="descricaoCategoriaProva">descrição da Categoria da Questão a serregistrada</label> -->
+                            <input [(ngModel)]="categoriaProva.descricao" type="text" name="descricaoCategoriaProva" id="descricaoCategoriaProva"
+                                class="form-control" placeholder="descrição da categoria...">
+                        </div>
+
+                        <div class="btn-group " role="group">
+                            <button class="btn btn-success mr-5" type="submit" (click)="cadastrarCategoriaProva()">Cadastrar</button>
+                            <button class="btn btn-danger" type="reset">Apagar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -36,23 +34,24 @@
 </div>
 
 <div class="container">
-    <div class="row d-flex align-items-center">
-        <div class="col-md-12">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
             <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Titulo</th>
-                    <th scope="col">Descritivo</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col" >Ações</th>
                   </tr>
                 </thead>
                 <tbody >
                   <tr *ngFor="let cat of listaCategoriaProva">
-                    <th scope="row">{{ cat.id }}</th>
+                    <td scope="row">{{ cat.id }}</td>
                     <td>{{ cat.titulo }}</td>
                     <td>{{ cat.descricao }}</td>
-                    <td class="d-flex justify-content-end">
+                    
+                    <td class="btn-group">
                         <button class="btn btn-info mr-3"[routerLink]="['/atualizar-categoria-prova', cat.id]">Editor</button>
                         <button class="btn btn-danger" [routerLink]="['/deletar-categoria-prova', cat.id]" >Apagar</button>
                     </td>

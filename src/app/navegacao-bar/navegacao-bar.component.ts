@@ -26,7 +26,7 @@ export class NavegacaoBarComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    AuthService.verificaLogado(this.alertas, this.router);
+    // AuthService.verificaLogado(this.alertas, this.router);
   }
 
 

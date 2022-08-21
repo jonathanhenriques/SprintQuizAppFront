@@ -18,7 +18,6 @@ export class DeletarCategoriaProvaComponent implements OnInit {
 
   idCategoria: number;
 
-  listaCategoriaProva: CategoriaProva[];
 
   constructor(
     private router: Router,

@@ -25,8 +25,8 @@ export class CategoriaQuestaoService {
     return this.http.get<CategoriaQuestao[]>('https://sprintquiz.herokuapp.com/categoriaQuestao', this.token);
   }
 
-  getByDescritivoCategoriaQuestao(descritivo: string):Observable<CategoriaQuestao[]>{
-    return this.http.get<CategoriaQuestao[]>(`https://sprintquiz.herokuapp.com/categoriaQuestao/descritivo/${descritivo}`, this.token);
+  getByDescricaoCategoriaQuestao(descricao: string):Observable<CategoriaQuestao[]>{
+    return this.http.get<CategoriaQuestao[]>(`https://sprintquiz.herokuapp.com/categoriaQuestao/descricao/${descricao}`, this.token);
   }
 
   postCategoriaQuestao(categoriaQuestao: CategoriaQuestao):Observable<CategoriaQuestao>{

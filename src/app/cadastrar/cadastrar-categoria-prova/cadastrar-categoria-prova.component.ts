@@ -47,7 +47,7 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
     })
   }
 
-  cadastrarCategoria() {
+  cadastrarCategoriaProva() {
     this.categoriaProvaService.postCategoriaProva(this.categoriaProva).subscribe((categoriaProvaResp: CategoriaProva) => {
       this.categoriaProva = categoriaProvaResp;
 

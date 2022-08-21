@@ -1,31 +1,32 @@
-<div class="container-fluid m-5">
+<div class="container-fluid my-5">
     <div class="row d-flex align-items-center">
         <div class="col-md-12">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-5 ">
-                    <div class="card ">
-                        <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="nomeCategoriaQuestao">nome da Categoria da Questão a ser registrada</label>
-                                    <input [(ngModel)]="categoriaQuestao.titulo" type="text" name="nomeCategoriaQuestao" id="nomeCategoriaQuestao"
-                                        class="form-control" placeholder="nome da categoria...">
-                                </div>
+            <h1 class="text-center my-4">Cadastrar uma nova Categoria para Questão</h1>
+        </div>
+    </div>
 
-                                <div class="form-group">
-                                    <label for="descricaoCategoriaQuestao">descrição da Categoria da Questão a ser
-                                        registrada</label>
-                                    <input [(ngModel)]="categoriaQuestao.descricao" type="text" name="descricaoCategoriaQuestao" id="descricaoCategoriaQuestao"
-                                        class="form-control" placeholder="descrição da categoria...">
-                                </div>
-
-                                <div class="btn-group " role="group">
-                                    <button class="btn btn-success mr-5" type="submit" (click)="cadastrarCategoria()">Cadastrar</button>
-                                    <button class="btn btn-danger" type="reset">Apagar</button>
-                                </div>
-                            </form>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-5 ">
+            <div class="card ">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <!-- <label for="nomeCategoriaQuestao">nome da Categoria da Questão a ser registrada</label> -->
+                            <input [(ngModel)]="categoriaQuestao.titulo" type="text" name="nomeCategoriaQuestao" id="nomeCategoriaQuestao"
+                                class="form-control" placeholder="nome da categoria...">
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                            <!-- <label for="descricaoCategoriaQuestao">descrição da Categoria da Questão a serregistrada</label> -->
+                            <input [(ngModel)]="categoriaQuestao.descricao" type="text" name="descricaoCategoriaQuestao" id="descricaoCategoriaQuestao"
+                                class="form-control" placeholder="descrição da categoria...">
+                        </div>
+
+                        <div class="btn-group " role="group">
+                            <button class="btn btn-success mr-5" type="submit" (click)="cadastrarCategoriaQuestao()">Cadastrar</button>
+                            <button class="btn btn-danger" type="reset">Apagar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -33,23 +34,24 @@
 </div>
 
 <div class="container">
-    <div class="row d-flex align-items-center">
-        <div class="col-md-12">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
             <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Título</th>
+                    <th scope="col">Titulo</th>
                     <th scope="col">Descrição</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col" >Ações</th>
                   </tr>
                 </thead>
                 <tbody >
                   <tr *ngFor="let cat of listaCategoriaQuestao">
-                    <th scope="row">{{ cat.id }}</th>
+                    <td scope="row">{{ cat.id }}</td>
                     <td>{{ cat.titulo }}</td>
                     <td>{{ cat.descricao }}</td>
-                    <td class="d-flex justify-content-end">
+                    
+                    <td class="btn-group">
                         <button class="btn btn-info mr-3"[routerLink]="['/atualizar-categoria-questao', cat.id]">Editor</button>
                         <button class="btn btn-danger" [routerLink]="['/deletar-categoria-questao', cat.id]" >Apagar</button>
                     </td>
@@ -57,48 +59,6 @@
                   
                 </tbody>
               </table>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row d-flex align-items-center">
-        <div class="col-md-12">
-
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                </ng-container>
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="weight">
-                    <th mat-header-cell *matHeaderCellDef> Weight </th>
-                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-
-
         </div>
     </div>
 </div>

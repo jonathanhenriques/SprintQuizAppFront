@@ -47,7 +47,7 @@ export class AtualizarCategoriaProvaComponent implements OnInit {
     })
   }}
 
-  putCategoria(){
+  putCategoriaProva(){
     this.categoriaProvaService.putCategoriaProva(this.categoriaProva).subscribe((categoriaProvaResp: CategoriaProva) => {
       this.categoriaProva = categoriaProvaResp;
       this.alertas.showAlertSuccess('Categoria atualizada com sucesso!');
