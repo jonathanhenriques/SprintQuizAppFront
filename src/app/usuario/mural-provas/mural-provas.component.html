@@ -1,0 +1,23 @@
+<div class="container my-5">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-12 ">
+            <h1 class="text-center">Mural de Provas!</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row d-flex align-items-center">
+        <div class="card col-md-2 d-flex align-items-strech text-center justify-content-center m-1 my-1"
+            *ngFor="let prova of listaProvas">
+            <div class="card-body">
+                <h5 class="card-title m-0">{{prova.nome}}</h5>
+                <p class="card-text mt-3">{{prova.descricao}}</p>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-outline-success mr-3" [routerLink]="['/atualizar-prova',prova.id]" >Editar</button>
+                <button class="btn btn-outline-danger" [routerLink]="['/deletar-prova', prova.id]" >Apagar</button>
+            </div>
+        </div>
+    </div>
+</div>

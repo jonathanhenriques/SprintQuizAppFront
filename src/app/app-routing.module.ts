@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CadastrarUsuarioComponent } from './cadastrar/cadastrar-usuario/cadastrar-usuario.component';
 import { CadastrarProvaComponent } from './cadastrar/cadastrar-prova/cadastrar-prova.component';
+
 import { CadastrarQuestaoComponent } from './cadastrar/cadastrar-questao/cadastrar-questao.component';
 import { CadastrarAlternativaComponent } from './cadastrar/cadastrar-alternativa/cadastrar-alternativa.component';
 import { CadastrarCategoriaProvaComponent } from './cadastrar/cadastrar-categoria-prova/cadastrar-categoria-prova.component';
@@ -28,6 +29,8 @@ import { DeletarCategoriaQuestaoComponent } from './deletar/deletar-categoria-qu
 
 
 import { CriarComponent } from './criar/criar.component';
+import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
+import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.component';
 
 
 
@@ -60,6 +63,9 @@ const routes: Routes = [
   { path: 'deletar-alternativa', component: DeletarAlternativaComponent },
   { path: 'deletar-categoria-prova/:id', component: DeletarCategoriaProvaComponent },
   { path: 'deletar-categoria-questao/:id', component: DeletarCategoriaQuestaoComponent },
+
+  { path: 'mural-provas', component: MuralProvasComponent },
+  { path: 'mural-questoes', component: MuralQuestoesComponent },
 
   
 ];

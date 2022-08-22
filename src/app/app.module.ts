@@ -36,6 +36,8 @@ import { DeletarUsuarioComponent } from './deletar/deletar-usuario/deletar-usuar
 import { DeletarAlternativaComponent } from './deletar/deletar-alternativa/deletar-alternativa.component';
 import { DeletarQuestaoComponent } from './deletar/deletar-questao/deletar-questao.component';
 import { DeletarProvaComponent } from './deletar/deletar-prova/deletar-prova.component';
+import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.component';
+import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { DeletarProvaComponent } from './deletar/deletar-prova/deletar-prova.com
     DeletarUsuarioComponent,
     DeletarAlternativaComponent,
     DeletarQuestaoComponent,
-    DeletarProvaComponent
+    DeletarProvaComponent,
+    MuralProvasComponent,
+    MuralQuestoesComponent
   ],
   imports: [
     BrowserModule,
