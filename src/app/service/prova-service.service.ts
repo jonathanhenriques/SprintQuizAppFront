@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Prova } from '../model/Prova';
-import { UsuarioLogin } from '../model/UsuarioLogin';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProvaServiceService {
 
+  
   constructor(
     private http: HttpClient
   ) { }
@@ -34,9 +34,9 @@ export class ProvaServiceService {
     return this.http.post<Prova>('https://sprintquiz.herokuapp.com/provas', prova, this.token);
   }
 
-  // putProva(prova: Prova):Observable<Prova>{
-  //   return this.http.put<Prova>('https://sprintquiz.herokuapp.com/provas', prova, this.token);
-  // }
+  putProva(prova: Prova):Observable<Prova>{
+    return this.http.put<Prova>('https://sprintquiz.herokuapp.com/provas', prova, this.token);
+  }
 
   deleteProva(id: number){
     return this.http.delete(`https://sprintquiz.herokuapp.com/provas/${id}`, this.token);

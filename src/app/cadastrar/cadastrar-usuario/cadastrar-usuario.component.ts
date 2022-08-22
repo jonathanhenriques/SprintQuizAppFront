@@ -25,7 +25,7 @@ export class CadastrarUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    AuthService.verificaLogado(this.alertas, this.router);
+    
   }
 
   exibirSenha(){
@@ -50,16 +50,6 @@ export class CadastrarUsuarioComponent implements OnInit {
     else {
       if(this.usuario.foto == null)
       this.usuario.foto = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png';
-
-      alert(this.usuario.nome);
-      alert(this.usuario.usuario);
-      alert(this.usuario.senha);
-      alert(this.usuario.foto);
-      alert(this.usuario.tipo);
-      alert(this.usuario.questoes);
-      alert(this.usuario.provas);
-
-
 
       this.authService.cadastrar(this.usuario).subscribe((usuarioResposta: Usuario) => {
         this.usuario = usuarioResposta;
