@@ -10,61 +10,50 @@
                 <form class="card-body">
                     <div class="form-group">
                         <label for="instituicaoQuestao">instituição</label>
-                        <input class="form-control" type="text" name="instituicaoQuestao" id="instituicaoQuestao">
+                        <input [(ngModel)]="questao.instituicao" class="form-control" type="text" name="instituicaoQuestao" id="instituicaoQuestao">
                         <small class="text-muted">*Opcional</small>
                     </div>
 
                     <div class="form-group">
                         <label for="anoQuestao">ano</label>
-                        <input class="form-control" type="date" name="anoQuestao" id="anoQuestao">
+                        <input [(ngModel)]="questao.ano" class="form-control" type="date" name="anoQuestao" id="anoQuestao">
                         <small class="text-muted">*Opcional</small>
                     </div>
 
                     <div class="form-group">
                         <label for="imagemQuestao">imagem (url ou link da foto)</label>
-                        <input class="form-control" type="text" name="imagemQuestao" id="imagemQuestao">
+                        <input [(ngModel)]="questao.imagem" class="form-control" type="text" name="imagemQuestao" id="imagemQuestao">
                         <small class="text-muted">*Opcional</small>
                     </div>
 
                     
 
                     <div class="form-group">
-                        <label for="categoriaQuestao">Categoria da Prova</label>
-                        <select [(ngModel)]="prova.categoria" class="form-control" name="categoriaQuestao"
+                        <label for="categoriaQuestao">Categoria da Questão</label>
+                        <select [(ngModel)]="questao.categoria" class="form-control" name="categoriaQuestao"
                             id="categoriaQuestao" (change)="pegaCategoriaQuestaoSelecionada($event)">
                             <option disable>selecione...</option>
-                            <option *ngFor="let cat of listaCategoriaProva" value="{{ cat.id }}">{{ cat.titulo }}
+                            <option *ngFor="let cat of listaCategoriaQuestao" value="{{ cat.id }}">{{ cat.titulo }}
                             </option>
                         </select>
                     </div>
 
                     
-
-                    <div class="form-group">
-                        <label for="nomeProva">resposta</label>
-                        <input class="form-control" type="text" name="nomeProva" id="nomeProva">
-                    </div>
-
                     <div class="form-group">
                         <label for="textoQuestao ">texto</label>
                         <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
-                        <textarea class="form-control" [(ngModel)]="questao.texto" id="textoQuestao" rows="10" cols="70"></textarea>
+                        <textarea [(ngModel)]="questao.texto" class="form-control" [(ngModel)]="questao.texto" name="textoQuestao" id="textoQuestao" rows="10" cols="70"></textarea>
                     </div>
 
                    
-
+                    <div class="btn-group">
+                        <button class="btn btn-success" (click)="cadastrarQuestao()">Criar</button>
+                        <button class="btn btn-danger" type="reset">Limpar</button>
+                    </div>
                 </form>
+               
             </div>
         </div>
-        <div class="col-md-4">
-            
-
-                <div class="form-group " *ngFor="let item of listaAlternativas; let p = index">
-                    <label for="alternativaA">{{ p }}</label>
-                    <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
-                    <textarea class="form-control" [(ngModel)]="item.texto" id="alternativaA" rows="5" cols="70"></textarea>
-                </div>
-            
-        </div>
+       
     </div>
 </div>

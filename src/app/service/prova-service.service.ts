@@ -22,6 +22,10 @@ export class ProvaServiceService {
     return this.http.get<Prova[]>('https://sprintquiz.herokuapp.com/provas', this.token);
   }
 
+  getProvaById(id: number):Observable<Prova>{
+    return this.http.get<Prova>(`https://sprintquiz.herokuapp.com/provas/${id}`, this.token);
+  }
+
   getProvaByNome(nome: string):Observable<Prova[]>{
     return this.http.get<Prova[]>(`https://sprintquiz.herokuapp.com/provas/nome/${nome}`, this.token);
   }

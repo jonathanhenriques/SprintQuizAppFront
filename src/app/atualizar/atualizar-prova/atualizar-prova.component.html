@@ -1,1 +1,61 @@
-<p>atualizar-prova works!</p>
+<div class="container my-5">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-12 ">
+            <h1 class="text-center">Atualizar Prova</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12 mt-5">
+            <h1 class="text-center">1.Primeiro crie a Prova</h1>
+            <div class="card m-5 ">
+                <div class="card-head">
+                    <h1 class="card-title m-3 text-center">Prova</h1>
+                </div>
+                <form class="card-body">
+                    <div class="form-group">
+                        <label for="nomeProva">Nome</label>
+                        <input [(ngModel)]="prova.nome" class="form-control" type="text" name="nomeProva"
+                            id="nomeProva">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricaoProva">descrição</label>
+                        <input [(ngModel)]="prova.descricao" class="form-control" type="text" name="descricaoProva"
+                            id="descricaoProva">
+                        <!-- <textarea id="descricaoProva" rows="10" cols="70"></textarea> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duracaoProva">duração</label>
+                        <input [(ngModel)]="prova.duracao" class="form-control" type="number" name="duracaoProva"
+                            id="duracaoProva">
+                            <small class="text-muted">*Opcional</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nomeProva">instituição</label>
+                        <input [(ngModel)]="prova.instituicao" class="form-control" type="text" name="nomeProva"
+                            id="nomeProva">
+                            <small class="text-muted">*Opcional</small>
+                    </div>
+
+                    <label for="categoriaProva">Categoria da Prova</label>
+                    <select [(ngModel)]="prova.categoria" class="form-control" name="categoriaProva" id="categoriaProva"
+                        (change)="pegaCategoriaProvaSelecionada($event)">
+                        <option disable>selecione...</option>
+                        <option *ngFor="let cat of listaCategoriaProva" value="{{ cat.id }}">{{ cat.titulo }}</option>
+                    </select>
+
+                    <div class="mt-3">
+                        <button class="btn btn-success mr-3" (click)="atualizarProva()">Criar</button>
+                        <button class="btn btn-danger mr-3" type="reset">Limpar</button>
+                        <button class="btn btn-success mr-3" (click)="voltarPagina()">cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -50,17 +50,17 @@ const routes: Routes = [
   { path: 'cadastrar-categoria-prova', component: CadastrarCategoriaProvaComponent },
   { path: 'cadastrar-categoria-questao', component: CadastrarCategoriaQuestaoComponent },
 
-  { path: 'atualizar-usuario', component: AtualizarUsuarioComponent },
-  { path: 'atualizar-prova', component: AtualizarProvaComponent },
-  { path: 'atualizar-questao', component: AtualizarQuestaoComponent },
-  { path: 'atualizar-alternativa', component: AtualizarAlternativaComponent },
+  { path: 'atualizar-usuario/:id', component: AtualizarUsuarioComponent },
+  { path: 'atualizar-prova/:id', component: AtualizarProvaComponent },
+  { path: 'atualizar-questao/:id', component: AtualizarQuestaoComponent },
+  { path: 'atualizar-alternativa/:id', component: AtualizarAlternativaComponent },
   { path: 'atualizar-categoria-prova/:id', component: AtualizarCategoriaProvaComponent },
   { path: 'atualizar-categoria-questao/:id', component: AtualizarCategoriaQuestaoComponent },
 
 
-  { path: 'deletar-prova', component: DeletarProvaComponent },
-  { path: 'deletar-questao', component: DeletarQuestaoComponent },
-  { path: 'deletar-alternativa', component: DeletarAlternativaComponent },
+  { path: 'deletar-prova/:id', component: DeletarProvaComponent },
+  { path: 'deletar-questao/:id', component: DeletarQuestaoComponent },
+  { path: 'deletar-alternativa/:id', component: DeletarAlternativaComponent },
   { path: 'deletar-categoria-prova/:id', component: DeletarCategoriaProvaComponent },
   { path: 'deletar-categoria-questao/:id', component: DeletarCategoriaQuestaoComponent },
 

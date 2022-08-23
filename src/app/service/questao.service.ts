@@ -45,11 +45,16 @@ export class QuestaoService {
     return this.http.get<Questao[]>(`https://sprintquiz.herokuapp.com/questoes/ano/${ano}`, this.token);
   }
 
-  postQuestao(questao:Questao):Observable<Questao>{
+  
+  getQuestaoByCriadorId(id: number):Observable<Questao[]>{
+    return this.http.get<Questao[]>(`https://sprintquiz.herokuapp.com/questoes/criador/${id}`, this.token);
+  }
+
+  postQuestao(questao: Questao):Observable<Questao>{
     return this.http.post<Questao>('https://sprintquiz.herokuapp.com/questoes', questao, this.token);
   }
 
-  putQuestao(questao:Questao):Observable<Questao>{
+  putQuestao(questao: Questao):Observable<Questao>{
     return this.http.put<Questao>('https://sprintquiz.herokuapp.com/questoes', questao, this.token);
   }
 

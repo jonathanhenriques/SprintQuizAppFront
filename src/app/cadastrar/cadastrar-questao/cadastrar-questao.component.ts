@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
 import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.service';
 import { ProvaServiceService } from 'src/app/service/prova-service.service';
+import { QuestaoService } from 'src/app/service/questao.service';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
@@ -21,85 +22,98 @@ import { environment } from 'src/environments/environment.prod';
 export class CadastrarQuestaoComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
-  prova: Prova = new Prova();
   questao: Questao = new Questao();
-  categoriaProva: CategoriaProva = new CategoriaProva();
+  categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
 
   idProva: number = 0;
   idUsuario: number = environment.id;
-  idCategoriaProva: number = 0;
   idCategoriaQuestao: number = 0;
 
-  listaCategoriaProva: CategoriaProva[] = [];
   listaCategoriaQuestao: CategoriaQuestao[] = [];
 
   qtdItens: number = 3;
   listaAlternativas: Alternativa[] = [];
+  listaVazia: Alternativa[] = [];
 
   constructor(
     private router: Router,
     private alertas: AlertasService,
-    private provaService: ProvaServiceService,
+    private questaoService: QuestaoService,
     private authService: AuthService,
     private categoriaProvaService: CategoriaProvaService,
-    private categoriaQuestao: CategoriaQuestaoService,
+    private categoriaQuestaoService: CategoriaQuestaoService,
     private lertas: AlertasService
   ) { }
 
-  ngOnInit(){
-    window.scroll(0,0);
-   
+  ngOnInit() {
+    window.scroll(0, 0);
+
 
     AuthService.verificaLogado(this.alertas, this.router);
 
-    this.findAllCategoriaProva();
+    // this.findAllCategoriaProva();
     this.findByIdUsuario();
-    this.findByICategoriaProva();
+    // this.findByICategoriaProva();
+    this.findAllCategoriaQuestao();
     this.qtdAlternativas(3);
-    
+
   }
 
-  qtdAlternativas(qtd: number){
-    for(let i = 0; i < qtd; i++){
+  qtdAlternativas(qtd: number) {
+    for (let i = 0; i < qtd; i++) {
       this.listaAlternativas.push(new Alternativa());
     }
   }
 
-  pegaCategoriaProvaSelecionada(event: any) {
-    this.idCategoriaProva = event.target.value;
-  }
 
-  pegaCategoriaQuestaoSelecionada(event: any){
+
+  pegaCategoriaQuestaoSelecionada(event: any) {
     this.idCategoriaQuestao = event.target.value;
   }
 
-  findAllCategoriaQuestao(){
-    this.categoriaQuestao.getAllCategoriaQuestao().subscribe((categoriaQuestaoResp: CategoriaQuestao[]) => {
+  findAllCategoriaQuestao() {
+    this.categoriaQuestaoService.getAllCategoriaQuestao().subscribe((categoriaQuestaoResp: CategoriaQuestao[]) => {
       this.listaCategoriaQuestao = categoriaQuestaoResp;
     })
   }
 
-  findAllCategoriaProva(){
-    this.categoriaProvaService.getAllCategoriaProva().subscribe((categoriaProvaResp: CategoriaProva[]) => {
-      this.listaCategoriaProva = categoriaProvaResp;
-    })
-  }
 
-  findByIdUsuario(){
+  findByIdUsuario() {
     this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
     });
   }
 
-  findByICategoriaProva(){
-    this.categoriaProvaService.getByIdCategoriaProva(this.idCategoriaProva).subscribe((categoriaProvaResp: CategoriaProva) => {
-      this.categoriaProva = categoriaProvaResp;
-    });
-  }
+//   q: any = {
+//     "texto": "22222222",
+//     "categoria": {"id": 1},
+//     "criador": {"id": 1}
+// }
 
-  postProva(){
-    this.prova.id = this.idProva;
-    this.prova.categoria = this.categoriaProva;
+
+  cadastrarQuestao() {
+
+
+    this.categoriaQuestao.id = this.idCategoriaQuestao;
+    this.questao.categoria = this.categoriaQuestao;
+
+    this.usuario.id = this.idUsuario;
+    this.questao.criador = this.usuario
+    
+    // alert(this.questao.texto + ' | textoqes');
+    // alert(this.questao.ano + ' | data');
+    // alert(this.questao.imagem + ' | imagem');
+    // alert(this.questao.instituicao + ' | institui');
+    // alert(this.questao.categoria.id + ' | idcat');
+    // alert(this.questao.criador.id + ' | idcria');
+    // alert(this.questao.resposta + ' | respo');
+
+    this.questaoService.postQuestao(this.questao).subscribe((questaoResp: Questao) => {
+      this.questao = questaoResp;
+      this.alertas.showAlertSuccess('Questão criada com sucesso!');
+      this.alertas.showAlertSuccess(questaoResp.texto + 'texto questãoresp cadastra');
+      this.alertas.showAlertSuccess(this.questao.texto + 'texto questão cadastra');
+    })
   }
 
 }
