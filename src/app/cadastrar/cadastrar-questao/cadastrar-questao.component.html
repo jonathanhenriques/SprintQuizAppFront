@@ -30,8 +30,8 @@
 
                     <div class="form-group">
                         <label for="categoriaQuestao">Categoria da Questão</label>
-                        <select [(ngModel)]="questao.categoria" class="form-control" name="categoriaQuestao"
-                            id="categoriaQuestao" (change)="pegaCategoriaQuestaoSelecionada($event)">
+                        <select  class="form-control" name="categoriaQuestao"
+                            id="categoriaQuestao" [(ngModel)]="idCategoriaQuestao" (change)="findCategoriaQuestaoById()">
                             <option disable>selecione...</option>
                             <option *ngFor="let cat of listaCategoriaQuestao" value="{{ cat.id }}">{{ cat.titulo }}
                             </option>
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label for="textoQuestao ">texto</label>
                         <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
-                        <textarea [(ngModel)]="questao.texto" class="form-control" [(ngModel)]="questao.texto" name="textoQuestao" id="textoQuestao" rows="10" cols="70"></textarea>
+                        <textarea [(ngModel)]="questao.texto" class="form-control" name="textoQuestao" id="textoQuestao" rows="10" cols="70" required="required"></textarea>
                     </div>
 
                    

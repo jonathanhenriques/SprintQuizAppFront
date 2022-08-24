@@ -51,19 +51,17 @@ export class CadastrarQuestaoComponent implements OnInit {
 
     AuthService.verificaLogado(this.alertas, this.router);
 
-    // this.findAllCategoriaProva();
-    this.findByIdUsuario();
-    // this.findByICategoriaProva();
     this.findAllCategoriaQuestao();
-    this.qtdAlternativas(3);
+    // this.findByIdUsuario();
+    
 
   }
 
-  qtdAlternativas(qtd: number) {
-    for (let i = 0; i < qtd; i++) {
-      this.listaAlternativas.push(new Alternativa());
-    }
-  }
+  // qtdAlternativas(qtd: number) {
+  //   for (let i = 0; i < qtd; i++) {
+  //     this.listaAlternativas.push(new Alternativa());
+  //   }
+  // }
 
 
 
@@ -77,17 +75,31 @@ export class CadastrarQuestaoComponent implements OnInit {
     })
   }
 
+  findCategoriaQuestaoById(){
+    this.categoriaQuestaoService.getByIdCategoriaQuestao(this.idCategoriaQuestao).subscribe((resp: CategoriaQuestao) => {
+      this.categoriaQuestao = resp;
+      // this.questao.categoria = resp;
+    })
+  }
+
 
   findByIdUsuario() {
     this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
+      // alert(this.usuario.id);
     });
   }
 
-//   q: any = {
-//     "texto": "22222222",
-//     "categoria": {"id": 1},
-//     "criador": {"id": 1}
+
+
+// qq: any = {
+  
+//   "instituicao": "string",
+//   "ano": "2022-08-23",
+//   "imagem": "string",
+//   "texto": "string",
+//   "categoria": {"id": 1},
+//   "criador": {"id": 1}
 // }
 
 
@@ -96,23 +108,46 @@ export class CadastrarQuestaoComponent implements OnInit {
 
     this.categoriaQuestao.id = this.idCategoriaQuestao;
     this.questao.categoria = this.categoriaQuestao;
+    
 
     this.usuario.id = this.idUsuario;
     this.questao.criador = this.usuario
+
     
-    // alert(this.questao.texto + ' | textoqes');
-    // alert(this.questao.ano + ' | data');
-    // alert(this.questao.imagem + ' | imagem');
-    // alert(this.questao.instituicao + ' | institui');
-    // alert(this.questao.categoria.id + ' | idcat');
-    // alert(this.questao.criador.id + ' | idcria');
-    // alert(this.questao.resposta + ' | respo');
+    // alert(this.questao.texto + ' | textoqes' + '\n' +
+    // this.questao.ano + ' | data' + '\n' +
+    // this.questao.imagem + ' | imagem' + '\n' +
+    // this.questao.instituicao + ' | institui' + '\n' +
+    // this.questao.alternativas + ' | alter' + '\n' +
+    // this.questao.categoria.id + ' | idcat'  + '\n' +
+    // this.questao.criador.id + ' | idcria'   + '\n' +
+    // this.questao.resposta + ' | respo');
+
+    if(this.questao.texto == null)
+      this.alertas.showAlertDanger('Preencha o campo texto')
+
+      if(this.questao.instituicao == null)
+      this.alertas.showAlertDanger('Preencha o campo isntituicao')
+
+      if(this.questao.imagem == null)
+      this.alertas.showAlertDanger('Preencha o campo imagem')
+
+      if(this.questao.ano == null)
+      this.alertas.showAlertDanger('Preencha o campo data')
+
+      if(this.questao.categoria == null)
+      this.alertas.showAlertDanger('Preencha o campo categoria')
+
+      if(this.questao.criador == null)
+      this.alertas.showAlertDanger('Preencha o campo criador')
+
+      
+
 
     this.questaoService.postQuestao(this.questao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
       this.alertas.showAlertSuccess('Questão criada com sucesso!');
-      this.alertas.showAlertSuccess(questaoResp.texto + 'texto questãoresp cadastra');
-      this.alertas.showAlertSuccess(this.questao.texto + 'texto questão cadastra');
+   
     })
   }
 

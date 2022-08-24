@@ -66,6 +66,13 @@ export class AtualizarQuestaoComponent implements OnInit {
     })
   }
 
+  findCategoriaQuestaoById(){
+    this.categoriaQuestaoService.getByIdCategoriaQuestao(this.idCategoriaQuestao).subscribe((resp: CategoriaQuestao) => {
+      this.categoriaQuestao = resp;
+      // this.questao.categoria = resp;
+    })
+  }
+
   findQuestaoById(){
     this.questaoService.getByIdQuestao(this.idQuestao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
@@ -74,6 +81,12 @@ export class AtualizarQuestaoComponent implements OnInit {
 
   atualizarQuestao(){
 
+    this.categoriaQuestao.id = this.idCategoriaQuestao;
+    this.questao.categoria = this.categoriaQuestao;
+    
+
+    this.usuario.id = this.idUsuario;
+    this.questao.criador = this.usuario
 
     this.questaoService.putQuestao(this.questao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;

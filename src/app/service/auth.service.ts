@@ -11,34 +11,37 @@ import { AlertasService } from './alertas.service';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   token = {
     headers: new HttpHeaders().set('Authorization', environment.token),
   };
 
+  // url: string = 'https://sprintquiz.herokuapp.com';
+  url: string = 'http://localhost:8081';
+
   entrar(usuarioLogin: UsuarioLogin): Observable<UsuarioLogin> {
     return this.http.post<UsuarioLogin>(
-      'https://sprintquiz.herokuapp.com/usuarios/logar',
+      this.url + '/usuarios/logar',
       usuarioLogin
     );
   }
 
   cadastrar(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(
-      'https://sprintquiz.herokuapp.com/usuarios/cadastrar',
+      this.url + '/usuarios/cadastrar',
       usuario
     );
   }
   atualizar(usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(
-      'https://sprintquiz.herokuapp.com/usuarios/atualizar',
+      this.url + '/usuarios/atualizar',
       usuario
     );
   }
 
-  static verificaLogado(alertas: AlertasService, router: Router){
-    if(environment.token == '') {
+  static verificaLogado(alertas: AlertasService, router: Router) {
+    if (environment.token == '') {
       alertas.showAlertDanger('Sua sessão expirou. Faça login novamente!');
       router.navigate(['/entrar']);
     }
@@ -61,7 +64,7 @@ export class AuthService {
 
   getByIdUsuario(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(
-      `https://sprintquiz.herokuapp.com/usuarios/${id}`,
+      this.url + `/usuarios/${id}`,
       this.token
     );
   }

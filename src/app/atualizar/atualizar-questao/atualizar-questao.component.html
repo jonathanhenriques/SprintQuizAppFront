@@ -39,6 +39,17 @@
                     </div>
 
 
+                    <div class="form-group">
+                        <label for="categoriaQuestao">Categoria da Questão</label>
+                        <select  class="form-control" name="categoriaQuestao"
+                            id="categoriaQuestao" [(ngModel)]="idCategoriaQuestao" (change)="findCategoriaQuestaoById()">
+                            <option disable>selecione...</option>
+                            <option *ngFor="let cat of listaCategoriaQuestao" value="{{ cat.id }}">{{ cat.titulo }}
+                            </option>
+                        </select>
+                    </div>
+
+
                     <!-- <div class="form-group">
                         <label for="nomeProva">resposta</label>
                         <input [(ngModel)]="questao.resposta" class="form-control" type="text" name="nomeProva" id="nomeProva">
@@ -47,7 +58,7 @@
                     <div class="form-group">
                         <label for="textoQuestao ">texto</label>
                         <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
-                        <textarea [(ngModel)]="questao.texto" class="form-control" [(ngModel)]="questao.texto"
+                        <textarea [(ngModel)]="questao.texto" class="form-control"
                         name="textoQuestao" id="textoQuestao" rows="10" cols="70"></textarea>
                     </div>
 

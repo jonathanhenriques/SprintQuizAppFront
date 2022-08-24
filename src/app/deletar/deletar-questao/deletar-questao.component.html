@@ -8,17 +8,18 @@
 
 <div class="container-fluid my-5">
     <div class="row d-flex justify-content-center">
-        <div class="col-md-5 ">
-            <div class="card d-flex text-center p-5">
-                <h1 class="text-center">Tem certeza que deseja excluir esta questão?</h1>
-                <h1 class="text-center text-secondary">{{ questao.texto }}</h1>
-                <div class="card-body">
-                    <div class="btn-group">
-                        <button class="btn btn-success" (click)="deletarQuestao()">Excluir</button>
-                        <button class="btn btn-danger" (click)="voltarPagina()">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="card col-md-2 d-flex align-items-strech   m-1 my-1 p-0">
+                <div class="card-body p-3">
+                     <h5 class="card-title text-secondary m-0 cardlimitecaracteres">Texto: {{questao.texto}}</h5>
+                     <p class="card-text text-secondary mt-3 cardlimitecaracteres">Instituição: {{questao.instituicao}}</p>
+                     <p class="card-text text-secondary mt-3 cardlimitecaracteres">Data: {{questao.ano}}</p>
+                     <p class="card-text text-secondary mt-3 cardlimitecaracteres">Categoria: {{questao.categoria.titulo}}</p>
+                     <p class="card-text text-secondary mt-3 cardlimitecaracteres">Autor: {{questao.criador.nome}}</p>
+                 </div>
+                 <div class="card-footer d-flex  justify-content-center">
+                     <button class="btn btn-success" (click)="deletarQuestao()">Excluir</button>
+                     <button class="btn btn-danger" (click)="voltarPagina()">Cancelar</button>
+                 </div>
+             </div>
     </div>
 </div>

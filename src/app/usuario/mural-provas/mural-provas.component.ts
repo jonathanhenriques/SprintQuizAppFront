@@ -34,7 +34,8 @@ export class MuralProvasComponent implements OnInit {
     AuthService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
     this.findByIdUsuario();
-    this.listaProvas = this.usuario.provas;
+    // this.listaProvas = this.usuario.provas;
+    this.findProvasByCriadorId();
     
     
   }
@@ -42,7 +43,16 @@ export class MuralProvasComponent implements OnInit {
   findByIdUsuario(){
     this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
-      this.listaProvas = usuarioResp.provas;
+      
+    })
+  }
+
+  findProvasByCriadorId(){
+    this.provaService.getProvaByCriadorId(this.idUsuario).subscribe((listaProvasResp: Prova[]) =>{
+      this.listaProvas = listaProvasResp;
+      // listaProvasResp.forEach(e => {
+      //   alert(e.nome);
+      // })
     })
   }
 

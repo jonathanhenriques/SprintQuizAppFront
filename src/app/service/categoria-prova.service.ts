@@ -17,24 +17,28 @@ export class CategoriaProvaService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   };
 
+  
+  // url: string = 'https://sprintquiz.herokuapp.com';
+  url: string = 'http://localhost:8081';
+
   getAllCategoriaProva():Observable<CategoriaProva[]>{
-    return this.http.get<CategoriaProva[]>('https://sprintquiz.herokuapp.com/categoriaProva', this.token);
+    return this.http.get<CategoriaProva[]>(this.url + '/categoriaProva', this.token);
   }
 
   getByIdCategoriaProva(id: number):Observable<CategoriaProva>{
-    return this.http.get<CategoriaProva>(`https://sprintquiz.herokuapp.com/categoriaProva/${id}`, this.token);
+    return this.http.get<CategoriaProva>(this.url + `/categoriaProva/${id}`, this.token);
   }
 
   postCategoriaProva(categoriaProva: CategoriaProva):Observable<CategoriaProva>{
-    return this.http.post<CategoriaProva>('https://sprintquiz.herokuapp.com/categoriaProva', categoriaProva, this.token);
+    return this.http.post<CategoriaProva>(this.url + '/categoriaProva', categoriaProva, this.token);
   }
 
   putCategoriaProva(categoriaProva: CategoriaProva):Observable<CategoriaProva>{
-    return this.http.put<CategoriaProva>('https://sprintquiz.herokuapp.com/categoriaProva', categoriaProva, this.token);
+    return this.http.put<CategoriaProva>(this.url + '/categoriaProva', categoriaProva, this.token);
   }
 
   deleteCategoriaProva(id: number){
-    return this.http.delete<CategoriaProva>(`https://sprintquiz.herokuapp.com/categoriaProva/${id}`, this.token);
+    return this.http.delete<CategoriaProva>(this.url + `/categoriaProva/${id}`, this.token);
   }
 
   

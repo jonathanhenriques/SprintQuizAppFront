@@ -48,7 +48,7 @@ export class MuralQuestoesComponent implements OnInit {
   }
 
   findQuestoesByCriadorId(){
-    this.questaoService.getQuestaoByCriadorId(this.idUsuario).subscribe((listaQuestoesResp: Questao[]) =>{
+    this.questaoService.getQuestoesByCriadorId(this.idUsuario).subscribe((listaQuestoesResp: Questao[]) =>{
       this.listaQuestoes = listaQuestoesResp
     })
   }

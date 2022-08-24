@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
@@ -38,6 +38,7 @@ import { DeletarQuestaoComponent } from './deletar/deletar-questao/deletar-quest
 import { DeletarProvaComponent } from './deletar/deletar-prova/deletar-prova.component';
 import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.component';
 import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
+// import { TokenInterceptorService } from './service/tokeninterceptorService.service';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,13 @@ import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.compon
     MatSelectModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptorService,
+    //   multi: true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,11 +17,14 @@ export class QuestaoProvaService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+  // url: string = 'https://sprintquiz.herokuapp.com';
+  url: string = 'http://localhost:8081';
+
   getAllQuestaoProva():Observable<QuestaoProva[]>{
-    return this.http.get<QuestaoProva[]>('https://sprintquiz.herokuapp.com/questaoprova', this.token);
+    return this.http.get<QuestaoProva[]>(this.url + '/questaoprova', this.token);
   }
 
   postQuestaoProva(questaoProva: QuestaoProva, id: number):Observable<QuestaoProva>{
-    return this.http.post<QuestaoProva>(`https://sprintquiz.herokuapp.com/questaoprova/provaid/${id}`, questaoProva, this.token);
+    return this.http.post<QuestaoProva>(this.url + `/questaoprova/provaid/${id}`, questaoProva, this.token);
   }
 }

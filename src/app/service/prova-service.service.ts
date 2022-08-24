@@ -18,31 +18,38 @@ export class ProvaServiceService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+  // url: string = 'https://sprintquiz.herokuapp.com';
+  url: string = 'http://localhost:8081';
+
   getAllProvas():Observable<Prova[]>{
-    return this.http.get<Prova[]>('https://sprintquiz.herokuapp.com/provas', this.token);
+    return this.http.get<Prova[]>(this.url + '/provas', this.token);
   }
 
   getProvaById(id: number):Observable<Prova>{
-    return this.http.get<Prova>(`https://sprintquiz.herokuapp.com/provas/${id}`, this.token);
+    return this.http.get<Prova>(this.url + `/provas/${id}`, this.token);
+  }
+
+  getProvaByCriadorId(id: number):Observable<Prova[]>{
+    return this.http.get<Prova[]>(this.url + `/provas/criador/${id}`, this.token);
   }
 
   getProvaByNome(nome: string):Observable<Prova[]>{
-    return this.http.get<Prova[]>(`https://sprintquiz.herokuapp.com/provas/nome/${nome}`, this.token);
+    return this.http.get<Prova[]>(this.url + `/provas/nome/${nome}`, this.token);
   }
 
   getProvaByDescricao(descricao: string):Observable<Prova[]>{
-    return this.http.get<Prova[]>(`https://sprintquiz.herokuapp.com/provas/descricao/${descricao}`, this.token);
+    return this.http.get<Prova[]>(this.url + `/provas/descricao/${descricao}`, this.token);
   }
 
   postProva(prova: Prova):Observable<Prova>{
-    return this.http.post<Prova>('https://sprintquiz.herokuapp.com/provas', prova, this.token);
+    return this.http.post<Prova>(this.url + '/provas', prova, this.token);
   }
 
   putProva(prova: Prova):Observable<Prova>{
-    return this.http.put<Prova>('https://sprintquiz.herokuapp.com/provas', prova, this.token);
+    return this.http.put<Prova>(this.url + '/provas', prova, this.token);
   }
 
   deleteProva(id: number){
-    return this.http.delete(`https://sprintquiz.herokuapp.com/provas/${id}`, this.token);
+    return this.http.delete(this.url + `/provas/${id}`, this.token);
   }
 }

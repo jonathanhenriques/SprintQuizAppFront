@@ -8,16 +8,19 @@
 
 <div class="container my-5">
     <div class="row d-flex align-items-center">
-        <div class="card col-md-2 d-flex align-items-strech text-center justify-content-center m-1 my-1"
-            *ngFor="let prova of listaProvas">
-            <div class="card-body">
-                <h5 class="card-title m-0">{{prova.nome}}</h5>
-                <p class="card-text mt-3">{{prova.descricao}}</p>
-            </div>
-            <div class="btn-group">
-                <button class="btn btn-outline-success mr-3" [routerLink]="['/atualizar-prova',prova.id]" >Editar</button>
-                <button class="btn btn-outline-danger" [routerLink]="['/deletar-prova', prova.id]" >Apagar</button>
-            </div>
+        <div class="card col-md-2 d-flex align-items-strech   m-1 my-1 p-0"
+        *ngFor="let prova of listaProvas">
+        <div class="card-body p-3">
+            <h5 class="card-title text-secondary m-0 cardlimitecaracteres">Texto: {{prova.nome}}</h5>
+            <p class="card-text text-secondary mt-3 cardlimitecaracteres">descrição: {{prova.descricao}}</p>
+            <p class="card-text text-secondary mt-3 cardlimitecaracteres">duração: {{prova.duracao}}</p>
+            <p class="card-text text-secondary mt-3 cardlimitecaracteres">Categoria: {{prova.categoria.titulo}}</p>
+            <p class="card-text text-secondary mt-3 cardlimitecaracteres">Autor: {{prova.usuario.nome}}</p>
         </div>
+        <div class="card-footer d-flex  justify-content-center">
+            <button class="btn btn-outline-success mr-3" [routerLink]="['/atualizar-prova',prova.id]" >Editar</button>
+            <button class="btn btn-outline-danger" [routerLink]="['/deletar-prova', prova.id]" >Apagar</button>
+        </div>
+    </div>
     </div>
 </div>
