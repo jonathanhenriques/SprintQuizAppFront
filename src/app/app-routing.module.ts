@@ -32,6 +32,7 @@ import { CriarComponent } from './criar/criar.component';
 import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
 import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.component';
 import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-questao-com-alternativa/atualizar-questao-com-alternativa.component';
+import { TelaComponent } from './tela/tela.component';
 
 
 
@@ -69,6 +70,8 @@ const routes: Routes = [
 
   { path: 'mural-provas', component: MuralProvasComponent },
   { path: 'mural-questoes', component: MuralQuestoesComponent },
+
+  { path: 'tela/:id', component: TelaComponent }
 
   
 ];

@@ -40,6 +40,7 @@ import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.
 import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
 import { TokenInterceptorService } from './service/tokeninterceptorService.service';
 import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-questao-com-alternativa/atualizar-questao-com-alternativa.component';
+import { TelaComponent } from './tela/tela.component';
 // import { TokenInterceptorService } from './service/tokeninterceptorService.service';
 
 @NgModule({
@@ -71,7 +72,8 @@ import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-q
     DeletarProvaComponent,
     MuralProvasComponent,
     MuralQuestoesComponent,
-    AtualizarQuestaoComAlternativaComponent
+    AtualizarQuestaoComAlternativaComponent,
+    TelaComponent
   ],
   imports: [
     BrowserModule,

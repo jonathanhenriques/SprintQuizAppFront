@@ -5,6 +5,6 @@ export const environment = {
   tipo: '',
   token: '',
   foto: '',
-   // url: string = 'https://sprintquiz.herokuapp.com';
-   url: 'http://localhost:8081'
+   url: 'https://sprintquiz.herokuapp.com'
+  //  url: 'http://localhost:8081'
 };

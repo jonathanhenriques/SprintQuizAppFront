@@ -20,6 +20,7 @@
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">alternativas: {{questao.alternativas.length}}</p>
             </div>
             <div class="card-footer  text-center">
+                <button *ngIf="questao.alternativas.length > 0" class="btn btn-outline-success m-1" [routerLink]="['/tela',questao.id]" >testar tela</button>
                 <button *ngIf="questao.alternativas.length < 1" class="btn btn-outline-success m-1" [routerLink]="['/atualizar-questao',questao.id]" >Editar</button>
                 <button *ngIf="questao.alternativas.length > 0" class="btn btn-outline-success m-1" [routerLink]="['/atualizar-questao-com-alternativa',questao.id]" >Editar tudo</button>
                 <button class="btn btn-outline-danger m-1" [routerLink]="['/deletar-questao', questao.id]" >Apagar</button>
