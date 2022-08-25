@@ -18,8 +18,9 @@ export class QuestaoService {
   }
 
 
-  url: string = 'https://sprintquiz.herokuapp.com';
+  // url: string = 'https://sprintquiz.herokuapp.com';
   // url: string = 'http://localhost:8081';
+  url = environment.url;
 
   getByIdQuestao(id: number):Observable<Questao>{
     return this.http.get<Questao>(this.url + `/questoes/${id}`, this.token);
@@ -60,6 +61,10 @@ export class QuestaoService {
 
   putQuestao(questao: Questao):Observable<Questao>{
     return this.http.put<Questao>(this.url + '/questoes', questao, this.token);
+  }
+
+  putQuestaoComAlternativa(questao: Questao):Observable<Questao>{
+    return this.http.put<Questao>(this.url + '/questoes/questaoComAlternativas', questao, this.token);
   }
 
   deleteQuestao(id: number){

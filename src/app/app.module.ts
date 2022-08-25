@@ -39,6 +39,7 @@ import { DeletarProvaComponent } from './deletar/deletar-prova/deletar-prova.com
 import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.component';
 import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
 import { TokenInterceptorService } from './service/tokeninterceptorService.service';
+import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-questao-com-alternativa/atualizar-questao-com-alternativa.component';
 // import { TokenInterceptorService } from './service/tokeninterceptorService.service';
 
 @NgModule({
@@ -69,7 +70,8 @@ import { TokenInterceptorService } from './service/tokeninterceptorService.servi
     DeletarQuestaoComponent,
     DeletarProvaComponent,
     MuralProvasComponent,
-    MuralQuestoesComponent
+    MuralQuestoesComponent,
+    AtualizarQuestaoComAlternativaComponent
   ],
   imports: [
     BrowserModule,

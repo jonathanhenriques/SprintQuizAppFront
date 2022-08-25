@@ -31,6 +31,7 @@ import { DeletarCategoriaQuestaoComponent } from './deletar/deletar-categoria-qu
 import { CriarComponent } from './criar/criar.component';
 import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
 import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.component';
+import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-questao-com-alternativa/atualizar-questao-com-alternativa.component';
 
 
 
@@ -56,6 +57,8 @@ const routes: Routes = [
   { path: 'atualizar-alternativa/:id', component: AtualizarAlternativaComponent },
   { path: 'atualizar-categoria-prova/:id', component: AtualizarCategoriaProvaComponent },
   { path: 'atualizar-categoria-questao/:id', component: AtualizarCategoriaQuestaoComponent },
+  { path: 'atualizar-questao-com-alternativa/:id', component: AtualizarQuestaoComAlternativaComponent },
+
 
 
   { path: 'deletar-prova/:id', component: DeletarProvaComponent },

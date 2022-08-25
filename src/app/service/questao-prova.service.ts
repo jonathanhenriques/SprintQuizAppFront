@@ -17,8 +17,9 @@ export class QuestaoProvaService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  url: string = 'https://sprintquiz.herokuapp.com';
+  // url: string = 'https://sprintquiz.herokuapp.com';
   // url: string = 'http://localhost:8081';
+  url = environment.url;
 
   getAllQuestaoProva():Observable<QuestaoProva[]>{
     return this.http.get<QuestaoProva[]>(this.url + '/questaoprova', this.token);

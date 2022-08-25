@@ -16,9 +16,12 @@
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Data: {{questao.ano}}</p>
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Categoria: {{questao.categoria.titulo}}</p>
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Autor: {{questao.criador.nome}}</p>
+                <!-- <p *ngFor="let a of questao.alternativas; let i = index" ></p> -->
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">alternativas: {{questao.alternativas.length}}</p>
             </div>
             <div class="card-footer  text-center">
-                <button class="btn btn-outline-success m-1" [routerLink]="['/atualizar-questao',questao.id]" >Editar</button>
+                <button *ngIf="questao.alternativas.length < 1" class="btn btn-outline-success m-1" [routerLink]="['/atualizar-questao',questao.id]" >Editar</button>
+                <button *ngIf="questao.alternativas.length > 0" class="btn btn-outline-success m-1" [routerLink]="['/atualizar-questao-com-alternativa',questao.id]" >Editar tudo</button>
                 <button class="btn btn-outline-danger m-1" [routerLink]="['/deletar-questao', questao.id]" >Apagar</button>
                 <button class="btn btn-outline-info m-1" [routerLink]="['/cadastrar-alternativa', questao.id]" >+ Alternativas</button>
             </div>

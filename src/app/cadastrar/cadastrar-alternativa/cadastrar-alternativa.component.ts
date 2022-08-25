@@ -23,14 +23,14 @@ export class CadastrarAlternativaComponent implements OnInit {
   constructor(
     private alertas: AlertasService,
     private router: Router,
-    private ActivatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private alternativaService: AlternativaService,
     private questaoService: QuestaoService
   ) { }
 
   ngOnInit() {
     AuthService.verificaLogado(this.alertas, this.router);
-    this.idQuestao = this.ActivatedRoute.snapshot.params['id'];
+    this.idQuestao = this.activatedRoute.snapshot.params['id'];
   }
 
   a =   {
@@ -43,7 +43,7 @@ export class CadastrarAlternativaComponent implements OnInit {
   cadastrarAlternativa(){
     this.questao.id = this.idQuestao;
     this.alternativa.questao = this.questao;
-    alert(this.questao.id);
+    // alert(this.questao.id);
     this.alternativaService.postAlternativa(this.alternativa).subscribe((alternativaResp: Alternativa) => {
       this.alternativa = alternativaResp;
       this.alertas.showAlertSuccess('Alternativa criada com sucesso!');

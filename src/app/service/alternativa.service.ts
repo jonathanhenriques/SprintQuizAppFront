@@ -17,8 +17,9 @@ export class AlternativaService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  url: string = 'https://sprintquiz.herokuapp.com';
+  // url: string = 'https://sprintquiz.herokuapp.com';
   // url: string = 'http://localhost:8081';
+  url = environment.url;
 
 getAllAlternativas():Observable<Alternativa[]>{
   return this.http.get<Alternativa[]>(this.url + '/alternativas', this.token)
@@ -30,6 +31,10 @@ getAlternativaById(id: number): Observable<Alternativa>{
 
 getAlternativasByTexto(texto: string): Observable<Alternativa[]>{
   return this.http.get<Alternativa[]>(this.url + `/alternativas/texto/${texto}`, this.token);
+}
+
+putAlternativa(alternativa: Alternativa):Observable<Alternativa>{
+  return this.http.put<Alternativa>(this.url + '/alternativas', alternativa, this.token);
 }
 
 postAlternativa(alternativa: Alternativa):Observable<Alternativa>{

@@ -17,8 +17,9 @@ export class CategoriaQuestaoService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  url: string = 'https://sprintquiz.herokuapp.com';
+  // url: string = 'https://sprintquiz.herokuapp.com';
   // url: string = 'http://localhost:8081';
+  url = environment.url;
 
   getByIdCategoriaQuestao(id: number):Observable<CategoriaQuestao>{
     return this.http.get<CategoriaQuestao>(this.url + `/categoriaQuestao/${id}`, this.token);
