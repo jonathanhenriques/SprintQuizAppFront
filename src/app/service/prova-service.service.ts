@@ -18,8 +18,8 @@ export class ProvaServiceService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  // url: string = 'https://sprintquiz.herokuapp.com';
-  url: string = 'http://localhost:8081';
+  url: string = 'https://sprintquiz.herokuapp.com';
+  // url: string = 'http://localhost:8081';
 
   getAllProvas():Observable<Prova[]>{
     return this.http.get<Prova[]>(this.url + '/provas', this.token);

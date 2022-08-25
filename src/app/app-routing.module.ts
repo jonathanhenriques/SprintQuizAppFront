@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'cadastrar-usuario', component: CadastrarUsuarioComponent },
   { path: 'cadastrar-prova', component: CadastrarProvaComponent },
   { path: 'cadastrar-questao', component: CadastrarQuestaoComponent },
-  { path: 'cadastrar-alternativa', component: CadastrarAlternativaComponent },
+  { path: 'cadastrar-alternativa/:id', component: CadastrarAlternativaComponent },
   { path: 'cadastrar-categoria-prova', component: CadastrarCategoriaProvaComponent },
   { path: 'cadastrar-categoria-questao', component: CadastrarCategoriaQuestaoComponent },
 

@@ -17,8 +17,8 @@ export class AuthService {
     headers: new HttpHeaders().set('Authorization', environment.token),
   };
 
-  // url: string = 'https://sprintquiz.herokuapp.com';
-  url: string = 'http://localhost:8081';
+  url: string = 'https://sprintquiz.herokuapp.com';
+  // url: string = 'http://localhost:8081';
 
   entrar(usuarioLogin: UsuarioLogin): Observable<UsuarioLogin> {
     return this.http.post<UsuarioLogin>(

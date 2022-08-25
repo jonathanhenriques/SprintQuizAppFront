@@ -18,8 +18,8 @@ export class CategoriaProvaService {
   };
 
   
-  // url: string = 'https://sprintquiz.herokuapp.com';
-  url: string = 'http://localhost:8081';
+  url: string = 'https://sprintquiz.herokuapp.com';
+  // url: string = 'http://localhost:8081';
 
   getAllCategoriaProva():Observable<CategoriaProva[]>{
     return this.http.get<CategoriaProva[]>(this.url + '/categoriaProva', this.token);

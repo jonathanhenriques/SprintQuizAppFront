@@ -83,9 +83,9 @@ export class CadastrarProvaComponent implements OnInit {
     this.usuario.id = this.idUsuario;
     this.prova.usuario = this.usuario;
    
-    alert(this.prova.categoria.id + ' | idcateprova');
-    alert(this.prova.nome);
-    alert(this.prova.descricao);
+    // alert(this.prova.categoria.id + ' | idcateprova');
+    // alert(this.prova.nome);
+    // alert(this.prova.descricao);
    
     this.prova.usuario = this.usuario;
     this.prova.categoria = this.categoriaProva;

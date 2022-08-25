@@ -18,8 +18,8 @@ export class QuestaoService {
   }
 
 
-  // url: string = 'https://sprintquiz.herokuapp.com';
-  url: string = 'http://localhost:8081';
+  url: string = 'https://sprintquiz.herokuapp.com';
+  // url: string = 'http://localhost:8081';
 
   getByIdQuestao(id: number):Observable<Questao>{
     return this.http.get<Questao>(this.url + `/questoes/${id}`, this.token);

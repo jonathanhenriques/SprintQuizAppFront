@@ -8,18 +8,19 @@
 
 <div class="container my-5">
     <div class="row d-flex align-items-center">
-        <div class="card col-md-2 d-flex align-items-strech   m-1 my-1 p-0"
+        <div  class=" card col-md-3 d-flex align-items-strech   m-1 my-1 p-0"
             *ngFor="let questao of listaQuestoes">
             <div class="card-body p-3">
-                <h5 class="card-title text-secondary m-0 cardlimitecaracteres">Texto: {{questao.texto}}</h5>
+                <h5  class="card-title text-secondary m-0 ">Texto: {{questao.texto}}</h5>
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Instituição: {{questao.instituicao}}</p>
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Data: {{questao.ano}}</p>
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Categoria: {{questao.categoria.titulo}}</p>
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Autor: {{questao.criador.nome}}</p>
             </div>
-            <div class="card-footer d-flex  justify-content-center">
-                <button class="btn btn-outline-success mr-3" [routerLink]="['/atualizar-questao',questao.id]" >Editar</button>
-                <button class="btn btn-outline-danger" [routerLink]="['/deletar-questao', questao.id]" >Apagar</button>
+            <div class="card-footer  text-center">
+                <button class="btn btn-outline-success m-1" [routerLink]="['/atualizar-questao',questao.id]" >Editar</button>
+                <button class="btn btn-outline-danger m-1" [routerLink]="['/deletar-questao', questao.id]" >Apagar</button>
+                <button class="btn btn-outline-info m-1" [routerLink]="['/cadastrar-alternativa', questao.id]" >+ Alternativas</button>
             </div>
         </div>
     </div>

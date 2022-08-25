@@ -123,23 +123,23 @@ export class CadastrarQuestaoComponent implements OnInit {
     // this.questao.criador.id + ' | idcria'   + '\n' +
     // this.questao.resposta + ' | respo');
 
-    if(this.questao.texto == null)
-      this.alertas.showAlertDanger('Preencha o campo texto')
+    // if(this.questao.texto == null)
+    //   this.alertas.showAlertDanger('Preencha o campo texto')
 
-      if(this.questao.instituicao == null)
-      this.alertas.showAlertDanger('Preencha o campo isntituicao')
+    //   if(this.questao.instituicao == null)
+    //   this.alertas.showAlertDanger('Preencha o campo isntituicao')
 
-      if(this.questao.imagem == null)
-      this.alertas.showAlertDanger('Preencha o campo imagem')
+    //   if(this.questao.imagem == null)
+    //   this.alertas.showAlertDanger('Preencha o campo imagem')
 
-      if(this.questao.ano == null)
-      this.alertas.showAlertDanger('Preencha o campo data')
+    //   if(this.questao.ano == null)
+    //   this.alertas.showAlertDanger('Preencha o campo data')
 
-      if(this.questao.categoria == null)
-      this.alertas.showAlertDanger('Preencha o campo categoria')
+    //   if(this.questao.categoria == null)
+    //   this.alertas.showAlertDanger('Preencha o campo categoria')
 
-      if(this.questao.criador == null)
-      this.alertas.showAlertDanger('Preencha o campo criador')
+    //   if(this.questao.criador == null)
+    //   this.alertas.showAlertDanger('Preencha o campo criador')
 
       
 
@@ -147,6 +147,7 @@ export class CadastrarQuestaoComponent implements OnInit {
     this.questaoService.postQuestao(this.questao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
       this.alertas.showAlertSuccess('Questão criada com sucesso!');
+      this.questao = new Questao();
    
     })
   }

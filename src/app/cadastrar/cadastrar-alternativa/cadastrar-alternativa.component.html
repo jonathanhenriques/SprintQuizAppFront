@@ -1,1 +1,57 @@
-<p>cadastrar-alternativa works!</p>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12"></div>
+        <h1 class="text-center">Criar Alternativa</h1>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-5 ">
+            <div class="card my-5 ">
+                <div class="card-head">
+                    <h1 class="card-title  text-center">Alternativa</h1>
+                </div>
+                <form class="card-body">
+                    <!-- <div class="form-group">
+                        <label for="instituicaoAlternativa">instituição</label>
+                        <input [(ngModel)]="Alternativa.instituicao" class="form-control" type="text" name="instituicaoAlternativa" id="instituicaoAlternativa">
+                        <small class="text-muted">*Opcional</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="anoAlternativa">ano</label>
+                        <input [(ngModel)]="Alternativa.ano" class="form-control" type="date" name="anoAlternativa" id="anoAlternativa">
+                        <small class="text-muted">*Opcional</small>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="imagemAlternativa">imagem (url ou link da foto)</label>
+                        <input [(ngModel)]="alternativa.foto" class="form-control" type="text" name="imagemAlternativa"
+                            id="imagemAlternativa">
+                        <small class="text-muted">*Opcional</small>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label for="textoAlternativa ">texto</label>
+                        <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
+                        <textarea [(ngModel)]="alternativa.texto" class="form-control" name="textoAlternativa" id="textoAlternativa"
+                            rows="10" cols="70" required="required"></textarea>
+                    </div>
+
+
+                    <div class="btn-group">
+                        <button class="btn btn-success" (click)="cadastrarAlternativa()">Criar</button>
+                        <button class="btn btn-danger" type="reset">Limpar</button>
+                        <button class="btn btn-warning" (click)="voltarPagina()">Cancelar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

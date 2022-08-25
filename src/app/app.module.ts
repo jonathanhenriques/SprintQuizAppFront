@@ -38,6 +38,7 @@ import { DeletarQuestaoComponent } from './deletar/deletar-questao/deletar-quest
 import { DeletarProvaComponent } from './deletar/deletar-prova/deletar-prova.component';
 import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.component';
 import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
+import { TokenInterceptorService } from './service/tokeninterceptorService.service';
 // import { TokenInterceptorService } from './service/tokeninterceptorService.service';
 
 @NgModule({
@@ -83,11 +84,11 @@ import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.compon
     MatTableModule
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: TokenInterceptorService,
-    //   multi: true
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
