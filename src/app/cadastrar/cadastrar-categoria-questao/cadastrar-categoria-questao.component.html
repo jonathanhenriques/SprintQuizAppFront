@@ -1,4 +1,4 @@
-<div class="container-fluid my-5">
+<div class="container-fluid mt-5">
     <div class="row d-flex align-items-center">
         <div class="col-md-12">
             <h1 class="text-center my-4">Cadastrar uma nova Categoria para Questão</h1>
@@ -10,21 +10,32 @@
             <div class="card ">
                 <div class="card-body">
                     <form>
-                        <div class="form-group">
-                            <!-- <label for="nomeCategoriaQuestao">nome da Categoria da Questão a ser registrada</label> -->
-                            <input [(ngModel)]="categoriaQuestao.titulo" type="text" name="nomeCategoriaQuestao" id="nomeCategoriaQuestao"
-                                class="form-control" placeholder="nome da categoria...">
-                        </div>
 
-                        <div class="form-group">
-                            <!-- <label for="descricaoCategoriaQuestao">descrição da Categoria da Questão a serregistrada</label> -->
-                            <input [(ngModel)]="categoriaQuestao.descricao" type="text" name="descricaoCategoriaQuestao" id="descricaoCategoriaQuestao"
-                                class="form-control" placeholder="descrição da categoria...">
-                        </div>
+
+                        <p>
+                            <mat-form-field appearance="outline">
+                              <mat-label>Título</mat-label>
+                              <input 
+                               [(ngModel)]="categoriaQuestao.titulo" [formControl]="titulo" required  matInput placeholder="nome da categoria..." name="nomeCategoriaQuestao" id="nomeCategoriaQuestao" >
+                              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                              <!-- <mat-hint>Hint</mat-hint> -->
+                            </mat-form-field>
+                          </p>
+
+                          <p>
+                            <mat-form-field appearance="outline">
+                              <mat-label>Descrição</mat-label>
+                              <input [(ngModel)]="categoriaQuestao.descricao" [formControl]="descricao" required matInput placeholder="descrição da categoria..." name="descricaoCategoriaQuestao" id="descricaoCategoriaQuestao">
+                              <mat-icon matSuffix>import_contacts</mat-icon>
+                              <!-- <mat-hint>Hint</mat-hint> -->
+                            </mat-form-field>
+                          </p>
+
+
 
                         <div class="btn-group " role="group">
-                            <button class="btn btn-success mr-5" type="submit" (click)="cadastrarCategoriaQuestao()">Cadastrar</button>
-                            <button class="btn btn-danger" type="reset">Apagar</button>
+                            <button [disabled]="!validaCampos()" class="botaoespaco"  mat-raised-button color="primary" type="submit" (click)="cadastrarCategoriaQuestao()">Cadastrar</button>
+                            <button  mat-raised-button color="warn" type="reset">Apagar</button>
                         </div>
                     </form>
                 </div>
@@ -32,7 +43,7 @@
         </div>
     </div>
 </div>
-
+<!-- 
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
@@ -61,4 +72,58 @@
               </table>
         </div>
     </div>
+</div> -->
+
+
+<div class="containerTabela">
+
+
+    <mat-form-field appearance="standard">
+        <mat-label>pesquise uma categoria...</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef> Título </th>
+            <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="descricao">
+            <th mat-header-cell *matHeaderCellDef> Descrição </th>
+            <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element"> 
+                
+                <a [routerLink]="['/atualizar-categoria-questao', element.id]"><i class="fa fa-pencil mr-3"
+                    aria-hidden="true"></i></a>
+                <a  [routerLink]="['/deletar-categoria-questao', element.id]" ><i class="fa fa-trash-o"
+                    aria-hidden="true"></i></a> 
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons 
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+      
 </div>

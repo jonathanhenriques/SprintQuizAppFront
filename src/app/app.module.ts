@@ -4,8 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +14,6 @@ import { CadastrarUsuarioComponent } from './cadastrar/cadastrar-usuario/cadastr
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertaComponent } from './alerta/alerta.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { FormsModule } from '@angular/forms';
 import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
 import { AtualizarUsuarioComponent } from './atualizar/atualizar-usuario/atualizar-usuario.component';
 import { CadastrarProvaComponent } from './cadastrar/cadastrar-prova/cadastrar-prova.component';
@@ -23,7 +21,7 @@ import { CriarComponent } from './criar/criar.component';
 import { DeletarCategoriaProvaComponent } from './deletar/deletar-categoria-prova/deletar-categoria-prova.component';
 import { CadastrarCategoriaProvaComponent } from './cadastrar/cadastrar-categoria-prova/cadastrar-categoria-prova.component';
 import { AtualizarCategoriaProvaComponent } from './atualizar/atualizar-categoria-prova/atualizar-categoria-prova.component';
-import {MatTableModule} from '@angular/material/table';
+
 import { CadastrarQuestaoComponent } from './cadastrar/cadastrar-questao/cadastrar-questao.component';
 import { CadastrarAlternativaComponent } from './cadastrar/cadastrar-alternativa/cadastrar-alternativa.component';
 import { CadastrarCategoriaQuestaoComponent } from './cadastrar/cadastrar-categoria-questao/cadastrar-categoria-questao.component';
@@ -41,7 +39,19 @@ import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.compon
 import { TokenInterceptorService } from './service/tokeninterceptorService.service';
 import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-questao-com-alternativa/atualizar-questao-com-alternativa.component';
 import { TelaComponent } from './tela/tela.component';
-// import { TokenInterceptorService } from './service/tokeninterceptorService.service';
+import { ToastrModule } from "ngx-toastr"
+
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { timeout } from 'rxjs';
+
 
 @NgModule({
   declarations: [
@@ -73,7 +83,8 @@ import { TelaComponent } from './tela/tela.component';
     MuralProvasComponent,
     MuralQuestoesComponent,
     AtualizarQuestaoComAlternativaComponent,
-    TelaComponent
+    TelaComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -82,10 +93,29 @@ import { TelaComponent } from './tela/tela.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      closeButton: true,
+      progressBar: true,
+      preventDuplicates: true
+    }
+     
+    ),
+    
+
     MatToolbarModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
+    
+
   ],
   providers: [
     {

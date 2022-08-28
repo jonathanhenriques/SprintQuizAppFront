@@ -52,15 +52,18 @@ export class TelaComponent implements OnInit {
     this.findByIdUsuario();
     this.findQuestoesByCriadorId();
     // this.listaQuestoes = this.usuario.questoes;
+    // this.qp = this.questao.alternativas.length;
     
     
   }
   mais(){
-    this.contador++;
+    this.qp++;
+    console.log(77);
   }
 
   menos(){
-    this.contador--
+    this.qp--
+    console.log(77);
   }
 
   maisqp(){
