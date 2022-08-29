@@ -95,7 +95,6 @@ export class GaleriaQuestoesComponent implements OnInit {
 
 
 
-
   
 
 
