@@ -34,11 +34,11 @@ import { DeletarUsuarioComponent } from './deletar/deletar-usuario/deletar-usuar
 import { DeletarAlternativaComponent } from './deletar/deletar-alternativa/deletar-alternativa.component';
 import { DeletarQuestaoComponent } from './deletar/deletar-questao/deletar-questao.component';
 import { DeletarProvaComponent } from './deletar/deletar-prova/deletar-prova.component';
-import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.component';
-import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
+import { MuralQuestoesComponent } from './mural/mural-questoes/mural-questoes.component';
+import { MuralProvasComponent } from './mural/mural-provas/mural-provas.component';
 import { TokenInterceptorService } from './service/tokeninterceptorService.service';
 import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-questao-com-alternativa/atualizar-questao-com-alternativa.component';
-import { TelaComponent } from './tela/tela.component';
+import { QuizzComponent } from './quizz/quizz.component';
 import { ToastrModule } from "ngx-toastr"
 
 
@@ -51,6 +51,8 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { timeout } from 'rxjs';
+import { GaleriaQuestoesComponent } from './galerias/galeriaquestoes/galeria-questoes.component';
+import { GaleriaProvasComponent } from './galerias/galeriaprovas/galeria-provas.component';
 
 
 @NgModule({
@@ -83,7 +85,9 @@ import { timeout } from 'rxjs';
     MuralProvasComponent,
     MuralQuestoesComponent,
     AtualizarQuestaoComAlternativaComponent,
-    TelaComponent,
+    QuizzComponent,
+    GaleriaQuestoesComponent,
+    GaleriaProvasComponent,
     
   ],
   imports: [

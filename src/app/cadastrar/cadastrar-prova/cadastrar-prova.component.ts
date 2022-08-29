@@ -76,6 +76,10 @@ export class CadastrarProvaComponent implements OnInit {
     });
   }
 
+
+
+
+
   cadastrarProva(){
     this.categoriaProva.id = this.idCategoriaProva;
     this.prova.categoria = this.categoriaProva;

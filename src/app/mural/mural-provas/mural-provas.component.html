@@ -1,0 +1,33 @@
+<div class="container my-5">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-12 ">
+            <h1 class="text-center">Mural de Provas!</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row d-flex align-items-center">
+        <div class="card col-md-4 d-flex align-items-strech   m-1 my-1 p-0" *ngFor="let prova of listaProvas">
+            <div class="card-body p-3">
+                <h5 class="card-title text-secondary m-0 cardlimitecaracteres">Texto: {{prova.nome}}</h5>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">descrição: {{prova.descricao}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">Questões: {{prova.questoes.length}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">duração: {{prova.duracao}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">Categoria: {{prova.categoria.titulo}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">Autor: {{prova.usuario.nome}}</p>
+                <div class="card col p-2 mt-3" *ngFor="let qProva of prova.questoes; let i = index" > questão {{i+1}} : {{qProva.questao.texto}}</div>
+                
+                <div class="card-footer text-center">
+                    <button class="btn btn-outline-success m-1" [routerLink]="['/quizz',prova.id]">testar tela</button>
+                    <button class="btn btn-outline-success m-1" [routerLink]="['/galeria-questoes/',prova.id]">add
+                        questões</button>
+                    <button class="btn btn-outline-success m-1" [routerLink]="['/galeria-provas',prova.id]">teste
+                        galeria</button>
+                    <button class="btn btn-outline-success mr-3"
+                        [routerLink]="['/atualizar-prova',prova.id]">Editar</button>
+                    <button class="btn btn-outline-danger" [routerLink]="['/deletar-prova', prova.id]">Apagar</button>
+                </div>
+            </div>
+        </div>
+    </div>

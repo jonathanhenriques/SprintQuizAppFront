@@ -29,10 +29,12 @@ import { DeletarCategoriaQuestaoComponent } from './deletar/deletar-categoria-qu
 
 
 import { CriarComponent } from './criar/criar.component';
-import { MuralProvasComponent } from './usuario/mural-provas/mural-provas.component';
-import { MuralQuestoesComponent } from './usuario/mural-questoes/mural-questoes.component';
+import { MuralProvasComponent } from './mural/mural-provas/mural-provas.component';
+import { MuralQuestoesComponent } from './mural/mural-questoes/mural-questoes.component';
 import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-questao-com-alternativa/atualizar-questao-com-alternativa.component';
-import { TelaComponent } from './tela/tela.component';
+import { QuizzComponent } from './quizz/quizz.component';
+import { GaleriaQuestoesComponent } from './galerias/galeriaquestoes/galeria-questoes.component';
+import { GaleriaProvasComponent } from './galerias/galeriaprovas/galeria-provas.component';
 
 
 
@@ -71,7 +73,9 @@ const routes: Routes = [
   { path: 'mural-provas', component: MuralProvasComponent },
   { path: 'mural-questoes', component: MuralQuestoesComponent },
 
-  { path: 'tela/:id', component: TelaComponent }
+  { path: 'quizz/:id', component: QuizzComponent },
+  { path: 'galeria-questoes/:id', component: GaleriaQuestoesComponent },
+  { path: 'galeria-provas/:id', component: GaleriaProvasComponent },
 
   
 ];
