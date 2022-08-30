@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Prova } from 'src/app/model/Prova';
 import { Usuario } from 'src/app/model/Usuario';
@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class MuralProvasComponent implements OnInit {
 
-
+@Input() objson: string;
   usuario: Usuario = new Usuario();
   prova: Prova = new Prova();
 

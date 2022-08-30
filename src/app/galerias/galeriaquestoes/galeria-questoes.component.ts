@@ -33,6 +33,8 @@ export class GaleriaQuestoesComponent implements OnInit {
   listaQuestoesSelecionadas: QuestaoProva[] = [];
   // listaQuestoesProva: QuestaoProva[] = [];
 
+  objson: string = '';
+
   constructor(private alertas: AlertasService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -121,7 +123,9 @@ export class GaleriaQuestoesComponent implements OnInit {
     this.questaoProva.questao = this.questaoSelecionada;
     // alert(this.questaoProva.questao.id);
     // this.listaQuestoesSelecionadas.push(this.questaoProva);
-    this.questaoProva.id = 0;
+    // this.questaoProva.id = 0;
+    let objson = JSON.stringify(this.questaoProva, null, 2);
+    alert(objson);
 
    this.toastr.info('chamando post');
     this.questaoProvaService.postQuestaoProva(this.questaoProva, this.idProva).subscribe((questaoProvaResp: QuestaoProva) => {
@@ -129,6 +133,8 @@ export class GaleriaQuestoesComponent implements OnInit {
       this.questaoProva = questaoProvaResp;
       // alert('qid' + questaoProvaResp.questao.id);
       // alert('pid' + questaoProvaResp.prova.id);
+      this.questaoProva = new QuestaoProva();
+      this.prova = new Prova();
     })
     this.voltarPagina();
   }

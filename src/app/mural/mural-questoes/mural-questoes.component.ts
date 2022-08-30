@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Prova } from 'src/app/model/Prova';
 import { Questao } from 'src/app/model/Questao';
@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class MuralQuestoesComponent implements OnInit {
 
- 
+ @Input() objson: string;
 
   usuario: Usuario = new Usuario();
   questao: Questao = new Questao();
