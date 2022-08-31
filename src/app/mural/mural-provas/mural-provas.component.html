@@ -17,11 +17,12 @@
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">duração: {{prova.duracao}}</p>
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Categoria: {{prova.categoria.titulo}}</p>
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Autor: {{prova.usuario.nome}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">idProva: {{prova.id}}</p>
                 <div class="card col p-2 mt-3" *ngFor="let qProva of prova.questoes; let i = index" > questão {{i+1}} : {{qProva.questao.texto}}</div>
                 
                 <div class="card-footer text-center">
                     <button class="btn btn-outline-success m-1" [routerLink]="['/quizz',prova.id]">testar tela</button>
-                    <button class="btn btn-outline-success m-1" [routerLink]="['/galeria-questoes/',prova.id]">add
+                    <button class="btn btn-outline-success m-1" [routerLink]="['/galeria-questoes/',prova.id]">+
                         questões</button>
                     <button class="btn btn-outline-success m-1" [routerLink]="['/galeria-provas',prova.id]">teste
                         galeria</button>

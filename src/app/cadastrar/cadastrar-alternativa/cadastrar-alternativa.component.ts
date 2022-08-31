@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Alternativa } from 'src/app/model/Alternativa';
 import { Questao } from 'src/app/model/Questao';
@@ -31,6 +32,8 @@ export class CadastrarAlternativaComponent implements OnInit {
   ngOnInit() {
     AuthService.verificaLogado(this.alertas, this.router);
     this.idQuestao = this.activatedRoute.snapshot.params['id'];
+    console.log('idQuestao | ' + this.idQuestao);
+    this.getQuestaoById();
   }
 
   a =   {
@@ -42,8 +45,10 @@ export class CadastrarAlternativaComponent implements OnInit {
 
   cadastrarAlternativa(){
     this.questao.id = this.idQuestao;
+    console.log('questao id | ' + this.questao.id);
+    console.log('questao texto | ' + this.questao.texto);
     this.alternativa.questao = this.questao;
-    // alert(this.questao.id);
+    console.log('alternativa.questao id | ' + this.alternativa.questao.id);
     this.alternativaService.postAlternativa(this.alternativa).subscribe((alternativaResp: Alternativa) => {
       this.alternativa = alternativaResp;
       this.alertas.showAlertSuccess('Alternativa criada com sucesso!');
@@ -51,11 +56,11 @@ export class CadastrarAlternativaComponent implements OnInit {
     })
   }
 
-  // getQuestaoById(){
-  //   this.questaoService.getByIdQuestao(this.idQuestao).subscribe((questaoResp: Questao) => {
-  //     this.questao = questaoResp;
-  //   })
-  // }
+  getQuestaoById(){
+    this.questaoService.getByIdQuestao(this.idQuestao).subscribe((questaoResp: Questao) => {
+      this.questao = questaoResp;
+    })
+  }
 
   // atualizarQuestao(){
   //   this.questaoService.putQuestao(this.questao).subscribe((questaoResp: Questao) => {
