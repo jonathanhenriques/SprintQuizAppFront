@@ -85,7 +85,7 @@ export class QuizzComponent implements OnInit {
     this.provaService.getProvaById(this.idProva).subscribe((provaResp: Prova) => {
       this.prova = provaResp;
 
-      alert(this.prova.questoes[1].questao.texto);
+      console.log(this.prova.questoes[1].questao.texto);
       // provaResp.questoes.forEach(element => {
       //   alert(element.instituicao);
       // });
