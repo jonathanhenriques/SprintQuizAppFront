@@ -25,7 +25,7 @@ export class BoasVindasComponent implements OnInit {
     //   this.router.navigate(['/entrar']);
     // }
 
-    AuthService.verificaLogado(this.alertas, this.router);
+    // AuthService.verificaLogado(this.alertas, this.router);
   }
 
 

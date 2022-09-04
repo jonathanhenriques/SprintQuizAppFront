@@ -24,6 +24,8 @@
                     <button class="btn btn-outline-success m-1" [routerLink]="['/quizz',prova.id]">testar tela</button>
                     <button class="btn btn-outline-success m-1" [routerLink]="['/galeria-questoes/',prova.id]">+
                         questões</button>
+                        <button class="btn btn-outline-success m-1" (click)="openDialog()">+
+                            questões dialog</button>
                     <button class="btn btn-outline-success m-1" [routerLink]="['/galeria-provas',prova.id]">teste
                         galeria</button>
                     <button class="btn btn-outline-success mr-3"

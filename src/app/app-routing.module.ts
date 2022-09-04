@@ -35,13 +35,15 @@ import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-q
 import { QuizzComponent } from './quizz/quizz.component';
 import { GaleriaQuestoesComponent } from './galerias/galeriaquestoes/galeria-questoes.component';
 import { GaleriaProvasComponent } from './galerias/galeriaprovas/galeria-provas.component';
+import { RemoverAlternativaDaQuestaoComponent } from './remover-alternativa-da-questao/remover-alternativa-da-questao.component';
+import { TesteComponent } from './teste/teste.component';
 
 
 
 
 const routes: Routes = [
 
-  { path: '', redirectTo: 'entrar', pathMatch: 'full' },
+  { path: '', redirectTo: 'boas-vindas', pathMatch: 'full' },
 
   { path: 'entrar', component: EntrarComponent },
   { path: 'boas-vindas', component: BoasVindasComponent },
@@ -76,6 +78,12 @@ const routes: Routes = [
   { path: 'quizz/:id', component: QuizzComponent },
   { path: 'galeria-questoes/:id', component: GaleriaQuestoesComponent },
   { path: 'galeria-provas/:id', component: GaleriaProvasComponent },
+  { path: 'remover-alternativa-da-questao/:id', component: RemoverAlternativaDaQuestaoComponent },
+
+
+
+
+  { path: 'teste', component: TesteComponent }
 
   
 ];

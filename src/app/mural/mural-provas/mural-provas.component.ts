@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Prova } from 'src/app/model/Prova';
 import { Usuario } from 'src/app/model/Usuario';
@@ -7,6 +7,9 @@ import { AuthService } from 'src/app/service/auth.service';
 import { ProvaServiceService } from 'src/app/service/prova-service.service';
 import { environment } from 'src/environments/environment.prod';
 
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ViewTesteComponent } from 'src/app/view-teste/view-teste.component';
+
 @Component({
   selector: 'app-mural-provas',
   templateUrl: './mural-provas.component.html',
@@ -14,7 +17,10 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class MuralProvasComponent implements OnInit {
 
-@Input() objson: string;
+
+  idProva: number;
+  name: string;
+
   usuario: Usuario = new Usuario();
   prova: Prova = new Prova();
 
@@ -26,7 +32,8 @@ export class MuralProvasComponent implements OnInit {
     private router: Router,
     private alertas: AlertasService,
     private provaService: ProvaServiceService,
-    private authService: AuthService
+    private authService: AuthService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(){
@@ -65,6 +72,19 @@ export class MuralProvasComponent implements OnInit {
   //   })
   // }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ViewTesteComponent, {
+      width: '450px',
+      data: {name: this.name, idProva: this.prova.id},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.name = result;
+    });
+  }
+
 
 
 }
+

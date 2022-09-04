@@ -1,0 +1,64 @@
+
+
+
+
+
+<div class="containere">
+  <div class="row  justify-content-center">
+      <div class="col-md-12">
+          <h1 class="text-center">Criar Questão</h1>
+          <div class="card m-1 ">
+              <div class="card-head">
+                  <h1 class="card-title m-3 text-center">Questão</h1>
+              </div>
+              <form class="card-body">
+                  <div class="form-group">
+                      <label for="instituicaoQuestao">instituição</label>
+                      <input [(ngModel)]="questao.instituicao" class="form-control" type="text" name="instituicaoQuestao" id="instituicaoQuestao">
+                      <small class="text-muted">*Opcional</small>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="anoQuestao">ano</label>
+                      <input [(ngModel)]="questao.ano" class="form-control" type="date" name="anoQuestao" id="anoQuestao">
+                      <small class="text-muted">*Opcional</small>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="imagemQuestao">imagem (url ou link da foto)</label>
+                      <input [(ngModel)]="questao.imagem" class="form-control" type="text" name="imagemQuestao" id="imagemQuestao">
+                      <small class="text-muted">*Opcional</small>
+                  </div>
+
+                  
+
+                  <div class="form-group">
+                      <label for="categoriaQuestao">Categoria da Questão</label>
+                      <select  class="form-control" name="categoriaQuestao"
+                          id="categoriaQuestao" [(ngModel)]="idCategoriaQuestao" (change)="findCategoriaQuestaoById()">
+                          <option disable>selecione...</option>
+                          <option *ngFor="let cat of listaCategoriaQuestao" value="{{ cat.id }}">{{ cat.titulo }}
+                          </option>
+                      </select>
+                  </div>
+
+                  
+                  <div class="form-group">
+                      <label for="textoQuestao ">texto</label>
+                      <textarea [(ngModel)]="questao.texto" class="form-control" name="textoQuestao" id="textoQuestao" rows="5" cols="30" required="required"></textarea>
+                  </div>
+
+                 
+                  <div class="btn-group">
+                      <button class="btn btn-success" (click)="cadastrarQuestao()">Cadastrar</button>
+                      <button class="btn btn-danger" type="reset">Limpar</button>
+                      <button class="btn btn-success" (click)="onNoClick()">Fechar</button>
+                      
+                  </div>
+              </form>
+             
+          </div>
+      </div>
+     
+  </div>
+</div>

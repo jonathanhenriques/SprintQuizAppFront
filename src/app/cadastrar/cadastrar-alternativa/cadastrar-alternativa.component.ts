@@ -44,11 +44,24 @@ export class CadastrarAlternativaComponent implements OnInit {
   }
 
   cadastrarAlternativa(){
-    this.questao.id = this.idQuestao;
-    console.log('questao id | ' + this.questao.id);
-    console.log('questao texto | ' + this.questao.texto);
-    this.alternativa.questao = this.questao;
-    console.log('alternativa.questao id | ' + this.alternativa.questao.id);
+    // this.questao.id = this.idQuestao;
+    // console.log('questao id | ' + this.questao.id);
+    // console.log('questao texto | ' + this.questao.texto);
+    // this.alternativa.questao = this.questao;
+
+    // console.log('alternativa.questao id | ' + this.alternativa.questao.id);
+    // let obj = JSON.stringify(this.alternativa, null, 2);
+    // console.log(obj);
+
+
+    this.alternativa.questao = new Questao();
+    this.alternativa.questao.id = this.idQuestao;
+
+    let obj = JSON.stringify(this.alternativa, null, 2);
+    console.log(obj);
+
+    
+
     this.alternativaService.postAlternativa(this.alternativa).subscribe((alternativaResp: Alternativa) => {
       this.alternativa = alternativaResp;
       this.alertas.showAlertSuccess('Alternativa criada com sucesso!');

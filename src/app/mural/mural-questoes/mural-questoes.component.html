@@ -23,6 +23,9 @@
                 <button *ngIf="questao.alternativas.length > 0" class="btn btn-outline-success m-1"  [routerLink]="['/quizz',questao.id]" >testar tela</button>
                 <button  class="btn btn-outline-success m-1" [routerLink]="['/atualizar-questao',questao.id]" >Editar</button>
                 <button  class="btn btn-outline-success m-1" [routerLink]="['/cadastrar-alternativa',questao.id]" >+ alternativas</button>
+                <button  class="btn btn-outline-success m-1" [routerLink]="['/remover-alternativa-da-questao',questao.id]" >- alternativas</button>
+
+                
 
                 <button class="btn btn-outline-danger m-1" [routerLink]="['/deletar-questao', questao.id]" >Apagar</button>
             </div>

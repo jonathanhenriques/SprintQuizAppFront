@@ -50,9 +50,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+
 import { timeout } from 'rxjs';
 import { GaleriaQuestoesComponent } from './galerias/galeriaquestoes/galeria-questoes.component';
 import { GaleriaProvasComponent } from './galerias/galeriaprovas/galeria-provas.component';
+import { RemoverAlternativaDaQuestaoComponent } from './remover-alternativa-da-questao/remover-alternativa-da-questao.component';
+import { TesteComponent } from './teste/teste.component';
+import { ViewTesteComponent } from './view-teste/view-teste.component';
 
 
 @NgModule({
@@ -88,6 +93,9 @@ import { GaleriaProvasComponent } from './galerias/galeriaprovas/galeria-provas.
     QuizzComponent,
     GaleriaQuestoesComponent,
     GaleriaProvasComponent,
+    RemoverAlternativaDaQuestaoComponent,
+    TesteComponent,
+    ViewTesteComponent,
     
   ],
   imports: [
@@ -117,7 +125,8 @@ import { GaleriaProvasComponent } from './galerias/galeriaprovas/galeria-provas.
     MatTableModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
     
 
   ],
@@ -128,6 +137,7 @@ import { GaleriaProvasComponent } from './galerias/galeriaprovas/galeria-provas.
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ViewTesteComponent]
 })
 export class AppModule { }

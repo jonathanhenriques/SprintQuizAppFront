@@ -101,6 +101,13 @@ export class CadastrarProvaComponent implements OnInit {
 
       this.prova = new Prova();
     })
+
+    this.cadastrarQuestoes();
+  }
+
+
+  cadastrarQuestoes(){
+    
   }
 
 }

@@ -90,25 +90,6 @@ export class GaleriaQuestoesComponent implements OnInit {
 
   }
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
   cadastrarQuestaoProva() {
     // this.findQuestaoById();
     // alert(this.idProva);

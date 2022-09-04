@@ -31,6 +31,7 @@ export class CadastrarQuestaoComponent implements OnInit {
 
   listaCategoriaQuestao: CategoriaQuestao[] = [];
 
+  //nao utilizados
   qtdItens: number = 3;
   listaAlternativas: Alternativa[] = [];
   listaVazia: Alternativa[] = [];
