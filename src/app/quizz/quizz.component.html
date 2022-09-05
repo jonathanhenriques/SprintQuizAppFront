@@ -13,7 +13,7 @@
                 <h5>20 pontos</h5>
             </div>
             <div class="question-remain">
-                <span> Questão {{questaoAtual+1}} de {{ prova.questoes.length }}</span>
+                <span> Questão 1 de {{ prova.questoes.length }}</span>
             </div>
             <div class="timer">
                 {{ timer }} sec
@@ -27,16 +27,15 @@
           <div class="question ">
             <div class="card">
                 <h1>pergunta</h1>
-                <h3>>>  {{prova.questoes[questaoAtual].questao.texto}}</h3>
+                <h3>Qual  {{prova.id}}</h3>
             </div>
           </div>
 
           <div class="card">John</div>
           <div class="options">
-            <ol *ngFor="let alternativa of prova.questoes[questaoAtual].questao.alternativas">
-                <li>
-                    <div class="card">{{alternativa.texto}}</div>
-                </li>
+            <ol *ngFor="let alternativa of prova.questoes[0].questao.alternativas">
+                <li><div class="card">{{alternativa.texto}}</div></li>
+                <li><div class="card">John</div></li>
                 
             </ol>
           </div>

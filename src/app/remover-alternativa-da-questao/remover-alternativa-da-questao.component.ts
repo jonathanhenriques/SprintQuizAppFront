@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Alternativa } from '../model/Alternativa';
 import { Questao } from '../model/Questao';
 import { AlertasService } from '../service/alertas.service';
@@ -23,15 +22,15 @@ export class RemoverAlternativaDaQuestaoComponent implements OnInit {
 
   listaAlternativas: Alternativa[] = [];
   
- 
+  displayedColumns: string[] = ['id', 'texto', 'foto','acoes'];
+  dataSource = new MatTableDataSource<Alternativa>(this.listaAlternativas);
 
   constructor(
     private router: Router,
     private activatedRouter: ActivatedRoute,
     private alertas: AlertasService,
     private questaoService: QuestaoService,
-    private alternativaService: AlternativaService,
-    private toastr: ToastrService
+    private alternativaService: AlternativaService
     ) { }
 
   ngOnInit(){
@@ -52,7 +51,7 @@ export class RemoverAlternativaDaQuestaoComponent implements OnInit {
   }
 
   criaListaAlternativas(){
-    for(let i = 0; i < this.questao.alternativas?.length; i++) {
+    for(let i = 0; i < this.questao.alternativas.length; i++) {
       this.listaAlternativas.push(this.questao.alternativas[i]);
       alert(i);
     }
@@ -60,27 +59,16 @@ export class RemoverAlternativaDaQuestaoComponent implements OnInit {
 
   removerAlternativa(id: number){
    
+    let as = this.questao.alternativas;
+    let remo = as.splice(0, id);
+    console.log(remo);
+    this.questao.alternativas = as;
 
-    this.alternativaService.deleteAlternativasById(id).subscribe(() => {
-      this.toastr.success('Alternativa removida com sucesso!');
-      this.voltarPagina();
+    this.questaoService.putQuestaoComAlternativa(this.questao).subscribe((questaoResp: Questao) => {
+      this.questao = questaoResp;
+      this.alertas.showAlertSuccess('Alternativa removida com sucesso!');
+      this.questao = new Questao();
     })
-
-    // let as = this.questao.alternativas;
-    // as.splice(id, 1);
-    // console.log(as);
-    // this.questao.alternativas = as;
-    // console.log(JSON.stringify(this.questao))
-
-    // this.questaoService.putQuestaoComAlternativa(this.questao).subscribe((questaoResp: Questao) => {
-    //   this.questao = questaoResp;
-    //   this.toastr.success('Alternativa removida com sucesso!');
-    //   this.questao = new Questao();
-    // })
-  }
-
-  voltarPagina(){
-    window.history.back();
   }
 
 }
