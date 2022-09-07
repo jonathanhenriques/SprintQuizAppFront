@@ -45,7 +45,7 @@ postAlternativas(listaAlternativas: Alternativa[]):Observable<Alternativa[]>{
   return this.http.post<Alternativa[]>(this.url + '/alternativas/listaAlternativas', listaAlternativas, this.token)
 }
 
-deleteAlternativasById(id: number){
+deleteAlternativaById(id: number){
   return this.http.delete(this.url + `/alternativas/${id}`, this.token);
 }
 

@@ -1,0 +1,31 @@
+
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col" >Ações</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let alternativa of this.questao.alternativas; let i = index">
+                    <td scope="row">{{ alternativa.id }}</td>
+                    <td>{{ alternativa.texto }}</td>
+                    <td>{{ alternativa.foto }}</td>
+                    
+                    <td class="btn-group">
+                        <button class="btn btn-danger" (click)="removerAlternativa(alternativa.id)" >Apagar</button>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

@@ -25,6 +25,10 @@ export class QuestaoProvaService {
     return this.http.get<QuestaoProva[]>(this.url + '/questaoprova', this.token);
   }
 
+  getByIdQuestaoIdProvaQuestaoProva(idQuestao: number, idProva: number):Observable<QuestaoProva>{
+    return this.http.get<QuestaoProva>(this.url + `/questaoprova/questao/${idQuestao}/prova/${idProva}`)
+  }
+
   postQuestaoProva(questaoProva: QuestaoProva, id: number):Observable<QuestaoProva>{
     return this.http.post<QuestaoProva>(this.url + `/questaoprova/provaid/${id}`, questaoProva, this.token);
   }
@@ -34,6 +38,6 @@ export class QuestaoProvaService {
   }
 
   deleteQuestaoProva(id: number){
-    return this.http.post(this.url + `/questaoprova/${id}`, this.token);
+    return this.http.delete(this.url + `/questaoprova/${id}`, this.token);
   }
 }

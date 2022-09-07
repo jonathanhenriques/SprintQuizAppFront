@@ -1,0 +1,38 @@
+<div class="container my-5">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-12 ">
+            <h1 class="text-center">Mural de Questões!</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row d-flex align-items-center">
+        <div  class=" card col-md-3 d-flex align-items-strech   m-1 my-1 p-0"
+            *ngFor="let questao of listaQuestoes" >
+            <div class="card-body p-3">
+                <h5  class="card-title text-secondary m-0 ">Texto: {{questao.texto}}</h5>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">Instituição: {{questao.instituicao}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">Data: {{questao.ano}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">Categoria: {{questao.categoria.titulo}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">Autor: {{questao.criador.nome}}</p>
+                <!-- <p *ngFor="let a of questao.alternativas; let i = index" ></p> -->
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">alternativas: {{questao.alternativas.length}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">id: {{questao.id}}</p>
+                <p class="card-text text-secondary mt-3 cardlimitecaracteres">Resposta: {{questao.resposta?.id}}</p>
+                <!-- <p class="card-text text-secondary mt-3 cardlimitecaracteres">alternativas: {{qtdAlternativas}}</p> -->
+            </div>
+            <div class="card-footer  text-center">
+                <button *ngIf="questao.alternativas.length" class="btn btn-outline-success m-1"  [routerLink]="['/quizz',questao.id]" >testar tela</button>
+                <!-- <button *ngIf="qtdAlternativas > 0" class="btn btn-outline-success m-1"  [routerLink]="['/quizz',questao.id]" >testar tela</button> -->
+                <button  class="btn btn-outline-success m-1" [routerLink]="['/atualizar-questao',questao.id]" >Editar</button>
+                <button  class="btn btn-outline-success m-1" [routerLink]="['/cadastrar-alternativa',questao.id]" >+ alternativas</button>
+                <button *ngIf="!questao.alternativas.length"  class="btn btn-outline-success m-1" [routerLink]="['/remover-alternativa-da-questao',questao.id]" >- alternativas</button>
+
+                
+
+                <button class="btn btn-outline-danger m-1" [routerLink]="['/deletar-questao', questao.id]" >Apagar</button>
+            </div>
+        </div>
+    </div>
+</div>

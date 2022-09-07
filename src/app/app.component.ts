@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './service/auth.service';
+import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ export class AppComponent {
   title = 'sprintQuiz';
 
 
-  constructor(public authService: AuthService,){}
+  constructor(
+    public authService: AuthService
+    ){}
 
 }

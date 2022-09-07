@@ -10,34 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoasVindasComponent } from './boas-vindas/boas-vindas.component';
 import { EntrarComponent } from './entrar/entrar.component';
-import { CadastrarUsuarioComponent } from './cadastrar/cadastrar-usuario/cadastrar-usuario.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertaComponent } from './alerta/alerta.component';
-import { InicioComponent } from './inicio/inicio.component';
 import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
-import { AtualizarUsuarioComponent } from './atualizar/atualizar-usuario/atualizar-usuario.component';
-import { CadastrarProvaComponent } from './cadastrar/cadastrar-prova/cadastrar-prova.component';
 import { CriarComponent } from './criar/criar.component';
-import { DeletarCategoriaProvaComponent } from './deletar/deletar-categoria-prova/deletar-categoria-prova.component';
-import { CadastrarCategoriaProvaComponent } from './cadastrar/cadastrar-categoria-prova/cadastrar-categoria-prova.component';
-import { AtualizarCategoriaProvaComponent } from './atualizar/atualizar-categoria-prova/atualizar-categoria-prova.component';
-
-import { CadastrarQuestaoComponent } from './cadastrar/cadastrar-questao/cadastrar-questao.component';
-import { CadastrarAlternativaComponent } from './cadastrar/cadastrar-alternativa/cadastrar-alternativa.component';
-import { CadastrarCategoriaQuestaoComponent } from './cadastrar/cadastrar-categoria-questao/cadastrar-categoria-questao.component';
-import { AtualizarQuestaoComponent } from './atualizar/atualizar-questao/atualizar-questao.component';
-import { AtualizarProvaComponent } from './atualizar/atualizar-prova/atualizar-prova.component';
-import { AtualizarCategoriaQuestaoComponent } from './atualizar/atualizar-categoria-questao/atualizar-categoria-questao.component';
-import { AtualizarAlternativaComponent } from './atualizar/atualizar-alternativa/atualizar-alternativa.component';
-import { DeletarCategoriaQuestaoComponent } from './deletar/deletar-categoria-questao/deletar-categoria-questao.component';
-import { DeletarUsuarioComponent } from './deletar/deletar-usuario/deletar-usuario.component';
-import { DeletarAlternativaComponent } from './deletar/deletar-alternativa/deletar-alternativa.component';
-import { DeletarQuestaoComponent } from './deletar/deletar-questao/deletar-questao.component';
-import { DeletarProvaComponent } from './deletar/deletar-prova/deletar-prova.component';
-import { MuralQuestoesComponent } from './mural/mural-questoes/mural-questoes.component';
-import { MuralProvasComponent } from './mural/mural-provas/mural-provas.component';
 import { TokenInterceptorService } from './service/tokeninterceptorService.service';
-import { AtualizarQuestaoComAlternativaComponent } from './atualizar/atualizar-questao-com-alternativa/atualizar-questao-com-alternativa.component';
 import { QuizzComponent } from './quizz/quizz.component';
 import { ToastrModule } from "ngx-toastr"
 
@@ -48,16 +25,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
-
-import { timeout } from 'rxjs';
-import { GaleriaQuestoesComponent } from './galerias/galeriaquestoes/galeria-questoes.component';
-import { GaleriaProvasComponent } from './galerias/galeriaprovas/galeria-provas.component';
-import { RemoverAlternativaDaQuestaoComponent } from './remover-alternativa-da-questao/remover-alternativa-da-questao.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { TesteComponent } from './teste/teste.component';
-import { ViewTesteComponent } from './view-teste/view-teste.component';
+import { QuestaoModule } from './questao/questao.module';
+import { ProvaModule } from './prova/prova.module';
+import { AlternativaModule } from './alternativa/alternativa.module';
+import { CategoriaQuestaoModule } from './categoria-questao/categoria-questao.module';
+import { CategoriaProvaModule } from './categoria-prova/categoria-prova.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 
 @NgModule({
@@ -65,38 +42,15 @@ import { ViewTesteComponent } from './view-teste/view-teste.component';
     AppComponent,
     BoasVindasComponent,
     EntrarComponent,
-    CadastrarUsuarioComponent,
     AlertaComponent,
-    InicioComponent,
     NavegacaoBarComponent,
-    AtualizarUsuarioComponent,
-    CadastrarProvaComponent,
     CriarComponent,
-    DeletarCategoriaProvaComponent,
-    CadastrarCategoriaProvaComponent,
-    AtualizarCategoriaProvaComponent,
-    CadastrarQuestaoComponent,
-    CadastrarAlternativaComponent,
-    CadastrarCategoriaQuestaoComponent,
-    AtualizarQuestaoComponent,
-    AtualizarProvaComponent,
-    AtualizarCategoriaQuestaoComponent,
-    AtualizarAlternativaComponent,
-    DeletarCategoriaQuestaoComponent,
-    DeletarUsuarioComponent,
-    DeletarAlternativaComponent,
-    DeletarQuestaoComponent,
-    DeletarProvaComponent,
-    MuralProvasComponent,
-    MuralQuestoesComponent,
-    AtualizarQuestaoComAlternativaComponent,
     QuizzComponent,
-    GaleriaQuestoesComponent,
-    GaleriaProvasComponent,
-    RemoverAlternativaDaQuestaoComponent,
+
     TesteComponent,
-    ViewTesteComponent,
-    
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -112,9 +66,9 @@ import { ViewTesteComponent } from './view-teste/view-teste.component';
       progressBar: true,
       preventDuplicates: true
     }
-     
+
     ),
-    
+
 
     MatToolbarModule,
     MatFormFieldModule,
@@ -126,8 +80,15 @@ import { ViewTesteComponent } from './view-teste/view-teste.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
-    
+    MatDialogModule,
+
+    QuestaoModule,
+    ProvaModule,
+    AlternativaModule,
+    CategoriaQuestaoModule,
+    CategoriaProvaModule,
+    UsuarioModule
+
 
   ],
   providers: [
@@ -137,7 +98,6 @@ import { ViewTesteComponent } from './view-teste/view-teste.component';
       multi: true
     }
   ],
-  bootstrap: [AppComponent],
-  entryComponents:[ViewTesteComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
