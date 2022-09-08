@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { interval } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Prova } from '../model/Prova';
 import { Questao } from '../model/Questao';
@@ -24,6 +25,11 @@ export class QuizzComponent implements OnInit {
 
   contador: number = 0;
   timer: number = 60;
+  quantidadeAcertos: number = 0;
+  quantidadeErros: number = 0;
+  respostaUsuario: number = 0;
+  interval$: any;
+  progresso: string = '0';
 
   idUsuario: number = environment.id;
   idQuestao: number = 0;
@@ -31,6 +37,7 @@ export class QuizzComponent implements OnInit {
   questaoAtual: number = 0;
 
   listaQuestoes: Questao[] = [];
+  listaRespostaQuestoes: number[] = [];
 
   constructor(
     private router: Router,
@@ -61,10 +68,57 @@ export class QuizzComponent implements OnInit {
     // this.listaQuestoes = this.usuario.questoes;
     // this.qp = this.questao.alternativas.length;
 
+    this.startCounter();
+  }
+
+  obterProgresso(){
+    this.progresso = ((this.questaoAtual/this.prova.questoes.length)*100).toString();
+    return this.progresso;
+  }
+
+  startCounter(){
+    this.interval$ = interval(1000).subscribe(val => {
+      this.timer--;
+      if(this.timer==0){
+        this.questaoAtual++;
+        this.timer = 60;
+      }
+    });
+    setTimeout(() => {
+      this.interval$.unsubscrib();
+    }, 600000);
+  }
+
+  stopCounter(){
+    this.interval$.unsubscrib();
+    this.timer = 0;
+  }
+
+  resetCounter(){
+    this.stopCounter();
+    this.timer = 60;
+    this.startCounter();
 
   }
+
+verificaAcerto(respotaQuestao: number){
+  if(respotaQuestao == this.respostaUsuario){
+    this.quantidadeAcertos++;
+    this.obterProgresso();
+  } else {
+    this.quantidadeErros++
+    this.obterProgresso();
+  }
+}
+
+
+registraResposta(respotaQuestao: number){
+  
+  this.listaRespostaQuestoes[this.questaoAtual] = respotaQuestao
+}
+
   proximaQuestao() {
-    if (this.questaoAtual < this.prova.questoes.length) {
+    if (this.questaoAtual < this.prova.questoes?.length) {
       this.questaoAtual++;
       this.timer = 60;
     };
@@ -85,7 +139,7 @@ export class QuizzComponent implements OnInit {
     this.provaService.getProvaById(this.idProva).subscribe((provaResp: Prova) => {
       this.prova = provaResp;
 
-      alert(this.prova.questoes[1].questao.texto);
+      console.log(this.prova.questoes[1].questao.texto);
       // provaResp.questoes.forEach(element => {
       //   alert(element.instituicao);
       // });

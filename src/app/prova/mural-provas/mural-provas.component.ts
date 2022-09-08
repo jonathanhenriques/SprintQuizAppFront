@@ -24,6 +24,8 @@ export class MuralProvasComponent implements OnInit {
 
   idUsuario: number = environment.id;
 
+  idProvaParaModal: number = 0;
+
   listaProvas: Prova[] = [];
 
   constructor(
@@ -44,6 +46,10 @@ export class MuralProvasComponent implements OnInit {
     
   }
 
+  pegaIdProvaParaModal(id: any){
+    this.idProvaParaModal = id;
+  }
+
   findByIdUsuario(){
     this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
@@ -54,9 +60,9 @@ export class MuralProvasComponent implements OnInit {
   findProvasByCriadorId(){
     this.provaService.getProvaByCriadorId(this.idUsuario).subscribe((listaProvasResp: Prova[]) =>{
       this.listaProvas = listaProvasResp;
-      listaProvasResp.forEach(e => {
-        console.log(e.nome);
-      })
+      // listaProvasResp.forEach(e => {
+      //   console.log(e.nome);
+      // })
     })
   }
 

@@ -102,6 +102,8 @@ export class AtualizarQuestaoComponent implements OnInit {
     this.alternativaDaResposta.id = this.respostaSelecionada;
     this.questao.resposta = this.alternativaDaResposta;
 
+    console.log(JSON.stringify(this.questao, null, 2));
+
     this.questaoService.putQuestao(this.questao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
       this.alertas.showAlertSuccess('Questão atualizada com sucesso!');

@@ -79,6 +79,7 @@ import { CadastrarQuestaoComProvaComponent } from './cadastrar-questao-com-prova
   ],
   
   exports: [
+    CadastrarQuestaoComProvaComponent
 
   ]
 })

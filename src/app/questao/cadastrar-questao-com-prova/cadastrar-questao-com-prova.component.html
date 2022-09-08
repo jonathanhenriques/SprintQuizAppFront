@@ -1,10 +1,10 @@
 
-<div class="container mt-5">
-    <div class="row d-flex align-items-center">
-        <div class="col-md-8">
+<div class="container-fluid mt-5">
+    <div class="row align-items-center m-0 p-0">
+        <div class="col-md-12">
             <div class="card ">
                 <div class="card-head">
-                    <h1 class="card-title m-3 text-center">Questão</h1>
+                    <h1 class="card-title m-3 text-center">Questão | {{ idProvaEscolhida }}</h1>
                 </div>
                 <form class="card-body">
                     <div class="form-group">
@@ -48,6 +48,9 @@
                     <div class="btn-group">
                         <button class="btn btn-success" (click)="cadastrarQuestao()">Criar</button>
                         <button class="btn btn-danger" type="reset">Limpar</button>
+                        <!-- <button *ngIf="questaoProva != null" class="btn btn-danger" (click)="postarQuestaoProva()" type="reset">add a Prova</button> -->
+
+                        
                     </div>
                 </form>
                

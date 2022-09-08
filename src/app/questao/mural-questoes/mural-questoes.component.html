@@ -27,7 +27,7 @@
                 <!-- <button *ngIf="qtdAlternativas > 0" class="btn btn-outline-success m-1"  [routerLink]="['/quizz',questao.id]" >testar tela</button> -->
                 <button  class="btn btn-outline-success m-1" [routerLink]="['/atualizar-questao',questao.id]" >Editar</button>
                 <button  class="btn btn-outline-success m-1" [routerLink]="['/cadastrar-alternativa',questao.id]" >+ alternativas</button>
-                <button *ngIf="!questao.alternativas.length"  class="btn btn-outline-success m-1" [routerLink]="['/remover-alternativa-da-questao',questao.id]" >- alternativas</button>
+                <button *ngIf="questao.alternativas.length"  class="btn btn-outline-success m-1" [routerLink]="['/remover-alternativa-da-questao',questao.id]" >- alternativas</button>
 
                 
 

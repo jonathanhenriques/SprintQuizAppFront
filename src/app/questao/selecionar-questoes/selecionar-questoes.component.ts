@@ -126,7 +126,11 @@ export class SelecionarQuestoesComponent implements OnInit {
   }
 
   voltarPagina() {
-    window.history.back();
+    // window.history.back();
+    this.router.navigate(['/mural-provas']);
+    // this.router.navigate(['/teste']);
+
+    
   }
 
   //=================================================================================================================================

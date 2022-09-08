@@ -26,6 +26,7 @@ import { AtualizarProvaComponent } from './atualizar-prova/atualizar-prova.compo
 import { DeletarProvaComponent } from './deletar-prova/deletar-prova.component';
 import { GaleriaProvasComponent } from './galeriaprovas/galeria-provas.component';
 import { MuralProvasComponent } from './mural-provas/mural-provas.component';
+import { QuestaoModule } from '../questao/questao.module';
 
 
 
@@ -59,7 +60,8 @@ import { MuralProvasComponent } from './mural-provas/mural-provas.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    QuestaoModule
 
     
   ],
