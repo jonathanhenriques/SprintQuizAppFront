@@ -8,33 +8,50 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BoasVindasComponent } from './boas-vindas/boas-vindas.component';
-import { EntrarComponent } from './entrar/entrar.component';
+import { BoasVindasComponent } from './componentes/boas-vindas/boas-vindas.component';
+import { EntrarComponent } from './componentes/entrar/entrar.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { AlertaComponent } from './alerta/alerta.component';
-import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
-import { CriarComponent } from './criar/criar.component';
+import { AlertaComponent } from './componentes/alerta/alerta.component';
+import { NavegacaoBarComponent } from './componentes/navegacao-bar/navegacao-bar.component';
 import { TokenInterceptorService } from './service/tokeninterceptorService.service';
-import { QuizzComponent } from './quizz/quizz.component';
+import { QuizzComponent } from './componentes/quizz/quizz.component';
 import { ToastrModule } from "ngx-toastr"
 
 
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
+
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
+
 import { TesteComponent } from './teste/teste.component';
-import { QuestaoModule } from './questao/questao.module';
-import { ProvaModule } from './prova/prova.module';
-import { AlternativaModule } from './alternativa/alternativa.module';
-import { CategoriaQuestaoModule } from './categoria-questao/categoria-questao.module';
-import { CategoriaProvaModule } from './categoria-prova/categoria-prova.module';
-import { UsuarioModule } from './usuario/usuario.module';
+import { QuestaoModule } from './componentes/questao/questao.module';
+import { ProvaModule } from './componentes/prova/prova.module';
+import { AlternativaModule } from './componentes/alternativa/alternativa.module';
+import { CategoriaQuestaoModule } from './componentes/categoria-questao/categoria-questao.module';
+import { CategoriaProvaModule } from './componentes/categoria-prova/categoria-prova.module';
+import { UsuarioModule } from './componentes/usuario/usuario.module';
+import { NavComponent } from './componentes/nav/nav.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { ResultadosComponent } from './componentes/resultados/resultados.component';
+import { MaterialModule } from './componentes/material/material.module';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { GraficosModule } from './componentes/graficos/graficos.module';
+import { DashboardComponent } from './componentes/dashboard/dashboard.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ChartsComponent } from './componentes/charts/charts.component';
 
 
 @NgModule({
@@ -44,15 +61,20 @@ import { UsuarioModule } from './usuario/usuario.module';
     EntrarComponent,
     AlertaComponent,
     NavegacaoBarComponent,
-    CriarComponent,
     QuizzComponent,
 
     TesteComponent,
+    NavComponent,
+    HomeComponent,
+    ResultadosComponent,
+    DashboardComponent,
+    ChartsComponent,
 
 
 
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
@@ -60,6 +82,7 @@ import { UsuarioModule } from './usuario/usuario.module';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    NgxChartsModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
@@ -68,7 +91,6 @@ import { UsuarioModule } from './usuario/usuario.module';
     }
 
     ),
-
 
     MatToolbarModule,
     MatFormFieldModule,
@@ -81,13 +103,21 @@ import { UsuarioModule } from './usuario/usuario.module';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatSnackBarModule,
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatRadioModule,
+    MatListModule,
+    MatCardModule,
 
     QuestaoModule,
     ProvaModule,
     AlternativaModule,
     CategoriaQuestaoModule,
     CategoriaProvaModule,
-    UsuarioModule
+    UsuarioModule,
+    MaterialModule,
+    GraficosModule
 
 
   ],

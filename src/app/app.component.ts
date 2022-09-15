@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './service/auth.service';
-import { NavegacaoBarComponent } from './navegacao-bar/navegacao-bar.component';
+import { NavegacaoBarComponent } from './componentes/navegacao-bar/navegacao-bar.component';
 
 @Component({
   selector: 'app-root',

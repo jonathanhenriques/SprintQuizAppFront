@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import { CategoriaProva } from '../model/CategoriaProva';
+import { CategoriaProva } from '../componentes/model/CategoriaProva';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,8 @@ export class CategoriaProvaService {
   // url: string = 'http://localhost:8081';
   url = environment.url;
 
-  getAllCategoriaProva():Observable<CategoriaProva[]>{
-    return this.http.get<CategoriaProva[]>(this.url + '/categoriaProva', this.token);
+  getAllCategoriaProva(p1?: string, p2?: string):Observable<any[]>{
+    return this.http.get<any[]>(this.url + '/categoriaProva' + this.url + 'exemplo', this.token);
   }
 
   getByIdCategoriaProva(id: number):Observable<CategoriaProva>{
