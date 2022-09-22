@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Prova } from 'src/app/componentes/model/Prova';
-import { Questao } from 'src/app/componentes/model/Questao';
-import { QuestaoProva } from 'src/app/componentes/model/QuestaoProva';
+import { Prova } from 'src/app/model/Prova';
+import { Questao } from 'src/app/model/Questao';
+import { QuestaoProva } from 'src/app/model/QuestaoProva';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { ProvaServiceService } from 'src/app/service/prova-service.service';

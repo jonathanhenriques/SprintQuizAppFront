@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Prova } from 'src/app/componentes/model/Prova';
-import { Usuario } from 'src/app/componentes/model/Usuario';
+import { Prova } from 'src/app/model/Prova';
+import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { ProvaServiceService } from 'src/app/service/prova-service.service';

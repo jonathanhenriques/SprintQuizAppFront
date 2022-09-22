@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Prova } from 'src/app/componentes/model/Prova';
+import { Prova } from 'src/app/model/Prova';
 import { ProvaServiceService } from 'src/app/service/prova-service.service';
 
 @Component({

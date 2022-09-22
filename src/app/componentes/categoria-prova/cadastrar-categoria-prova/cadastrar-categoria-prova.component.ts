@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoriaProva } from 'src/app/componentes/model/CategoriaProva';
+import { CategoriaProva } from 'src/app/model/CategoriaProva';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';

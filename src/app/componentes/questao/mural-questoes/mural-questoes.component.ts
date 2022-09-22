@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Alternativa } from 'src/app/componentes/model/Alternativa';
-import { CategoriaQuestao } from 'src/app/componentes/model/CategoriaQuestao';
-import { Prova } from 'src/app/componentes/model/Prova';
-import { Questao } from 'src/app/componentes/model/Questao';
-import { Usuario } from 'src/app/componentes/model/Usuario';
+import { Alternativa } from 'src/app/model/Alternativa';
+import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { Prova } from 'src/app/model/Prova';
+import { Questao } from 'src/app/model/Questao';
+import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.service';

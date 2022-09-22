@@ -8,9 +8,9 @@ import { AlertasService } from '../../service/alertas.service';
 import { AuthService } from '../../service/auth.service';
 import { ProvaServiceService } from '../../service/prova-service.service';
 import { QuestaoService } from '../../service/questao.service';
-import { Prova } from '../model/Prova';
-import { Questao } from '../model/Questao';
-import { Usuario } from '../model/Usuario';
+import { Prova } from '../../model/Prova';
+import { Questao } from '../../model/Questao';
+import { Usuario } from '../../model/Usuario';
 
 @Component({
   selector: 'app-tela',

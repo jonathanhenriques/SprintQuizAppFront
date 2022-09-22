@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
-import { CategoriaProva } from '../../model/CategoriaProva';
+import { CategoriaProva } from '../../../model/CategoriaProva';
 import { AlertasService } from '../../../service/alertas.service';
 import { CategoriaProvaService } from '../../../service/categoria-prova.service';
 

@@ -52,6 +52,10 @@ import { GraficosModule } from './componentes/graficos/graficos.module';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartsComponent } from './componentes/charts/charts.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -117,7 +121,10 @@ import { ChartsComponent } from './componentes/charts/charts.component';
     CategoriaProvaModule,
     UsuarioModule,
     MaterialModule,
-    GraficosModule
+    GraficosModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
 
 
   ],

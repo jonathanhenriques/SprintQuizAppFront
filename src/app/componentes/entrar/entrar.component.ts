@@ -2,7 +2,7 @@ import { AlertasService } from '../../service/alertas.service';
 import { environment } from 'src/environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsuarioLogin } from '../model/UsuarioLogin';
+import { UsuarioLogin } from '../../model/UsuarioLogin';
 import { AuthService } from '../../service/auth.service';
 
 @Component({

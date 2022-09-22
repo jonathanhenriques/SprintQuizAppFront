@@ -7,8 +7,8 @@ import { GuardaRespostasService } from 'src/app/service/guarda-respostas.service
 import { ProvaServiceService } from 'src/app/service/prova-service.service';
 import { QuestaoService } from 'src/app/service/questao.service';
 import { environment } from 'src/environments/environment.prod';
-import { Prova } from '../model/Prova';
-import { Usuario } from '../model/Usuario';
+import { Prova } from '../../model/Prova';
+import { Usuario } from '../../model/Usuario';
 
 @Component({
   selector: 'app-resultados',

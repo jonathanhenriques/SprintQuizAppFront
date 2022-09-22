@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Prova } from 'src/app/componentes/model/Prova';
-import { Questao } from 'src/app/componentes/model/Questao';
+import { Prova } from 'src/app/model/Prova';
+import { Questao } from 'src/app/model/Questao';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { QuestaoService } from 'src/app/service/questao.service';

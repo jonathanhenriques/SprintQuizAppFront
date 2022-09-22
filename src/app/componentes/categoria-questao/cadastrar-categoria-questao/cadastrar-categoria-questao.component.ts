@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CategoriaQuestao } from 'src/app/componentes/model/CategoriaQuestao';
+import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.service';

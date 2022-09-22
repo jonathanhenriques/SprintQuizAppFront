@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoriaProva } from 'src/app/componentes/model/CategoriaProva';
-import { Prova } from 'src/app/componentes/model/Prova';
+import { CategoriaProva } from 'src/app/model/CategoriaProva';
+import { Prova } from 'src/app/model/Prova';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';

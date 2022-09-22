@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Alternativa } from 'src/app/componentes/model/Alternativa';
-import { Questao } from 'src/app/componentes/model/Questao';
+import { Alternativa } from 'src/app/model/Alternativa';
+import { Questao } from 'src/app/model/Questao';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AlternativaService } from 'src/app/service/alternativa.service';
 import { AuthService } from 'src/app/service/auth.service';
