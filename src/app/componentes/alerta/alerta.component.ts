@@ -8,8 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AlertaComponent implements OnInit {
 
-  @Input() message: string;
-  @Input() type: 'alert-success';
+  @Input() message: string = '';
+  @Input() type: string =  'alert-success';
 
   constructor(
     public modal: BsModalRef

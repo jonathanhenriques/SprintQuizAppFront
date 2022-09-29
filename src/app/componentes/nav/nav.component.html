@@ -1,44 +1,46 @@
 <!-- <app-navegacao-bar *ngIf='authService.logado()' > </app-navegacao-bar> -->
-<mat-drawer-container  *ngIf='authService.logado()' class="container-fluid" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
-      <mat-nav-list class="nav-list">
-        <a mat-list-item routerLink="entrar">
-            <i class="material-icons">home</i>
-            Entrar
-        </a>
-        <a mat-list-item routerLink="mural-provas">
-            <i class="material-icons">account_circle</i>
-            Provas
-            
-        </a>
-        <a mat-list-item   [routerLink]="['atualizar-usuario', idUsuario]">
-            <i class="material-icons">person</i>
-            Usuario
-        </a>
-        <a mat-list-item routerLink="mural-questoes">
-            <i class="material-icons">code</i>
-            Questões
-        </a>
-        <a mat-list-item routerLink="boas-vindas">
-            <i class="material-icons">logout</i>
-            Boas
-        </a>
-      </mat-nav-list>
-    </mat-drawer>
-  
-    <div class="sidenav-content">
-        <div class="row dflex">
-            <div class="col-md-12">
-                <app-navegacao-bar *ngIf='authService.logado()' > </app-navegacao-bar>
-      <button class="menu mat-elevation-z2" mat-icon-button  (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-            </div>
-        </div>
-      
-      
-      <router-outlet></router-outlet>
+<!-- <mat-drawer-container  *ngIf='authService.logado()' class="container-fluid" autosize> -->
+<mat-drawer-container class="container-fluid" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="entrar">
+        <i class="material-icons">home</i>
+        Entrar
+      </a>
+      <a mat-list-item routerLink="mural-provas">
+        <i class="material-icons">account_circle</i>
+        Provas
+
+      </a>
+      <a mat-list-item [routerLink]="['atualizar-usuario', idUsuario]">
+        <i class="material-icons">person</i>
+        Usuario
+      </a>
+      <a mat-list-item routerLink="mural-questoes">
+        <i class="material-icons">code</i>
+        Questões
+      </a>
+      <a mat-list-item routerLink="boas-vindas">
+        <i class="material-icons">logout</i>
+        Boas
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <div class="row dflex">
+      <div class="col-md-12">
+        <app-navegacao-bar *ngIf='authService.logado()'> </app-navegacao-bar>
+        <button class="menu mat-elevation-z2" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
     </div>
-  
-  </mat-drawer-container>
-  
+
+
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
+
+<h1>teste</h1>

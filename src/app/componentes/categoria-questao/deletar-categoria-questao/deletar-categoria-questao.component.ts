@@ -15,7 +15,7 @@ export class DeletarCategoriaQuestaoComponent implements OnInit {
   
   categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
 
-  idCategoria: number;
+  idCategoria: number = 0;
 
 
   constructor(

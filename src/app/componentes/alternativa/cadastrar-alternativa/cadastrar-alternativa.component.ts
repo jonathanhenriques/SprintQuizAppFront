@@ -3,6 +3,7 @@ import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Alternativa } from 'src/app/model/Alternativa';
 import { Questao } from 'src/app/model/Questao';
+import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AlternativaService } from 'src/app/service/alternativa.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -17,7 +18,7 @@ export class CadastrarAlternativaComponent implements OnInit {
 
 
   alternativa: Alternativa = new Alternativa();
-  questao: Questao = new Questao();
+  questao: Questao = new QuestaoImpl();
   idQuestao: number = 0;
 
 
@@ -36,14 +37,14 @@ export class CadastrarAlternativaComponent implements OnInit {
     this.getQuestaoById();
   }
 
-  a =   {
+  a = {
     "id": 0,
     "texto": "uma",
     "foto": "string",
-    "questao": {"id": 2}
+    "questao": { "id": 2 }
   }
 
-  cadastrarAlternativa(){
+  cadastrarAlternativa() {
     // this.questao.id = this.idQuestao;
     // console.log('questao id | ' + this.questao.id);
     // console.log('questao texto | ' + this.questao.texto);
@@ -54,13 +55,13 @@ export class CadastrarAlternativaComponent implements OnInit {
     // console.log(obj);
 
 
-    this.alternativa.questao = new Questao();
+    this.alternativa.questao = new QuestaoImpl();
     this.alternativa.questao.id = this.idQuestao;
 
     let obj = JSON.stringify(this.alternativa, null, 2);
     console.log(obj);
 
-    
+
 
     this.alternativaService.postAlternativa(this.alternativa).subscribe((alternativaResp: Alternativa) => {
       this.alternativa = alternativaResp;
@@ -69,7 +70,7 @@ export class CadastrarAlternativaComponent implements OnInit {
     })
   }
 
-  getQuestaoById(){
+  getQuestaoById() {
     this.questaoService.getByIdQuestao(this.idQuestao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
     })
@@ -81,7 +82,7 @@ export class CadastrarAlternativaComponent implements OnInit {
   //   })
   // }
 
-  voltarPagina(){
+  voltarPagina() {
     window.history.back();
   }
 

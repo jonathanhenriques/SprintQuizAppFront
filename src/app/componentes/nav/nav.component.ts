@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(){
-    AuthService.verificaLogado(this.alertas, this.router);
+    // AuthService.verificaLogado(this.alertas, this.router);
   }
 
 

@@ -14,7 +14,9 @@ export class CategoriaQuestaoService {
   ) { }
 
   token = {
-    headers: new HttpHeaders().set('Authorization', environment.token)
+    headers: new HttpHeaders(
+      
+    ).set('Authorization', environment.token)
   }
 
   // url: string = 'https://sprintquiz.herokuapp.com';

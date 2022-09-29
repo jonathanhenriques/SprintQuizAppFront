@@ -11,6 +11,8 @@ import { QuestaoService } from '../../service/questao.service';
 import { Prova } from '../../model/Prova';
 import { Questao } from '../../model/Questao';
 import { Usuario } from '../../model/Usuario';
+import { Alternativa } from 'src/app/model/Alternativa';
+import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 
 @Component({
   selector: 'app-tela',
@@ -23,7 +25,18 @@ export class QuizzComponent implements OnInit {
   resultado: boolean = false;
 
   usuario: Usuario = new Usuario();
-  questao: Questao = new Questao();
+  
+  questao: Questao = {
+    id: 0,
+    instituicao: '',
+    ano: undefined,
+    texto: '',
+    imagem: '',
+    alternativas: [],
+    resposta: new Alternativa,
+    categoria: new CategoriaQuestao,
+    criador: new Usuario
+  };;
   @Output() prova: Prova = new Prova();
 
   @Output() enviarDados = new EventEmitter();
@@ -68,11 +81,11 @@ export class QuizzComponent implements OnInit {
     // this.findQuestoesByCriadorId();
     this.findProvaById();
 
-    
+
 
     // this.copiaQuestoesProvaSelecionada();
 
-    
+
 
 
     this.obtemRespostasDasQuestoes();
@@ -86,7 +99,7 @@ export class QuizzComponent implements OnInit {
 
   }
 
-  copiaQuestoesProvaSelecionada(){
+  copiaQuestoesProvaSelecionada() {
     this.prova.questoes?.map((qq => {
       this.listaQuestoesDaProva.push(qq.questao);
     }))
@@ -98,7 +111,7 @@ export class QuizzComponent implements OnInit {
     });
   }
 
-  reiniciar(){
+  reiniciar() {
     this.resultado = false;
   }
 
@@ -113,10 +126,12 @@ export class QuizzComponent implements OnInit {
   }
 
   obtemRespostasDasQuestoes() {
-    // for (let i = 0; i < this.prova.questoes?.length; i++) {
-    //   this.listaRespostasQuestoesProva.push(this.prova.questoes[i].questao.resposta.id);
-    // }
-    this.prova.questoes?.map(val => this.listaRespostasQuestoesProva.push(val.questao.resposta.id));
+    for (let i = 0; i < this.prova.questoes?.length; i++) {
+      if(this.prova.questoes[i].questao?.resposta?.id === null || this.prova.questoes[i].questao?.resposta?.id === undefined){
+        this.prova.questoes?.map(val => this.listaRespostasQuestoesProva.push(val.questao?.resposta?.id!));
+      }
+    }
+    
 
   }
 

@@ -13,8 +13,8 @@ export class CadastrarUsuarioComponent implements OnInit {
 
 
   usuario: Usuario = new Usuario();
-  senhaInserida: string;
-  tipoUsuario: string;
+  senhaInserida: string = '';
+  tipoUsuario: string = '';
   tipoCampoSenha: string = 'password';
   mostrarSenha: boolean = false;
 

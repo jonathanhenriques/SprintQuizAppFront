@@ -15,6 +15,7 @@ import { ProvaServiceService } from 'src/app/service/prova-service.service';
 import { QuestaoService } from 'src/app/service/questao.service';
 import { environment } from 'src/environments/environment.prod';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 
 
 @Component({
@@ -42,7 +43,7 @@ export class AtualizarQuestaoComAlternativaComponent implements OnInit {
 
 
   usuario: Usuario = new Usuario();
-  questao: Questao = new Questao();
+  questao: Questao = new QuestaoImpl();
   prova: Prova = new Prova();
   categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
 
@@ -68,8 +69,8 @@ export class AtualizarQuestaoComAlternativaComponent implements OnInit {
     private categoriaQuestaoService: CategoriaQuestaoService
   ) { }
 
-  ngOnInit(){
-    window.scroll(0,0);
+  ngOnInit() {
+    window.scroll(0, 0);
     AuthService.verificaLogado(this.alertas, this.router);
 
     this.idQuestao = this.activatedRoute.snapshot.params['id'];
@@ -77,35 +78,35 @@ export class AtualizarQuestaoComAlternativaComponent implements OnInit {
     this.findQuestaoById();
   }
 
-  pegaCategoriaQuestaoSelecionada(event: any){
+  pegaCategoriaQuestaoSelecionada(event: any) {
     this.idCategoriaQuestao = event.target.value;
   }
 
 
-  findAllCategoriaQuestao(){
+  findAllCategoriaQuestao() {
     this.categoriaQuestaoService.getAllCategoriaQuestao().subscribe((categoriaQuestaoResp: CategoriaQuestao[]) => {
       this.listaCategoriaQuestao = categoriaQuestaoResp;
     })
   }
 
-  findCategoriaQuestaoById(){
+  findCategoriaQuestaoById() {
     this.categoriaQuestaoService.getByIdCategoriaQuestao(this.idCategoriaQuestao).subscribe((resp: CategoriaQuestao) => {
       this.categoriaQuestao = resp;
       // this.questao.categoria = resp;
     })
   }
 
-  findQuestaoById(){
+  findQuestaoById() {
     this.questaoService.getByIdQuestao(this.idQuestao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
     })
   }
 
-  atualizarQuestao(){
+  atualizarQuestao() {
 
     this.categoriaQuestao.id = this.idCategoriaQuestao;
     this.questao.categoria = this.categoriaQuestao;
-    
+
 
     this.usuario.id = this.idUsuario;
     this.questao.criador = this.usuario
@@ -114,18 +115,18 @@ export class AtualizarQuestaoComAlternativaComponent implements OnInit {
       this.questao = questaoResp;
       this.alertas.showAlertSuccess('Questão atualizada com sucesso!');
       // this.router.navigate(['/cadastrar-prova']);
-      this.questao = new Questao();
+      this.questao = new QuestaoImpl();
       this.voltarPagina();
 
     })
   }
 
-  removerAlternativa(id: number){
+  removerAlternativa(id: number) {
     // this.questao.alternativas.(id, 1);
     // this.findQuestaoById();
   }
 
-  voltarPagina(){
+  voltarPagina() {
     window.history.back();
   }
 

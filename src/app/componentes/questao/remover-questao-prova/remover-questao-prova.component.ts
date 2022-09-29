@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Alternativa } from 'src/app/model/Alternativa';
+import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
 import { Questao } from 'src/app/model/Questao';
 import { QuestaoProva } from 'src/app/model/QuestaoProva';
+import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { ProvaServiceService } from 'src/app/service/prova-service.service';
@@ -17,14 +20,34 @@ import { QuestaoService } from 'src/app/service/questao.service';
 })
 export class RemoverQuestaoProvaComponent implements OnInit {
 
-  questao: Questao = new Questao();
+  questao: Questao = {
+    id: 0,
+    instituicao: '',
+    ano: undefined,
+    texto: '',
+    imagem: '',
+    alternativas: [],
+    resposta: new Alternativa,
+    categoria: new CategoriaQuestao,
+    criador: new Usuario
+  };;
   prova: Prova = new Prova();
   questaoProva: QuestaoProva = new QuestaoProva();
 
-  idQuestao: number;
-  idProva: number;
+  idQuestao: number = 0;
+  idProva: number = 0;
 
-  questaoSelecionada: Questao = new Questao();
+  questaoSelecionada: Questao = {
+    id: 0,
+    instituicao: '',
+    ano: undefined,
+    texto: '',
+    imagem: '',
+    alternativas: [],
+    resposta: new Alternativa,
+    categoria: new CategoriaQuestao,
+    criador: new Usuario
+  };;
 
   listaTodasQuestoes: Questao[] = [];
   listaQuestoesSelecionadas: QuestaoProva[] = [];
@@ -76,7 +99,7 @@ export class RemoverQuestaoProvaComponent implements OnInit {
     })
   }
 
-  findQuestaoProvaByQuestao(){}
+  findQuestaoProvaByQuestao() { }
 
   adicionaQuestao(id: number) {
 
@@ -84,11 +107,11 @@ export class RemoverQuestaoProvaComponent implements OnInit {
     this.toastr.info("adicinada");
     this.findQuestaoById();
     // alert(this.prova.instituicao);
-    this.toastr.info(" | " + this.prova.instituicao );
+    this.toastr.info(" | " + this.prova.instituicao);
 
   }
 
-  removerQuestao(idQuestaoProva: number){
+  removerQuestao(idQuestaoProva: number) {
     this.questaoProvaService.deleteQuestaoProva(idQuestaoProva).subscribe(() => {
       this.toastr.success('Questão retirada com sucesso!')
       this.voltarPagina();

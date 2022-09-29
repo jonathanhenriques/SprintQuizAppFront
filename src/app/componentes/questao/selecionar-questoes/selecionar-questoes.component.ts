@@ -23,14 +23,34 @@ export class SelecionarQuestoesComponent implements OnInit {
 
 
 
-  questao: Questao = new Questao();
+  questao: Questao = {
+    id: 0,
+    instituicao: '',
+    ano: undefined,
+    texto: '',
+    imagem: '',
+    alternativas: [],
+    resposta: new Alternativa,
+    categoria: new CategoriaQuestao,
+    criador: new Usuario
+  };;
   prova: Prova = new Prova();
   questaoProva: QuestaoProva = new QuestaoProva();
 
-  idQuestao: number;
-  idProva: number;
+  idQuestao: number = 0;
+  idProva: number = 0;
 
-  questaoSelecionada: Questao = new Questao();
+  questaoSelecionada: Questao = {
+    id: 0,
+    instituicao: '',
+    ano: undefined,
+    texto: '',
+    imagem: '',
+    alternativas: [],
+    resposta: new Alternativa,
+    categoria: new CategoriaQuestao,
+    criador: new Usuario
+  };;
 
   // listaIdQuestoesSelecionadas: number[] = [];
   listaTodasQuestoes: Questao[] = [];
@@ -130,7 +150,7 @@ export class SelecionarQuestoesComponent implements OnInit {
     this.router.navigate(['/mural-provas']);
     // this.router.navigate(['/teste']);
 
-    
+
   }
 
   //=================================================================================================================================
@@ -171,8 +191,8 @@ export class SelecionarQuestoesComponent implements OnInit {
       questaoProva.questao = element;
 
       //add alternativas em questao
-      for (let i = 0; i < element.alternativas.length; i++) {
-        alternativa.id = element.alternativas[i];
+      for (let i = 0; i < element.alternativas!.length; i++) {
+        alternativa.id = element.alternativas![i];
         alternativas.push(alternativa);
         alternativa = new Alternativa();
       }

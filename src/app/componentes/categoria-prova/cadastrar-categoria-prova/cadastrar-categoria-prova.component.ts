@@ -26,7 +26,7 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
   dataSource = new MatTableDataSource<CategoriaProva>(this.listaCategoriaProva);
 
   
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     private router: Router,
     private alertas: AlertasService,

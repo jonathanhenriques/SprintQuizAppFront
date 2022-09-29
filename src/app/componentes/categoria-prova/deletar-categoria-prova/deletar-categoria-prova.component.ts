@@ -16,7 +16,7 @@ export class DeletarCategoriaProvaComponent implements OnInit {
 
   categoriaProva: CategoriaProva = new CategoriaProva();
 
-  idCategoria: number;
+  idCategoria: number = 0;
 
 
   constructor(

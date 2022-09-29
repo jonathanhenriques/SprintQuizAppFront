@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
-import { Usuario } from '../../model/Usuario';
-import { UsuarioLogin } from '../../model/UsuarioLogin';
-import { AlertasService } from '../../service/alertas.service';
-import { AuthService } from '../../service/auth.service';
+import { Usuario } from '../../../model/Usuario';
+import { UsuarioLogin } from '../../../model/UsuarioLogin';
+import { AlertasService } from '../../../service/alertas.service';
+import { AuthService } from '../../../service/auth.service';
 
 @Component({
   selector: 'app-navegacao-bar',
@@ -13,9 +13,9 @@ import { AuthService } from '../../service/auth.service';
 })
 export class NavegacaoBarComponent implements OnInit {
 
-  @Output() men: HTMLElement;
+  @Output() men!: HTMLElement;
 
-  usuarioLogan: UsuarioLogin;
+  usuarioLogan: UsuarioLogin = new UsuarioLogin();
   usuario: Usuario = new Usuario();
   idUsuario = environment.id;
   foto = environment.foto;

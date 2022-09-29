@@ -3,7 +3,7 @@ import { Questao } from './Questao';
 
 export class QuestaoProva {
 
-  public id: number;
-  public questao: Questao;
-  public prova: Prova;
+  public id!: number;
+  public questao!: Questao;
+  public prova!: Prova;
 }

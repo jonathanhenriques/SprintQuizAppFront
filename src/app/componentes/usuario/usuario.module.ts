@@ -21,6 +21,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
+import { MaterialModule } from '../material/material.module';
+import { UsuarioRoutingModule } from './usuario-routing.module';
 
 
 
@@ -34,7 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     CommonModule,
-    BrowserModule,
+    // BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
     FormsModule,
@@ -49,19 +51,10 @@ import { ToastrModule } from 'ngx-toastr';
     }
      
     ),
+    MaterialModule,
+    UsuarioRoutingModule,
     
 
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
     
     
   ]

@@ -43,15 +43,15 @@ export class CadastrarProvaComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
-  ngOnInit(){
-    window.scroll(0,0);
+  ngOnInit() {
+    window.scroll(0, 0);
     AuthService.verificaLogado(this.alertas, this.router);
 
     this.findAllCategoriaProva();
-    
+
   }
 
-  
+
 
   pegaCategoriaProvaSelecionada(event: any) {
     this.idCategoriaProva = event.target.value;
@@ -60,7 +60,7 @@ export class CadastrarProvaComponent implements OnInit {
   }
 
 
-  findAllCategoriaProva(){
+  findAllCategoriaProva() {
     this.categoriaProvaService.getAllCategoriaProva().subscribe((categoriaProvaResp: CategoriaProva[]) => {
       this.listaCategoriaProva = categoriaProvaResp;
     })
@@ -74,7 +74,7 @@ export class CadastrarProvaComponent implements OnInit {
   //   });
   // }
 
-  findByICategoriaProva(){
+  findByICategoriaProva() {
     this.categoriaProvaService.getByIdCategoriaProva(this.idCategoriaProva).subscribe((categoriaProvaResp: CategoriaProva) => {
       this.categoriaProva = categoriaProvaResp;
     });
@@ -84,17 +84,17 @@ export class CadastrarProvaComponent implements OnInit {
 
 
 
-  cadastrarProva(){
+  cadastrarProva() {
     this.categoriaProva.id = this.idCategoriaProva;
     this.prova.categoria = this.categoriaProva;
 
     this.usuario.id = this.idUsuario;
     this.prova.usuario = this.usuario;
-   
+
     // alert(this.prova.categoria.id + ' | idcateprova');
     // alert(this.prova.nome);
     // alert(this.prova.descricao);
-   
+
     this.prova.usuario = this.usuario;
     this.prova.categoria = this.categoriaProva;
 
@@ -107,13 +107,13 @@ export class CadastrarProvaComponent implements OnInit {
       this.prova = new Prova();
     })
 
-    
+
   }
 
 
-  cadastrarQuestoes(){
+  cadastrarQuestoes() {
 
-    
+
   }
 
 }

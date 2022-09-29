@@ -28,7 +28,7 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
   displayedColumns: string[] = ['id', 'titulo', 'descricao', 'acoes'];
   dataSource = new MatTableDataSource<CategoriaQuestao>(this.listaCategoriaQuestao);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     private router: Router,
     private alertas: AlertasService,
@@ -36,12 +36,22 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
+
+
+  // constructor(
+  //   private router: Router,
+  //   private alertas: AlertasService,
+  //   private store: Store<AppState>,
+  //   private toastr: ToastrService
+  // ) { }
+
   ngOnInit() {
     window.scroll(0, 0);
 
     AuthService.verificaLogado(this.alertas, this.router);
 
-
+    //dispatch faz um envio para a action
+    // this.store.dispatch(fromCategoriaQuestaoAction.getAllCategoriaQuestao());
     this.findAllCategoriaQuestao();
 
 

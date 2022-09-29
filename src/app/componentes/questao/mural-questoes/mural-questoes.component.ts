@@ -21,7 +21,17 @@ export class MuralQuestoesComponent implements OnInit {
 
 
   usuario: Usuario = new Usuario();
-  questao: Questao = new Questao();
+  questao: Questao = {
+    id: 0,
+    instituicao: '',
+    ano: undefined,
+    texto: '',
+    imagem: '',
+    alternativas: [],
+    resposta: new Alternativa,
+    categoria: new CategoriaQuestao,
+    criador: new Usuario
+  };
   prova: Prova = new Prova();
   categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
 
@@ -43,7 +53,7 @@ export class MuralQuestoesComponent implements OnInit {
     private categoriaQuestaoService: CategoriaQuestaoService
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
     AuthService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
@@ -53,25 +63,25 @@ export class MuralQuestoesComponent implements OnInit {
     // this.idCategoriaQuestao = this.questao.id;
     // this.findByIdCategoriaQuestao();
     // this.findByIdCriadorQuestao();
-    
-    
-    
+
+
+
   }
 
-  findQuestoesByCriadorId(){
-    this.questaoService.getQuestoesByCriadorId(this.idUsuario).subscribe((listaQuestoesResp: Questao[]) =>{
+  findQuestoesByCriadorId() {
+    this.questaoService.getQuestoesByCriadorId(this.idUsuario).subscribe((listaQuestoesResp: Questao[]) => {
       this.listaQuestoes = listaQuestoesResp;
     })
   }
 
-  findByIdUsuario(){
+  findByIdUsuario() {
     this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
-    
+
     })
   }
 
-  findByIdCategoriaQuestao(){
+  findByIdCategoriaQuestao() {
     this.categoriaQuestaoService.getByIdCategoriaQuestao(this.idCategoriaQuestao).subscribe((categoriaQuestaoResp: CategoriaQuestao) => {
       this.categoriaQuestao = categoriaQuestaoResp;
     })
@@ -84,10 +94,10 @@ export class MuralQuestoesComponent implements OnInit {
   // }
 
 
-  voltarPagina(){
+  voltarPagina() {
     window.history.back();
   }
- 
+
 
 
 }

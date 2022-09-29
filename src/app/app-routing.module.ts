@@ -1,5 +1,4 @@
 
-import { EntrarComponent } from './componentes/entrar/entrar.component';
 import { BoasVindasComponent } from './componentes/boas-vindas/boas-vindas.component';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -37,7 +36,7 @@ import { RemoverAlternativaDaQuestaoComponent } from './componentes/alternativa/
 import { TesteComponent } from './teste/teste.component';
 import { CadastrarQuestaoComProvaComponent } from './componentes/questao/cadastrar-questao-com-prova/cadastrar-questao-com-prova.component';
 import { RemoverQuestaoProvaComponent } from './componentes/questao/remover-questao-prova/remover-questao-prova.component';
-import { NavegacaoBarComponent } from './componentes/navegacao-bar/navegacao-bar.component';
+import { NavegacaoBarComponent } from './componentes/nav/navegacao-bar/navegacao-bar.component';
 import { NavComponent } from './componentes/nav/nav.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { ResultadosComponent } from './componentes/resultados/resultados.component';
@@ -50,74 +49,79 @@ import { MuralSprintsComponent } from './componentes/prova/mural-sprints/mural-s
 const routes: Routes = [
 
   // { path: '', redirectTo: 'boas-vindas', pathMatch: 'full' },
-  { path: '', redirectTo: 'boas-vindas', pathMatch: 'full' },
-
+  // { path: '', redirectTo: 'boas-vindas', pathMatch: 'full' },
+// { path: '', redirectTo: '', pathMatch: 'full' },
   {
-    path: '', component: NavComponent,
+    path: '',loadChildren: () => import('./componentes/nav/nav.module').then((module) => module.NavModule) },
 
-    children: [
-      // { path: '', redirectTo: 'boas-vindas', pathMatch: 'full' },
-      { path: 'atualizar-usuario/:id', component: AtualizarUsuarioComponent },
-      { path: 'home', component: HomeComponent },
-      { path: 'mural-provas', component: MuralProvasComponent },
-      { path: 'mural-sprints', component: MuralSprintsComponent },
-      { path: 'mural-questoes', component: MuralQuestoesComponent },
-      // { path: 'entrar', component: EntrarComponent },
-      // { path: 'boas-vindas', component: BoasVindasComponent },
-      { path: 'cadastrar-prova', component: CadastrarProvaComponent },
-      { path: 'quizz/:id', component: QuizzComponent },
-      { path: 'resultados/:id', component: ResultadosComponent },
-      { path: 'dashboard', component: DashboardComponent }
-
-
-    ]
-  },
-
-
-  { path: 'boas-vindas', component: BoasVindasComponent },
+    // children: [
+    //   { path: 'entrar', loadChildren: () => import("./componentes/entrar/entrar.component").then((module) => module.EntrarComponent) },
+    //   // { path: '', redirectTo: 'boas-vindas', pathMatch: 'full' },
+    //   { path: 'atualizar-usuario/:id', component: AtualizarUsuarioComponent },
+    //   // { path: 'atualizar-usuario/:id', loadChildren: () => import('./componentes/usuario/usuario.module').then((m) => m.UsuarioModule) },
+    //   { path: 'home', component: HomeComponent },
+    //   { path: 'mural-provas', component: MuralProvasComponent },
+    //   // { path: 'mural-provas', loadChildren: () => import('./componentes/prova/prova.module').then((m) => m.ProvaModule) },
+    //   { path: 'mural-sprints', component: MuralSprintsComponent },
+    //   { path: 'mural-questoes', component: MuralQuestoesComponent },
+    //   // { path: 'entrar', component: EntrarComponent },
+    //   // { path: 'boas-vindas', component: BoasVindasComponent },
+    //   { path: 'cadastrar-prova', component: CadastrarProvaComponent },
+    //   { path: 'quizz/:id', component: QuizzComponent },
+    //   { path: 'resultados/:id', component: ResultadosComponent },
+    //   { path: 'dashboard', component: DashboardComponent },
+    //   { path: 'cadastrar-questao', component: CadastrarQuestaoComponent },
 
 
-  { path: 'nav', component: NavComponent },
+    // ]
+  // },
+  // { path: '', loadChildren: () => import('./componentes/nav/nav.component').then((module) => module.NavComponent) },
 
-  { path: 'entrar', component: EntrarComponent },
-  { path: 'boas-vindas', component: BoasVindasComponent },
 
-  { path: 'cadastrar-usuario', component: CadastrarUsuarioComponent },
-  // { path: 'cadastrar-prova', component: CadastrarProvaComponent },
-  { path: 'cadastrar-questao', component: CadastrarQuestaoComponent },
-  { path: 'cadastrar-questao-com-prova/:id', component: CadastrarQuestaoComProvaComponent },
-  { path: 'cadastrar-alternativa/:id', component: CadastrarAlternativaComponent },
-  { path: 'cadastrar-categoria-prova', component: CadastrarCategoriaProvaComponent },
-  { path: 'cadastrar-categoria-questao', component: CadastrarCategoriaQuestaoComponent },
+  // { path: 'boas-vindas', component: BoasVindasComponent },
 
-  // { path: 'atualizar-usuario/:id', component: AtualizarUsuarioComponent },
-  { path: 'atualizar-prova/:id', component: AtualizarProvaComponent },
-  { path: 'atualizar-questao/:id', component: AtualizarQuestaoComponent },
-  { path: 'atualizar-alternativa/:id', component: AtualizarAlternativaComponent },
-  { path: 'atualizar-categoria-prova/:id', component: AtualizarCategoriaProvaComponent },
-  { path: 'atualizar-categoria-questao/:id', component: AtualizarCategoriaQuestaoComponent },
-  { path: 'atualizar-questao-com-alternativa/:id', component: AtualizarQuestaoComAlternativaComponent },
 
-  // { path: 'resultados', component: ResultadosComponent }
+  // { path: 'nav', component: NavComponent },
 
-  { path: 'deletar-prova/:id', component: DeletarProvaComponent },
-  { path: 'deletar-questao/:id', component: DeletarQuestaoComponent },
-  { path: 'deletar-alternativa/:id', component: DeletarAlternativaComponent },
-  { path: 'deletar-categoria-prova/:id', component: DeletarCategoriaProvaComponent },
-  { path: 'deletar-categoria-questao/:id', component: DeletarCategoriaQuestaoComponent },
+  
+  // { path: 'boas-vindas', component: BoasVindasComponent },
 
-  // { path: 'mural-provas', component: MuralProvasComponent },
-  // { path: 'mural-questoes', component: MuralQuestoesComponent },
+  // { path: 'cadastrar-usuario', component: CadastrarUsuarioComponent },
+  // // { path: 'cadastrar-prova', component: CadastrarProvaComponent },
+  // { path: 'cadastrar-questao', component: CadastrarQuestaoComponent },
+  // { path: 'cadastrar-questao-com-prova/:id', component: CadastrarQuestaoComProvaComponent },
+  // { path: 'cadastrar-alternativa/:id', component: CadastrarAlternativaComponent },
+  // { path: 'cadastrar-categoria-prova', component: CadastrarCategoriaProvaComponent },
+  // { path: 'cadastrar-categoria-questao', component: CadastrarCategoriaQuestaoComponent },
 
-  // { path: 'quizz/:id', component: QuizzComponent },
-  { path: 'selecionar-questoes/:id', component: SelecionarQuestoesComponent },
-  { path: 'galeria-provas/:id', component: GaleriaProvasComponent },
-  { path: 'remover-alternativa-da-questao/:id', component: RemoverAlternativaDaQuestaoComponent },
-  { path: 'remover-questao-prova/:id', component: RemoverQuestaoProvaComponent },
+  // // { path: 'atualizar-usuario/:id', component: AtualizarUsuarioComponent },
+  // { path: 'atualizar-prova/:id', component: AtualizarProvaComponent },
+  // { path: 'atualizar-questao/:id', component: AtualizarQuestaoComponent },
+  // { path: 'atualizar-alternativa/:id', component: AtualizarAlternativaComponent },
+  // { path: 'atualizar-categoria-prova/:id', component: AtualizarCategoriaProvaComponent },
+  // { path: 'atualizar-categoria-questao/:id', component: AtualizarCategoriaQuestaoComponent },
+  // { path: 'atualizar-questao-com-alternativa/:id', component: AtualizarQuestaoComAlternativaComponent },
 
-  // { path: 'navegacao-bar', component: NavegacaoBarComponent  },
+  // // { path: 'resultados', component: ResultadosComponent }
 
-  { path: 'teste', component: TesteComponent }
+  // { path: 'deletar-prova/:id', component: DeletarProvaComponent },
+  // { path: 'deletar-questao/:id', component: DeletarQuestaoComponent },
+  // { path: 'deletar-alternativa/:id', component: DeletarAlternativaComponent },
+  // { path: 'deletar-categoria-prova/:id', component: DeletarCategoriaProvaComponent },
+  // { path: 'deletar-categoria-questao/:id', component: DeletarCategoriaQuestaoComponent },
+
+  // // { path: 'mural-provas', component: MuralProvasComponent },
+  // // { path: 'mural-questoes', component: MuralQuestoesComponent },
+
+  // // { path: 'quizz/:id', component: QuizzComponent },
+  // { path: 'selecionar-questoes/:id', component: SelecionarQuestoesComponent },
+  // { path: 'galeria-provas/:id', component: GaleriaProvasComponent },
+  // { path: 'remover-alternativa-da-questao/:id', component: RemoverAlternativaDaQuestaoComponent },
+  // { path: 'remover-questao-prova/:id', component: RemoverQuestaoProvaComponent },
+
+  // // { path: 'navegacao-bar', component: NavegacaoBarComponent  },
+
+  // { path: 'teste', component: TesteComponent }
 
 
 ];

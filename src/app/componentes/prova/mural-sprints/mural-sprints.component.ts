@@ -16,8 +16,8 @@ import { environment } from 'src/environments/environment.prod';
 export class MuralSprintsComponent implements OnInit {
 
 
-  idProva: number;
-  name: string;
+  idProva: number = 0;
+  name: string = '';
 
   usuario: Usuario = new Usuario();
   prova: Prova = new Prova();

@@ -17,7 +17,7 @@
                     <h5>20 pontos</h5>
                 </div>
                 <div class="question-remain">
-                    <span> Questão {{ questaoAtual+1 }} de {{ prova.questoes?.length }}</span>
+                    <span> Questão {{ questaoAtual+1 }} de {{ prova.questoes?.length ?? 'n/a' }}</span>
                 </div>
                 <div class="timer">
                     {{ timer }} sec
@@ -32,7 +32,7 @@
             <!-- <h1 class="d-flex" *ngFor="let i of prova.questoes" >{{i.id }}</h1> -->
             <div class="question ">
                 <div class="card">
-                    <h3>texto: {{listaQuestoesDaProva[questaoAtual]?.texto}}</h3>
+                    <h3>texto: {{listaQuestoesDaProva[questaoAtual]?.texto ?? 'n/a'}}</h3>
                 </div>
             </div>
             <p *ngFor="let r of listaRespostasUsuarioDasQuestoes"></p>

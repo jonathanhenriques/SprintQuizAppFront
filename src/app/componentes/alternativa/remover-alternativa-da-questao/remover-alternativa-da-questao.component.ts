@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 import { Alternativa } from '../../../model/Alternativa';
 import { Questao } from '../../../model/Questao';
 import { AlertasService } from '../../../service/alertas.service';
@@ -16,14 +17,14 @@ import { QuestaoService } from '../../../service/questao.service';
 })
 export class RemoverAlternativaDaQuestaoComponent implements OnInit {
 
-  
+
   alternativa: Alternativa = new Alternativa();
-  questao: Questao = new Questao();
+  questao: Questao = new QuestaoImpl();
   idQuestao: number = 0;
 
   listaAlternativas: Alternativa[] = [];
-  
-  
+
+
   constructor(
     private router: Router,
     private activatedRouter: ActivatedRoute,
@@ -31,9 +32,9 @@ export class RemoverAlternativaDaQuestaoComponent implements OnInit {
     private questaoService: QuestaoService,
     private alternativaService: AlternativaService,
     private toastr: ToastrService
-    ) { }
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     window.scroll(0, 0);
     AuthService.verificaLogado(this.alertas, this.router);
 
@@ -44,7 +45,7 @@ export class RemoverAlternativaDaQuestaoComponent implements OnInit {
   }
 
 
-  getQuestaoById(){
+  getQuestaoById() {
     this.questaoService.getByIdQuestao(4).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
       console.log('achou');
@@ -62,17 +63,17 @@ export class RemoverAlternativaDaQuestaoComponent implements OnInit {
   //   }
   // }
 
-  removerAlternativa(event: number){
-   
+  removerAlternativa(event: number) {
+
     this.alternativaService.deleteAlternativaById(event).subscribe(() => {
       this.toastr.success('Alternativa deletada com sucesso!');
-      this.questao = new Questao();
+      this.questao = new QuestaoImpl();
 
       this.voltarPagina();
     })
   }
 
-  voltarPagina(){
+  voltarPagina() {
     window.history.back();
   }
 

@@ -14,7 +14,7 @@ export class AtualizarUsuarioComponent implements OnInit {
 
 
   usuario: Usuario = new Usuario();
-  senhaInserida: string;
+  senhaInserida: string = '';
   // tipoUsuario: string;
   tipoCampoSenha: string = 'password';
   mostrarSenha: boolean = false;

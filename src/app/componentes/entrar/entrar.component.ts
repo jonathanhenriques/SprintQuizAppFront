@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioLogin } from '../../model/UsuarioLogin';
 import { AuthService } from '../../service/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-entrar',
@@ -11,6 +12,11 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./entrar.component.scss'],
 })
 export class EntrarComponent implements OnInit {
+
+
+  loginForm!: FormGroup;
+
+
 
   usuarioLogin: UsuarioLogin = new UsuarioLogin();
   tipoCampoSenha: string = 'password';
@@ -20,17 +26,30 @@ export class EntrarComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private alerta: AlertasService
-  ) {}
+    private alerta: AlertasService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
-    window.scroll(0, 0);
+    // window.scroll(0, 0);
+
+    this.loginForm = this.formBuilder.group(
+      {
+        // usuario: ['', [Validators.required, Validators.email],],
+        // senha: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(14)],]
+        usuario: ['',[Validators.required]],
+        senha: ['', [Validators.required, Validators.minLength(8)]],
+        
+      }
+    );
+
+
   }
 
 
 
-  exibirSenha(){
-    if(this.mostrarSenha){
+  exibirSenha() {
+    if (this.mostrarSenha) {
       this.tipoCampoSenha = 'password'
       this.mostrarSenha = false;
     } else {
@@ -40,23 +59,31 @@ export class EntrarComponent implements OnInit {
 
   }
 
-  verificaLogin() {
-    this.authService.entrar(this.usuarioLogin).subscribe(
-      (usuario: UsuarioLogin) => {
-        this.usuarioLogin = usuario;
+  solicitaLogin() {
 
-        environment.token = this.usuarioLogin.token;
-        environment.foto = this.usuarioLogin.foto;
-        environment.id = this.usuarioLogin.id;
-        environment.nome = this.usuarioLogin.nome;
-        environment.tipo = this.usuarioLogin.tipo;
+    if (this.loginForm.valid) {
+      this.usuarioLogin = this.loginForm.getRawValue() 
 
-        this.router.navigate(['/dashboard']);
-      },
-      (erro) => {
-        if (erro.status == 401)
-          this.alerta.showAlertDanger('Usuário ou senha incorreta!');
-      }
-    );
+      this.authService.entrar(this.usuarioLogin).subscribe(
+        (usuario: UsuarioLogin) => {
+          this.usuarioLogin = usuario;
+
+          environment.token = this.usuarioLogin.token;
+          environment.foto = this.usuarioLogin.foto;
+          environment.id = this.usuarioLogin.id;
+          environment.nome = this.usuarioLogin.nome;
+          environment.tipo = this.usuarioLogin.tipo;
+
+          this.router.navigate(['/dashboard']);
+        },
+        (erro) => {
+          console.log(this.usuarioLogin)
+          if (erro.status == 401)
+            this.alerta.showAlertDanger('Usuário ou senha incorreta!');
+        }
+      );
+    }
+    else
+    console.log('inválido');
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Alternativa } from 'src/app/model/Alternativa';
 import { Questao } from 'src/app/model/Questao';
+import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AlternativaService } from 'src/app/service/alternativa.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -16,7 +17,7 @@ export class AtualizarAlternativaComponent implements OnInit {
 
   
   alternativa: Alternativa = new Alternativa();
-  questao: Questao = new Questao();
+  questao: Questao = new QuestaoImpl();
   idAlternativa: number = 0;
 
 

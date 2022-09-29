@@ -22,7 +22,7 @@ export class ResultadosComponent implements OnInit {
   idProva: number = 0;
 
 
-  @Input() informacao: string;
+  @Input() informacao: string = '';
 
   // @Input()quantidadeAcertos: number = 0;
   quantidadeAcertos: number = 0;
@@ -73,7 +73,7 @@ export class ResultadosComponent implements OnInit {
 
   encherLista() {
     for (let i = 0; i < this.prova.questoes.length; i++) {
-      this.listaRespostasQuestoes.push(this.prova.questoes[i].questao.resposta.id);
+      this.listaRespostasQuestoes.push(this.prova.questoes[i].questao?.resposta?.id!);
     }
   }
 

@@ -23,7 +23,7 @@ export class CategoriaProvaService {
   url = environment.url;
 
   getAllCategoriaProva(p1?: string, p2?: string):Observable<any[]>{
-    return this.http.get<any[]>(this.url + '/categoriaProva' + this.url + 'exemplo', this.token);
+    return this.http.get<any[]>(this.url + '/categoriaProva', this.token);
   }
 
   getByIdCategoriaProva(id: number):Observable<CategoriaProva>{

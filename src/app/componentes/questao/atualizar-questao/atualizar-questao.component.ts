@@ -4,6 +4,7 @@ import { Alternativa } from 'src/app/model/Alternativa';
 import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
 import { Questao } from 'src/app/model/Questao';
+import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -20,7 +21,7 @@ import { environment } from 'src/environments/environment.prod';
 export class AtualizarQuestaoComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
-  questao: Questao = new Questao();
+  questao: Questao = new QuestaoImpl();
   prova: Prova = new Prova();
   categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
   alternativaDaResposta: Alternativa = new Alternativa();
@@ -108,7 +109,7 @@ export class AtualizarQuestaoComponent implements OnInit {
       this.questao = questaoResp;
       this.alertas.showAlertSuccess('Questão atualizada com sucesso!');
       // this.router.navigate(['/cadastrar-prova']);
-      this.questao = new Questao();
+      this.questao = new QuestaoImpl();
       this.voltarPagina();
 
     })

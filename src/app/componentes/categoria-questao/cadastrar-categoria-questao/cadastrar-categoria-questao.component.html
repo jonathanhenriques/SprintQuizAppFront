@@ -9,7 +9,8 @@
         <div class="col-md-5 ">
             <div class="card ">
                 <div class="card-body">
-                    <form>
+                  <!-- <form (ngSubmit)="cadastrarCategoriaQuestao()> -->
+                    <form >
 
 
                         <p>
@@ -34,7 +35,7 @@
 
 
                         <div class="btn-group " role="group">
-                            <button [disabled]="!validaCampos()" class="botaoespaco"  mat-raised-button color="primary" type="submit" (click)="cadastrarCategoriaQuestao()">Cadastrar</button>
+                            <button [disabled]="!validaCampos()" class="botaoespaco"  mat-raised-button color="primary" type="submit" >Cadastrar</button>
                             <button  mat-raised-button color="warn" type="reset">Apagar</button>
                         </div>
                     </form>

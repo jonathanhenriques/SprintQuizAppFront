@@ -5,6 +5,7 @@ import { Alternativa } from 'src/app/model/Alternativa';
 import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
 import { Questao } from 'src/app/model/Questao';
+import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 import { QuestaoProva } from 'src/app/model/QuestaoProva';
 import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
@@ -23,7 +24,7 @@ import { environment } from 'src/environments/environment.prod';
 export class CadastrarQuestaoComProvaComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
-  questao: Questao = new Questao();
+  questao: Questao = new QuestaoImpl();
   categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
   prova: Prova = new Prova();
   questaoProva: QuestaoProva = new QuestaoProva();
@@ -62,7 +63,7 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
     this.findAllCategoriaQuestao();
     // this.idProva = this.activatedRoute.snapshot.params['id'];
     // this.findByIdUsuario();
-    
+
 
   }
 
@@ -84,7 +85,7 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
     })
   }
 
-  findCategoriaQuestaoById(){
+  findCategoriaQuestaoById() {
     this.categoriaQuestaoService.getByIdCategoriaQuestao(this.idCategoriaQuestao).subscribe((resp: CategoriaQuestao) => {
       this.categoriaQuestao = resp;
       // this.questao.categoria = resp;
@@ -101,15 +102,15 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
 
 
 
-// qq: any = {
-  
-//   "instituicao": "string",
-//   "ano": "2022-08-23",
-//   "imagem": "string",
-//   "texto": "string",
-//   "categoria": {"id": 1},
-//   "criador": {"id": 1}
-// }
+  // qq: any = {
+
+  //   "instituicao": "string",
+  //   "ano": "2022-08-23",
+  //   "imagem": "string",
+  //   "texto": "string",
+  //   "categoria": {"id": 1},
+  //   "criador": {"id": 1}
+  // }
 
 
   cadastrarQuestao() {
@@ -117,14 +118,14 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
 
     this.categoriaQuestao.id = this.idCategoriaQuestao;
     this.questao.categoria = this.categoriaQuestao;
-    
+
 
     this.usuario.id = this.idUsuario;
     this.questao.criador = this.usuario
 
     this.prova.id = this.idProvaEscolhida;
     this.questaoProva.prova = this.prova;
-   
+
 
 
     this.questaoService.postQuestao(this.questao).subscribe((questaoResp: Questao) => {
@@ -132,24 +133,24 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
       this.toastr.success('Questão criada com sucesso!');
       console.log(this.questao.id);
       this.questaoProva.questao.id = questaoResp.id;
-   
+
     })
 
-    
+
 
     console.log(JSON.stringify(this.questaoProva, null, 2))
 
-    
+
 
 
   }
 
-  postarQuestaoProva(){
+  postarQuestaoProva() {
     this.questaoProvaService.postQuestaoProva(this.questaoProva, this.idProvaEscolhida).subscribe((questaoProvaResp: QuestaoProva) => {
       this.questaoProva = questaoProvaResp;
       this.toastr.success('Questão adicionada a Prova com sucesso!');
       this.questaoProva = new QuestaoProva();
-      this.questao = new Questao();
+      this.questao = new QuestaoImpl();
     })
   }
 

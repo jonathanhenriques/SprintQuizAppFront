@@ -5,6 +5,7 @@ import { CategoriaProva } from 'src/app/model/CategoriaProva';
 import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
 import { Questao } from 'src/app/model/Questao';
+import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -22,7 +23,7 @@ import { environment } from 'src/environments/environment.prod';
 export class CadastrarQuestaoComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
-  questao: Questao = new Questao();
+  questao: Questao = new QuestaoImpl();
   categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
 
   idProva: number = 0;
@@ -54,7 +55,7 @@ export class CadastrarQuestaoComponent implements OnInit {
 
     this.findAllCategoriaQuestao();
     // this.findByIdUsuario();
-    
+
 
   }
 
@@ -76,7 +77,7 @@ export class CadastrarQuestaoComponent implements OnInit {
     })
   }
 
-  findCategoriaQuestaoById(){
+  findCategoriaQuestaoById() {
     this.categoriaQuestaoService.getByIdCategoriaQuestao(this.idCategoriaQuestao).subscribe((resp: CategoriaQuestao) => {
       this.categoriaQuestao = resp;
       // this.questao.categoria = resp;
@@ -93,23 +94,23 @@ export class CadastrarQuestaoComponent implements OnInit {
 
 
 
-// qq: any = {
-  
-//   "instituicao": "string",
-//   "ano": "2022-08-23",
-//   "imagem": "string",
-//   "texto": "string",
-//   "categoria": {"id": 1},
-//   "criador": {"id": 1}
-// }
+  // qq: any = {
+
+  //   "instituicao": "string",
+  //   "ano": "2022-08-23",
+  //   "imagem": "string",
+  //   "texto": "string",
+  //   "categoria": {"id": 1},
+  //   "criador": {"id": 1}
+  // }
 
 
   cadastrarQuestao() {
 
-
+    
     this.categoriaQuestao.id = this.idCategoriaQuestao;
     this.questao.categoria = this.categoriaQuestao;
-    
+
 
     this.usuario.id = this.idUsuario;
     this.questao.criador = this.usuario
@@ -118,9 +119,11 @@ export class CadastrarQuestaoComponent implements OnInit {
     this.questaoService.postQuestao(this.questao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
       this.alertas.showAlertSuccess('Questão criada com sucesso!');
-      this.questao = new Questao();
-   
+      this.questao = new QuestaoImpl();
+
     })
   }
 
 }
+
+
