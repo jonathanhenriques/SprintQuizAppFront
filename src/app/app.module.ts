@@ -1,74 +1,33 @@
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BoasVindasComponent } from './componentes/boas-vindas/boas-vindas.component';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { AlertaComponent } from './componentes/alerta/alerta.component';
-import { NavegacaoBarComponent } from './componentes/nav/navegacao-bar/navegacao-bar.component';
 import { TokenInterceptorService } from './service/tokeninterceptorService.service';
-import { QuizzComponent } from './componentes/quizz/quizz.component';
-import { ToastrModule } from "ngx-toastr"
-
-
-
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { TesteComponent } from './teste/teste.component';
-import { QuestaoModule } from './componentes/questao/questao.module';
-import { ProvaModule } from './componentes/prova/prova.module';
-import { AlternativaModule } from './componentes/alternativa/alternativa.module';
-import { CategoriaQuestaoModule } from './componentes/categoria-questao/categoria-questao.module';
-import { CategoriaProvaModule } from './componentes/categoria-prova/categoria-prova.module';
-import { UsuarioModule } from './componentes/usuario/usuario.module';
-// import { NavComponent } from './componentes/nav/nav.component';
-import { HomeComponent } from './componentes/home/home.component';
-import { ResultadosComponent } from './componentes/resultados/resultados.component';
-import { MaterialModule } from './componentes/material/material.module';
 import { CommonModule } from '@angular/common';
+import { UsuarioModule } from './componentes/usuario/usuario.module';
 
-import { GraficosModule } from './componentes/graficos/graficos.module';
-import { DashboardComponent } from './componentes/dashboard/dashboard.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { ChartsComponent } from './componentes/charts/charts.component';
-import { StoreModule } from '@ngrx/store';
+import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { environment } from '../environments/environment';
+import { MaterialsImportsModule } from './componentes/materials-imports/materials-imports.module';
+import { SharedModule } from './componentes/shared/shared.module';
 import { appEffects, appReducer } from './store/app-state';
-import { MaterialsImportsModule } from './materials-imports/materials-imports.module';
-import { MensagemModule } from './componentes/mensagem/mensagem.module';
-import { EntrarModule } from './componentes/entrar/entrar.module';
-import { NavModule } from './componentes/nav/nav.module';
-
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BoasVindasComponent,
-    // EntrarComponent,
-    AlertaComponent,
-    // NavegacaoBarComponent,
-    QuizzComponent,
-
-    TesteComponent,
-    // NavComponent,
-    HomeComponent,
-    ResultadosComponent,
-    DashboardComponent,
-    ChartsComponent,
-
-
-
-  ],
+  declarations: [AppComponent],
   imports: [
-    CommonModule,
+    // CommonModule,
     BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
@@ -81,43 +40,34 @@ import { NavModule } from './componentes/nav/nav.module';
       timeOut: 4000,
       closeButton: true,
       progressBar: true,
-      preventDuplicates: true
-    }
+      preventDuplicates: true,
+    }),
+    RouterModule,
 
-    ),
+    UsuarioModule,
 
-    
     MaterialsImportsModule,
 
-    QuestaoModule,
-    ProvaModule,
-    AlternativaModule,
-    CategoriaQuestaoModule,
-    CategoriaProvaModule,
-    // UsuarioModule,
-    MaterialModule,
-    GraficosModule,
-    MensagemModule,
-    // NavModule,
-    
+    SharedModule,
 
     //ngrx imports **************
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     StoreModule.forRoot(appReducer), //appReducer criado no app-state
-    EffectsModule.forRoot(appEffects)
+    EffectsModule.forRoot(appEffects),
     //**************
-
-
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

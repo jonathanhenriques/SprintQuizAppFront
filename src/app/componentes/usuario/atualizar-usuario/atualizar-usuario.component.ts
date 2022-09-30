@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
-import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-atualizar-usuario',
