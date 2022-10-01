@@ -18,7 +18,7 @@
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">Categoria: {{prova.categoria.titulo}}</p>
                 <!-- <p class="card-text text-secondary mt-3 cardlimitecaracteres">Autor: {{prova.usuario.nome}}</p> -->
                 <p class="card-text text-secondary mt-3 cardlimitecaracteres">idProva: {{prova.id}}</p>
-                <div class="card col p-2 mt-3" *ngFor="let questaoprova of prova.questoes; let i = index" > questão {{i+1}} : {{questaoprova.questao.texto}}</div>
+                <div class="card col p-2 mt-3" *ngFor="let questaoprova of prova.questoes; let i = index" > questão {{i+1}} : {{questaoprova?.questao?.texto}}</div>
                 
                 <div class="card-footer text-center">
                     <button class="btn btn-outline-success m-1"  [routerLink]="['/quizz',prova.id]">testar tela</button>

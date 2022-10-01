@@ -26,6 +26,9 @@ import { SharedRoutingModule } from "./shared-routing.module";
 import { RouterModule } from "@angular/router";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CommonModule } from "@angular/common";
+import { NavComponent } from "./nav/nav.component";
+import { UsuarioModule } from "../usuario/usuario.module";
+import { NavegacaoBarComponent } from "./navegacao-bar/navegacao-bar.component";
 
 
 @NgModule({
@@ -33,6 +36,8 @@ import { CommonModule } from "@angular/common";
 
     MensagemComponent,
     AlertaComponent,
+    NavComponent,
+    NavegacaoBarComponent,
 
     
     
@@ -84,10 +89,15 @@ import { CommonModule } from "@angular/common";
 
     GraficosModule,
     NgxChartsModule,
+
     
   ],
   exports: [
     MensagemComponent,
+    NavComponent,
+    NavegacaoBarComponent,
+
+    
 
     
 

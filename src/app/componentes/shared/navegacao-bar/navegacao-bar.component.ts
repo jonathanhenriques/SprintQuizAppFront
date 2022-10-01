@@ -36,7 +36,7 @@ export class NavegacaoBarComponent implements OnInit {
     environment.nome = '';
     environment.foto = '';
     environment.tipo = '';
-    this.router.navigate(['nav/entrar']);
+    this.router.navigate(['/entrar']);
   }
 
 }

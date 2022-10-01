@@ -13,6 +13,7 @@ import { Questao } from '../../../model/Questao';
 import { Usuario } from '../../../model/Usuario';
 import { Alternativa } from 'src/app/model/Alternativa';
 import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 
 @Component({
   selector: 'app-tela',
@@ -26,17 +27,7 @@ export class QuizzComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
   
-  questao: Questao = {
-    id: 0,
-    instituicao: '',
-    ano: undefined,
-    texto: '',
-    imagem: '',
-    alternativas: [],
-    resposta: new Alternativa,
-    categoria: new CategoriaQuestao,
-    criador: new Usuario
-  };;
+  questao: Questao = new QuestaoImpl();
   @Output() prova: Prova = new Prova();
 
   @Output() enviarDados = new EventEmitter();

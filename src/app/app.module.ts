@@ -11,7 +11,6 @@ import { TokenInterceptorService } from './service/tokeninterceptorService.servi
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CommonModule } from '@angular/common';
 import { UsuarioModule } from './componentes/usuario/usuario.module';
 
 import { RouterModule } from '@angular/router';
@@ -21,11 +20,15 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { environment } from '../environments/environment';
 import { MaterialsImportsModule } from './componentes/materials-imports/materials-imports.module';
+import { PublicoModule } from './componentes/publico/publico.module';
 import { SharedModule } from './componentes/shared/shared.module';
 import { appEffects, appReducer } from './store/app-state';
 
+
 @NgModule({
-  declarations: [AppComponent],
+    declarations: [AppComponent,
+      //  NavComponent
+      ],
   imports: [
     // CommonModule,
     BrowserModule,
@@ -45,10 +48,16 @@ import { appEffects, appReducer } from './store/app-state';
     RouterModule,
 
     UsuarioModule,
-
+    SharedModule,
+    PublicoModule,
     MaterialsImportsModule,
 
-    SharedModule,
+
+    
+
+
+
+
 
     //ngrx imports **************
     StoreModule.forRoot({}, {}),
@@ -61,6 +70,7 @@ import { appEffects, appReducer } from './store/app-state';
     EffectsModule.forRoot(appEffects),
     //**************
   ],
+ 
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

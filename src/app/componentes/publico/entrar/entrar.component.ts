@@ -74,7 +74,7 @@ export class EntrarComponent implements OnInit {
           environment.nome = this.usuarioLogin.nome;
           environment.tipo = this.usuarioLogin.tipo;
 
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/boas-vindas']);
         },
         (erro) => {
           console.log(this.usuarioLogin)
