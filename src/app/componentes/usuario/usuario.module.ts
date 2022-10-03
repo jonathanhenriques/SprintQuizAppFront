@@ -7,7 +7,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 
 import { TesteComponent } from 'src/app/teste/teste.component';
-import { PublicoModule } from '../publico/publico.module';
 import { SharedModule } from '../shared/shared.module';
 import { AtualizarAlternativaComponent } from './alternativa/atualizar-alternativa/atualizar-alternativa.component';
 import { CadastrarAlternativaComponent } from './alternativa/cadastrar-alternativa/cadastrar-alternativa.component';
@@ -19,10 +18,9 @@ import { DeletarCategoriaProvaComponent } from './categoria-prova/deletar-catego
 import { AtualizarCategoriaQuestaoComponent } from './categoria-questao/atualizar-categoria-questao/atualizar-categoria-questao.component';
 import { CadastrarCategoriaQuestaoComponent } from './categoria-questao/cadastrar-categoria-questao/cadastrar-categoria-questao.component';
 import { DeletarCategoriaQuestaoComponent } from './categoria-questao/deletar-categoria-questao/deletar-categoria-questao.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { DeletarUsuarioComponent } from './deletar-usuario/deletar-usuario.component';
-import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
-import { NavegacaoBarComponent } from '../shared/navegacao-bar/navegacao-bar.component';
 import { AtualizarProvaComponent } from './prova/atualizar-prova/atualizar-prova.component';
 import { CadastrarProvaComponent } from './prova/cadastrar-prova/cadastrar-prova.component';
 import { DeletarProvaComponent } from './prova/deletar-prova/deletar-prova.component';
@@ -42,6 +40,8 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
 
     NavComponent,
 
+    DashboardComponent,
+
     DeletarUsuarioComponent,
 
     AtualizarCategoriaProvaComponent,
@@ -52,7 +52,6 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
     CadastrarCategoriaQuestaoComponent,
     DeletarCategoriaQuestaoComponent,
 
-    HomeComponent,
 
     AtualizarProvaComponent,
     CadastrarProvaComponent,

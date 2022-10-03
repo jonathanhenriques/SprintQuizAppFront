@@ -17,3 +17,19 @@ li .card:hover{
 ol {
     padding: 0px
 }
+
+.selected {
+    background: mediumseagreen !important;
+    color: blue;
+}
+
+.movies {
+    background: red;
+    padding: 0.5em 1em 0.5em 1.5em;
+    margin: 1em;
+    max-width: 16em;
+  }
+
+  .movies .movieListItem{
+    font-size: 0.875em;
+  }

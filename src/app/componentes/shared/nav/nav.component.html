@@ -1,6 +1,6 @@
 <!-- <app-navegacao-bar *ngIf='authService.logado()' > </app-navegacao-bar> -->
 <!-- <mat-drawer-container  *ngIf='authService.logado()' class="container-fluid" autosize> -->
-<mat-drawer-container class="container-fluid" autosize>
+<mat-drawer-container class="container-fluid p-0 m-0" autosize>
   <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
     <mat-nav-list class="nav-list">
       <a *ngIf="!authService.logado()"  mat-list-item routerLink="entrar">
@@ -27,9 +27,9 @@
     </mat-nav-list>
   </mat-drawer>
 
-  <div class="sidenav-content">
-    <div class="row dflex">
-      <div class="col-md-12">
+  <div class="sidenav-content m-0 p-0">
+    <div class="row dflex m-0 p-0">
+      <div class="col-md-12 p-0">
         <app-navegacao-bar *ngIf='authService.logado()'> </app-navegacao-bar>
         <button class="menu mat-elevation-z" mat-icon-button (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>

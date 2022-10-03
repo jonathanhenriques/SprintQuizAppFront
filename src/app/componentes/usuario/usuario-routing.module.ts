@@ -1,40 +1,38 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GaleriaProvasComponent } from './prova/galeriaprovas/galeria-provas.component';
+import { NavComponent } from '../shared/nav/nav.component';
+import { NavegacaoBarComponent } from '../shared/navegacao-bar/navegacao-bar.component';
 import { AtualizarAlternativaComponent } from './alternativa/atualizar-alternativa/atualizar-alternativa.component';
 import { CadastrarAlternativaComponent } from './alternativa/cadastrar-alternativa/cadastrar-alternativa.component';
 import { DeletarAlternativaComponent } from './alternativa/deletar-alternativa/deletar-alternativa.component';
 import { RemoverAlternativaDaQuestaoComponent } from './alternativa/remover-alternativa-da-questao/remover-alternativa-da-questao.component';
 import { AtualizarCategoriaProvaComponent } from './categoria-prova/atualizar-categoria-prova/atualizar-categoria-prova.component';
 import { CadastrarCategoriaProvaComponent } from './categoria-prova/cadastrar-categoria-prova/cadastrar-categoria-prova.component';
+import { DeletarCategoriaProvaComponent } from './categoria-prova/deletar-categoria-prova/deletar-categoria-prova.component';
 import { AtualizarCategoriaQuestaoComponent } from './categoria-questao/atualizar-categoria-questao/atualizar-categoria-questao.component';
 import { CadastrarCategoriaQuestaoComponent } from './categoria-questao/cadastrar-categoria-questao/cadastrar-categoria-questao.component';
 import { DeletarCategoriaQuestaoComponent } from './categoria-questao/deletar-categoria-questao/deletar-categoria-questao.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { DeletarUsuarioComponent } from './deletar-usuario/deletar-usuario.component';
-import { HomeComponent } from './home/home.component';
-import { NavegacaoBarComponent } from '../shared/navegacao-bar/navegacao-bar.component';
 import { AtualizarProvaComponent } from './prova/atualizar-prova/atualizar-prova.component';
 import { CadastrarProvaComponent } from './prova/cadastrar-prova/cadastrar-prova.component';
 import { DeletarProvaComponent } from './prova/deletar-prova/deletar-prova.component';
-import { MuralProvasComponent } from '../publico/mural-provas/mural-provas.component';
+import { GaleriaProvasComponent } from './prova/galeriaprovas/galeria-provas.component';
 import { MuralSprintsComponent } from './prova/mural-sprints/mural-sprints.component';
 import { AtualizarQuestaoComAlternativaComponent } from './questao/atualizar-questao-com-alternativa/atualizar-questao-com-alternativa.component';
 import { AtualizarQuestaoComponent } from './questao/atualizar-questao/atualizar-questao.component';
 import { CadastrarQuestaoComProvaComponent } from './questao/cadastrar-questao-com-prova/cadastrar-questao-com-prova.component';
 import { CadastrarQuestaoComponent } from './questao/cadastrar-questao/cadastrar-questao.component';
 import { DeletarQuestaoComponent } from './questao/deletar-questao/deletar-questao.component';
-import { MuralQuestoesComponent } from '../publico/mural-questoes/mural-questoes.component';
 import { RemoverQuestaoProvaComponent } from './questao/remover-questao-prova/remover-questao-prova.component';
 import { SelecionarQuestoesComponent } from './questao/selecionar-questoes/selecionar-questoes.component';
-import { QuizzComponent } from '../publico/quizz/quizz.component';
-import { ResultadosComponent } from '../publico/resultados/resultados.component';
-import { NavComponent } from '../shared/nav/nav.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '', pathMatch: 'full' },
     
   { path: '', component: NavComponent, children:[
-    { path: 'home', component: HomeComponent },
+    { path: 'dashboard', component: DashboardComponent },
+
    
   // { path: 'cadastrar-usuario', component: CadastrarUsuarioComponent },
   { path: 'deletar-usuario', component: DeletarUsuarioComponent },
@@ -47,7 +45,7 @@ const routes: Routes = [
     path: 'cadastrar-categoria-prova',
     component: CadastrarCategoriaProvaComponent,
   },
-  // { path: 'deletar-categoria-prova/:id', component: DeletarCategoriaProvaComponent },
+  { path: 'deletar-categoria-prova/:id', component: DeletarCategoriaProvaComponent },
 
   {
     path: 'atualizar-categoria-questao/:id',
@@ -110,7 +108,6 @@ const routes: Routes = [
 
   // { path: 'teste', component: TesteComponent }
 
-  //   { path: 'dashboard', component: DashboardComponent },
 ]}
 ];
 

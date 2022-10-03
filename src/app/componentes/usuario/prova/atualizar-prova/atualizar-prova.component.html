@@ -44,9 +44,10 @@
 
                     <label for="categoriaProva">Categoria da Prova</label>
                     <select [(ngModel)]="prova.categoria" class="form-control" name="categoriaProva" id="categoriaProva"
-                        (change)="pegaCategoriaProvaSelecionada($event)">
+                        (change)="pegaCategoriaProvaSelecionada($event)"
+                        >
                         <option disable>selecione...</option>
-                        <option *ngFor="let cat of listaCategoriaProva" value="{{ cat.id }}">{{ cat.titulo }}</option>
+                        <option (click)="pegaId(cat.id)" *ngFor="let cat of listaCategoriaProva" value="{{ cat.id }}">{{ cat.titulo }}</option>
                     </select>
 
                     <div class="mt-3">

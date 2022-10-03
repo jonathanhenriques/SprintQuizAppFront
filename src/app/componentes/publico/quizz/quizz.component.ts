@@ -23,6 +23,11 @@ import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 export class QuizzComponent implements OnInit {
 
 
+  selectedMovie: Alternativa = new Alternativa();
+  onSelect(alternativa: Alternativa): void {
+    this.selectedMovie = alternativa;
+  }
+
   resultado: boolean = false;
 
   usuario: Usuario = new Usuario();
@@ -49,8 +54,8 @@ export class QuizzComponent implements OnInit {
 
   listaQuestoes: Questao[] = [];
   listaQuestoesDaProva: Questao[] = [];
-  @Output() listaRespostasUsuarioDasQuestoes: number[] = [];
-  @Output() listaRespostasQuestoesProva: number[] = [];
+  @Output() listaRespSelecionadasUsuario: number[] = [];
+  @Output() listaRespostasCertas: number[] = [];
 
   constructor(
     private router: Router,
@@ -79,8 +84,8 @@ export class QuizzComponent implements OnInit {
 
 
 
-    this.obtemRespostasDasQuestoes();
-    this.listaRespostasQuestoesProva.forEach(element => { console.log(element) });
+    this.obterRespostasCertasDasQuestoes();
+    // this.listaRespostasCertas.forEach(element => { console.log(element) });
 
     this.startCounter();
 
@@ -97,7 +102,7 @@ export class QuizzComponent implements OnInit {
   }
 
   roda() {
-    this.listaRespostasUsuarioDasQuestoes.forEach(element => {
+    this.listaRespSelecionadasUsuario.forEach(element => {
       console.log(element);
     });
   }
@@ -107,19 +112,19 @@ export class QuizzComponent implements OnInit {
   }
 
   irResultados() {
-    for (let index = 0; index < this.listaRespostasUsuarioDasQuestoes.length; index++) {
+    for (let index = 0; index < this.listaRespSelecionadasUsuario.length; index++) {
 
-      GuardaRespostasService.listaRespostas.push(this.listaRespostasUsuarioDasQuestoes[index]);
+      GuardaRespostasService.listaRespostas.push(this.listaRespSelecionadasUsuario[index]);
     }
 
     // this.router.navigate(['/resultados', this.idProva])
     this.resultado = true;
   }
 
-  obtemRespostasDasQuestoes() {
+  obterRespostasCertasDasQuestoes() {
     for (let i = 0; i < this.prova.questoes?.length; i++) {
       if(this.prova.questoes[i].questao?.resposta?.id === null || this.prova.questoes[i].questao?.resposta?.id === undefined){
-        this.prova.questoes?.map(val => this.listaRespostasQuestoesProva.push(val.questao?.resposta?.id!));
+        this.prova.questoes?.map(questaoProva => this.listaRespostasCertas.push(questaoProva.questao?.resposta?.id!));
       }
     }
     
@@ -164,9 +169,9 @@ export class QuizzComponent implements OnInit {
 
 
 
-  registraResposta(respotaQuestao: number) {
-    console.log(respotaQuestao);
-    this.listaRespostasUsuarioDasQuestoes[this.questaoAtual] = respotaQuestao
+  registraResposta(alternativaSelecionada: number) {
+    console.log(alternativaSelecionada);
+    this.listaRespSelecionadasUsuario[this.questaoAtual] = alternativaSelecionada
   }
 
   proximaQuestao() {

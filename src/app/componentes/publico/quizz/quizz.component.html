@@ -5,7 +5,7 @@
         <div class="row d-flex align-items-center">
             <div class="col-md-12 ">
                 <h1 class="text-center">Teste rascunho tela</h1>
-                <!-- <p {{listaRespostasUsuarioDasQuestoes[questaoAtual]}}></p> -->
+                <!-- <p {{listaRespSelecionadasUsuario[questaoAtual]}}></p> -->
             </div>
         </div>
     </div>
@@ -35,20 +35,25 @@
                     <h3>texto: {{listaQuestoesDaProva[questaoAtual]?.texto ?? 'n/a'}}</h3>
                 </div>
             </div>
-            <p *ngFor="let r of listaRespostasUsuarioDasQuestoes"></p>
+            <p *ngFor="let r of listaRespSelecionadasUsuario"></p>
 
             <div class="options">
                 
-                <ol *ngFor="let alternativa of prova.questoes[questaoAtual].questao.alternativas">
-                    <li (click)="registraResposta(alternativa.id)"
+                <ol *ngFor="let alternativa of prova.questoes[questaoAtual].questao.alternativas; let p = index">
+                    <li [class.selected]="alternativa.id === listaRespSelecionadasUsuario[p]"
+                    (click)="onSelect(alternativa)"
+                     (click)="registraResposta(alternativa.id)"
                         (click)="pegaRespostaQuestaoSelecionada(alternativa.id)">
-                        <div class="card">{{alternativa.texto}}</div>
+                        <div class="card ">{{alternativa.texto}}</div>
                     </li>
 
                 </ol>
             </div>
 
-            <h1 *ngFor="let o of listaRespostasUsuarioDasQuestoes">resp:{{ o }}</h1>
+            <h1 >resp certa:{{ prova.questoes[questaoAtual].questao.resposta?.id ?? 'n/a'}}</h1>
+
+
+            <h1 *ngFor="let o of listaRespSelecionadasUsuario">resp:{{ o }}</h1>
             <h1 *ngIf="questaoAtual == prova.questoes.length-1">{{ quantidadeAcertos }}</h1>
 
             <div class="d-flex justify-content-between">

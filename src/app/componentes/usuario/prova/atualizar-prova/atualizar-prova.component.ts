@@ -14,6 +14,8 @@ import { ProvaServiceService } from 'src/app/service/prova-service.service';
 })
 export class AtualizarProvaComponent implements OnInit {
 
+  pegouId: number = 0;
+
   prova: Prova = new Prova();
   categoriaProva: CategoriaProva = new CategoriaProva();
 
@@ -38,11 +40,11 @@ export class AtualizarProvaComponent implements OnInit {
     this.findByIdProva();
     // alert(this.prova.nome + ' | nomeprova');
     this.findAllCategoriaProva();
-    
-    
+
+
   }
 
-  findByIdProva(){
+  findByIdProva() {
     this.provaService.getProvaById(this.idProva).subscribe((provaResp: Prova) => {
       this.prova = provaResp;
       // alert(this.prova.nome + ' | nomeprova');
@@ -55,24 +57,33 @@ export class AtualizarProvaComponent implements OnInit {
 
   }
 
-  
 
-  
 
-  findByICategoriaProva(){
+
+
+  findByICategoriaProva() {
     this.categoriaProvaService.getByIdCategoriaProva(this.idCategoriaProva).subscribe((categoriaProvaResp: CategoriaProva) => {
       this.categoriaProva = categoriaProvaResp;
     })
   }
 
-  findAllCategoriaProva(){
+  findAllCategoriaProva() {
     this.categoriaProvaService.getAllCategoriaProva().subscribe((listaCategoriaProvaResp: CategoriaProva[]) => {
       this.listaCategoriaProva = listaCategoriaProvaResp;
     })
   }
 
-  atualizarProva(){
+  pegaId(id: number): number {
+    this.pegouId = id;
+    return id;
+  }
 
+  atualizarProva() {
+
+
+    console.log(this.prova);
+    console.log(this.categoriaProva);
+    this.prova.categoria = this.categoriaProva;
 
     this.provaService.putProva(this.prova).subscribe((provaResp: Prova) => {
       this.prova = provaResp;
@@ -84,7 +95,7 @@ export class AtualizarProvaComponent implements OnInit {
     })
   }
 
-  voltarPagina(){
+  voltarPagina() {
     window.history.back();
   }
 }

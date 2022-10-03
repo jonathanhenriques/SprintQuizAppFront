@@ -14,26 +14,26 @@ import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
 })
 export class CadastrarCategoriaProvaComponent implements OnInit {
 
-  
+
   categoriaProva: CategoriaProva = new CategoriaProva();
   listaCategoriaProva: CategoriaProva[] = [];
-  
+
   //variaveis tabela
   // ELEMENT_DATA: CategoriaProva[] = []
   displayedColumns: string[] = ['id', 'titulo', 'descricao', 'acoes'];
   dataSource = new MatTableDataSource<CategoriaProva>(this.listaCategoriaProva);
 
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     private router: Router,
     private alertas: AlertasService,
     private categoriaProvaService: CategoriaProvaService,
-    ) { }
+  ) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    // AuthService.verificaLogado(this.alertas, this.router);
+    AuthService.verificaLogado(this.alertas, this.router);
 
     this.findAllCategoriaProva();
 
@@ -58,11 +58,11 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
 
     })
 
-    
+
   }
 
   //-----------------códigos para a tabela-----------------------------------------------------------------------
-  
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -71,7 +71,7 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
   // ngAfterViewInit() {
   //   this.dataSource.paginator = this.paginator;
   // }
- 
+
 
 }
 

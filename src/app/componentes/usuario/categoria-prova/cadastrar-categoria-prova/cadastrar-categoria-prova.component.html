@@ -9,6 +9,7 @@
         </div>
     </div>
 
+    <!-- formulário -->
     <div class="row d-flex justify-content-center">
         <div class="col-md-5 ">
             <div class="card ">
@@ -37,16 +38,7 @@
                         </p>
 
 
-                        <!-- <div class="form-group">
-                            <input [(ngModel)]="categoriaProva.titulo" type="text" name="nomeCategoriaProva"
-                                id="nomeCategoriaProva" class="form-control" placeholder="nome da categoria...">
-                        </div>
-
-                        <div class="form-group">
-                            <input [(ngModel)]="categoriaProva.descricao" type="text" name="descricaoCategoriaProva"
-                                id="descricaoCategoriaProva" class="form-control"
-                                placeholder="descrição da categoria...">
-                        </div> -->
+                        
 
                         <div class="btn-group " role="group">
                             <button class="botaoespaco" mat-raised-button color="primary"
@@ -60,7 +52,8 @@
         </div>
     </div>
 </div>
-<!-- 
+
+<!-- tabelas -->
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
@@ -76,8 +69,8 @@
                 <tbody >
                   <tr *ngFor="let cat of listaCategoriaProva">
                     <td scope="row">{{ cat.id }}</td>
-                    <td>{{ cat.titulo }}</td>
-                    <td>{{ cat.descricao }}</td>
+                    <td>{{ cat?.titulo }}</td>
+                    <td>{{ cat?.descricao }}</td>
                     
                     <td class="btn-group">
                         <button class="btn btn-info mr-3"[routerLink]="['/atualizar-categoria-prova', cat.id]">Editor</button>
@@ -89,8 +82,10 @@
               </table>
         </div>
     </div>
-</div> -->
+</div>
 
+<!-- tabela material -->
+<!-- 
 <div class="containerTabela">
 
     <mat-form-field appearance="standard">
@@ -106,25 +101,21 @@
 
         <table mat-table [dataSource]="dataSource">
 
-            <!-- Position Column -->
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> Id </th>
                 <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
 
-            <!-- Name Column -->
             <ng-container matColumnDef="titulo">
                 <th mat-header-cell *matHeaderCellDef> Titulo </th>
                 <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
             </ng-container>
 
-            <!-- Weight Column -->
             <ng-container matColumnDef="descricao">
                 <th mat-header-cell *matHeaderCellDef> Descrição </th>
                 <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
             </ng-container>
 
-            <!-- Symbol Column -->
             <ng-container matColumnDef="acoes">
                 <th mat-header-cell *matHeaderCellDef> Ações </th>
                 <td mat-cell *matCellDef="let element">
@@ -143,10 +134,10 @@
             aria-label="Select page of periodic elements"></mat-paginator>
     </div>
 
-</div>
+</div> -->
 
 
-
+<!-- 
 <table class="table">
     <thead>
       <tr>
@@ -176,4 +167,4 @@
         <td>@twitter</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->

@@ -13,7 +13,7 @@ import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
 export class DeletarCategoriaProvaComponent implements OnInit {
 
 
-  categoriaProva: CategoriaProva = new CategoriaProva();
+  categoriaProva!: CategoriaProva;
 
   idCategoria: number = 0;
 
