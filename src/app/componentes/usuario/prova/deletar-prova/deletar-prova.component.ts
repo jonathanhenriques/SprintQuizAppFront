@@ -23,32 +23,31 @@ export class DeletarProvaComponent implements OnInit {
     private provaService: ProvaServiceService
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     AuthService.verificaLogado(this.alertas, this.router);
 
     this.idProva = this.activatedRoute.snapshot.params['id'];
     this.findByIdProva();
-    
+
   }
 
-  findByIdProva(){
+  findByIdProva() {
     this.provaService.getProvaById(this.idProva).subscribe((provaResp: Prova) => {
       this.prova = provaResp;
     })
   }
 
-  deletarProva(){
+  deletarProva() {
 
 
     this.provaService.deleteProva(this.idProva).subscribe(() => {
       this.alertas.showAlertSuccess('Prova apagada com sucesso!');
-      // this.router.navigate(['/cadastrar-prova']);
       this.voltarPagina();
 
     })
   }
 
-  voltarPagina(){
+  voltarPagina() {
     window.history.back();
   }
 
