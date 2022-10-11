@@ -67,7 +67,7 @@ export class AtualizarQuestaoComAlternativaComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0);
-    AuthService.verificaLogado(this.alertas, this.router);
+    // AuthService.verificaLogado(this.alertas, this.router);
 
     this.idQuestao = this.activatedRoute.snapshot.params['id'];
     this.findAllCategoriaQuestao();

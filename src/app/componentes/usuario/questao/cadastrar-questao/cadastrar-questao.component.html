@@ -45,15 +45,33 @@
                         <textarea [(ngModel)]="questao.texto" class="form-control" name="textoQuestao" id="textoQuestao" rows="10" cols="70" required="required"></textarea>
                     </div>
 
+                    <div class="form-group">
+                        <label for="respostaQuestao ">IGNORARresposta da questão</label>
+                        <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
+                        <textarea [(ngModel)]="alternativa.texto" class="form-control" name="respostaQuestao" id="respostaQuestao" rows="10" cols="70" required="required"></textarea>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Launch demo modal
+                      </button>
+                      
                    
                     <div class="btn-group">
-                        <button class="btn btn-success" (click)="cadastrarQuestao()">Criar</button>
+                        <button class="btn btn-success"
+                       (click)="vai()"
+                         >Criar</button>
                         <button class="btn btn-danger" type="reset">Limpar</button>
                     </div>
                 </form>
                
             </div>
+
+           
         </div>
        
     </div>
 </div>
+
+
+
+
