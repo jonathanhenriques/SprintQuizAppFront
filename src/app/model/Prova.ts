@@ -14,3 +14,5 @@ export class Prova {
   public instituicao!: string
   public categoria!: CategoriaProva
 }
+
+//construtor
