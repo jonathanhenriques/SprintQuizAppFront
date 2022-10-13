@@ -1,4 +1,3 @@
-
 <div class="container mt-5">
     <div class="row d-flex align-items-center">
         <div class="col-md-8">
@@ -7,71 +6,71 @@
                 <div class="card-head">
                     <h1 class="card-title m-3 text-center">Questão</h1>
                 </div>
-                <form class="card-body" >
+                <form class="card-body">
                     <div class="form-group">
                         <label for="instituicaoQuestao">instituição</label>
-                        <input [(ngModel)]="questao.instituicao" class="form-control" type="text" name="instituicaoQuestao" id="instituicaoQuestao">
+                        <input [(ngModel)]="questao.instituicao" class="form-control" type="text"
+                            name="instituicaoQuestao" id="instituicaoQuestao">
                         <small class="text-muted">*Opcional</small>
                     </div>
 
                     <div class="form-group">
                         <label for="anoQuestao">ano</label>
-                        <input [(ngModel)]="questao.ano" class="form-control" type="date" name="anoQuestao" id="anoQuestao">
+                        <input [(ngModel)]="questao.ano" class="form-control" type="date" name="anoQuestao"
+                            id="anoQuestao">
                         <small class="text-muted">*Opcional</small>
                     </div>
 
                     <div class="form-group">
                         <label for="imagemQuestao">imagem (url ou link da foto)</label>
-                        <input [(ngModel)]="questao.imagem" class="form-control" type="text" name="imagemQuestao" id="imagemQuestao">
+                        <input [(ngModel)]="questao.imagem" class="form-control" type="text" name="imagemQuestao"
+                            id="imagemQuestao">
                         <small class="text-muted">*Opcional</small>
                     </div>
 
-                    
+
 
                     <div class="form-group">
                         <label for="categoriaQuestao">Categoria da Questão</label>
-                        <select  class="form-control" name="categoriaQuestao"
-                            id="categoriaQuestao" [(ngModel)]="idCategoriaQuestao" (change)="findCategoriaQuestaoById()">
+                        <select class="form-control" name="categoriaQuestao" id="categoriaQuestao"
+                            [(ngModel)]="idCategoriaQuestao" (change)="findCategoriaQuestaoById()">
                             <option disable>selecione...</option>
                             <option *ngFor="let cat of listaCategoriaQuestao" value="{{ cat.id }}">{{ cat.titulo }}
                             </option>
                         </select>
                     </div>
 
-                    
+
                     <div class="form-group">
                         <label for="textoQuestao ">texto</label>
                         <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
-                        <textarea [(ngModel)]="questao.texto" class="form-control" name="textoQuestao" id="textoQuestao" rows="10" cols="70" required="required"></textarea>
+                        <textarea [(ngModel)]="questao.texto" class="form-control" name="textoQuestao" id="textoQuestao"
+                            rows="10" cols="70" required="required"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="respostaQuestao ">IGNORARresposta da questão</label>
                         <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
-                        <textarea [(ngModel)]="alternativa.texto" class="form-control" name="respostaQuestao" id="respostaQuestao" rows="10" cols="70" required="required"></textarea>
+                        <textarea [(ngModel)]="alternativa.texto" class="form-control" name="respostaQuestao"
+                            id="respostaQuestao" rows="10" cols="70" required="required"></textarea>
                     </div>
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Launch demo modal
-                      </button>
-                      
-                   
+                    </button>
+
+
                     <div class="btn-group">
-                        <button class="btn btn-success"
-                       (click)="vai()"
-                         >Criar</button>
+                        <button class="btn btn-success" (click)="salvarQuestao()">Criar</button>
                         <button class="btn btn-danger" type="reset">Limpar</button>
+                        <button class="btn btn-success" (click)="buscaAlternativaParaQuestao()">finalizar</button>
                     </div>
                 </form>
-               
+
             </div>
 
-           
+
         </div>
-       
+
     </div>
 </div>
-
-
-
-

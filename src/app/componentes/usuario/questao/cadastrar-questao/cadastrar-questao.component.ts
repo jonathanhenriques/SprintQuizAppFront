@@ -25,6 +25,8 @@ export class CadastrarQuestaoComponent implements OnInit {
   categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
   alternativa: Alternativa = new Alternativa();
   respostaDaQuestao: Alternativa = new Alternativa();
+  retorno: Alternativa = new Alternativa();
+  alternativaDaResposta: Alternativa = new Alternativa();
 
   idProva: number = 0;
   idUsuario: number = environment.id;
@@ -54,7 +56,6 @@ export class CadastrarQuestaoComponent implements OnInit {
 
 
     AuthService.verificaLogado(this.alertas, this.router);
-    this.questao.alternativas = [];
 
     this.findAllCategoriaQuestao();
     // this.findByIdUsuario();
@@ -113,6 +114,15 @@ export class CadastrarQuestaoComponent implements OnInit {
     })
   }
 
+  getAlternativaByIdRetorno(id: number): Alternativa {
+    let ret: Alternativa = new Alternativa();
+    this.alternativaService.getAlternativaById(id).subscribe((alternativa: Alternativa) => {
+      this.retorno = alternativa;
+    }
+    )
+    return this.retorno;
+  }
+
   cadastrarAlternativa() {
     // this.questao.id = this.idQuestao;
     // console.log('questao id | ' + this.questao.id);
@@ -142,45 +152,9 @@ export class CadastrarQuestaoComponent implements OnInit {
     this.router.navigate(['cadastrar-alternativa', 1]);
   }
 
-  vai() {
 
-    this.procedimentoDeSalvarEColocarRespostaNaQuestaoCriada();
 
-    this.respostaDaQuestao.id = this.questao.resposta.id;
-    this.questao.alternativas.push(this.respostaDaQuestao);
-   
 
-    this.cadastrarQuestao();
-
-    this.questao = new QuestaoImpl();
-    this.alternativa = new Alternativa();
-  }
-
-  procedimentoDeSalvarEColocarRespostaNaQuestaoCriada() {
-    this.alternativa.id = this.questao.id;
-    this.questao.resposta = this.alternativa;
-
-    this.questao.alternativas[0].id = this.alternativa.id;
-    // const lista6: Alternativa[] = [this.alternativa]
-    
-    // this.questao.alternativas = []
-
-    // this.questao.alternativas?.push(lista6[0]);
-
-    // this.cadastrarQuestao();
-    // this.cadastrarAlternativa();
-    // this.findQuestaoById();
-    // this.idRespostaDaQuestao = this.alternativa.id;
-    // this.getAlternativaById();
-    // this.questao.alternativas?.push(this.respostaDaQuestao);
-    // this.cadastrarQuestao();
-
-    // this.atualizarQuestao();
-
-    // this.questao = new QuestaoImpl();
-    // this.alternativa = new Alternativa();
-
-  }
 
   findQuestaoById() {
     this.questaoService.getByIdQuestao(this.questao.id).subscribe((questaoResp: Questao) => {
@@ -188,8 +162,7 @@ export class CadastrarQuestaoComponent implements OnInit {
     })
   }
 
-
-  cadastrarQuestao() {
+  salvarQuestao() {
 
 
     this.categoriaQuestao.id = this.idCategoriaQuestao;
@@ -198,6 +171,67 @@ export class CadastrarQuestaoComponent implements OnInit {
 
     this.usuario.id = this.idUsuario;
     this.questao.criador = this.usuario
+
+    this.questao.resposta = this.alternativa;
+
+
+    // this.questao.alternativas = [];
+    // const lis: Alternativa = this.questao.resposta;
+    let {resposta} = this.questao;
+    console.log(JSON.stringify(this.questao.resposta, null, 2));
+    console.log(JSON.stringify(resposta, null, 2));
+    this.questao.alternativas.push(resposta);
+
+    // this.alternativaDaResposta.id = this.questao.resposta.id;
+    // this.questao.alternativas.push(this.alternativaDaResposta);
+
+
+
+    this.postQuestao();
+
+    console.log(JSON.stringify(this.questao, null, 2));
+
+
+  }
+
+  buscaAlternativaParaQuestao() {
+
+    // this.questao.alternativas = nome;
+    // this.idRespostaDaQuestao = 3;
+    // this.getAlternativaById();
+    // let ar: Array<Alternativa> = new Array();
+    // ar.push(this.questao.resposta);
+    // this.questao.alternativas = ar;
+    // console.log('texto da alter na lista de alternativas');
+    // console.log(this.questao.alternativas?.[0]?.texto);
+    // this.questao.alternativas.push(this.respostaDaQuestao);
+
+    this.alternativaDaResposta.id = this.questao.resposta.id;
+    this.questao.alternativas.push(this.alternativaDaResposta);
+
+
+    console.log(JSON.stringify(this.questao.resposta, null, 2));
+    this.questao.alternativas = [];
+    const lis: Alternativa = this.questao.resposta;
+    console.log(JSON.stringify(lis, null, 2));
+    this.questao.alternativas.push(lis);
+    console.log(JSON.stringify(this.questao, null, 2));
+    this.voltarPagina();
+
+    this.atualizarQuestao();
+
+  }
+
+
+  private postQuestao() {
+
+
+    // this.categoriaQuestao.id = this.idCategoriaQuestao;
+    // this.questao.categoria = this.categoriaQuestao;
+
+
+    // this.usuario.id = this.idUsuario;
+    // this.questao.criador = this.usuario
 
 
     this.questaoService.postQuestao(this.questao).subscribe((questaoResp: Questao) => {
@@ -211,6 +245,7 @@ export class CadastrarQuestaoComponent implements OnInit {
     // this.cadastrarAlternativa();
 
     // this.questao = new QuestaoImpl();
+    // this.alternativa = new Alternativa();
   }
 
   atualizarQuestao() {
@@ -243,6 +278,10 @@ export class CadastrarQuestaoComponent implements OnInit {
   }
 
 
+
+  voltarPagina() {
+    window.history.back();
+  }
 
 
 }
