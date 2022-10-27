@@ -3,18 +3,24 @@ import { CategoriaQuestao } from "./CategoriaQuestao";
 import { Questao } from "./Questao";
 import { Usuario } from "./Usuario";
 
-export class QuestaoImpl implements Questao {
 
-   id!: number;
-   instituicao!: string;
-   ano!: Date | undefined;
-   texto!: string;
-   imagem!: string;
-   alternativas: Alternativa[] = new Array();
 
-   resposta!: Alternativa;
-   categoria!: CategoriaQuestao;
-   criador!: Usuario;
+
+
+
+
+// export class QuestaoImpl implements Questao {
+
+//    id!: number;
+//    instituicao!: string;
+//    ano!: Date | undefined;
+//    texto!: string;
+//    imagem!: string;
+//    alternativas: Alternativa[] = new Array();
+
+//    resposta!: Alternativa;
+//    categoria!: CategoriaQuestao;
+//    criador!: Usuario;
 
 
    // constructor(id: number, instituicao: string, ano: Date, texto: string, imagem: string,
@@ -30,4 +36,4 @@ export class QuestaoImpl implements Questao {
    //    this.criador = criador;
    // }
 
-}
+// }

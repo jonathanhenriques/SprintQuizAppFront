@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.service';
@@ -13,7 +13,7 @@ import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.servi
 export class DeletarCategoriaQuestaoComponent implements OnInit {
 
   
-  categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
+  categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
 
   idCategoria: number = 0;
 

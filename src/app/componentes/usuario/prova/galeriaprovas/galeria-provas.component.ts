@@ -10,7 +10,8 @@ import { ProvaServiceService } from 'src/app/service/prova-service.service';
 })
 export class GaleriaProvasComponent implements OnInit {
 
-  prova: Prova = new Prova();
+  // prova: Prova = new Prova();
+  prova: Prova;
   idProva: number = 0;
 
   constructor(private provaService: ProvaServiceService,

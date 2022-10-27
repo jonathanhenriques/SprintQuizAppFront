@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoriaProva } from 'src/app/model/CategoriaProva';
+import { CategoriaProva, createCategoriaProva } from 'src/app/model/CategoriaProva';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
@@ -13,7 +13,7 @@ import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
 export class AtualizarCategoriaProvaComponent implements OnInit {
 
 
-  categoriaProva: CategoriaProva = new CategoriaProva();
+  categoriaProva: CategoriaProva = createCategoriaProva();
 
   constructor(
     private router: Router,

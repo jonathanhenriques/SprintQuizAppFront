@@ -2,12 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Alternativa } from 'src/app/model/Alternativa';
-import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
-import { Questao } from 'src/app/model/Questao';
-import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
-import { QuestaoProva } from 'src/app/model/QuestaoProva';
-import { Usuario } from 'src/app/model/Usuario';
+import { createQuestao, Questao } from 'src/app/model/Questao';
+import { createQuestaoProva, QuestaoProva } from 'src/app/model/QuestaoProva';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
@@ -23,11 +22,12 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class CadastrarQuestaoComProvaComponent implements OnInit {
 
-  usuario: Usuario = new Usuario();
-  questao: Questao = new QuestaoImpl();
-  categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
-  prova: Prova = new Prova();
-  questaoProva: QuestaoProva = new QuestaoProva();
+  usuario: Usuario = createUsuario();
+  questao: Questao = createQuestao();
+  categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
+  // prova: Prova = new Prova();
+  prova: Prova;
+  questaoProva: QuestaoProva = createQuestaoProva();
 
   idProva: number = 0;
   idUsuario: number = environment.id;
@@ -149,8 +149,8 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
     this.questaoProvaService.postQuestaoProva(this.questaoProva, this.idProvaEscolhida).subscribe((questaoProvaResp: QuestaoProva) => {
       this.questaoProva = questaoProvaResp;
       this.toastr.success('Questão adicionada a Prova com sucesso!');
-      this.questaoProva = new QuestaoProva();
-      this.questao = new QuestaoImpl();
+      this.questaoProva = createQuestaoProva();
+      this.questao = createQuestao();
     })
   }
 

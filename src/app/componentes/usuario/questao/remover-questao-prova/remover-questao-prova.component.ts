@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Alternativa } from 'src/app/model/Alternativa';
-import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { Alternativa, createAlternativa } from 'src/app/model/Alternativa';
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
-import { Questao } from 'src/app/model/Questao';
-import { QuestaoProva } from 'src/app/model/QuestaoProva';
+import { createQuestao, Questao } from 'src/app/model/Questao';
+import { createQuestaoProva, QuestaoProva } from 'src/app/model/QuestaoProva';
 import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -20,34 +20,15 @@ import { QuestaoService } from 'src/app/service/questao.service';
 })
 export class RemoverQuestaoProvaComponent implements OnInit {
 
-  questao: Questao = {
-    id: 0,
-    instituicao: '',
-    ano: undefined,
-    texto: '',
-    imagem: '',
-    alternativas: [],
-    resposta: new Alternativa,
-    categoria: new CategoriaQuestao,
-    criador: new Usuario
-  };;
-  prova: Prova = new Prova();
-  questaoProva: QuestaoProva = new QuestaoProva();
+  questao: Questao = createQuestao();
+  // prova: Prova = new Prova();
+  prova: Prova;
+  questaoProva: QuestaoProva = createQuestaoProva();
 
   idQuestao: number = 0;
   idProva: number = 0;
 
-  questaoSelecionada: Questao = {
-    id: 0,
-    instituicao: '',
-    ano: undefined,
-    texto: '',
-    imagem: '',
-    alternativas: [],
-    resposta: new Alternativa,
-    categoria: new CategoriaQuestao,
-    criador: new Usuario
-  };;
+  questaoSelecionada: Questao = createQuestao()
 
   listaTodasQuestoes: Questao[] = [];
   listaQuestoesSelecionadas: QuestaoProva[] = [];

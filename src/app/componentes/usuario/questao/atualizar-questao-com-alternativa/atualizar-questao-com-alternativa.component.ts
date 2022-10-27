@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Alternativa } from 'src/app/model/Alternativa';
-import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { Alternativa, createAlternativa } from 'src/app/model/Alternativa';
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
-import { Questao } from 'src/app/model/Questao';
-import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
-import { Usuario } from 'src/app/model/Usuario';
+import { createQuestao, Questao } from 'src/app/model/Questao';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.service';
@@ -38,15 +37,17 @@ export class AtualizarQuestaoComAlternativaComponent implements OnInit {
   // listaAlternativas: Alternativa[] = [];
 
 
-  usuario: Usuario = new Usuario();
-  questao: Questao = new QuestaoImpl();
-  prova: Prova = new Prova();
-  categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
+  usuario: Usuario = createUsuario();
+  questao: Questao = createQuestao();
+  // prova: Prova = new Prova();
+  prova: Prova;
+  categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
 
   idUsuario: number = environment.id;
   idQuestao: number = 0;
   idProva: number = 0;
   idCategoriaQuestao: number = 0;
+  // respostas: Alternativa = createAlternativa();
 
 
   listaCategoriaQuestao: CategoriaQuestao[] = [];
@@ -107,11 +108,13 @@ export class AtualizarQuestaoComAlternativaComponent implements OnInit {
     this.usuario.id = this.idUsuario;
     this.questao.criador = this.usuario
 
+    // this.questao.resposta = this.respostas;
+
     this.questaoService.putQuestao(this.questao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
       this.alertas.showAlertSuccess('Questão atualizada com sucesso!');
       // this.router.navigate(['/cadastrar-prova']);
-      this.questao = new QuestaoImpl();
+      this.questao = createQuestao();
       this.voltarPagina();
 
     })

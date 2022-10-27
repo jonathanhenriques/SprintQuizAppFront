@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -83,6 +84,7 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
     FormsModule,
     // HttpClientModule,
     // BrowserAnimationsModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot({
@@ -95,6 +97,7 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
 
     UsuarioRoutingModule,
     SharedModule,
+
   ],
   exports: [CadastrarQuestaoComProvaComponent],
 })

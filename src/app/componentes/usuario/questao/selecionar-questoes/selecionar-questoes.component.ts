@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Alternativa } from 'src/app/model/Alternativa';
-import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { Observable } from 'rxjs';
+import { Alternativa, createAlternativa } from 'src/app/model/Alternativa';
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
-import { Questao } from 'src/app/model/Questao';
-import { QuestaoProva } from 'src/app/model/QuestaoProva';
-import { Usuario } from 'src/app/model/Usuario';
+import { createQuestao, Questao } from 'src/app/model/Questao';
+import { createQuestaoProva, QuestaoProva } from 'src/app/model/QuestaoProva';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { ProvaServiceService } from 'src/app/service/prova-service.service';
@@ -23,36 +24,24 @@ export class SelecionarQuestoesComponent implements OnInit {
 
 
 
-  questao: Questao = {
-    id: 0,
-    instituicao: '',
-    ano: undefined,
-    texto: '',
-    imagem: '',
-    alternativas: [],
-    resposta: new Alternativa,
-    categoria: new CategoriaQuestao,
-    criador: new Usuario
-  };;
-  prova: Prova = new Prova();
-  questaoProva: QuestaoProva = new QuestaoProva();
+  questao: Questao = createQuestao()
+  // prova: Prova = new Prova();
+  prova: Prova;
+  questaoProva: QuestaoProva = createQuestaoProva();
 
   idQuestao: number = 0;
   idProva: number = 0;
 
-  questaoSelecionada: Questao = {
-    id: 0,
-    instituicao: '',
-    ano: undefined,
-    texto: '',
-    imagem: '',
-    alternativas: [],
-    resposta: new Alternativa,
-    categoria: new CategoriaQuestao,
-    criador: new Usuario
-  };;
+  questaoSelecionada: Questao = createQuestao()
 
   // listaIdQuestoesSelecionadas: number[] = [];
+  
+
+  // return this.questoesService.getAllQuestao().subscribe((listaQuestoesResp: Questao[]) => {
+  //   this.listaTodasQuestoes = listaQuestoesResp;
+  // })
+
+  listaTodasQuestoes1: Observable<Questao[]>;
   listaTodasQuestoes: Questao[] = [];
   listaQuestoesSelecionadas: Questao[] = [];
   listaQuestoesProva: QuestaoProva[] = [];
@@ -71,6 +60,8 @@ export class SelecionarQuestoesComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
     AuthService.verificaLogado(this.alertas, this.router);
+
+    this.listaTodasQuestoes1 = this.questoesService.getAllQuestao();
 
     this.idProva = this.activatedRoute.snapshot.params['id'];
 
@@ -139,9 +130,15 @@ export class SelecionarQuestoesComponent implements OnInit {
       this.questaoProva = questaoProvaResp;
       // alert('qid' + questaoProvaResp.questao.id);
       // alert('pid' + questaoProvaResp.prova.id);
-      this.questaoProva = new QuestaoProva();
-      this.prova = new Prova();
-    })
+      this.questaoProva = createQuestaoProva();
+      // this.prova = new Prova();
+    },
+    (error) => {
+      if(error.status === 400) {
+        console.log('não foi possível cadastrar a questão');
+      }
+    }
+    )
     this.voltarPagina();
   }
 
@@ -180,21 +177,21 @@ export class SelecionarQuestoesComponent implements OnInit {
 
 
 
-      let questaoProva: any = new QuestaoProva();
-      let categoriaQuestao: any = new CategoriaQuestao()
-      let usuario: any = new Usuario();
+      let questaoProva: QuestaoProva = createQuestaoProva()
+      let categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
+      let usuario: Usuario = createUsuario()
       let alternativas: Alternativa[] = [];
-      let alternativa: any = new Alternativa();
-      let respostaAlternativa: any = new Alternativa();
+      let alternativa: Alternativa = createAlternativa();
+      let respostaAlternativa: Alternativa = createAlternativa();
 
       //add questao
       questaoProva.questao = element;
 
       //add alternativas em questao
       for (let i = 0; i < element.alternativas!.length; i++) {
-        alternativa.id = element.alternativas![i];
+        alternativa = element.alternativas![i];
         alternativas.push(alternativa);
-        alternativa = new Alternativa();
+        alternativa = createAlternativa();
       }
 
       //add alternativas em questao
@@ -205,15 +202,15 @@ export class SelecionarQuestoesComponent implements OnInit {
       questaoProva.prova = this.prova;
 
       //add categoria
-      categoriaQuestao.id = element.categoria;
+      categoriaQuestao = element.categoria;
       questaoProva.questao.categoria = categoriaQuestao;
 
       //add usuario
-      usuario.id = element.criador;
+      usuario = element.criador;
       questaoProva.questao.criador = usuario;
 
       //add resposta
-      respostaAlternativa.id = element.resposta;
+      respostaAlternativa = element.resposta;
       questaoProva.questao.resposta = respostaAlternativa;
 
 
@@ -236,8 +233,14 @@ export class SelecionarQuestoesComponent implements OnInit {
       console.log('EXECUTOU');
       this.listaQuestoesProva = listaQuestaoProvaResp;
       this.listaQuestoesProva = [];
-      this.prova = new Prova();
-    })
+      // this.prova = new Prova();
+    },
+    (error) => {
+      if(error.status === 400){
+        console.log('não foi possível cadastrar lista de questaoProva')
+      }
+    }
+    )
     this.voltarPagina();
   }
 

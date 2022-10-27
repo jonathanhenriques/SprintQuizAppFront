@@ -41,20 +41,54 @@
 
                     <div class="form-group">
                         <label for="categoriaQuestao">Categoria da Questão</label>
-                        <select [(ngModel)]="questao.categoria"  class="form-control" name="categoriaQuestao"
-                            id="categoriaQuestao"  (change)="tipoDeCategoria($event)">
-                            <!-- <option disable>selecione...</option> -->
+                        <select [(ngModel)]="questao.categoria" class="form-control" name="categoriaQuestao"
+                            id="categoriaQuestao" (change)="tipoDeCategoria($event)">
+                            <option disable>selecione...</option>
                             <option *ngFor="let cat of listaCategoriaQuestao" value="{{ cat?.id }}">{{ cat.titulo }}
                             </option>
                         </select>
                     </div>
 
+
+
+                    <div class="form-group">
+                        <label for="tipousuario">Tipo de usuário</label>
+                        <select [(ngModel)]="usuario.tipo" class="form-control" name="tipousuario" id="tipousuario"
+                            (change)='tipoDeUsuario($event)'>
+                            <option>selecione um tipo de usuário...</option>
+                            <!-- <option>atual: {{usuario.tipo}}</option> -->
+                            <option value="adm">administrador</option>
+                            <option value="normal">normal</option>
+                            <option value="ong">Ong</option>
+                        </select>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <div *ngIf="questao.alternativas?.length" class="form-group">
                         <label for="respostaQuestao">Resposta da Questão</label>
-                        <select [(ngModel)]="questao.resposta"  class="form-control" name="respostaQuestao"
-                            id="respostaQuestao"  (change)="selecaoResposta($event)">
+                        <select [(ngModel)]="questao.resposta.id"  class="form-control" name="respostaQuestao"
+                            id="respostaQuestao" (change)="selecaoResposta($event)">
                             <!-- <option disable>selecione...</option> -->
-                            <option *ngFor="let resp of questao.alternativas" value="{{ resp.id }}">{{ resp.texto }}
+                            <option *ngFor="let resp of questao.alternativas"
+                             [selected]="resp.id == respostaQuestaoSelecionadaId"
+                                value="{{ resp.id }}">{{ resp.texto }}
                             </option>
                         </select>
                     </div>
@@ -68,8 +102,8 @@
                     <div class="form-group">
                         <label for="textoQuestao ">texto</label>
                         <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
-                        <textarea [(ngModel)]="questao.texto" class="form-control"
-                        name="textoQuestao" id="textoQuestao" rows="10" cols="70"></textarea>
+                        <textarea [(ngModel)]="questao.texto" class="form-control" name="textoQuestao" id="textoQuestao"
+                            rows="10" cols="70"></textarea>
                     </div>
 
 
@@ -82,6 +116,6 @@
                 </form>
             </div>
         </div>
-       
+
     </div>
 </div>

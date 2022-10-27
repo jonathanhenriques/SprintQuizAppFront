@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Alternativa } from 'src/app/model/Alternativa';
-import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { Alternativa, createAlternativa } from 'src/app/model/Alternativa';
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
-import { Questao } from 'src/app/model/Questao';
-import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
-import { Usuario } from 'src/app/model/Usuario';
+import { createQuestao, Questao } from 'src/app/model/Questao';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.service';
@@ -20,17 +19,20 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class AtualizarQuestaoComponent implements OnInit {
 
-  usuario: Usuario = new Usuario();
-  questao: Questao = new QuestaoImpl();
-  prova: Prova = new Prova();
-  categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
-  alternativaDaResposta: Alternativa = new Alternativa();
+  usuario: Usuario = createUsuario();
+  questao: Questao = createQuestao();
+  // prova: Prova = new Prova();
+  prova: Prova;
+  categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
+  alternativaDaResposta: Alternativa = createAlternativa();
+  respostaQuestaoSelecionada: Alternativa = createAlternativa();
+  respostaQuestaoSelecionadaId: number = 0;
 
   idUsuario: number = environment.id;
   idQuestao: number = 0;
   idProva: number = 0;
   idCategoriaQuestao: number = 0;
-  tipoCategoria: number = 0;
+  tipoCategoria: number;
   respostaSelecionada: number = 0;
 
 
@@ -54,14 +56,33 @@ export class AtualizarQuestaoComponent implements OnInit {
     window.scroll(0, 0);
     AuthService.verificaLogado(this.alertas, this.router);
 
-    this.idQuestao = this.activatedRoute.snapshot.params['id'];
+    this.idQuestao = +this.activatedRoute.snapshot.params['id'];
     this.findAllCategoriaQuestao();
     this.findQuestaoById();
+    console.log(this.questao.texto);
+    
+
+    
+  }
+
+  tu(){
+    this.respostaQuestaoSelecionadaId = this.questao.resposta.id;
+    console.log(this.respostaQuestaoSelecionadaId);
   }
 
   tipoDeCategoria(event: any) {
     this.tipoCategoria = event.target.value;
   }
+
+
+  tipoDeUsuario(event: any) {
+    // this.tipoUsuario = event.target.value;
+    
+  }
+
+
+
+
 
   selecaoResposta(event: any) {
     this.respostaSelecionada = event.target.value;
@@ -86,22 +107,25 @@ export class AtualizarQuestaoComponent implements OnInit {
   }
 
   findQuestaoById() {
-    this.questaoService.getByIdQuestao(this.idQuestao).subscribe((questaoResp: Questao) => {
+    this.questaoService.getByIdQuestao(this.idQuestao.valueOf()).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
+      this.tu();
     })
+
   }
 
   atualizarQuestao() {
 
     this.categoriaQuestao.id = this.tipoCategoria;
     this.questao.categoria = this.categoriaQuestao;
+    // this.questao.categoria.id = this.tipoCategoria.valueOf();
 
 
     this.usuario.id = this.idUsuario;
     this.questao.criador = this.usuario
 
-    this.alternativaDaResposta.id = this.respostaSelecionada;
-    this.questao.resposta = this.alternativaDaResposta;
+    this.respostaQuestaoSelecionada.id = this.respostaQuestaoSelecionadaId;
+    this.questao.resposta = this.respostaQuestaoSelecionada;
 
     console.log(JSON.stringify(this.questao, null, 2));
 
@@ -109,7 +133,7 @@ export class AtualizarQuestaoComponent implements OnInit {
       this.questao = questaoResp;
       this.alertas.showAlertSuccess('Questão atualizada com sucesso!');
       // this.router.navigate(['/cadastrar-prova']);
-      this.questao = new QuestaoImpl();
+      this.questao = createQuestao();
       this.voltarPagina();
 
     })

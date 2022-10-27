@@ -13,7 +13,8 @@ import { ProvaServiceService } from 'src/app/service/prova-service.service';
 export class DeletarProvaComponent implements OnInit {
 
 
-  prova: Prova = new Prova();
+  // prova: Prova = new Prova();
+  prova: Prova;
   idProva: number = 0;
 
   constructor(

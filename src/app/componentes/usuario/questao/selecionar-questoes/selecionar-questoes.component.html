@@ -7,7 +7,7 @@
     </div>
     <div class="row d-flex align-items-center">
         
-            <div class="card col-md-3 d-flex align-items-strech   m-1 my-1 p-0" *ngFor="let questao of listaTodasQuestoes" >
+            <div class="card col-md-3 d-flex align-items-strech   m-1 my-1 p-0" *ngFor="let questao of listaTodasQuestoes1 | async" >
                 <div class="card-body p-3">
                     <h5  class="card-title text-secondary m-0 ">Texto: {{questao.texto}}</h5>
                     <p class="card-text text-secondary mt-3 cardlimitecaracteres">Instituição: {{questao.instituicao}}</p>

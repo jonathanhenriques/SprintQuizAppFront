@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.service';
@@ -20,7 +20,7 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
   titulo: FormControl = new FormControl(null, [Validators.minLength(1),  Validators.maxLength(50)]);
   descricao: FormControl = new FormControl(null, [Validators.minLength(1),  Validators.maxLength(1000)]);
 
-  categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
+  categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
 
   listaCategoriaQuestao: CategoriaQuestao[] = [];
 
@@ -74,7 +74,7 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
       this.categoriaQuestao = categoriaQuestaoResp;
 
       this.findAllCategoriaQuestao();
-      this.categoriaQuestao = new CategoriaQuestao();
+      this.categoriaQuestao = createCategoriaQuestao();
       // this.alertas.showAlertSuccess('Nova Categoria cadastrada com sucesso!');
       this.toastr.success('Nova Categoria cadastrada com sucesso!');
 

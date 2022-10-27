@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Alternativa } from 'src/app/model/Alternativa';
-import { Questao } from 'src/app/model/Questao';
-import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
+import { Alternativa, createAlternativa } from 'src/app/model/Alternativa';
+import { createQuestao, Questao } from 'src/app/model/Questao';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AlternativaService } from 'src/app/service/alternativa.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -16,8 +15,8 @@ import { QuestaoService } from 'src/app/service/questao.service';
 export class AtualizarAlternativaComponent implements OnInit {
 
   
-  alternativa: Alternativa = new Alternativa();
-  questao: Questao = new QuestaoImpl();
+  alternativa: Alternativa = createAlternativa();
+  questao: Questao = createQuestao();
   idAlternativa: number = 0;
 
 
@@ -50,7 +49,7 @@ export class AtualizarAlternativaComponent implements OnInit {
     this.alternativaService.putAlternativa(this.alternativa).subscribe((alternativaResp: Alternativa) => {
       this.alternativa = alternativaResp;
       this.alertas.showAlertSuccess('Alternativa atualizada com sucesso!');
-      this.alternativa = new Alternativa();
+      this.alternativa = createAlternativa();
       this.voltarPagina();
     })
   }

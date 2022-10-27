@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoriaProva } from 'src/app/model/CategoriaProva';
+import { CategoriaProva, createCategoriaProva } from 'src/app/model/CategoriaProva';
 import { Prova } from 'src/app/model/Prova';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -16,8 +16,9 @@ export class AtualizarProvaComponent implements OnInit {
 
   pegouId: number = 0;
 
-  prova: Prova = new Prova();
-  categoriaProva: CategoriaProva = new CategoriaProva();
+  // prova: Prova = new Prova();
+  prova: Prova
+  categoriaProva: CategoriaProva = createCategoriaProva();
 
   idProva: number = 0;
   idCategoriaProva: number = 0;
@@ -89,7 +90,7 @@ export class AtualizarProvaComponent implements OnInit {
       this.prova = provaResp;
       this.alertas.showAlertSuccess('Prova atualizada com sucesso!');
       // this.router.navigate(['/cadastrar-prova']);
-      this.prova = new Prova();
+      // this.prova = new Prova();
       this.voltarPagina();
 
     })

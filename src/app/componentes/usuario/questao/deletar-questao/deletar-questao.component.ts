@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Alternativa } from 'src/app/model/Alternativa';
 import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
-import { Questao } from 'src/app/model/Questao';
+import { createQuestao, Questao } from 'src/app/model/Questao';
 import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -14,17 +14,7 @@ import { QuestaoService } from 'src/app/service/questao.service';
   styleUrls: ['./deletar-questao.component.scss']
 })
 export class DeletarQuestaoComponent implements OnInit {
-  questao: Questao ={
-    id: 0,
-    instituicao: '',
-    ano: undefined,
-    texto: '',
-    imagem: '',
-    alternativas: [],
-    resposta: new Alternativa,
-    categoria: new CategoriaQuestao,
-    criador: new Usuario
-  };;
+  questao: Questao = createQuestao();
   idQuestao: number = 0;
 
   constructor(

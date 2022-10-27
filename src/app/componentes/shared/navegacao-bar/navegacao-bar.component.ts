@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
-import { Usuario } from '../../../model/Usuario';
+import { createUsuario, Usuario } from '../../../model/Usuario';
 import { UsuarioLogin } from '../../../model/UsuarioLogin';
 import { AlertasService } from '../../../service/alertas.service';
 
@@ -15,7 +15,7 @@ export class NavegacaoBarComponent implements OnInit {
   @Output() men!: HTMLElement;
 
   usuarioLogan: UsuarioLogin = new UsuarioLogin();
-  usuario: Usuario = new Usuario();
+  usuario: Usuario = createUsuario();
   idUsuario = environment.id;
   foto = environment.foto;
   nome = environment.nome;

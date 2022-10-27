@@ -9,11 +9,11 @@ import { AuthService } from '../../../service/auth.service';
 import { ProvaServiceService } from '../../../service/prova-service.service';
 import { QuestaoService } from '../../../service/questao.service';
 import { Prova } from '../../../model/Prova';
-import { Questao } from '../../../model/Questao';
-import { Usuario } from '../../../model/Usuario';
-import { Alternativa } from 'src/app/model/Alternativa';
+import { createQuestao, Questao } from '../../../model/Questao';
+import { createUsuario, Usuario } from '../../../model/Usuario';
+import { Alternativa, createAlternativa } from 'src/app/model/Alternativa';
 import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
-import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
+// import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 
 @Component({
   selector: 'app-tela',
@@ -23,17 +23,17 @@ import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
 export class QuizzComponent implements OnInit {
 
 
-  selectedMovie: Alternativa = new Alternativa();
+  selectedMovie: Alternativa = createAlternativa();
   onSelect(alternativa: Alternativa): void {
     this.selectedMovie = alternativa;
   }
 
   resultado: boolean = false;
 
-  usuario: Usuario = new Usuario();
+  usuario: Usuario = createUsuario();
   
-  questao: Questao = new QuestaoImpl();
-  @Output() prova: Prova = new Prova();
+  questao: Questao = createQuestao();
+  @Output() prova: Prova;
 
   @Output() enviarDados = new EventEmitter();
   // contador: number = 0;
@@ -131,8 +131,8 @@ export class QuizzComponent implements OnInit {
 
   }
 
-  pegaRespostaQuestaoSelecionada(id: number) {
-    this.respostaUsuario = id;
+  pegaRespostaQuestaoSelecionada(id: number | undefined) {
+    id != undefined ? this.respostaUsuario = id : this.respostaUsuario = 0;
   }
 
 
@@ -169,9 +169,12 @@ export class QuizzComponent implements OnInit {
 
 
 
-  registraResposta(alternativaSelecionada: number) {
+  registraResposta(alternativaSelecionada: number | undefined) {
     console.log(alternativaSelecionada);
-    this.listaRespSelecionadasUsuario[this.questaoAtual] = alternativaSelecionada
+    if(alternativaSelecionada){
+      this.listaRespSelecionadasUsuario[this.questaoAtual] = alternativaSelecionada
+    }
+    alternativaSelecionada != undefined ? this.listaRespSelecionadasUsuario[this.questaoAtual] = alternativaSelecionada : this.listaRespSelecionadasUsuario[this.questaoAtual] = 0
   }
 
   proximaQuestao() {

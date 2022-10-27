@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/model/Usuario';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/service/auth.service';
 export class AtualizarUsuarioComponent implements OnInit {
 
 
-  usuario: Usuario = new Usuario();
+  usuario: Usuario = createUsuario();
   senhaInserida: string = '';
   // tipoUsuario: string;
   tipoCampoSenha: string = 'password';

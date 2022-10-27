@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { CategoriaProva } from 'src/app/model/CategoriaProva';
+import { CategoriaProva, createCategoriaProva } from 'src/app/model/CategoriaProva';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
@@ -15,7 +15,7 @@ import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
 export class CadastrarCategoriaProvaComponent implements OnInit {
 
 
-  categoriaProva: CategoriaProva = new CategoriaProva();
+  categoriaProva: CategoriaProva = createCategoriaProva();
   listaCategoriaProva: CategoriaProva[] = [];
 
   //variaveis tabela
@@ -53,7 +53,7 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
       this.categoriaProva = categoriaProvaResp;
 
       this.findAllCategoriaProva();
-      this.categoriaProva = new CategoriaProva();
+      this.categoriaProva = createCategoriaProva();
       this.alertas.showAlertSuccess('Nova Categoria cadastrada com sucesso!');
 
     })

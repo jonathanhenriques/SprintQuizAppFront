@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Prova } from 'src/app/model/Prova';
-import { Usuario } from 'src/app/model/Usuario';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { ProvaServiceService } from 'src/app/service/prova-service.service';
@@ -19,8 +19,9 @@ export class MuralProvasComponent implements OnInit {
   idProva: number = 0;
   name: string = '';
 
-  usuario: Usuario = new Usuario();
-  prova: Prova = new Prova();
+  usuario: Usuario = createUsuario();
+  // prova: Prova = new Prova();
+  // prova: Prova;
 
   idUsuario: number = environment.id;
 
@@ -35,35 +36,35 @@ export class MuralProvasComponent implements OnInit {
     private authService: AuthService
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
     AuthService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
     this.findByIdUsuario();
     // this.listaProvas = this.usuario.provas;
     this.findProvasByCriadorId();
-    
-    
+
+
   }
 
-  pegaIdProvaParaModal(id: any){
+  pegaIdProvaParaModal(id: any) {
     this.idProvaParaModal = id;
   }
 
-  findByIdUsuario(){
+  findByIdUsuario() {
     this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
-      
+
     })
   }
 
-  quiz(id: number){
+  quiz(id: number) {
     // this.router.navigate(['nav/quiz'], id)
-    this.router.navigate(['nav/mural-provas/quiz', id ]);
+    this.router.navigate(['nav/mural-provas/quiz', id]);
   }
 
-  findProvasByCriadorId(){
-    this.provaService.getProvaByCriadorId(this.idUsuario).subscribe((listaProvasResp: Prova[]) =>{
+  findProvasByCriadorId() {
+    this.provaService.getProvaByCriadorId(this.idUsuario).subscribe((listaProvasResp: Prova[]) => {
       this.listaProvas = listaProvasResp;
       // listaProvasResp.forEach(e => {
       //   console.log(e.nome);
@@ -80,9 +81,9 @@ export class MuralProvasComponent implements OnInit {
   //   })
   // }
 
-  
 
-  voltarPagina(){
+
+  voltarPagina() {
     window.history.back();
   }
 

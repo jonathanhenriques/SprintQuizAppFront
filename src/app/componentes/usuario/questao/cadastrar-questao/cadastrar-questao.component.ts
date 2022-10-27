@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Alternativa } from 'src/app/model/Alternativa';
-import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
-import { Questao } from 'src/app/model/Questao';
-import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
-import { Usuario } from 'src/app/model/Usuario';
+import { Alternativa, createAlternativa } from 'src/app/model/Alternativa';
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { createQuestao, Questao } from 'src/app/model/Questao';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AlternativaService } from 'src/app/service/alternativa.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -20,18 +19,20 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class CadastrarQuestaoComponent implements OnInit {
 
-  usuario: Usuario = new Usuario();
-  questao: Questao = new QuestaoImpl();
-  categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
-  alternativa: Alternativa = new Alternativa();
-  respostaDaQuestao: Alternativa = new Alternativa();
-  retorno: Alternativa = new Alternativa();
-  alternativaDaResposta: Alternativa = new Alternativa();
+  usuario: Usuario = createUsuario();
+  questao: Questao = createQuestao();
+  categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
+  alternativa: Alternativa = createAlternativa();
+  respostaDaQuestao: Alternativa = createAlternativa();
+  retorno: Alternativa = createAlternativa();
+  alternativaDaResposta: Alternativa = createAlternativa();
+  alter: number = 0;
 
   idProva: number = 0;
   idUsuario: number = environment.id;
   idCategoriaQuestao: number = 0;
   idRespostaDaQuestao: number = 0;
+  dificuldadeQuestao: number = 0;
 
   listaCategoriaQuestao: CategoriaQuestao[] = [];
 
@@ -75,9 +76,15 @@ export class CadastrarQuestaoComponent implements OnInit {
     this.idCategoriaQuestao = event.target.value;
   }
 
+  pegaDificuldade(event: any) {
+    this.dificuldadeQuestao = event.target.value;
+  }
+
   findAllCategoriaQuestao() {
     this.categoriaQuestaoService.getAllCategoriaQuestao().subscribe((categoriaQuestaoResp: CategoriaQuestao[]) => {
       this.listaCategoriaQuestao = categoriaQuestaoResp;
+      console.log('buscou todas categoriaQuestao')
+      console.log(this.listaCategoriaQuestao)
     })
   }
 
@@ -115,7 +122,7 @@ export class CadastrarQuestaoComponent implements OnInit {
   }
 
   getAlternativaByIdRetorno(id: number): Alternativa {
-    let ret: Alternativa = new Alternativa();
+    let ret: Alternativa = createAlternativa();
     this.alternativaService.getAlternativaById(id).subscribe((alternativa: Alternativa) => {
       this.retorno = alternativa;
     }
@@ -164,11 +171,28 @@ export class CadastrarQuestaoComponent implements OnInit {
 
   salvarQuestao() {
 
+  //   let q: Questao =  {
+  //     id: null,
+  //     instituicao: '',
+  //     ano: null,
+  //     texto: '',
+  //     imagem: '',
+  //     dificuldade: null,
+  //     alternativas: null,
+  //     resposta: null,
+  //     categoriaQuestao: null,
+  //     criador: null
+  //  }
 
+  console.log('idCategQues ' + this.idCategoriaQuestao)
     this.categoriaQuestao.id = this.idCategoriaQuestao;
+    console.log('categoriaQuestao.id ' + this.categoriaQuestao.id)
     this.questao.categoria = this.categoriaQuestao;
+    // console.log('q.c.id ' + this.questao.categoriaQuestao.id)
 
 
+    console.log('idUsuario ')
+    console.log('idUsuario ' + this.idUsuario)
     this.usuario.id = this.idUsuario;
     this.questao.criador = this.usuario
 
@@ -177,19 +201,19 @@ export class CadastrarQuestaoComponent implements OnInit {
 
     // this.questao.alternativas = [];
     // const lis: Alternativa = this.questao.resposta;
-    let {resposta} = this.questao;
+    let { resposta } = this.questao;
     console.log(JSON.stringify(this.questao.resposta, null, 2));
     console.log(JSON.stringify(resposta, null, 2));
-    this.questao.alternativas.push(resposta);
+    // this.questao.alternativas.push(resposta);
 
     // this.alternativaDaResposta.id = this.questao.resposta.id;
     // this.questao.alternativas.push(this.alternativaDaResposta);
 
-
+    console.log(JSON.stringify(this.questao, null, 2));
 
     this.postQuestao();
 
-    console.log(JSON.stringify(this.questao, null, 2));
+    // console.log(JSON.stringify(this.questao, null, 2));
 
 
   }
@@ -240,6 +264,12 @@ export class CadastrarQuestaoComponent implements OnInit {
       // this.adicionarAlternativaNaQuestaoCriada();
       // this.questao = new QuestaoImpl();
 
+    },(error) => {
+      if(error.status == 400){
+        console.log('Não foi possível cadastrar questao, revise');
+      } else if(error.status == 500){
+        console.log('erro no console back');
+      }
     })
 
     // this.cadastrarAlternativa();

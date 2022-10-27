@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Alternativa } from 'src/app/model/Alternativa';
-import { CategoriaQuestao } from 'src/app/model/CategoriaQuestao';
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/model/CategoriaQuestao';
 import { Prova } from 'src/app/model/Prova';
 import { Questao } from 'src/app/model/Questao';
-import { Usuario } from 'src/app/model/Usuario';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaQuestaoService } from 'src/app/service/categoria-questao.service';
@@ -20,26 +20,17 @@ import { environment } from 'src/environments/environment.prod';
 export class MuralQuestoesComponent implements OnInit {
 
 
-  usuario: Usuario = new Usuario();
-  questao: Questao = {
-    id: 0,
-    instituicao: '',
-    ano: undefined,
-    texto: '',
-    imagem: '',
-    alternativas: [],
-    resposta: new Alternativa,
-    categoria: new CategoriaQuestao,
-    criador: new Usuario
-  };
-  prova: Prova = new Prova();
-  categoriaQuestao: CategoriaQuestao = new CategoriaQuestao();
+  usuario: Usuario = createUsuario();
+  questao: Questao;
+  // prova: Prova = new Prova();
+  // prova: Prova;
+  categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
 
 
   idUsuario: number = environment.id;
   idQuestao: number = 0;
   idCategoriaQuestao: number = 0;
-  criadorQuestao: Usuario = new Usuario();
+  criadorQuestao: Usuario = createUsuario();
   qtdAlternativas: number = 0;
 
   listaQuestoes: Questao[] = [];

@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Alternativa } from 'src/app/model/Alternativa';
-import { Questao } from 'src/app/model/Questao';
-import { QuestaoImpl } from 'src/app/model/QuestaoImpl';
+import { Alternativa, createAlternativa } from 'src/app/model/Alternativa';
+import { createQuestao, Questao } from 'src/app/model/Questao';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AlternativaService } from 'src/app/service/alternativa.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -19,8 +18,8 @@ import { QuestaoService } from 'src/app/service/questao.service';
 export class RemoverAlternativaDaQuestaoComponent implements OnInit {
 
 
-  alternativa: Alternativa = new Alternativa();
-  questao: Questao = new QuestaoImpl();
+  alternativa: Alternativa = createAlternativa();
+  questao: Questao = createQuestao();
   idQuestao: number = 0;
 
   listaAlternativas: Alternativa[] = [];
@@ -39,15 +38,14 @@ export class RemoverAlternativaDaQuestaoComponent implements OnInit {
     window.scroll(0, 0);
     AuthService.verificaLogado(this.alertas, this.router);
 
-    this.idQuestao = this.activatedRouter.snapshot.params['id'];
+    this.idQuestao = +this.activatedRouter.snapshot.params['id'];
     this.getQuestaoById();
-    // this. criaListaAlternativas();
 
   }
 
 
   getQuestaoById() {
-    this.questaoService.getByIdQuestao(4).subscribe((questaoResp: Questao) => {
+    this.questaoService.getByIdQuestao(this.idQuestao).subscribe((questaoResp: Questao) => {
       this.questao = questaoResp;
       console.log('achou');
       console.log(this.questao.id);
@@ -55,23 +53,24 @@ export class RemoverAlternativaDaQuestaoComponent implements OnInit {
     })
   }
 
-  // criaListaAlternativas(){
-  //   if(this.questao.alternativas?.length > 0){
-  //     for(let i = 0; i < this.questao.alternativas?.length; i++) {
-  //       this.listaAlternativas.push(this.questao.alternativas[i]);
-  //       // console.log('posicao | ' + i);
-  //     }
-  //   }
-  // }
 
   removerAlternativa(event: number) {
 
-    this.alternativaService.deleteAlternativaById(event).subscribe(() => {
-      this.toastr.success('Alternativa deletada com sucesso!');
-      this.questao = new QuestaoImpl();
-
+    console.log('ewvent' + event);
+    console.log('ques' + this.questao.resposta.id);
+    if (this.questao.resposta.id == event) {
+      this.alertas.showAlertInfo('Você não pode excluir está alternativa pois é a resposta da questão! Mude a resposta e tente novamente.');
       this.voltarPagina();
-    })
+    } else {
+      this.alternativaService.deleteAlternativaById(event).subscribe(() => {
+        this.toastr.success('Alternativa deletada com sucesso!');
+        this.questao = createQuestao();
+
+        this.voltarPagina();
+      })
+    }
+
+
   }
 
   voltarPagina() {

@@ -23,12 +23,11 @@ import { MaterialsImportsModule } from './componentes/materials-imports/material
 import { PublicoModule } from './componentes/publico/publico.module';
 import { SharedModule } from './componentes/shared/shared.module';
 import { appEffects, appReducer } from './store/app-state';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
-    declarations: [AppComponent,
-      //  NavComponent
-      ],
+    declarations: [AppComponent,],
   imports: [
     // CommonModule,
     BrowserModule,
@@ -46,6 +45,7 @@ import { appEffects, appReducer } from './store/app-state';
       preventDuplicates: true,
     }),
     RouterModule,
+    FlexLayoutModule,
 
     UsuarioModule,
     SharedModule,

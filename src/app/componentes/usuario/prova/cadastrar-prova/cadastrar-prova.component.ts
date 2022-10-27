@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CategoriaProva } from 'src/app/model/CategoriaProva';
+import { CategoriaProva, createCategoriaProva } from 'src/app/model/CategoriaProva';
 import { Prova } from 'src/app/model/Prova';
-import { Usuario } from 'src/app/model/Usuario';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaProvaService } from 'src/app/service/categoria-prova.service';
@@ -18,14 +18,15 @@ import { environment } from 'src/environments/environment.prod';
 export class CadastrarProvaComponent implements OnInit {
 
 
-  usuario: Usuario = new Usuario();
-  prova: Prova = new Prova();
-  categoriaProva: CategoriaProva = new CategoriaProva();
+  usuario: Usuario = createUsuario();
+  // prova: Prova = new Prova();
+  prova: Prova;
+  categoriaProva: CategoriaProva = createCategoriaProva();
 
   idUsuario: number = environment.id;
   idCategoriaProva: number = 0;
 
-  idProvaCriada: number = 0;
+  idProvaCriada: number | undefined = 0;
 
   listaCategoriaProva: CategoriaProva[] = [];
 
@@ -100,7 +101,7 @@ export class CadastrarProvaComponent implements OnInit {
 
       this.toastr.success('Prova cadastrada com sucesso!');
 
-      this.prova = new Prova();
+      // this.prova = new Prova();
     })
 
 

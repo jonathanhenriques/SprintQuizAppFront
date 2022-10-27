@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Prova } from 'src/app/model/Prova';
-import { Usuario } from 'src/app/model/Usuario';
+import { createUsuario, Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { ProvaServiceService } from 'src/app/service/prova-service.service';
@@ -19,8 +19,9 @@ export class MuralSprintsComponent implements OnInit {
   idProva: number = 0;
   name: string = '';
 
-  usuario: Usuario = new Usuario();
-  prova: Prova = new Prova();
+  usuario: Usuario = createUsuario();
+  // prova: Prova = new Prova();
+  prova: Prova;
 
   idUsuario: number = environment.id;
 

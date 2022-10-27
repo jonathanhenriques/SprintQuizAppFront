@@ -6,7 +6,7 @@
                 <div class="card-head">
                     <h1 class="card-title m-3 text-center">Questão</h1>
                 </div>
-                <form class="card-body">
+                <form ngNativeValidate class="card-body" #form="ngForm" (ngSubmit)="salvarQuestao()">
                     <div class="form-group">
                         <label for="instituicaoQuestao">instituição</label>
                         <input [(ngModel)]="questao.instituicao" class="form-control" type="text"
@@ -32,13 +32,27 @@
 
                     <div class="form-group">
                         <label for="categoriaQuestao">Categoria da Questão</label>
-                        <select class="form-control" name="categoriaQuestao" id="categoriaQuestao"
+                        <select class="form-control" name="categoriaQuestao" id="categoriaQuestao" required="required"
                             [(ngModel)]="idCategoriaQuestao" (change)="findCategoriaQuestaoById()">
                             <option disable>selecione...</option>
                             <option *ngFor="let cat of listaCategoriaQuestao" value="{{ cat.id }}">{{ cat.titulo }}
                             </option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="dificuldadeQuestao">Dificuldade da Questao</label>
+                        
+                        <select [(ngModel)]="questao.dificuldade" 
+                         class="form-control" name="dificuldadeQuestao" id="dificuldadeQuestao">
+                        <option disabled>seleciona...</option>
+                        <option value="0">Fácil</option>
+                        <option value="1">Intermediário</option>
+                        <option value="2">Difícil</option>
+                        </select>
+                        <small class="text-muted">*Opcional</small>
+                    </div>
+                    
 
 
                     <div class="form-group">
@@ -49,7 +63,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="respostaQuestao ">IGNORARresposta da questão</label>
+                        <label for="respostaQuestao ">resposta da questão</label>
                         <!-- <input class="form-control" type="text" name="descricaoProva" id="descricaoProva"> -->
                         <textarea [(ngModel)]="alternativa.texto" class="form-control" name="respostaQuestao"
                             id="respostaQuestao" rows="10" cols="70" required="required"></textarea>
@@ -61,9 +75,9 @@
 
 
                     <div class="btn-group">
-                        <button class="btn btn-success" (click)="salvarQuestao()">Criar</button>
+                        <button class="btn btn-success" >Criar</button>
                         <button class="btn btn-danger" type="reset">Limpar</button>
-                        <button class="btn btn-success" (click)="buscaAlternativaParaQuestao()">finalizar</button>
+                        <button class="btn btn-success" (click)="voltarPagina()">finalizar</button>
                     </div>
                 </form>
 
