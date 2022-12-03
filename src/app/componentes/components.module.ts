@@ -21,13 +21,11 @@ import { AlertaComponent } from "./alerta/alerta.component";
 import { GraficosModule } from "./graficos/graficos.module";
 import { MaterialModule } from "./material.module";
 import { MensagemComponent } from "./mensagem/mensagem.component";
-import { SharedRoutingModule } from "./shared-routing.module";
 
+import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { CommonModule } from "@angular/common";
 import { NavComponent } from "./nav/nav.component";
-import { UsuarioModule } from "../usuario/usuario.module";
 import { NavegacaoBarComponent } from "./navegacao-bar/navegacao-bar.component";
 
 
@@ -66,8 +64,7 @@ import { NavegacaoBarComponent } from "./navegacao-bar/navegacao-bar.component";
     ),
     RouterModule,
     
-    SharedRoutingModule,
-
+//******materialModule
     MatToolbarModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -85,7 +82,7 @@ import { NavegacaoBarComponent } from "./navegacao-bar/navegacao-bar.component";
     MatRadioModule,
     MatListModule,
     MatCardModule,
-
+//******materialModule
 
     GraficosModule,
     NgxChartsModule,
@@ -100,7 +97,7 @@ import { NavegacaoBarComponent } from "./navegacao-bar/navegacao-bar.component";
     
 
     
-
+//******materialModule
     MatToolbarModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -118,6 +115,7 @@ import { NavegacaoBarComponent } from "./navegacao-bar/navegacao-bar.component";
     MatRadioModule,
     MatListModule,
     MatCardModule,
+    //******materialModule
   ]
 })
-export class SharedModule { }
+export class ComponentsModule { }

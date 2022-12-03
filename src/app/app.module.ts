@@ -11,25 +11,26 @@ import { TokenInterceptorService } from './service/tokeninterceptorService.servi
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { UsuarioModule } from './componentes/usuario/usuario.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
+import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { environment } from '../environments/environment';
-import { MaterialsImportsModule } from './componentes/materials-imports/materials-imports.module';
-import { PublicoModule } from './componentes/publico/publico.module';
-import { SharedModule } from './componentes/shared/shared.module';
+import { MaterialsImportsModule } from './materials-imports/materials-imports.module';
+import { PublicoModule } from './publico/publico.module';
+import { SharedModule } from './shared/components.module';
 import { appEffects, appReducer } from './store/app-state';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
-    declarations: [AppComponent,],
+  declarations: [AppComponent,],
   imports: [
-    // CommonModule,
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
@@ -47,13 +48,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RouterModule,
     FlexLayoutModule,
 
-    UsuarioModule,
-    SharedModule,
-    PublicoModule,
-    MaterialsImportsModule,
+    // UsuarioModule,
+    // SharedModule,
+    // PublicoModule,
+    // MaterialsImportsModule,
 
 
-    
+
 
 
 
@@ -68,7 +69,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     EffectsModule.forRoot(appEffects),
     //**************
   ],
- 
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -78,4 +79,4 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

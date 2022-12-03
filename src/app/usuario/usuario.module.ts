@@ -8,7 +8,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 
 import { TesteComponent } from 'src/app/teste/teste.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../shared/components.module';
 import { AtualizarAlternativaComponent } from './alternativa/atualizar-alternativa/atualizar-alternativa.component';
 import { CadastrarAlternativaComponent } from './alternativa/cadastrar-alternativa/cadastrar-alternativa.component';
 import { DeletarAlternativaComponent } from './alternativa/deletar-alternativa/deletar-alternativa.component';
@@ -101,4 +101,4 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
   ],
   exports: [CadastrarQuestaoComProvaComponent],
 })
-export class UsuarioModule {}
+export class UsuarioModule { }

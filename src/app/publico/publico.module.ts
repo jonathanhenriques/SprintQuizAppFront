@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../shared/components.module';
 import { UsuarioModule } from '../usuario/usuario.module';
 import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
 import { BoasVindasComponent } from './boas-vindas/boas-vindas.component';
@@ -40,7 +40,7 @@ import { ResultadosComponent } from './resultados/resultados.component';
 
     SharedModule,
     UsuarioModule,
-  MaterialModule,
+    MaterialModule,
   ],
   exports: [
   ]
