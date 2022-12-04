@@ -23,7 +23,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { environment } from '../environments/environment';
 import { MaterialsImportsModule } from './materials-imports/materials-imports.module';
 import { PublicoModule } from './publico/publico.module';
-import { SharedModule } from './shared/components.module';
+import { ComponentsModule } from './componentes/components.module';
+// import { SharedModule } from './shared/components.module';
 import { appEffects, appReducer } from './store/app-state';
 
 
@@ -51,7 +52,8 @@ import { appEffects, appReducer } from './store/app-state';
     // UsuarioModule,
     // SharedModule,
     // PublicoModule,
-    // MaterialsImportsModule,
+    ComponentsModule,
+    MaterialsImportsModule,
 
 
 

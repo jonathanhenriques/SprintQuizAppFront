@@ -1,5 +1,7 @@
 export const environment = {
   production: true,
+  version: '0.0.2',
+  modo: 'prod',
   id: 0,
   nome: '',
   tipo: '',

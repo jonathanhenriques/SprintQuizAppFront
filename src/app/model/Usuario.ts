@@ -7,7 +7,7 @@ export interface Usuario {
 
    id: number;
    nome: string;
-   usuario: string;
+   email: string;
    senha: string;
    foto: string;
    tipo: string;
@@ -20,7 +20,7 @@ export function createUsuario(): Usuario {
   return {
     id: null,
     nome: '',
-    usuario: '',
+    email: '',
     senha: '',
     foto: '',
     tipo: '',

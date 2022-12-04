@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertasService } from '../../../service/alertas.service';
+import { AlertasService } from '../../service/alertas.service';
 
 @Component({
   selector: 'app-boas-vindas',

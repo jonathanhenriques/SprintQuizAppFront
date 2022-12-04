@@ -8,7 +8,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 
 import { TesteComponent } from 'src/app/teste/teste.component';
-import { SharedModule } from '../shared/components.module';
+import { MaterialsImportsModule } from '../materials-imports/materials-imports.module';
 import { AtualizarAlternativaComponent } from './alternativa/atualizar-alternativa/atualizar-alternativa.component';
 import { CadastrarAlternativaComponent } from './alternativa/cadastrar-alternativa/cadastrar-alternativa.component';
 import { DeletarAlternativaComponent } from './alternativa/deletar-alternativa/deletar-alternativa.component';
@@ -22,6 +22,7 @@ import { DeletarCategoriaQuestaoComponent } from './categoria-questao/deletar-ca
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DeletarUsuarioComponent } from './deletar-usuario/deletar-usuario.component';
 import { NavComponent } from './nav/nav.component';
+import { ComponentsModule } from '../componentes/components.module';
 import { AtualizarProvaComponent } from './prova/atualizar-prova/atualizar-prova.component';
 import { CadastrarProvaComponent } from './prova/cadastrar-prova/cadastrar-prova.component';
 import { DeletarProvaComponent } from './prova/deletar-prova/deletar-prova.component';
@@ -96,7 +97,8 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
     // RouterModule,
 
     UsuarioRoutingModule,
-    SharedModule,
+    MaterialsImportsModule,
+    ComponentsModule,
 
   ],
   exports: [CadastrarQuestaoComProvaComponent],

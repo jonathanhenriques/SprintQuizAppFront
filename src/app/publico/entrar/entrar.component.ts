@@ -37,7 +37,7 @@ export class EntrarComponent implements OnInit {
       {
         // usuario: ['', [Validators.required, Validators.email],],
         // senha: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(14)],]
-        usuario: ['',[Validators.required]],
+        email: ['',[Validators.required]],
         senha: ['', [Validators.required, Validators.minLength(8)]],
         
       }

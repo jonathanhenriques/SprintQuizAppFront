@@ -53,7 +53,7 @@ export class AtualizarUsuarioComponent implements OnInit {
         this.usuario.foto = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png';
 
       alert(this.usuario.nome);
-      alert(this.usuario.usuario);
+      alert(this.usuario.email);
       alert(this.usuario.senha);
       alert(this.usuario.foto);
       alert(this.usuario.tipo);

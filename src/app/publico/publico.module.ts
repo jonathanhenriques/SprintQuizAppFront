@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../shared/material.module';
-import { SharedModule } from '../shared/components.module';
+import { MaterialsImportsModule } from '../materials-imports/materials-imports.module';
+import { ComponentsModule } from '../componentes/components.module';
 import { UsuarioModule } from '../usuario/usuario.module';
 import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
-import { BoasVindasComponent } from './boas-vindas/boas-vindas.component';
+import { BoasVindasComponent } from '../publico/boas-vindas/boas-vindas.component';
 import { CadastrarUsuarioComponent } from './cadastrar-usuario/cadastrar-usuario.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { MuralProvasComponent } from './mural-provas/mural-provas.component';
@@ -38,9 +38,10 @@ import { ResultadosComponent } from './resultados/resultados.component';
     FormsModule,
     ReactiveFormsModule,
 
-    SharedModule,
+    // SharedModule,
+    ComponentsModule,
     UsuarioModule,
-    MaterialModule,
+    MaterialsImportsModule,
   ],
   exports: [
   ]

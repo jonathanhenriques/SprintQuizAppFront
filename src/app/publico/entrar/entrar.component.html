@@ -12,13 +12,13 @@
             <input
               class="form-control"
               type="text"
-              name="usuario"
-              id="usuario"
+              name="email"
+              id="email"
               placeholder="email..."
-              formControlName="usuario"
+              formControlName="email"
               required
             />
-            <app-mensagem *ngIf="loginForm.get('usuario')?.errors && loginForm.get('usuario')?.touched"
+            <app-mensagem *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched"
               mensagem="email obrigatório"
             ></app-mensagem>
           </div>

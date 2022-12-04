@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavComponent } from '../shared/nav/nav.component';
-import { NavegacaoBarComponent } from '../shared/navegacao-bar/navegacao-bar.component';
+import { NavComponent } from '../componentes/nav/nav.component';
+import { NavegacaoBarComponent } from '../componentes/navegacao-bar/navegacao-bar.component';
 import { AtualizarAlternativaComponent } from './alternativa/atualizar-alternativa/atualizar-alternativa.component';
 import { CadastrarAlternativaComponent } from './alternativa/cadastrar-alternativa/cadastrar-alternativa.component';
 import { DeletarAlternativaComponent } from './alternativa/deletar-alternativa/deletar-alternativa.component';

@@ -5,7 +5,7 @@ const routes: Routes = [
     
   // { path: '', component: NavComponent, children:[
   // { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: '', loadChildren: () => import('./componentes/usuario/usuario.module').then((module) => module.UsuarioModule) },
+  { path: '', loadChildren: () => import('./usuario/usuario.module').then((module) => module.UsuarioModule) },
   // { path: '', redirectTo: '', pathMatch: 'full' },
 
   // children: [
