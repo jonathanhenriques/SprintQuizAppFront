@@ -11,8 +11,6 @@ import { TokenInterceptorService } from './service/tokeninterceptorService.servi
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { UsuarioModule } from './usuario/usuario.module';
-
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
@@ -21,10 +19,11 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { environment } from '../environments/environment';
-import { MaterialsImportsModule } from './materials-imports/materials-imports.module';
-import { PublicoModule } from './publico/publico.module';
-import { ComponentsModule } from './componentes/components.module';
-// import { SharedModule } from './shared/components.module';
+import { BoasVindasModule } from './boas-vindas/boas-vindas.module';
+import { EntrarModule } from './entrar/entrar.module';
+import { NavegacaoBarModule } from './navegacao-bar/navegacao-bar.module';
+import { SharedModule } from './shared/shared.module';
+import { SidebarModule } from './sidebar/sidebar.module';
 import { appEffects, appReducer } from './store/app-state';
 
 
@@ -48,12 +47,11 @@ import { appEffects, appReducer } from './store/app-state';
     }),
     RouterModule,
     FlexLayoutModule,
-
-    // UsuarioModule,
-    // SharedModule,
-    // PublicoModule,
-    ComponentsModule,
-    MaterialsImportsModule,
+    SharedModule,
+    NavegacaoBarModule,
+    SidebarModule,
+    BoasVindasModule,
+    EntrarModule,
 
 
 

@@ -4,6 +4,7 @@ export const environment = {
   modo: 'prod',
   id: 0,
   nome: '',
+  email: '',
   tipo: '',
   token: '',
   foto: '',

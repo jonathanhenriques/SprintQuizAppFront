@@ -12,6 +12,14 @@ export class AppComponent {
 
   constructor(
     public authService: AuthService
-    ){}
+  ) { }
+
+  // logado() {
+  //   if (AuthService.logado()) {
+  //     return true
+  //   } else {
+  //     return false
+  //   }
+  // }
 
 }

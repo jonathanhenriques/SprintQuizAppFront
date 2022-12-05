@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import { Usuario } from '../model/Usuario';
-import { UsuarioLogin } from '../model/UsuarioLogin';
-import { AlertasService } from './alertas.service';
-
+import { AlertasService } from '../shared/services/alertas.service';
+import { Usuario } from '../usuario/model/Usuario';
+import { UsuarioLogin } from '../usuario/model/UsuarioLogin';
 @Injectable({
   providedIn: 'root',
 })
@@ -37,8 +36,13 @@ export class AuthService {
   atualizar(usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(
       this.url + '/usuarios/atualizar',
-      usuario
+      usuario, this.token
     );
+  }
+
+  getByEmailUsuario(usuarioEmail: string): Observable<Usuario> {
+    return this.http.get<Usuario>(this.url + `/usuarios/email/${usuarioEmail}`, this.token
+    )
   }
 
   static verificaLogado(alertas: AlertasService, router: Router) {
@@ -48,7 +52,7 @@ export class AuthService {
     }
   }
 
-  logado() {
+   logado() {
     let ok: boolean = false;
 
     if (environment.token != '') {
@@ -58,7 +62,7 @@ export class AuthService {
     return ok;
   }
 
-  deslogado() {
+   deslogado() {
     if (!this.logado()) return true;
     return false;
   }

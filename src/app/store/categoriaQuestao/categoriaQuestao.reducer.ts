@@ -1,5 +1,5 @@
 import { Action, createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import { CategoriaQuestao } from "src/app/model/CategoriaQuestao";
+import { CategoriaQuestao } from "src/app/categoria-questao/model/CategoriaQuestao";
 import * as fromCategoriaQuestaoAction from './categoriaQuestao.actions';
 
 //tipo do objeto do estado

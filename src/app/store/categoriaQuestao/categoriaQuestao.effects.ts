@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, exhaustMap, map, of } from "rxjs";
-import { CategoriaQuestaoService } from "src/app/service/categoria-questao.service";
+import { CategoriaQuestaoService } from "src/app/categoria-questao/service/categoria-questao.service";
 import * as fromCategoriaQuestaoAction from './categoriaQuestao.actions';
 
 

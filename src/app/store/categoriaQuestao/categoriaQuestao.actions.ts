@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store"
-import { CategoriaQuestao } from "src/app/model/CategoriaQuestao";
+import { CategoriaQuestao } from "src/app/categoria-questao/model/CategoriaQuestao";
 
 // DEFININDO ACTIONS
 
