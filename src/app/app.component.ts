@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 import { AuthService } from './service/auth.service';
 
 @Component({
@@ -15,11 +16,14 @@ export class AppComponent {
   ) { }
 
   // logado() {
-  //   if (AuthService.logado()) {
-  //     return true
-  //   } else {
-  //     return false
+  //   let ok: boolean = false;
+
+  //   if (environment.token != '') {
+  //     // console.log('tokenpassou - ' + environment.token)
+  //     ok = true;
   //   }
+
+  //   return ok;
   // }
 
 }

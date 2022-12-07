@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AtualizarCategoriaProvaComponent } from './page/atualizar-categoria-prova/atualizar-categoria-prova.component';
 import { CadastrarCategoriaProvaComponent } from './page/cadastrar-categoria-prova/cadastrar-categoria-prova.component';
 import { DeletarCategoriaProvaComponent } from './page/deletar-categoria-prova/deletar-categoria-prova.component';
+import { MaterialsImportsModule } from '../shared/pages/materials-imports/materials-imports.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { DeletarCategoriaProvaComponent } from './page/deletar-categoria-prova/d
   imports: [
     CommonModule,
     FormsModule,
+    MaterialsImportsModule,
     CategoriaProvaRoutingModule
   ]
 })

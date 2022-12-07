@@ -27,6 +27,6 @@ import { SelecionarQuestoesComponent } from './page/selecionar-questoes/selecion
     RouterModule,
     FormsModule,
     QuestaoRoutingModule
-  ]
+  ],exports: [CadastrarQuestaoComProvaComponent]
 })
 export class QuestaoModule { }

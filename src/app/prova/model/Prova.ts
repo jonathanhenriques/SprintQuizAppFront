@@ -15,8 +15,8 @@ export class Prova {
 
   //construtor
   constructor(
-    nome: string, descricao: string, duracao: number, usuario: Usuario,
-    questoes: QuestaoProva[], instituicao: string, categoria: CategoriaProva) {
+    nome: string = null, descricao: string = null, duracao: number = null, usuario: Usuario = null,
+    questoes: QuestaoProva[] = null, instituicao: string = null, categoria: CategoriaProva = null) {
     this.nome = nome;
     this.descricao = descricao;
     this.duracao = duracao;

@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaProvaService } from 'src/app/categoria-prova/service/categoria-prova.service';
 import { ProvaServiceService } from '../../service/prova-service.service';
 import { environment } from 'src/environments/environment.prod';
+import { createQuestaoProva } from 'src/app/questao-prova/model/QuestaoProva';
 
 @Component({
   selector: 'app-cadastrar-prova',
@@ -20,7 +21,7 @@ export class CadastrarProvaComponent implements OnInit {
 
   usuario: Usuario = createUsuario();
   // prova: Prova = new Prova();
-  prova: Prova;
+  prova: Prova = new Prova();
   categoriaProva: CategoriaProva = createCategoriaProva();
 
   idUsuario: number = environment.id;

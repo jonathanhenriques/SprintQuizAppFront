@@ -18,30 +18,30 @@ export class AuthService {
 
   // url: string = 'https://sprintquiz.herokuapp.com';
   // url: string = 'http://localhost:8081';
-  url = environment.url;
+  url = '/usuarios';
 
   entrar(usuarioLogin: UsuarioLogin): Observable<UsuarioLogin> {
     return this.http.post<UsuarioLogin>(
-      this.url + '/usuarios/logar',
+      environment.url + this.url + '/logar',
       usuarioLogin
     );
   }
 
   cadastrar(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(
-      this.url + '/usuarios/cadastrar',
+      environment.url + this.url + '/cadastrar',
       usuario
     );
   }
   atualizar(usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(
-      this.url + '/usuarios/atualizar',
+      environment.url + this.url + '/atualizar',
       usuario, this.token
     );
   }
 
   getByEmailUsuario(usuarioEmail: string): Observable<Usuario> {
-    return this.http.get<Usuario>(this.url + `/usuarios/email/${usuarioEmail}`, this.token
+    return this.http.get<Usuario>(environment.url + this.url + `/email/${usuarioEmail}`, this.token
     )
   }
 
@@ -56,6 +56,7 @@ export class AuthService {
     let ok: boolean = false;
 
     if (environment.token != '') {
+      // console.log('tokenpassou - ' + environment.token)
       ok = true;
     }
 
@@ -69,7 +70,7 @@ export class AuthService {
 
   getByIdUsuario(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(
-      this.url + `/usuarios/${id}`,
+      environment.url + this.url + `/${id}`,
       this.token
     );
   }

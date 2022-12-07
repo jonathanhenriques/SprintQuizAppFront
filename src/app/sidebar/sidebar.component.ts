@@ -15,6 +15,7 @@ export class SidebarComponent implements OnInit {
   // @Input('men') val: any;
   // @ViewChild('drawer')drawer: HTMLElement;
 
+
   @Output()informacao: string = 'Nome: Jonathan';
 
   idUsuario = environment.id;

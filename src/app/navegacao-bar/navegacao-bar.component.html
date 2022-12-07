@@ -37,16 +37,16 @@
 
     </ul>
 
-
+<!-- ADMINISTRADOR -->
     <ul class="navbar-nav ml-auto d-flex align-items-center">
 
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Área Administrador</a>
         <ul class="dropdown-menu games-menu">
-          <li><a class="dropdown-item" routerLink="/cadastrar-categoria-prova">Criar Categoria de prova</a></li>
-          <li><a class="dropdown-item" routerLink="/cadastrar-categoria-questao">Criar Categoria de questão</a></li>
-          <li><a class="dropdown-item" routerLink="/cadastrar-prova">Criar provas</a></li>
-          <li><a class="dropdown-item" routerLink="/cadastrar-questao">Criar questões</a></li>
+          <li><a class="dropdown-item" routerLink="categoria-prova/cadastrar-categoria-prova">Criar Categoria de prova</a></li>
+          <li><a class="dropdown-item" routerLink="categoria-questao/cadastrar-categoria-questao">Criar Categoria de questão</a></li>
+          <li><a class="dropdown-item" routerLink="prova/cadastrar-prova">Criar provas</a></li>
+          <li><a class="dropdown-item" routerLink="questao/cadastrar-questao">Criar questões</a></li>
           <li><a class="dropdown-item" routerLink="/teste">area testes</a></li>
 
           
@@ -85,15 +85,15 @@
         </ul>
       </li>
 
-
+      <!-- ULTIMO MENU -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
           <i class="fa fa-user-circle-o ico" aria-hidden="true"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item fs-14" [routerLink]="['atualizar-usuario', idUsuario]">atualizar</a>
-          <a class="dropdown-item fs-14" routerLink="mural-provas">mural de provas</a>
-          <a class="dropdown-item fs-14" routerLink="mural-questoes">mural de questões</a>
+          <a class="dropdown-item fs-14" [routerLink]="['usuario/atualizar-usuario']">atualizar</a>
+          <a class="dropdown-item fs-14" routerLink="prova/mural-provas">mural de provas</a>
+          <a class="dropdown-item fs-14" routerLink="questao/mural-questoes">mural de questões</a>
           <!-- <a class="dropdown-item fs-14" routerLink="/tela">teste Tela</a> -->
           <a class="dropdown-item fs-14" href="#">sprints</a>
           <div class="dropdown-divider"></div>

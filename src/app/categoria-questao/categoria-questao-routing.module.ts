@@ -5,7 +5,7 @@ import { CadastrarCategoriaQuestaoComponent } from './page/cadastrar-categoria-q
 import { DeletarCategoriaQuestaoComponent } from './page/deletar-categoria-questao/deletar-categoria-questao.component';
 
 const routes: Routes = [
-  {path: '', component: CadastrarCategoriaQuestaoComponent},
+  {path: 'cadastrar-categoria-questao', component: CadastrarCategoriaQuestaoComponent},
   {path: 'atualizar-categoria-questao/:id', component: AtualizarCategoriaQuestaoComponent},
   {path: 'deletar-categoria-questao/:id', component: DeletarCategoriaQuestaoComponent}
 ];

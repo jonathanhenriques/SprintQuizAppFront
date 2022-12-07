@@ -1,5 +1,5 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -45,16 +45,13 @@ import { appEffects, appReducer } from './store/app-state';
       progressBar: true,
       preventDuplicates: true,
     }),
-    RouterModule,
+    // RouterModule,
     FlexLayoutModule,
     SharedModule,
     NavegacaoBarModule,
     SidebarModule,
     BoasVindasModule,
     EntrarModule,
-
-
-
 
 
 
@@ -68,6 +65,10 @@ import { appEffects, appReducer } from './store/app-state';
     StoreModule.forRoot(appReducer), //appReducer criado no app-state
     EffectsModule.forRoot(appEffects),
     //**************
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    
   ],
 
   providers: [

@@ -1,18 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { UsuarioRoutingModule } from './usuario-routing.module';
 import { FormsModule } from '@angular/forms';
-import { CadastrarUsuarioComponent } from './page/cadastrar-usuario/cadastrar-usuario.component';
+import { MaterialsImportsModule } from '../shared/pages/materials-imports/materials-imports.module';
 import { AtualizarUsuarioComponent } from './page/atualizar-usuario/atualizar-usuario.component';
+import { CadastrarUsuarioComponent } from './page/cadastrar-usuario/cadastrar-usuario.component';
+import { UsuarioComponent } from './page/usuario/usuario.component';
+import { UsuarioRoutingModule } from './usuario-routing.module';
 
 
 @NgModule({
-  declarations: [CadastrarUsuarioComponent, AtualizarUsuarioComponent],
+  declarations: [UsuarioComponent,CadastrarUsuarioComponent, AtualizarUsuarioComponent, UsuarioComponent],
   imports: [
     CommonModule,
     FormsModule,
-    UsuarioRoutingModule
+    UsuarioRoutingModule,
+    MaterialsImportsModule
   ]
 })
 export class UsuarioModule { }

@@ -8,14 +8,18 @@ import { DeletarProvaComponent } from './pages/deletar-prova/deletar-prova.compo
 import { GaleriaProvasComponent } from './pages/galeriaprovas/galeria-provas.component';
 import { MuralProvasComponent } from './pages/mural-provas/mural-provas.component';
 import { FormsModule } from '@angular/forms';
+import { QuestaoModule } from '../questao/questao.module';
+import { MuralSprintsComponent } from './pages/mural-sprints/mural-sprints.component';
 
 
 @NgModule({
-  declarations: [CadastrarProvaComponent, AtualizarProvaComponent, DeletarProvaComponent,GaleriaProvasComponent,MuralProvasComponent],
+  declarations: [CadastrarProvaComponent, AtualizarProvaComponent, DeletarProvaComponent,GaleriaProvasComponent,MuralProvasComponent, MuralSprintsComponent],
   imports: [
     CommonModule,
     FormsModule,
-    ProvaRoutingModule
+    ProvaRoutingModule,
+
+    QuestaoModule,
   ]
 })
 export class ProvaModule { }

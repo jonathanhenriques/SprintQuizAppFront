@@ -6,6 +6,7 @@ import { Usuario, createUsuario } from '../usuario/model/Usuario';
 import { UsuarioLogin } from '../usuario/model/UsuarioLogin';
 import { AlertasService } from '../shared/services/alertas.service';
 import { from } from 'rxjs';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-navegacao-bar',
@@ -18,9 +19,9 @@ export class NavegacaoBarComponent implements OnInit {
 
   usuarioLogan: UsuarioLogin = new UsuarioLogin();
   usuario: Usuario = createUsuario();
-  idUsuario = environment.id;
-  foto = environment.foto;
-  nome = environment.nome;
+  idUsuario: number = 0
+  foto: string = '';
+  nome: string = '';
 
   constructor(
     private alertas: AlertasService,
@@ -28,8 +29,25 @@ export class NavegacaoBarComponent implements OnInit {
     private subjectsService: SubjectsService
   ) { }
 
-  ngOnInit(){
-    // AuthService.verificaLogado(this.alertas, this.router);
+  ngOnInit() {
+    AuthService.verificaLogado(this.alertas, this.router);
+    // console.log('NAVEGACAO BAR PASSOOOOOU')
+    // console.log('id - ' + environment.id)
+    // console.log('nome - ' + environment.nome)
+    this.idUsuario = environment.id;
+    this.foto = environment.foto;
+    this.nome = environment.nome;
+  }
+
+  logado() {
+    let ok: boolean = false;
+
+    if (environment.token != '') {
+      // console.log('tokenpassou - ' + environment.token)
+      ok = true;
+    }
+
+    return ok;
   }
 
 

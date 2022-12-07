@@ -22,7 +22,8 @@ export class CategoriaProvaService {
   // url: string = 'http://localhost:8081';
   url = '/categoriaProva';
 
-  getAllCategoriaProva(p1?: string, p2?: string):Observable<any[]>{
+  getAllCategoriaProva():Observable<any[]>{
+    console.log(environment.token)
     return this.http.get<any[]>(environment.url + this.url, this.token);
   }
 

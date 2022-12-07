@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
+import { environment } from 'src/environments/environment.prod';
 import { Usuario, createUsuario } from '../../model/Usuario';
 
 @Component({
@@ -14,18 +15,23 @@ export class AtualizarUsuarioComponent implements OnInit {
 
   usuario: Usuario = createUsuario();
   senhaInserida: string = '';
-  // tipoUsuario: string;
+  idUsuario: number;
   tipoCampoSenha: string = 'password';
   mostrarSenha: boolean = false;
 
   constructor(
     private authService: AuthService,
     private alertas: AlertasService,
-    private router: Router
+    private router: Router,
+    private activateRoute: ActivatedRoute
   ) { }
 
   ngOnInit(){
     AuthService.verificaLogado(this.alertas, this.router);
+    // this.idUsuario = +this.activateRoute.snapshot.params['id']
+    this.idUsuario = environment.id
+    this.getByIdUsuario(this.idUsuario)
+    // console.log(this.usuario.nome)
   }
 
 
@@ -42,6 +48,20 @@ export class AtualizarUsuarioComponent implements OnInit {
 
   confirmarSenha(event: any) {
     this.senhaInserida = event.target.value;
+  }
+
+  getByIdUsuario(id: number) {
+    this.authService.getByIdUsuario(id).subscribe((usuarioResp: Usuario) => {
+      this.usuario = usuarioResp;
+
+      console.log(this.usuario.nome);
+      console.log(this.usuario.email);
+      console.log(this.usuario.senha);
+      console.log(this.usuario.foto);
+      console.log(this.usuario.tipo);
+      console.log(this.usuario.questoes);
+      console.log(this.usuario.provas);
+    })
   }
 
   atualizar() {

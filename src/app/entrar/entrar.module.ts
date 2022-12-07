@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EntrarComponent } from './entrar.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -10,8 +11,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [EntrarComponent],
   imports: [
     CommonModule,
+    RouterModule ,
     ReactiveFormsModule,
     SharedModule
-  ],exports:[EntrarComponent]
+
+  ]
+  // ,exports:[EntrarComponent]
 })
 export class EntrarModule { }

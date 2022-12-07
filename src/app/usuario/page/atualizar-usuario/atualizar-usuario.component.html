@@ -31,13 +31,13 @@
                       <input (input)="confirmarSenha($event)" type="{{tipoCampoSenha}}" name="senha" id="senha" class="form-control" placeholder="senha...">
                       <button class="btn btn-info" (click)="exibirSenha()">mostrar</button>
                     </div>
-                    <small class="text-muted">*Mínimo 8 caracteres</small>
+                    <small class="text-muted">*Mínimo 8 caracteres, Máx 16</small>
                   </div>
 
                   <div class="form-group">
                     <label for="">confirmar senha</label>
-                    <input [(ngModel)]="usuario.senha" type="password" name="confirmarsenha" id="confirmarsenha" class="form-control" placeholder="senha...">
-                    <small class="text-muted">*Mínimo 8 caracteres</small>
+                    <input (ngModel)="usuario.senha" type="password" name="confirmarsenha" id="confirmarsenha" class="form-control" placeholder="senha...">
+                    <small class="text-muted">*Mínimo 8 caracteres, Máx 16</small>
                   </div>
 
                   <div class="form-group">

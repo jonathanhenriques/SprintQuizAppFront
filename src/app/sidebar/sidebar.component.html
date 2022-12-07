@@ -7,30 +7,31 @@
         <i class="material-icons">home</i>
         Entrar
       </a>
-      <a mat-list-item routerLink="mural-provas">
+      <a mat-list-item routerLink="prova/mural-provas">
         <i class="material-icons">account_circle</i>
         Provas
 
       </a>
-      <a mat-list-item [routerLink]="['atualizar-usuario', idUsuario]">
+      <a mat-list-item [routerLink]="['usuario/atualizar-usuario', idUsuario]">
         <i class="material-icons">person</i>
         Usuario
       </a>
-      <a mat-list-item routerLink="mural-questoes">
+      <a mat-list-item routerLink="questao/mural-questoes">
         <i class="material-icons">code</i>
         Questões
       </a>
       <a mat-list-item routerLink="boas-vindas">
         <i class="material-icons">logout</i>
-        Boas
+        Boas 
       </a>
+      
     </mat-nav-list>
   </mat-drawer>
 
   <div class="sidenav-content m-0 p-0">
     <div class="row dflex m-0 p-0">
       <div class="col-md-12 p-0">
-        <app-navegacao-bar *ngIf='authService.logado()'> </app-navegacao-bar>
+        <!-- <app-navegacao-bar *ngIf='authService.logado()'> </app-navegacao-bar> -->
         <button class="menu mat-elevation-z" mat-icon-button (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
