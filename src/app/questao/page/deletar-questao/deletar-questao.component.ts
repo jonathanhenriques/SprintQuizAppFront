@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Questao, createQuestao } from '../../model/Questao';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { QuestaoService } from '../../service/questao.service';
 
@@ -22,7 +22,7 @@ export class DeletarQuestaoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idQuestao = this.activatedRoute.snapshot.params['id'];
     this.findByIdQuestao();

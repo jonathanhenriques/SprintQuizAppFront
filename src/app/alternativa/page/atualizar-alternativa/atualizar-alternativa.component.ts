@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Alternativa, createAlternativa } from '../../model/Alternativa';
-import {  createQuestao, Questao } from 'src/app/questao/model/Questao';
+import { createQuestao, Questao } from 'src/app/questao/model/Questao';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { AlternativaService } from '../../service/alternativa.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 import { QuestaoService } from 'src/app/questao/service/questao.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { QuestaoService } from 'src/app/questao/service/questao.service';
 })
 export class AtualizarAlternativaComponent implements OnInit {
 
-  
+
   alternativa: Alternativa = createAlternativa();
   questao: Questao = createQuestao();
   idAlternativa: number = 0;
@@ -29,20 +29,20 @@ export class AtualizarAlternativaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
     this.idAlternativa = this.activatedRoute.snapshot.params['id'];
 
     this.getAlternativaById();
   }
 
-  a =   {
+  a = {
     "id": 0,
     "texto": "uma",
     "foto": "string",
-    "questao": {"id": 2}
+    "questao": { "id": 2 }
   }
 
-  atualizarAlternativa(){
+  atualizarAlternativa() {
     this.questao.id = this.idAlternativa;
     this.alternativa.questao = this.questao;
     // alert(this.questao.id);
@@ -54,7 +54,7 @@ export class AtualizarAlternativaComponent implements OnInit {
     })
   }
 
-getAlternativaById(){
+  getAlternativaById() {
     this.alternativaService.getAlternativaById(this.idAlternativa).subscribe((alternativaResp: Alternativa) => {
       this.alternativa = alternativaResp;
     })
@@ -72,7 +72,7 @@ getAlternativaById(){
   //   })
   // }
 
-  voltarPagina(){
+  voltarPagina() {
     window.history.back();
   }
 

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/categoria-questao/model/CategoriaQuestao';  
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/categoria-questao/model/CategoriaQuestao';
 import { Questao } from '../../model/Questao';
 import { Usuario, createUsuario } from 'src/app/usuario/model/Usuario';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { CategoriaQuestaoService } from 'src/app/categoria-questao/service/categoria-questao.service';
 import { ProvaServiceService } from 'src/app/prova/service/prova-service.service';
 import { QuestaoService } from '../../service/questao.service';
@@ -36,7 +36,7 @@ export class MuralQuestoesComponent implements OnInit {
   constructor(
     private router: Router,
     private alertas: AlertasService,
-    private authService: AuthService,
+    private UsuarioService: UsuarioService,
     private questaoService: QuestaoService,
     private provaService: ProvaServiceService,
     private categoriaQuestaoService: CategoriaQuestaoService
@@ -44,7 +44,7 @@ export class MuralQuestoesComponent implements OnInit {
 
   ngOnInit() {
 
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
     this.findByIdUsuario();
     this.findQuestoesByCriadorId();
@@ -64,7 +64,7 @@ export class MuralQuestoesComponent implements OnInit {
   }
 
   findByIdUsuario() {
-    this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+    this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
 
     })
@@ -77,7 +77,7 @@ export class MuralQuestoesComponent implements OnInit {
   }
 
   // findByIdCriadorQuestao(){
-  //   this.authService.getByIdUsuario(this.questao.criador.id).subscribe((usuarioresp: Usuario) => {
+  //   this.UsuarioService.getByIdUsuario(this.questao.criador.id).subscribe((usuarioresp: Usuario) => {
   //     this.criadorQuestao = usuarioresp;
   //   })
   // }

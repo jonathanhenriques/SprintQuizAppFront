@@ -2,13 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Alternativa } from 'src/app/alternativa/model/Alternativa';
-import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/categoria-questao/model/CategoriaQuestao';  
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/categoria-questao/model/CategoriaQuestao';
 import { Prova } from 'src/app/prova/model/Prova';
 import { Questao, createQuestao } from '../../model/Questao';
 import { QuestaoProva, createQuestaoProva } from 'src/app/questao-prova/model/QuestaoProva';
 import { Usuario, createUsuario } from 'src/app/usuario/model/Usuario';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { CategoriaProvaService } from 'src/app/categoria-prova/service/categoria-prova.service';
 import { CategoriaQuestaoService } from 'src/app/categoria-questao/service/categoria-questao.service';
 import { QuestaoProvaService } from 'src/app/questao-prova/service/questao-prova.service';
@@ -48,7 +48,7 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
     private alertas: AlertasService,
     private questaoService: QuestaoService,
     private questaoProvaService: QuestaoProvaService,
-    private authService: AuthService,
+    private UsuarioService: UsuarioService,
     private categoriaProvaService: CategoriaProvaService,
     private categoriaQuestaoService: CategoriaQuestaoService,
     private toastr: ToastrService
@@ -58,7 +58,7 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
     window.scroll(0, 0);
 
 
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.findAllCategoriaQuestao();
     // this.idProva = this.activatedRoute.snapshot.params['id'];
@@ -94,7 +94,7 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
 
 
   findByIdUsuario() {
-    this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+    this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
       // alert(this.usuario.id);
     });

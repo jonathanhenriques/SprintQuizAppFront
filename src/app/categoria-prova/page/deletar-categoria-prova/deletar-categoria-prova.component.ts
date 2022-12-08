@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { CategoriaProva } from '../../model/CategoriaProva';
 import { CategoriaProvaService } from '../../service/categoria-prova.service';
@@ -21,14 +21,14 @@ export class DeletarCategoriaProvaComponent implements OnInit {
   constructor(
     private router: Router,
     private alertas: AlertasService,
-    private activatedRoute :ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private categoriaProvaService: CategoriaProvaService
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    
-    AuthService.verificaLogado(this.alertas, this.router);
+
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idCategoria = this.activatedRoute.snapshot.params['id'];
 
@@ -36,17 +36,17 @@ export class DeletarCategoriaProvaComponent implements OnInit {
 
   }
 
-findCategoriaProva(){
-  return this.categoriaProvaService.getByIdCategoriaProva(this.idCategoria).subscribe((categoriaProvaResp: CategoriaProva) => {
-    this.categoriaProva = categoriaProvaResp;
-  })
-}
+  findCategoriaProva() {
+    return this.categoriaProvaService.getByIdCategoriaProva(this.idCategoria).subscribe((categoriaProvaResp: CategoriaProva) => {
+      this.categoriaProva = categoriaProvaResp;
+    })
+  }
 
-deletarCategoriaProva(){
-  return this.categoriaProvaService.deleteCategoriaProva(this.idCategoria).subscribe(() => {
-    this.alertas.showAlertSuccess('Categoria apagada com sucesso!');
-    this.router.navigate(['/cadastrar-categoria-prova']);
-  })
-}
+  deletarCategoriaProva() {
+    return this.categoriaProvaService.deleteCategoriaProva(this.idCategoria).subscribe(() => {
+      this.alertas.showAlertSuccess('Categoria apagada com sucesso!');
+      this.router.navigate(['/cadastrar-categoria-prova']);
+    })
+  }
 
 }

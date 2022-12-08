@@ -6,7 +6,8 @@ import { Usuario, createUsuario } from '../usuario/model/Usuario';
 import { UsuarioLogin } from '../usuario/model/UsuarioLogin';
 import { AlertasService } from '../shared/services/alertas.service';
 import { from } from 'rxjs';
-import { AuthService } from '../service/auth.service';
+import { UsuarioService } from '../usuario/service/usuario.service';
+import { UsuarioTokenService } from '../usuario/service/usuario-token.service';
 
 @Component({
   selector: 'app-navegacao-bar',
@@ -22,15 +23,17 @@ export class NavegacaoBarComponent implements OnInit {
   idUsuario: number = 0
   foto: string = '';
   nome: string = '';
+  user$ = this.usuarioTokenService.retornaUsuario()
 
   constructor(
     private alertas: AlertasService,
     private router: Router,
-    private subjectsService: SubjectsService
+    private subjectsService: SubjectsService,
+    private usuarioTokenService: UsuarioTokenService
   ) { }
 
   ngOnInit() {
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
     // console.log('NAVEGACAO BAR PASSOOOOOU')
     // console.log('id - ' + environment.id)
     // console.log('nome - ' + environment.nome)
@@ -48,6 +51,11 @@ export class NavegacaoBarComponent implements OnInit {
     }
 
     return ok;
+  }
+
+  logout(){
+    this.usuarioTokenService.logout()
+    this.router.navigate([''])
   }
 
 

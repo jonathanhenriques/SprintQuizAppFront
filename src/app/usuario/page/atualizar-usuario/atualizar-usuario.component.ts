@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { environment } from 'src/environments/environment.prod';
 import { Usuario, createUsuario } from '../../model/Usuario';
@@ -20,14 +20,14 @@ export class AtualizarUsuarioComponent implements OnInit {
   mostrarSenha: boolean = false;
 
   constructor(
-    private authService: AuthService,
+    private usuarioService: UsuarioService,
     private alertas: AlertasService,
     private router: Router,
     private activateRoute: ActivatedRoute
   ) { }
 
-  ngOnInit(){
-    AuthService.verificaLogado(this.alertas, this.router);
+  ngOnInit() {
+    UsuarioService.verificaLogado(this.alertas, this.router);
     // this.idUsuario = +this.activateRoute.snapshot.params['id']
     this.idUsuario = environment.id
     this.getByIdUsuario(this.idUsuario)
@@ -51,7 +51,7 @@ export class AtualizarUsuarioComponent implements OnInit {
   }
 
   getByIdUsuario(id: number) {
-    this.authService.getByIdUsuario(id).subscribe((usuarioResp: Usuario) => {
+    this.usuarioService.getByIdUsuario(id).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
 
       console.log(this.usuario.nome);
@@ -82,7 +82,7 @@ export class AtualizarUsuarioComponent implements OnInit {
 
 
 
-      this.authService.atualizar(this.usuario).subscribe((usuarioResposta: Usuario) => {
+      this.usuarioService.atualizar(this.usuario).subscribe((usuarioResposta: Usuario) => {
         this.usuario = usuarioResposta;
         this.router.navigate(['/entrar']);
         this.alertas.showAlertSuccess('Usuário atualizado com sucesso!');

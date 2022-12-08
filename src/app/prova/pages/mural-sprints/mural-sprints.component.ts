@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Prova } from '../../model/Prova';
 import { Usuario, createUsuario } from 'src/app/usuario/model/Usuario';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { ProvaServiceService } from '../../service/prova-service.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -33,38 +33,38 @@ export class MuralSprintsComponent implements OnInit {
     private router: Router,
     private alertas: AlertasService,
     private provaService: ProvaServiceService,
-    private authService: AuthService
+    private UsuarioService: UsuarioService
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
     this.findByIdUsuario();
     // this.listaProvas = this.usuario.provas;
     this.findProvasByCriadorId();
-    
-    
+
+
   }
 
-  pegaIdProvaParaModal(id: any){
+  pegaIdProvaParaModal(id: any) {
     this.idProvaParaModal = id;
   }
 
-  findByIdUsuario(){
-    this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+  findByIdUsuario() {
+    this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
-      
+
     })
   }
 
-  quiz(id: number){
+  quiz(id: number) {
     // this.router.navigate(['nav/quiz'], id)
-    this.router.navigate(['nav/mural-provas/quiz', id ]);
+    this.router.navigate(['nav/mural-provas/quiz', id]);
   }
 
-  findProvasByCriadorId(){
-    this.provaService.getProvaByCriadorId(this.idUsuario).subscribe((listaProvasResp: Prova[]) =>{
+  findProvasByCriadorId() {
+    this.provaService.getProvaByCriadorId(this.idUsuario).subscribe((listaProvasResp: Prova[]) => {
       this.listaProvas = listaProvasResp;
       // listaProvasResp.forEach(e => {
       //   console.log(e.nome);
@@ -73,7 +73,7 @@ export class MuralSprintsComponent implements OnInit {
   }
 
   // findProvasUsuario(){
-  //   this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+  //   this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
   //     this.listaProvas = usuarioResp.provas;
   //     this.listaProvas.forEach(p => {
   //       alert(p.nome);
@@ -81,9 +81,9 @@ export class MuralSprintsComponent implements OnInit {
   //   })
   // }
 
-  
 
-  voltarPagina(){
+
+  voltarPagina() {
     window.history.back();
   }
 

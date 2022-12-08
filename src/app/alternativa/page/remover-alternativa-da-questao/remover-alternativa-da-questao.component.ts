@@ -6,7 +6,7 @@ import { Alternativa, createAlternativa } from '../../model/Alternativa';
 import { Questao, createQuestao } from 'src/app/questao/model/Questao';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { AlternativaService } from '../../service/alternativa.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 import { QuestaoService } from 'src/app/questao/service/questao.service';
 
 
@@ -36,7 +36,7 @@ export class RemoverAlternativaDaQuestaoComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0);
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idQuestao = +this.activatedRouter.snapshot.params['id'];
     this.getQuestaoById();

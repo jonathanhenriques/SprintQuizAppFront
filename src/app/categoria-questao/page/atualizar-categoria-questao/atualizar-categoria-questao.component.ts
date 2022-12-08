@@ -23,7 +23,7 @@ export class AtualizarCategoriaQuestaoComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
 
-    // AuthService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     let id: number = this.activatedRoute.snapshot.params['id'];
     this.findByIdCategoriaProvaService(id);

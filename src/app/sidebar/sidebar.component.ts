@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertasService } from '../shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { SubjectsService } from 'src/app/service/subjects.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -16,21 +16,21 @@ export class SidebarComponent implements OnInit {
   // @ViewChild('drawer')drawer: HTMLElement;
 
 
-  @Output()informacao: string = 'Nome: Jonathan';
+  @Output() informacao: string = 'Nome: Jonathan';
 
   idUsuario = environment.id;
-  constructor(public authService: AuthService,
+  constructor(public UsuarioService: UsuarioService,
     private alertas: AlertasService,
     private router: Router,
     private subjectsService: SubjectsService
-    ) { }
+  ) { }
 
-  ngOnInit(){
-    // AuthService.verificaLogado(this.alertas, this.router);
+  ngOnInit() {
+    // UsuarioService.verificaLogado(this.alertas, this.router);
   }
 
 
-  
+
   secaoEncerrada() {
     environment.token = '';
     environment.id = 0;

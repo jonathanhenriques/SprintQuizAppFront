@@ -7,7 +7,7 @@ import { Prova } from 'src/app/prova/model/Prova';
 import { ProvaServiceService } from 'src/app/prova/service/prova-service.service';
 import { createQuestao, Questao } from 'src/app/questao/model/Questao';
 import { QuestaoService } from 'src/app/questao/service/questao.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { createUsuario, Usuario } from 'src/app/usuario/model/Usuario';
 import { environment } from 'src/environments/environment.prod';
@@ -29,7 +29,7 @@ export class QuizzComponent implements OnInit {
   resultado: boolean = false;
 
   usuario: Usuario = createUsuario();
-  
+
   questao: Questao = createQuestao();
   @Output() prova: Prova;
 
@@ -58,7 +58,7 @@ export class QuizzComponent implements OnInit {
   constructor(
     private router: Router,
     private alertas: AlertasService,
-    private authService: AuthService,
+    private UsuarioService: UsuarioService,
     private questaoService: QuestaoService,
     private provaService: ProvaServiceService,
     private activatedRoute: ActivatedRoute,
@@ -67,7 +67,7 @@ export class QuizzComponent implements OnInit {
 
   ngOnInit() {
 
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
 
     this.idProva = this.activatedRoute.snapshot.params['id'];
@@ -87,7 +87,7 @@ export class QuizzComponent implements OnInit {
 
     this.startCounter();
 
-    this.authService.getByIdUsuario(this.idUsuario)
+    this.UsuarioService.getByIdUsuario(this.idUsuario)
       .subscribe((res: Usuario) => this.usuario = res)
     // this.findByIdUsuario();
 
@@ -121,11 +121,11 @@ export class QuizzComponent implements OnInit {
 
   obterRespostasCertasDasQuestoes() {
     for (let i = 0; i < this.prova.questoes?.length; i++) {
-      if(this.prova.questoes[i].questao?.resposta?.id === null || this.prova.questoes[i].questao?.resposta?.id === undefined){
+      if (this.prova.questoes[i].questao?.resposta?.id === null || this.prova.questoes[i].questao?.resposta?.id === undefined) {
         this.prova.questoes?.map(questaoProva => this.listaRespostasCertas.push(questaoProva.questao?.resposta?.id!));
       }
     }
-    
+
 
   }
 
@@ -169,7 +169,7 @@ export class QuizzComponent implements OnInit {
 
   registraResposta(alternativaSelecionada: number | undefined) {
     console.log(alternativaSelecionada);
-    if(alternativaSelecionada){
+    if (alternativaSelecionada) {
       this.listaRespSelecionadasUsuario[this.questaoAtual] = alternativaSelecionada
     }
     alternativaSelecionada != undefined ? this.listaRespSelecionadasUsuario[this.questaoAtual] = alternativaSelecionada : this.listaRespSelecionadasUsuario[this.questaoAtual] = 0
@@ -220,7 +220,7 @@ export class QuizzComponent implements OnInit {
   }
 
   // findByIdUsuario() {
-  //   return this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+  //   return this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
   //     this.usuario = usuarioResp;
 
   //   })

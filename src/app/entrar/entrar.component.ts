@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 import { Usuario, createUsuario } from '../usuario/model/Usuario';
 import { UsuarioLogin } from '../usuario/model/UsuarioLogin';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { environment } from 'src/environments/environment.prod';
+import { HttpResponse } from '@angular/common/http';
+import { UsuarioTokenService } from '../usuario/service/usuario-token.service';
 
 @Component({
   selector: 'app-entrar',
@@ -26,10 +28,11 @@ export class EntrarComponent implements OnInit {
 
 
   constructor(
-    private authService: AuthService,
+    private usuarioService: UsuarioService,
     private router: Router,
     private alerta: AlertasService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private usuarioTokenService: UsuarioTokenService
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +48,7 @@ export class EntrarComponent implements OnInit {
       }
     );
 
-    
+
 
 
   }
@@ -68,14 +71,17 @@ export class EntrarComponent implements OnInit {
     if (this.loginForm.valid) {
       this.usuarioLoginForm = this.loginForm.getRawValue()
 
-      this.authService.entrar(this.usuarioLoginForm).subscribe(
-        (usuarioResp: UsuarioLogin) => {
+      this.usuarioService.entrar(this.usuarioLoginForm).subscribe(
+        (usuarioResp: any) => {
+        // (usuarioResp: any) => {
           // this.usuario = usuarioResp;
-
-          environment.token = usuarioResp.token;
-          environment.email = usuarioResp.login
+          console.warn('--' + usuarioResp.body.login)
+          environment.token = usuarioResp.body.token;
+          environment.email = usuarioResp.body.login
+          console.log('tok - ' + usuarioResp.body.token)
+          this.usuarioTokenService.salvaToken(usuarioResp.body.token)
           // console.warn('usuarioResp.login - ' + usuarioResp.login)
-          this.emailUsuario = usuarioResp.login
+          this.emailUsuario = usuarioResp.body.login
           // console.warn('emailUsuario - ' + this.emailUsuario)
           this.buscaUsuarioEPreencheEnvironment();
           // console.table(this.usuario)
@@ -88,7 +94,7 @@ export class EntrarComponent implements OnInit {
           // this.router.navigate(['/dashboard']);
         },
         (erro) => {
-          console.log(erro.error.message)
+          console.log('entrar erro - ' + erro.message)
 
           if (erro.error.error !== 'undefined')
             this.alerta.showAlertDanger(erro.error.message)
@@ -103,7 +109,7 @@ export class EntrarComponent implements OnInit {
 
 
   buscaUsuarioEPreencheEnvironment() {
-    this.authService.getByEmailUsuario(this.emailUsuario).subscribe((usuarioResp: Usuario) => {
+    this.usuarioService.getByEmailUsuario(this.emailUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
 
       environment.id = this.usuario.id

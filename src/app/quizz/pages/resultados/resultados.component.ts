@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 import { GuardaRespostasService } from '../../service/guarda-respostas.service';
 import { ProvaServiceService } from 'src/app/prova/service/prova-service.service';
 import { QuestaoService } from 'src/app/questao/service/questao.service';
@@ -35,7 +35,7 @@ export class ResultadosComponent implements OnInit {
   constructor(
     private router: Router,
     private alertas: AlertasService,
-    private authService: AuthService,
+    private UsuarioService: UsuarioService,
     private questaoService: QuestaoService,
     private provaService: ProvaServiceService,
     private activatedRoute: ActivatedRoute,
@@ -44,7 +44,7 @@ export class ResultadosComponent implements OnInit {
 
   ngOnInit() {
 
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
     this.usuario.id = environment.id;
 
     this.idProva = this.activatedRoute.snapshot.params['id'];
@@ -66,10 +66,10 @@ export class ResultadosComponent implements OnInit {
 
       console.log(this.prova.questoes[1].questao.texto);
       this.encherLista();
-    this.verificaResultado();
+      this.verificaResultado();
 
     })
-    
+
   }
 
   encherLista() {

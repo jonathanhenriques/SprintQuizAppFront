@@ -6,7 +6,7 @@ import { Questao, createQuestao } from '../../model/Questao';
 import { Usuario, createUsuario } from 'src/app/usuario/model/Usuario';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { AlternativaService } from 'src/app/alternativa/service/alternativa.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { CategoriaProvaService } from 'src/app/categoria-prova/service/categoria-prova.service';
 import { CategoriaQuestaoService } from 'src/app/categoria-questao/service/categoria-questao.service';
 import { QuestaoService } from '../../service/questao.service';
@@ -45,7 +45,7 @@ export class CadastrarQuestaoComponent implements OnInit {
     private router: Router,
     private alertas: AlertasService,
     private questaoService: QuestaoService,
-    private authService: AuthService,
+    private UsuarioService: UsuarioService,
     private categoriaProvaService: CategoriaProvaService,
     private categoriaQuestaoService: CategoriaQuestaoService,
     private lertas: AlertasService,
@@ -56,7 +56,7 @@ export class CadastrarQuestaoComponent implements OnInit {
     window.scroll(0, 0);
 
 
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.findAllCategoriaQuestao();
     // this.findByIdUsuario();
@@ -97,7 +97,7 @@ export class CadastrarQuestaoComponent implements OnInit {
 
 
   findByIdUsuario() {
-    this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+    this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
       // alert(this.usuario.id);
     });
@@ -171,20 +171,20 @@ export class CadastrarQuestaoComponent implements OnInit {
 
   salvarQuestao() {
 
-  //   let q: Questao =  {
-  //     id: null,
-  //     instituicao: '',
-  //     ano: null,
-  //     texto: '',
-  //     imagem: '',
-  //     dificuldade: null,
-  //     alternativas: null,
-  //     resposta: null,
-  //     categoriaQuestao: null,
-  //     criador: null
-  //  }
+    //   let q: Questao =  {
+    //     id: null,
+    //     instituicao: '',
+    //     ano: null,
+    //     texto: '',
+    //     imagem: '',
+    //     dificuldade: null,
+    //     alternativas: null,
+    //     resposta: null,
+    //     categoriaQuestao: null,
+    //     criador: null
+    //  }
 
-  console.log('idCategQues ' + this.idCategoriaQuestao)
+    console.log('idCategQues ' + this.idCategoriaQuestao)
     this.categoriaQuestao.id = this.idCategoriaQuestao;
     console.log('categoriaQuestao.id ' + this.categoriaQuestao.id)
     this.questao.categoria = this.categoriaQuestao;
@@ -264,10 +264,10 @@ export class CadastrarQuestaoComponent implements OnInit {
       // this.adicionarAlternativaNaQuestaoCriada();
       // this.questao = new QuestaoImpl();
 
-    },(error) => {
-      if(error.status == 400){
+    }, (error) => {
+      if (error.status == 400) {
         console.log('Não foi possível cadastrar questao, revise');
-      } else if(error.status == 500){
+      } else if (error.status == 500) {
         console.log('erro no console back');
       }
     })

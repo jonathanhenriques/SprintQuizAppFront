@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoriaQuestao, createCategoriaQuestao } from '../../model/CategoriaQuestao';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { CategoriaQuestaoService } from '../../service/categoria-questao.service';
 
 @Component({
@@ -17,8 +17,8 @@ import { CategoriaQuestaoService } from '../../service/categoria-questao.service
 export class CadastrarCategoriaQuestaoComponent implements OnInit {
 
 
-  titulo: FormControl = new FormControl(null, [Validators.minLength(1),  Validators.maxLength(50)]);
-  descricao: FormControl = new FormControl(null, [Validators.minLength(1),  Validators.maxLength(1000)]);
+  titulo: FormControl = new FormControl(null, [Validators.minLength(1), Validators.maxLength(50)]);
+  descricao: FormControl = new FormControl(null, [Validators.minLength(1), Validators.maxLength(1000)]);
 
   categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
 
@@ -48,7 +48,7 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
 
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     //dispatch faz um envio para a action
     // this.store.dispatch(fromCategoriaQuestaoAction.getAllCategoriaQuestao());
@@ -57,7 +57,7 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
 
   }
 
-  validaCampos(): boolean{
+  validaCampos(): boolean {
     return this.titulo.valid && this.descricao.valid
   }
 
@@ -79,17 +79,17 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
       this.toastr.success('Nova Categoria cadastrada com sucesso!');
 
     }, erro => {
-      if(erro.errors) {
+      if (erro.errors) {
         erro.errors.forEach((element: { message: string | undefined; }) => {
           this.toastr.error(element.message);
         });
       } else
         this.toastr.error(erro.errors.message);
 
-        this.alertas.showAlertDanger('Categoria não cadastrada! |' + erro);
+      this.alertas.showAlertDanger('Categoria não cadastrada! |' + erro);
     })
 
-    
+
   }
 
 

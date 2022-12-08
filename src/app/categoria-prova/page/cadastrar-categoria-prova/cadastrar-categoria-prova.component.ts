@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { CategoriaProva, createCategoriaProva } from '../../model/CategoriaProva'; 
+import { CategoriaProva, createCategoriaProva } from '../../model/CategoriaProva';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { CategoriaProvaService } from '../../service/categoria-prova.service';
 
 @Component({
@@ -33,7 +33,7 @@ export class CadastrarCategoriaProvaComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0);
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.findAllCategoriaProva();
 

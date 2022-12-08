@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Alternativa } from 'src/app/alternativa/model/Alternativa';
-import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/categoria-questao/model/CategoriaQuestao';  
+import { CategoriaQuestao, createCategoriaQuestao } from 'src/app/categoria-questao/model/CategoriaQuestao';
 import { Prova } from 'src/app/prova/model/Prova';
-import { Questao, createQuestao} from '../../model/Questao';
+import { Questao, createQuestao } from '../../model/Questao';
 import { Usuario, createUsuario } from 'src/app/usuario/model/Usuario';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { CategoriaQuestaoService } from 'src/app/categoria-questao/service/categoria-questao.service';
 import { ProvaServiceService } from 'src/app/prova/service/prova-service.service';
 import { QuestaoService } from '../../service/questao.service';
@@ -60,7 +60,7 @@ export class AtualizarQuestaoComAlternativaComponent implements OnInit {
     private alertas: AlertasService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService,
+    private UsuarioService: UsuarioService,
     private provaService: ProvaServiceService,
     private questaoService: QuestaoService,
     private categoriaQuestaoService: CategoriaQuestaoService
@@ -68,7 +68,7 @@ export class AtualizarQuestaoComAlternativaComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0);
-    // AuthService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idQuestao = this.activatedRoute.snapshot.params['id'];
     this.findAllCategoriaQuestao();

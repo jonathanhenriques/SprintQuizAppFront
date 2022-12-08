@@ -1,7 +1,7 @@
 export class UsuarioLogin {
   public id?:  number
-  public login!: string;
-  public token!: string;
+  public login?: string;
+  public token?: string;
 
 }
 

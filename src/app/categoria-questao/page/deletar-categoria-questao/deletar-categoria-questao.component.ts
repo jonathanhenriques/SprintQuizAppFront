@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaQuestao, createCategoriaQuestao } from '../../model/CategoriaQuestao';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { CategoriaQuestaoService } from '../../service/categoria-questao.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { CategoriaQuestaoService } from '../../service/categoria-questao.service
 })
 export class DeletarCategoriaQuestaoComponent implements OnInit {
 
-  
+
   categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
 
   idCategoria: number = 0;
@@ -21,14 +21,14 @@ export class DeletarCategoriaQuestaoComponent implements OnInit {
   constructor(
     private router: Router,
     private alertas: AlertasService,
-    private activatedRoute :ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private categoriaQuestaoService: CategoriaQuestaoService
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    
-    AuthService.verificaLogado(this.alertas, this.router);
+
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idCategoria = this.activatedRoute.snapshot.params['id'];
 
@@ -36,18 +36,18 @@ export class DeletarCategoriaQuestaoComponent implements OnInit {
 
   }
 
-findCategoriaQuestao(){
-  return this.categoriaQuestaoService.getByIdCategoriaQuestao(this.idCategoria).subscribe((categoriaQuestaoResp: CategoriaQuestao) => {
-    this.categoriaQuestao = categoriaQuestaoResp;
-  })
-}
+  findCategoriaQuestao() {
+    return this.categoriaQuestaoService.getByIdCategoriaQuestao(this.idCategoria).subscribe((categoriaQuestaoResp: CategoriaQuestao) => {
+      this.categoriaQuestao = categoriaQuestaoResp;
+    })
+  }
 
-deletarCategoriaQuestao(){
-  return this.categoriaQuestaoService.deleteCategoriaQuestao(this.idCategoria).subscribe(() => {
-    this.alertas.showAlertSuccess('Categoria apagada com sucesso!');
-    this.router.navigate(['/cadastrar-categoria-questao']);
-  })
-}
+  deletarCategoriaQuestao() {
+    return this.categoriaQuestaoService.deleteCategoriaQuestao(this.idCategoria).subscribe(() => {
+      this.alertas.showAlertSuccess('Categoria apagada com sucesso!');
+      this.router.navigate(['/cadastrar-categoria-questao']);
+    })
+  }
 
 }
 

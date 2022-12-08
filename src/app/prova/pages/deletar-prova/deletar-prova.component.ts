@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Prova } from '../../model/Prova';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
 import { ProvaServiceService } from '../../service/prova-service.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 
 @Component({
   selector: 'app-deletar-prova',
@@ -25,7 +25,7 @@ export class DeletarProvaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idProva = this.activatedRoute.snapshot.params['id'];
     this.findByIdProva();

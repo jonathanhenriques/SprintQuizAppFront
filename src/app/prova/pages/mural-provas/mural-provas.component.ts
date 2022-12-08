@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Prova } from '../../model/Prova';
 import { Usuario, createUsuario } from 'src/app/usuario/model/Usuario';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { ProvaServiceService } from '../../service/prova-service.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -33,12 +33,12 @@ export class MuralProvasComponent implements OnInit {
     private router: Router,
     private alertas: AlertasService,
     private provaService: ProvaServiceService,
-    private authService: AuthService
+    private UsuarioService: UsuarioService
   ) { }
 
   ngOnInit() {
 
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
     this.findByIdUsuario();
     // this.listaProvas = this.usuario.provas;
@@ -52,7 +52,7 @@ export class MuralProvasComponent implements OnInit {
   }
 
   findByIdUsuario() {
-    this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+    this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
       this.usuario = usuarioResp;
 
     })
@@ -73,7 +73,7 @@ export class MuralProvasComponent implements OnInit {
   }
 
   // findProvasUsuario(){
-  //   this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+  //   this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
   //     this.listaProvas = usuarioResp.provas;
   //     this.listaProvas.forEach(p => {
   //       alert(p.nome);

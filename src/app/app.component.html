@@ -4,10 +4,10 @@
 </div> -->
 
 
-<div fxFlex fxlayout="column" >
-  <app-navegacao-bar *ngIf="authService.logado()" ></app-navegacao-bar>
+<div fxFlex fxlayout="column">
+  <app-navegacao-bar *ngIf="UsuarioService.logado()"></app-navegacao-bar>
   <div fxFill fxLayout="row">
-  
+
     <app-sidebar fxFlex="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.gt-lg="100"></app-sidebar>
     <div fxFlexOffset.gt-sm="3px" style="overflow-x:hidden;" fxFlex>
       <router-outlet></router-outlet>

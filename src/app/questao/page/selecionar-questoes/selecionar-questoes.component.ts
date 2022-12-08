@@ -9,7 +9,7 @@ import { QuestaoProva, createQuestaoProva } from 'src/app/questao-prova/model/Qu
 import { Usuario, createUsuario } from 'src/app/usuario/model/Usuario';
 import { Prova } from 'src/app/prova/model/Prova';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { ProvaServiceService } from 'src/app/prova/service/prova-service.service';
 import { QuestaoProvaService } from 'src/app/questao-prova/service/questao-prova.service';
 import { QuestaoService } from '../../service/questao.service';
@@ -34,7 +34,7 @@ export class SelecionarQuestoesComponent implements OnInit {
   questaoSelecionada: Questao = createQuestao()
 
   // listaIdQuestoesSelecionadas: number[] = [];
-  
+
 
   // return this.questoesService.getAllQuestao().subscribe((listaQuestoesResp: Questao[]) => {
   //   this.listaTodasQuestoes = listaQuestoesResp;
@@ -53,12 +53,12 @@ export class SelecionarQuestoesComponent implements OnInit {
     private questoesService: QuestaoService,
     private provaService: ProvaServiceService,
     private questaoProvaService: QuestaoProvaService,
-    private authService: AuthService,
+    private UsuarioService: UsuarioService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.listaTodasQuestoes1 = this.questoesService.getAllQuestao();
 
@@ -132,11 +132,11 @@ export class SelecionarQuestoesComponent implements OnInit {
       this.questaoProva = createQuestaoProva();
       // this.prova = new Prova();
     },
-    (error) => {
-      if(error.status === 400) {
-        console.log('não foi possível cadastrar a questão');
+      (error) => {
+        if (error.status === 400) {
+          console.log('não foi possível cadastrar a questão');
+        }
       }
-    }
     )
     this.voltarPagina();
   }
@@ -234,11 +234,11 @@ export class SelecionarQuestoesComponent implements OnInit {
       this.listaQuestoesProva = [];
       // this.prova = new Prova();
     },
-    (error) => {
-      if(error.status === 400){
-        console.log('não foi possível cadastrar lista de questaoProva')
+      (error) => {
+        if (error.status === 400) {
+          console.log('não foi possível cadastrar lista de questaoProva')
+        }
       }
-    }
     )
     this.voltarPagina();
   }

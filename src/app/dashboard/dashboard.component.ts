@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -16,11 +16,11 @@ export class DashboardComponent implements OnInit {
   constructor(
     private alertas: AlertasService,
     private router: Router,
-    
+
   ) { }
 
   ngOnInit() {
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
   }
 
 }

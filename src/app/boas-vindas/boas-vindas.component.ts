@@ -23,11 +23,11 @@ export class BoasVindasComponent implements OnInit {
     //   this.router.navigate(['/entrar']);
     // }
 
-    // AuthService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
   }
 
 
-  irPara(caminho: string){
+  irPara(caminho: string) {
     this.router.navigate(['nav/' + caminho]);
   }
 

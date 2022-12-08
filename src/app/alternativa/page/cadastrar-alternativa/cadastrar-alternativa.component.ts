@@ -5,7 +5,7 @@ import { createAlternativa, Alternativa } from '../../model/Alternativa';
 import { createQuestao, Questao } from 'src/app/questao/model/Questao';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { AlternativaService } from '../../service/alternativa.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 import { QuestaoService } from 'src/app/questao/service/questao.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class CadastrarAlternativaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
     this.idQuestao = this.activatedRoute.snapshot.params['id'];
     console.log('idQuestao | ' + this.idQuestao);
     this.getQuestaoById();

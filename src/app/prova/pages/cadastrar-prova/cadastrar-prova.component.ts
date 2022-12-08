@@ -5,11 +5,10 @@ import { CategoriaProva, createCategoriaProva } from 'src/app/categoria-prova/mo
 import { Prova } from '../../model/Prova';
 import { Usuario, createUsuario } from 'src/app/usuario/model/Usuario';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaProvaService } from 'src/app/categoria-prova/service/categoria-prova.service';
 import { ProvaServiceService } from '../../service/prova-service.service';
 import { environment } from 'src/environments/environment.prod';
-import { createQuestaoProva } from 'src/app/questao-prova/model/QuestaoProva';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 
 @Component({
   selector: 'app-cadastrar-prova',
@@ -36,14 +35,14 @@ export class CadastrarProvaComponent implements OnInit {
     private router: Router,
     private alertas: AlertasService,
     private provaService: ProvaServiceService,
-    private authService: AuthService,
+    
     private categoriaProvaService: CategoriaProvaService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.findAllCategoriaProva();
 
@@ -65,7 +64,7 @@ export class CadastrarProvaComponent implements OnInit {
   }
 
   // findByIdUsuario(){
-  //   this.authService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+  //   this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
   //     this.usuario = usuarioResp;
   //     // alert(usuarioResp.id + " | usuarioResp");
   //     // alert(this.usuario.id + " | usuario do find");

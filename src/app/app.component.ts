@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
-import { AuthService } from './service/auth.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent {
 
 
   constructor(
-    public authService: AuthService
+    public UsuarioService: UsuarioService
   ) { }
 
   // logado() {

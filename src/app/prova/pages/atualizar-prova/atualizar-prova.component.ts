@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaProva, createCategoriaProva } from 'src/app/categoria-prova/model/CategoriaProva';
 import { Prova } from '../../model/Prova';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaProvaService } from 'src/app/categoria-prova/service/categoria-prova.service';
 import { ProvaServiceService } from '../../service/prova-service.service';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 
 @Component({
   selector: 'app-atualizar-prova',
@@ -34,7 +34,7 @@ export class AtualizarProvaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    AuthService.verificaLogado(this.alertas, this.router);
+    UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idProva = this.activatedRoute.snapshot.params['id'];
     // alert(this.idProva + ' | idprova');
