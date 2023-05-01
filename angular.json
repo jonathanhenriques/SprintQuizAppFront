@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "criarAppFront": {
+    "cuidarAppFront": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -31,6 +31,7 @@
             ],
             "styles": [
               "src/styles.scss"
+
             ],
             "scripts": []
           },
@@ -56,7 +57,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -65,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "criarAppFront:build:production"
+              "browserTarget": "cuidarAppFront:build:production"
             },
             "development": {
-              "browserTarget": "criarAppFront:build:development"
+              "browserTarget": "cuidarAppFront:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "criarAppFront:build"
+            "browserTarget": "cuidarAppFront:build"
           }
         },
         "test": {
@@ -100,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b64a21c1-8696-4a1d-9d5f-05905137229d"
   }
 }

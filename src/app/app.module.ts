@@ -3,16 +3,42 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PacienteModule } from './paciente/paciente.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './shared/material/material.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+
+
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+
+    // import componentes
+    PacienteModule,
+    MaterialModule
+
+
+
+
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptorService,
+    //   multi: true,
+    // },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
