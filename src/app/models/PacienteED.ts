@@ -14,10 +14,10 @@ export class PacienteED {
   public contato: ContatoED;
   public profissao: string;
   public endereco: EnderecoED;
-  public deficiente: boolean;
+  public deficiente: number;
   public deficiencia: string;
   public deficienciaFamilia: string;
-  public convenio: boolean;
+  public convenio: number;
   public observacao: string;
   public aceite: boolean; //substitui assinatura
   public atendente: string[];
@@ -25,33 +25,33 @@ export class PacienteED {
   public exames: ExameED[] | null;
   public local: string[];
   public indicacao: string;
-  public isAtivo: boolean;
+  public isAtivo: 1;
   public dataCadastro: Date;
 
   constructor() {
-    this.id = 0;
+    this.id =  0;
     this.nome = '';
     this.dataNasc = new Date();
     this.idade = 0;
     this.RG = '';
     this.estadoCivil = '';
     this.filhos = 0;
-    this.nomeResponsavelPaciente = 'string';
+    this.nomeResponsavelPaciente = '';
     this.contato = new ContatoED();
     this.profissao = '';
     this.endereco = new EnderecoED();
-    this.deficiente = false;
+    this.deficiente = 0;
     this.deficiencia = '';
     this.deficienciaFamilia = '';
-    this.convenio = false;
+    this.convenio = 0;
     this.observacao = '';
-    this.aceite = false; //substitui assinatura
+    this.aceite = true; //substitui assinatura
     this.atendente = [];
     this.medicoAtendente = [];
     this.exames = [];
     this.local = [];
     this.indicacao = '';
-    this.isAtivo = false;
+    this.isAtivo = 1;
     this.dataCadastro = new Date();
   }
 }

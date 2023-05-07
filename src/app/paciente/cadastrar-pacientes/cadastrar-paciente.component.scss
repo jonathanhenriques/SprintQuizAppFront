@@ -1,3 +1,161 @@
-table {
-  width: 100%;
+
+* {
+  display: block;
 }
+
+.formulario {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario label {
+  flex-basis: 100%;
+}
+
+.formulario button {
+  margin-top: 1rem;
+  align-self: center;
+}
+
+.formulario input,
+.formulario select {
+  flex-basis: 100%;
+}
+
+
+/* Define uma largura máxima para o formulário */
+form {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Estiliza as labels dos campos */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Estiliza os campos de entrada de texto */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+
+  max-width: 300px;
+}
+
+/* Estiliza o botão de cadastro */
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+/* Estiliza a mensagem de erro exibida nos campos inválidos */
+.ng-invalid {
+  border-color: red;
+}
+
+.infopaciente {
+  border: 2px;
+  border-style: solid;
+  border-color: #007bff;
+  border-radius: 5px;
+
+  flex: 0 0 calc(50% - 20px); /* Define o tamanho relativo de cada div filha */
+  margin: 10px; /* Define uma margem para separar as duas divs */
+  padding: 1rem;
+
+}
+
+
+
+.contato {
+  border: 2px;
+  border-style: solid;
+  border-color: #007bff;
+  border-radius: 5px;
+
+  flex: 0 0 calc(50% - 20px); /* Define o tamanho relativo de cada div filha */
+  margin: 10px; /* Define uma margem para separar as duas divs */
+  padding: 1rem;
+}
+
+.endereco {
+  border: 2px;
+  border-style: solid;
+  border-color: #007bff;
+  border-radius: 5px;
+
+  flex: 0 0 calc(50% - 20px); /* Define o tamanho relativo de cada div filha */
+  margin: 10px; /* Define uma margem para separar as duas divs */
+  padding: 1rem;
+}
+
+.infosaude {
+  border: 2px;
+  border-style: solid;
+  border-color: #007bff;
+  border-radius: 5px;
+
+  flex: 0 0 calc(50% - 20px); /* Define o tamanho relativo de cada div filha */
+  margin: 10px; /* Define uma margem para separar as duas divs */
+  padding: 1rem;
+}
+
+
+/* Para dispositivos móveis */
+@media (max-width: 767px) {
+  /* Ajuste o tamanho dos campos de entrada */
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="number"],
+  select {
+    width: 100%;
+  }
+}
+
+/* Para tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Ajuste a largura das colunas */
+  .form-col {
+    width: 50%;
+    margin-right: 2%;
+  }
+  .form-col:last-child {
+    margin-right: 0;
+  }
+}
+
+/* Para computadores */
+@media (min-width: 992px) {
+  /* Ajuste a largura das colunas */
+  .form-col {
+    width: 32%;
+    margin-right: 2%;
+  }
+  .form-col:last-child {
+    margin-right: 0;
+  }
+}
+
+

@@ -3,17 +3,47 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Nome</th>
-      <th>E-mail</th>
+      <th>Data de Nascimento</th>
+      <th>Idade</th>
+      <th>RG</th>
+      <th>Estado Civil</th>
+      <th>Filhos</th>
+      <th>Nome do Responsável</th>
       <th>Telefone</th>
+      <th>Profissão</th>
+      <th>Deficiente</th>
+      <th>Deficiência</th>
+      <th>Deficiência na Família</th>
+      <th>Convênio</th>
+      <th>Observação</th>
+      <th>Aceite</th>
+      <th>Atendente</th>
+      <th>Médico Atendente</th>
+   
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let paciente of pacientes">
+      <td>{{ paciente.id }}</td>
       <td>{{ paciente.nome }}</td>
-      <td>{{ paciente.contato.email }}</td>
+      <td>{{ paciente.dataNasc }}</td>
+      <td>{{ paciente.idade }}</td>
+      <td>{{ paciente.RG }}</td>
+      <td>{{ paciente.estadoCivil }}</td>
+      <td>{{ paciente.filhos }}</td>
+      <td>{{ paciente.nomeResponsavelPaciente }}</td>
       <td>{{ paciente.contato.telefone }}</td>
+      <td>{{ paciente.profissao }}</td>
+      <td>{{ paciente.deficiente }}</td>
+      <td>{{ paciente.deficiencia }}</td>
+      <td>{{ paciente.deficienciaFamilia }}</td>
+      <td>{{ paciente.convenio }}</td>
+      <td>{{ paciente.observacao }}</td>
+      <td>{{ paciente.aceite }}</td>
+      <td>{{ paciente.atendente.join(", ") }}</td>
+      <td>{{ paciente.medicoAtendente.join(", ") }}</td>
     </tr>
   </tbody>
 </table>
-

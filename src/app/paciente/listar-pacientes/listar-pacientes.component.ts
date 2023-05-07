@@ -31,6 +31,14 @@ export class ListarPacientesComponent implements OnInit {
 
   listarPacientes(): void {
     this.pacientesService
+      .getAllPacientes()
+      .subscribe((dataPacientes: PacienteED[]) => {
+        this.pacientes = dataPacientes;
+      });
+  }
+
+  listarPacientesAtivos(): void {
+    this.pacientesService
       .getAllPacientesAtivos(true)
       .subscribe((dataPacientes: PacienteED[]) => {
         this.pacientes = dataPacientes;

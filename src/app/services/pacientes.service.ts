@@ -17,7 +17,13 @@ export class PacientesService {
   //   headers: new HttpHeaders(),
   // };
 
-  url = environment.urlTeste;
+  url = 'http://localhost:8081' /*environment.urlTeste;*/
+
+  valor = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmcm9kb0BlbWFpbC5jb20iLCJpc3MiOiJBUEkgSW5zdGl0dXRvIENyaWFyIiwiZXhwIjoxNjgzNDM3MTI1fQ.aJy2GNe-9cGmrmPMC5Y8nTHjPie9suHVobLD_VIsYKw'
+
+  token = {
+    headers: new HttpHeaders().set('Authorization', this.valor)
+  };
 
 
   // private baseUrl = 'http://localhost:8081/api/v1/pacientes';
@@ -28,26 +34,43 @@ export class PacientesService {
   }
 
 
+  teste(): Observable<any>{
+    let usuario = {
+      "id": null,
+      "nome": "teste"
+    }
+    return this.http.post(`http://localhost:8080/usuario`, usuario)
+  }
+
+  getAll(): Observable<any[]> {
+    return this.http.get<any>(`http://localhost:8080/usuario/todos`, this.token).pipe(
+      tap(response => console.log(response)));
+  }
+
+
+
 
   obterTodosPacientes(): Observable<PacienteED[]> {
-    return this.http.get<PacienteED[]>(`${this.url} + /pacientes`);
+    return this.http.get<PacienteED[]>(`${this.url}/pacientes`, this.token).pipe(
+      tap(response => console.log(response)));
   }
 
 
-  cadastrarPaciente(paciente: any): Observable<PacienteED> {
-    return this.http.post<PacienteED>(this.url, paciente);
+  cadastrarPaciente(paciente: any): Observable<any> {
+    return this.http.post<any>(`${this.url}/pacientes`, paciente,this.token).pipe(
+      tap(response => console.log('respo : '+response)));
   }
 
 
-//   getAllPacientes(): Observable<PacienteED[]> {
-//     return this.http.get<PacienteED[]>(this.url + '/pacientes' /*this.token*/)
-//     .pipe(
-//       tap(data => console.log('All: ', JSON.stringify(data))))
-//   }
+  getAllPacientes(): Observable<PacienteED[]> {
+    return this.http.get<PacienteED[]>(this.url + '/pacientes' /*this.token*/)
+    .pipe(
+      tap(data => console.log('All: ', JSON.stringify(data))))
+  }
 
   getAllPacientesAtivos(ativo: boolean): Observable<PacienteED[]> {
     return this.http.get<PacienteED[]>(
-      this.url + `pacientes/isAtivo/${ativo}` /*this.token*/
+      this.url + `/pacientes/isAtivo/${ativo}` /*this.token*/
     );
   }
 

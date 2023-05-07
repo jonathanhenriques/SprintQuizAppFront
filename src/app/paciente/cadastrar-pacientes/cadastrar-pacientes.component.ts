@@ -40,110 +40,189 @@ export class CadastrarPacientesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.pacientePassado.exames = [this.examePassado]
+
     this.configurarFormulario(this.pacientePassado, this.enderecoPassado, this.contatoPassado, this.examePassado);
     this.desabilitarValidacoesDoFormulario();
     this.desabilitarValidacoes = true;
   }
 
+  obterTodos(){
+    console.log('obtertodos')
+    this.pacientesService.obterTodosPacientes().subscribe((dados: any) => {
+      console.log('all: '+dados);
+    });
+  }
+
   enviarDados() {
 
-    let jso = {
-      "nome": "Jonathan",
-      "dataNasc": "1997-05-05",
-      "idade": "25",
-      "RG": "501818352",
-      "estadoCivil": "SOLTEIRO",
-      "filhos": 0,
-      "nomeResponsavelPaciente": "",
-      "profissao": "Desenvolvedor",
-      "contatoForm": {
-        "celular": "11959503571",
-        "telefone": "1140551452",
-        "contFacebook": "faceboks",
-        "contInstagram": "instagram",
-        "email": "email@email.com"
-      },
-      "enderecoForm": {
-        "rua": "ruas",
-        "numero": "1",
-        "bairro": "bairros",
-        "cidade": "Cidades",
-        "tipoResidencia": "Casa",
-        "cep": "09951490",
-        "endObservacao": "Obersevado"
-      },
-      "deficiente": false,
-      "deficiencia": "",
-      "deficienciaFamilia": "",
-      "convenio": false,
-      "observacao": "",
-      "aceite": true,
-      "atendente": [
-        "andreia"
-      ],
-      "medicoAtendente": [
-        "Japones"
-      ],
-      "exame": "vista",
-      "local": [
-        "Diadema"
-      ],
-      "indicacao": "",
-      "isAtivo": false,
-      "dataCadastro": "2023-04-23T18:43:29.369Z",
-      "exames": [{
-        "id": 0,
-        "medico": "J",
-        "local": "D",
-        "paciente": null,
-        "dataExame": "2023-04-23T19:16:54.830Z",
-        "valor": 0,
-        "observacao": ""
-      }]
-    }
+    // let jso = {
+    //   "nome": "Jonathan",
+    //   "dataNasc": "1997-05-05",
+    //   "idade": "25",
+    //   "RG": "501818352",
+    //   "estadoCivil": "SOLTEIRO",
+    //   "filhos": 0,
+    //   "nomeResponsavelPaciente": "",
+    //   "profissao": "Desenvolvedor",
+    //   "contatoForm": {
+    //     "celular": "11959503571",
+    //     "telefone": "1140551452",
+    //     "contFacebook": "faceboks",
+    //     "contInstagram": "instagram",
+    //     "email": "email@email.com"
+    //   },
+    //   "enderecoForm": {
+    //     "rua": "ruas",
+    //     "numero": "1",
+    //     "bairro": "bairros",
+    //     "cidade": "Cidades",
+    //     "tipoResidencia": "Casa",
+    //     "cep": "09951490",
+    //     "endObservacao": "Obersevado"
+    //   },
+    //   "deficiente": false,
+    //   "deficiencia": "",
+    //   "deficienciaFamilia": "",
+    //   "convenio": false,
+    //   "observacao": "",
+    //   "aceite": true,
+    //   "atendente": [
+    //     "andreia"
+    //   ],
+    //   "medicoAtendente": [
+    //     "Japones"
+    //   ],
+    //   "exame": "vista",
+    //   "local": [
+    //     "Diadema"
+    //   ],
+    //   "indicacao": "",
+    //   "isAtivo": false,
+    //   "dataCadastro": "2023-04-23T18:43:29.369Z",
+    //   "exames": [{
+    //     "id": 0,
+    //     "medico": "J",
+    //     "local": "D",
+    //     "paciente": null,
+    //     "dataExame": "2023-04-23T19:16:54.830Z",
+    //     "valor": 0,
+    //     "observacao": ""
+    //   }]
+    // }
 
-    // let pacienteEnviar = new PacienteED();
-    // pacienteEnviar = this.formularioDeUsuario.value;
+    // // let pacienteEnviar = new PacienteED();
+    // // pacienteEnviar = this.formularioDeUsuario.value;
 
-    const exame = new ExameED();
-    exame.nomeExame = this.pacientePassado?.exames?.[0]?.nomeExame || '';
-    exame.medico = this.pacientePassado.medicoAtendente[0]
-    exame.local = this.pacientePassado.local[0];
-    // exame.paciente = dadosFormulario;
-    this.pacientePassado.exames = [exame];
-    // dadosFormulario.exames.push(exame);
-    this.pacientePassado.medicoAtendente = [...this.pacientePassado.medicoAtendente]
-    // dadosFormulario.medicoAtendente = dadosFormulario.medicoAtendente;
-    this.pacientePassado.atendente = [...this.pacientePassado.atendente]
-    // dadosFormulario.atendente.push(dadosFormulario.atendente);
-    this.pacientePassado.local = [...this.pacientePassado.local];
-    // dadosFormulario.local = dadosFormulario.local;
+    // const exame = new ExameED();
+    // exame.nomeExame = this.pacientePassado?.exames?.[0]?.nomeExame || '';
+    // exame.medico = this.pacientePassado.medicoAtendente[0]
+    // exame.local = this.pacientePassado.local[0];
+    // // exame.paciente = dadosFormulario;
+    // this.pacientePassado.exames = [exame];
+    // // dadosFormulario.exames.push(exame);
+    // this.pacientePassado.medicoAtendente = [...this.pacientePassado.medicoAtendente]
+    // // dadosFormulario.medicoAtendente = dadosFormulario.medicoAtendente;
+    // this.pacientePassado.atendente = [...this.pacientePassado.atendente]
+    // // dadosFormulario.atendente.push(dadosFormulario.atendente);
+    // this.pacientePassado.local = [...this.pacientePassado.local];
+    // // dadosFormulario.local = dadosFormulario.local;
 
-    const enderecoEnviar = new EnderecoED()
-    enderecoEnviar.rua = this.pacientePassado.endereco.rua;
-    enderecoEnviar.numero = this.pacientePassado.endereco.numero;
-    enderecoEnviar.bairro = this.pacientePassado.endereco.bairro;
-    enderecoEnviar.cidade = this.pacientePassado.endereco.cidade;
-    enderecoEnviar.tipoResidencia = this.pacientePassado.endereco.tipoResidencia;
-    enderecoEnviar.cep = this.pacientePassado.endereco.cep;
-    enderecoEnviar.endObservacao = this.pacientePassado.endereco.endObservacao;
-    this.pacientePassado.endereco = new EnderecoED;
-    this.pacientePassado.endereco = enderecoEnviar;
+    // const enderecoEnviar = new EnderecoED()
+    // enderecoEnviar.rua = this.pacientePassado.endereco.rua;
+    // enderecoEnviar.numero = this.pacientePassado.endereco.numero;
+    // enderecoEnviar.bairro = this.pacientePassado.endereco.bairro;
+    // enderecoEnviar.cidade = this.pacientePassado.endereco.cidade;
+    // enderecoEnviar.tipoResidencia = this.pacientePassado.endereco.tipoResidencia;
+    // enderecoEnviar.cep = this.pacientePassado.endereco.cep;
+    // enderecoEnviar.endObservacao = this.pacientePassado.endereco.endObservacao;
+    // this.pacientePassado.endereco = new EnderecoED;
+    // this.pacientePassado.endereco = enderecoEnviar;
 
-    const contatoEnviar = new ContatoED()
-    contatoEnviar.celular = this.pacientePassado.contato.celular;
-    contatoEnviar.telefone = this.pacientePassado.contato.telefone;
-    contatoEnviar.contFacebook = this.pacientePassado.contato.contFacebook;
-    contatoEnviar.contInstagram = this.pacientePassado.contato.contInstagram;
-    contatoEnviar.email = this.pacientePassado.contato.email;
-    this.pacientePassado.contato = new ContatoED;
-    this.pacientePassado.contato = contatoEnviar;
+    // const contatoEnviar = new ContatoED()
+    // contatoEnviar.celular = this.pacientePassado.contato.celular;
+    // contatoEnviar.telefone = this.pacientePassado.contato.telefone;
+    // contatoEnviar.contFacebook = this.pacientePassado.contato.contFacebook;
+    // contatoEnviar.contInstagram = this.pacientePassado.contato.contInstagram;
+    // contatoEnviar.email = this.pacientePassado.contato.email;
+    // this.pacientePassado.contato = new ContatoED;
+    // this.pacientePassado.contato = contatoEnviar;
 
+    this.pacientePassado.nome = this.formularioDeUsuario.value.nome;
+    this.pacientePassado.dataNasc = this.formularioDeUsuario.value.dataNasc;
+    this.pacientePassado.idade = this.formularioDeUsuario.value.idade;
+    this.pacientePassado.RG = this.formularioDeUsuario.value.RG;
+    this.pacientePassado.estadoCivil = this.formularioDeUsuario.value.estadoCivil;
+    this.pacientePassado.filhos = this.formularioDeUsuario.value.filhos;
+    this.pacientePassado.nomeResponsavelPaciente = this.formularioDeUsuario.value.nomeResponsavelPaciente;
+    this.pacientePassado.profissao = this.formularioDeUsuario.value.profissao;
+
+
+    this.pacientePassado.contato = new ContatoED();
+    this.pacientePassado.contato.celular = this.formularioDeUsuario.value.celular;
+    this.pacientePassado.contato.telefone = this.formularioDeUsuario.value.telefone;
+    this.pacientePassado.contato.contFacebook = this.formularioDeUsuario.value.contFacebook;
+    this.pacientePassado.contato.contInstagram = this.formularioDeUsuario.value.contInstagram;
+    this.pacientePassado.contato.email = this.formularioDeUsuario.value.email;
+
+    this.pacientePassado.endereco = new EnderecoED();
+    this.pacientePassado.endereco.endRua = this.formularioDeUsuario.value.endRua;
+    this.pacientePassado.endereco.endNumero = this.formularioDeUsuario.value.endNumero;
+    this.pacientePassado.endereco.endBairro = this.formularioDeUsuario.value.endBairro;
+    this.pacientePassado.endereco.endCidade = this.formularioDeUsuario.value.endCidade;
+    this.pacientePassado.endereco.endTipoResidencia = this.formularioDeUsuario.value.endTipoResidencia;
+    this.pacientePassado.endereco.endCep = this.formularioDeUsuario.value.endCep;
+    this.pacientePassado.endereco.endObservacao = this.formularioDeUsuario.value.endObservacao;
+    // this.pacientePassado.endereco = enderecoCompleto;
+
+    this.pacientePassado.deficiente = this.formularioDeUsuario.value.deficiente === true || this.formularioDeUsuario.value.deficiente === 'true' || this.formularioDeUsuario.value.deficiente === true ? 1 : 0;
+    this.pacientePassado.deficiencia = this.formularioDeUsuario.value.deficiencia;
+    this.pacientePassado.deficienciaFamilia = this.formularioDeUsuario.value.deficienciaFamilia;
+    this.pacientePassado.convenio = this.formularioDeUsuario.value.convenio === true ? 1 : 0;
+    this.pacientePassado.atendente = [this.formularioDeUsuario.value.atendente];
+
+    let exameCompleto = new ExameED();
+    exameCompleto.nomeExame = this.formularioDeUsuario.value.exame;
+    exameCompleto.medico = this.formularioDeUsuario.value.medicoAtendente;
+    exameCompleto.local = this.formularioDeUsuario.value.local;
+    exameCompleto.paciente = null;
+    exameCompleto.dataExame = new Date();
+    exameCompleto.valor = this.formularioDeUsuario.value.valorExame;
+    exameCompleto.observacao = this.formularioDeUsuario.value.observacaoExame;
+    this.pacientePassado.exames = [exameCompleto];
+    this.pacientePassado.local = [this.formularioDeUsuario.value.local];
+    this.pacientePassado.medicoAtendente = [this.formularioDeUsuario.value.medicoAtendente];
+
+
+    this.pacientePassado.observacao = this.formularioDeUsuario.value.observacaoExame;
+    this.pacientePassado.indicacao = this.formularioDeUsuario.value.indicacao;
+    // this.pacientePassado.aceite = this.formularioDeUsuario.value.aceite;
+    this.pacientePassado.aceite = true
+
+    this.pacientePassado.isAtivo = 1;
+    this.pacientePassado.dataCadastro = new Date();
+
+
+
+
+    // console.log(JSON.stringify(this.pacientePassado,null,2))
+    console.log('obj formulario')
+    console.log(JSON.stringify(this.formularioDeUsuario.value,null,2))
+    console.warn('---------------------------------')
+    console.log('obj paciente')
     console.log(JSON.stringify(this.pacientePassado,null,2))
+    console.warn('---------------------------------')
+    // console.log('obj contato')
+    // console.log(JSON.stringify(this.contatoPassado,null,2))
+    // console.warn('---------------------------------')
+    // console.log('obj exame')
+    // console.log(JSON.stringify(this.examePassado,null,2))
+    // console.warn('---------------------------------')
+    // console.log('obj endereco')
+    // console.log(JSON.stringify(this.enderecoPassado,null,2))
+
 
     this.pacientesService.cadastrarPaciente(this.pacientePassado).subscribe((dados: any) => {
-      console.log(dados);
+      console.log(JSON.stringify(dados,null,2));
     })
 
     // const usuario = new Usuario(
@@ -167,37 +246,41 @@ export class CadastrarPacientesComponent implements OnInit {
       nomeResponsavelPaciente: [paciente.nomeResponsavelPaciente, Validators.compose([Validators.required])],
       profissao: [paciente.profissao, Validators.required],
 
-      contatoForm: this.fb.group({
+      // contatoForm: this.fb.group({
         celular: [contato.celular, Validators.required],
         telefone: [contato.telefone, Validators.compose([Validators.required, Validacoes.comecaComNove])],
         contFacebook: [contato.contFacebook],
         contInstagram: [contato.contInstagram],
         email: [contato.email],
-      },),
+      // },),
 
 
-      endereco: this.fb.group({
-        endRua: [endereco.rua],
-        endNumero: [endereco.numero],
-        endBairro: [endereco.bairro],
-        endCidade: [endereco.cidade],
-        endCep: [endereco.cep],
-        endTipoResidencia: [endereco.tipoResidencia],
-        endObservacao: [endereco.endObservacao]}),
+      // endereco: this.fb.group({
+        endRua: [endereco.endRua],
+        endNumero: [endereco.endNumero],
+        endBairro: [endereco.endBairro],
+        endCidade: [endereco.endCidade],
+        endCep: [endereco.endCep],
+        endTipoResidencia: [endereco.endTipoResidencia],
+        endObservacao: [endereco.endObservacao],
+      // }),
 
       deficiente: [paciente.deficiente],
       deficiencia: [paciente.deficiencia],
       deficienciaFamilia: [paciente.deficienciaFamilia],
       convenio: [paciente.convenio],
-      observacao: [paciente.observacao],
+      observacaoPaciente: [paciente.observacao],
       aceite: [paciente.aceite],
       atendente: [paciente.atendente],
-      medicoAtendente: [paciente.medicoAtendente],
+      medicoAtendente: [paciente.medicoAtendente, Validators.required],
       exame: [exame.nomeExame, Validators.required],
+      observacaoExame: [exame.observacao],
+      valorExame: [exame.valor, Validators.required],
       local: [paciente.local, Validators.required],
       indicacao: [paciente.indicacao],
-      isAtivo: [paciente.isAtivo],
-      dataCadastro: [paciente.dataCadastro],
+
+      // isAtivo: [paciente.isAtivo],
+      // dataCadastro: [paciente.dataCadastro],
     },[
       // {
       //   Validator:Validacoes.comecaComNove

@@ -1,7 +1,7 @@
 import { PacienteED } from "./PacienteED";
 
 export class ExameED {
-  public id: number;
+  public id: number | null;
   public nomeExame: string;
   public medico: string;
   public local: string;
@@ -11,7 +11,7 @@ export class ExameED {
   public observacao: string;
 
   constructor() {
-    this.id = 0;
+    this.id = null;
     this.nomeExame = '';
     this.medico = '';
     this.local = '';
@@ -26,10 +26,10 @@ export class ExameED {
 
 export function criaExameComPaciente(paciente: PacienteED): ExameED {
   return {
-  id: 0,
+  id: null,
   nomeExame: '',
-  medico: paciente.medicoAtendente[0],
-  local: paciente.local[0],
+  medico: '',
+  local: '',
   paciente:  paciente,
   dataExame: new Date(),
   valor: 0,

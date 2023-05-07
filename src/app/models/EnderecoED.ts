@@ -1,19 +1,19 @@
 export class EnderecoED {
-  public rua: string;
-  public numero: number;
-  public bairro: string;
-  public cidade: string;
-  public tipoResidencia: string;
-  public cep: string;
+  public endRua: string;
+  public endNumero: string;
+  public endBairro: string;
+  public endCidade: string;
+  public endTipoResidencia: string;
+  public endCep: string;
   public endObservacao: string;
 
   constructor() {
-    this.rua = '';
-    this.numero = 0;
-    this.bairro = '';
-    this.cidade = '';
-    this.tipoResidencia = '';
-    this.cep = '';
+    this.endRua = '';
+    this.endNumero = '';
+    this.endBairro = '';
+    this.endCidade = '';
+    this.endTipoResidencia = '';
+    this.endCep = '';
     this.endObservacao = '';
   }
 }
