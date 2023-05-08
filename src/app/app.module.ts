@@ -7,11 +7,13 @@ import { PacienteModule } from './paciente/paciente.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './shared/material/material.module';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    SidebarComponent,
 
 
 
