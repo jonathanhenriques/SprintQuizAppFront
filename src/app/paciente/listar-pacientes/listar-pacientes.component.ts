@@ -1,6 +1,7 @@
 import { PacientesService } from 'src/app/services/pacientes.service';
 import { Component, OnInit } from '@angular/core';
 import { PacienteED } from 'src/app/models/PacienteED';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -16,32 +17,37 @@ export class ListarPacientesComponent implements OnInit {
   public pacientes: PacienteED[] = [];
 
 
+  displayedColumns: string[] = ['nome', 'RG', 'dataNasc', 'idade', 'contato'];
+  dataSource: MatTableDataSource<any>
 
-  constructor(private pacientesService: PacientesService) {
-
-    this.paciente.nome = 'teste';
-    this.paciente.contato.email = 'testeEmail';
-    this.paciente.contato.telefone = 'testeTelefone';
-    this.pacientes.push(this.paciente);
-  }
+  constructor(private pacientesService: PacientesService) {}
 
   ngOnInit(): void {
+
     this.listarPacientes();
   }
 
   listarPacientes(): void {
     this.pacientesService
-      .getAllPacientes()
-      .subscribe((dataPacientes: PacienteED[]) => {
-        this.pacientes = dataPacientes;
-      });
+    .getAllPacientes()
+    .subscribe((dataPacientes: PacienteED[]) => {
+      this.pacientes = dataPacientes;
+      this.dataSource = new MatTableDataSource(dataPacientes)
+    });
   }
 
   listarPacientesAtivos(): void {
     this.pacientesService
-      .getAllPacientesAtivos(true)
-      .subscribe((dataPacientes: PacienteED[]) => {
-        this.pacientes = dataPacientes;
+    .getAllPacientesAtivos(true)
+    .subscribe((dataPacientes: PacienteED[]) => {
+      this.pacientes = dataPacientes;
       });
   }
+
+  applyFilter(event: Event) {
+    // const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = (event.target as HTMLInputElement).value?.trim().toLowerCase();
+  }
+
 }
+

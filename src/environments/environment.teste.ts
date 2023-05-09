@@ -9,5 +9,5 @@ export const environment = {
 
 
 
-    urlTeste: 'localhost:8081/api/v1',
+    urlTeste: 'http://localhost:8081',
   };
