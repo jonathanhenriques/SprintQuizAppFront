@@ -7,11 +7,12 @@ import { PacienteRoutingModule } from './paciente-routing.module';
 import { ListarPacientesComponent } from './listar-pacientes/listar-pacientes.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { DetailsPacienteComponent } from './details-paciente/details-paciente.component';
 
 
 
 @NgModule({
-declarations: [CadastrarPacientesComponent, ListarPacientesComponent, ],
+declarations: [CadastrarPacientesComponent, ListarPacientesComponent, DetailsPacienteComponent, ],
   imports: [
     CommonModule,
     PacienteRoutingModule,

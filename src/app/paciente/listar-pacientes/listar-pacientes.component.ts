@@ -17,7 +17,7 @@ export class ListarPacientesComponent implements OnInit {
   public pacientes: PacienteED[] = [];
 
 
-  displayedColumns: string[] = ['nome', 'RG', 'dataNasc', 'idade', 'contato'];
+  displayedColumns: string[] = ['nome', 'RG', 'dataNasc', 'idade', 'contato', 'apagar'];
   dataSource: MatTableDataSource<any>
 
   constructor(private pacientesService: PacientesService) {}
