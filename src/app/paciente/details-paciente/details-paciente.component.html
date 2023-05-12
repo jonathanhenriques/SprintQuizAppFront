@@ -109,8 +109,32 @@
     <label for="medicoAtendente">Médico Atendente:</label>
     <input type="text" id="medicoAtendente" formControlName="medicoAtendente" />
 
-    <label for="exame">Exame:</label>
-    <input type="text" id="exame" formControlName="exame" />
+    <!-- <label for="exame">Exame:</label>
+    <input type="text" id="exame" formControlName="exame" /> -->
+
+    <table>
+      <tr>
+        <th >id</th>
+        <th >nome Exame</th>
+        <th >Médico</th>
+        <th >Local</th>
+        <th >Valor</th>
+        <th >Observação</th>
+      </tr>
+      <ng-container *ngIf="examePassado">
+        <tr *ngFor="let exame of [examePassado]">
+          <td>{{ exame.id }}</td>
+          <td>{{ exame.nomeExame }}</td>
+          <td>{{ exame.medico }}</td>
+          <td>{{ exame.local }}</td>
+          <td>{{ exame.valor | currency:'BRL' }}</td>
+          <td>{{ exame.observacao }}</td>
+
+        </tr>
+      </ng-container>
+    </table>
+
+
 
     <label for="observacaoExame">Observação:</label>
     <input type="text" id="observacaoExame" formControlName="observacaoExame" />

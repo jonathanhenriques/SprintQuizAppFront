@@ -1,0 +1,22 @@
+/* Selects the table element and sets its border to collapse into a single border and its width to 100% of its parent element */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Selects the th and td elements and sets their border to 1px solid #ddd and their padding to 8px */
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Selects even table rows and sets their background color to a light gray color */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Selects the th element and sets its background color to green and its text color to white */
+th {
+  background-color: #4CAF50;
+  color: white;
+}

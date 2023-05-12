@@ -36,6 +36,9 @@ export class DetailsPacienteComponent {
   dataFormatadaExibicao: any
   idPaciente: number
 
+  atributosExame: string[]
+
+
   constructor(
     private pacientesService: PacientesService,
     private fb: FormBuilder,
@@ -50,6 +53,9 @@ export class DetailsPacienteComponent {
     this.buscarPacienteById(this.idPaciente)
     this.desabilitarValidacoesDoFormulario();
     this.desabilitarValidacoes = true;
+
+    this.atributosExame = Object.keys(new ExameED()).map(key => key);
+    console.log(typeof this.atributosExame)
 
   }
 
