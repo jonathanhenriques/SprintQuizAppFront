@@ -19,7 +19,8 @@ export class QuestaoProvaService {
 
   // url: string = 'https://sprintquiz.herokuapp.com';
   // url: string = 'http://localhost:8081';
-  url = '/questaoprova';
+  url: string = environment.url;
+  // url = '/questaoprova';
 
   getAllQuestaoProva():Observable<QuestaoProva[]>{
     return this.http.get<QuestaoProva[]>(environment.url + this.url, this.token);

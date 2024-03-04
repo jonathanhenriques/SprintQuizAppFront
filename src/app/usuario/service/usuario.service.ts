@@ -17,7 +17,7 @@ export class UsuarioService {
     private http: HttpClient,
      private usuarioTokenService: UsuarioTokenService,
      private tokenService: TokenService
-     
+
      ) { }
 
   // token = {
@@ -29,15 +29,16 @@ export class UsuarioService {
   };
 
   // url: string = 'https://sprintquiz.herokuapp.com';
-  // url: string = 'http://localhost:8081';
-  readonly url = '/usuarios';
+   url: string = 'http://localhost:8081/usuarios';
+  //url: string = environment.url;
+  // readonly url = '/usuarios';
 
   // entrar(usuarioLogin: UsuarioLogin): Observable<UsuarioLogin> {
   //   return this.http.post<UsuarioLogin>(
   //     environment.url + this.url + '/logar',
   //     usuarioLogin
   //   )
-    
+
   // }
 
 
@@ -46,7 +47,8 @@ export class UsuarioService {
    entrar(usuarioLogin: UsuarioLogin): Observable<HttpResponse<UsuarioLogin>> {
     console.log('retTok - ' + this.tokenService.retornaToken())
       return this.http.post<UsuarioLogin>(
-        environment.url + this.url + '/logar',
+        //environment.url +
+        this.url + '/logar',
         usuarioLogin
         ,{observe: 'response'}
       )
@@ -69,13 +71,15 @@ export class UsuarioService {
   cadastrar(usuario: Usuario): Observable<Usuario> {
     console.log('retTok - ' + this.tokenService.retornaToken())
     return this.http.post<Usuario>(
-      environment.url + this.url + '/cadastrar',
+      //environment.url +
+      this.url + '/cadastrar',
       usuario
     );
   }
   atualizar(usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(
-      environment.url + this.url + '/atualizar',
+      environment.url +
+      this.url + '/atualizar',
       usuario, this.token
     );
   }
@@ -115,6 +119,6 @@ export class UsuarioService {
     return false;
   }
 
-  
+
 }
 

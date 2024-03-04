@@ -11,4 +11,3 @@ export const environment = {
     //  url: 'https://sprintquiz.herokuapp.com'
      url: 'http://localhost:8081'
   };
-  

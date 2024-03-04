@@ -17,14 +17,20 @@ export class CategoriaProvaService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   };
 
-  
+
   // url: string = 'https://sprintquiz.herokuapp.com';
   // url: string = 'http://localhost:8081';
-  url = '/categoriaProva';
+  url: string = environment.url;
+  // url = '/categoriaProva';
 
   getAllCategoriaProva():Observable<any[]>{
     console.log(environment.token)
     return this.http.get<any[]>(environment.url + this.url, this.token);
+  }
+
+  getAllCategoriaProva1():Observable<any[]>{
+    console.log(environment.token)
+    return this.http.get<any[]>("localhost:8081/api/v1/pacientes");
   }
 
   getByIdCategoriaProva(id: number):Observable<CategoriaProva>{
@@ -43,5 +49,5 @@ export class CategoriaProvaService {
     return this.http.delete<CategoriaProva>(environment.url + this.url + `/${id}`, this.token);
   }
 
-  
+
 }

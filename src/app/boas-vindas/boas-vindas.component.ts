@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertasService } from '../shared/services/alertas.service';
+import { CategoriaProvaService } from '../categoria-prova/service/categoria-prova.service';
+import { CategoriaProva } from '../categoria-prova/model/CategoriaProva';
 
 @Component({
   selector: 'app-boas-vindas',
@@ -9,11 +11,12 @@ import { AlertasService } from '../shared/services/alertas.service';
 })
 export class BoasVindasComponent implements OnInit {
 
-
+  lista: any = [];
 
   constructor(
     private router: Router,
     private alertas: AlertasService,
+    private categoriaProvaService: CategoriaProvaService,
   ) { }
 
   ngOnInit() {
@@ -29,6 +32,15 @@ export class BoasVindasComponent implements OnInit {
 
   irPara(caminho: string) {
     this.router.navigate(['nav/' + caminho]);
+  }
+
+  findByIdCategoriaProvaService() {
+    {
+      this.categoriaProvaService.getAllCategoriaProva1().subscribe((categoriaProvaresp: CategoriaProva[]) => {
+        this.lista = categoriaProvaresp;
+
+      })
+    }
   }
 
 
