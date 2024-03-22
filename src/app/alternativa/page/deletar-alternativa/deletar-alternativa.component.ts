@@ -16,7 +16,7 @@ export class DeletarAlternativaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
   }
 
 }

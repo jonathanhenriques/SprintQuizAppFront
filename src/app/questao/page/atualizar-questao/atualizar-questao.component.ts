@@ -54,7 +54,7 @@ export class AtualizarQuestaoComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0);
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idQuestao = +this.activatedRoute.snapshot.params['id'];
     this.findAllCategoriaQuestao();

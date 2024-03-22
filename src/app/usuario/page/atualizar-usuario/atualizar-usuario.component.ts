@@ -27,7 +27,7 @@ export class AtualizarUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
     // this.idUsuario = +this.activateRoute.snapshot.params['id']
     this.idUsuario = environment.id
     this.getByIdUsuario(this.idUsuario)

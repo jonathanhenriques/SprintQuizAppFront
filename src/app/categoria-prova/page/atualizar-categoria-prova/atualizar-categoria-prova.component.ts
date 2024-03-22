@@ -30,7 +30,7 @@ export class AtualizarCategoriaProvaComponent implements OnInit {
 
     // }
 
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     let id: number = this.activatedRoute.snapshot.params['id'];
     this.findByIdCategoriaProvaService(id);

@@ -33,7 +33,7 @@ export class NavegacaoBarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
     // console.log('NAVEGACAO BAR PASSOOOOOU')
     // console.log('id - ' + environment.id)
     // console.log('nome - ' + environment.nome)

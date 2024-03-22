@@ -10,10 +10,18 @@ import { MuralProvasComponent } from './pages/mural-provas/mural-provas.componen
 import { FormsModule } from '@angular/forms';
 import { QuestaoModule } from '../questao/questao.module';
 import { MuralSprintsComponent } from './pages/mural-sprints/mural-sprints.component';
+import { FazerProvaComponent } from './pages/fazer-prova/fazer-prova.component';
 
 
 @NgModule({
-  declarations: [CadastrarProvaComponent, AtualizarProvaComponent, DeletarProvaComponent,GaleriaProvasComponent,MuralProvasComponent, MuralSprintsComponent],
+  declarations: [
+    CadastrarProvaComponent,
+    AtualizarProvaComponent,
+    DeletarProvaComponent,
+    GaleriaProvasComponent,
+    MuralProvasComponent,
+    MuralSprintsComponent,
+    FazerProvaComponent],
   imports: [
     CommonModule,
     FormsModule,

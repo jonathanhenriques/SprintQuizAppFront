@@ -58,7 +58,7 @@ export class CadastrarQuestaoComProvaComponent implements OnInit {
     window.scroll(0, 0);
 
 
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.findAllCategoriaQuestao();
     // this.idProva = this.activatedRoute.snapshot.params['id'];

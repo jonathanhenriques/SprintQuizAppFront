@@ -6,6 +6,7 @@ import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 import { ProvaServiceService } from '../../service/prova-service.service';
 import { environment } from 'src/environments/environment.prod';
+import { ResponsePageable } from 'src/app/shared/models/ResponsePageable';
 
 
 @Component({
@@ -38,39 +39,46 @@ export class MuralProvasComponent implements OnInit {
 
   ngOnInit() {
 
-    UsuarioService.verificaLogado(this.alertas, this.router);
-    this.usuario.id = this.idUsuario;
-    this.findByIdUsuario();
+    // UsuarioService.verificaLogado(this.alertas, this.router);
+    // this.usuario.id = this.idUsuario;
+    // this.findByIdUsuario();
     // this.listaProvas = this.usuario.provas;
-    this.findProvasByCriadorId();
+    // this.findProvasByCriadorId();
 
+    this.findAllProvas()
 
+  }
+
+  findAllProvas(){
+    this.provaService.getAllProvas().subscribe((provas: ResponsePageable) => {
+      this.listaProvas = provas.content;
+    })
   }
 
   pegaIdProvaParaModal(id: any) {
     this.idProvaParaModal = id;
   }
 
-  findByIdUsuario() {
-    this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
-      this.usuario = usuarioResp;
+  // findByIdUsuario() {
+  //   this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {
+  //     this.usuario = usuarioResp;
 
-    })
-  }
+  //   })
+  // }
 
   quiz(id: number) {
     // this.router.navigate(['nav/quiz'], id)
     this.router.navigate(['nav/mural-provas/quiz', id]);
   }
 
-  findProvasByCriadorId() {
-    this.provaService.getProvaByCriadorId(this.idUsuario).subscribe((listaProvasResp: Prova[]) => {
-      this.listaProvas = listaProvasResp;
-      // listaProvasResp.forEach(e => {
-      //   console.log(e.nome);
-      // })
-    })
-  }
+  // findProvasByCriadorId() {
+  //   this.provaService.getProvaByCriadorId(this.idUsuario).subscribe((listaProvasResp: Prova[]) => {
+  //     this.listaProvas = listaProvasResp;
+  //     // listaProvasResp.forEach(e => {
+  //     //   console.log(e.nome);
+  //     // })
+  //   })
+  // }
 
   // findProvasUsuario(){
   //   this.UsuarioService.getByIdUsuario(this.idUsuario).subscribe((usuarioResp: Usuario) => {

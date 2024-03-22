@@ -38,7 +38,7 @@ export class MuralSprintsComponent implements OnInit {
 
   ngOnInit() {
 
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
     this.findByIdUsuario();
     // this.listaProvas = this.usuario.provas;

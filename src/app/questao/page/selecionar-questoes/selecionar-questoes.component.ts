@@ -58,7 +58,7 @@ export class SelecionarQuestoesComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0);
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.listaTodasQuestoes1 = this.questoesService.getAllQuestao();
 

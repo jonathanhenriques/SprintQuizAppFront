@@ -28,7 +28,7 @@ export class DeletarCategoriaQuestaoComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
 
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idCategoria = this.activatedRoute.snapshot.params['id'];
 

@@ -7,7 +7,7 @@ import { Prova } from 'src/app/prova/model/Prova';
 import { ProvaServiceService } from 'src/app/prova/service/prova-service.service';
 import { createQuestao, Questao } from 'src/app/questao/model/Questao';
 import { QuestaoService } from 'src/app/questao/service/questao.service';
-import { UsuarioService } from 'src/app/service/usuario.service';
+// import { UsuarioService } from 'src/app/service/usuario.service';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
 import { createUsuario, Usuario } from 'src/app/usuario/model/Usuario';
 import { environment } from 'src/environments/environment.prod';
@@ -58,7 +58,7 @@ export class QuizzComponent implements OnInit {
   constructor(
     private router: Router,
     private alertas: AlertasService,
-    private UsuarioService: UsuarioService,
+    // private UsuarioService: UsuarioService,
     private questaoService: QuestaoService,
     private provaService: ProvaServiceService,
     private activatedRoute: ActivatedRoute,
@@ -67,7 +67,7 @@ export class QuizzComponent implements OnInit {
 
   ngOnInit() {
 
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
 
     this.idProva = this.activatedRoute.snapshot.params['id'];
@@ -87,8 +87,8 @@ export class QuizzComponent implements OnInit {
 
     this.startCounter();
 
-    this.UsuarioService.getByIdUsuario(this.idUsuario)
-      .subscribe((res: Usuario) => this.usuario = res)
+    // this.UsuarioService.getByIdUsuario(this.idUsuario)
+    //   .subscribe((res: Usuario) => this.usuario = res)
     // this.findByIdUsuario();
 
   }

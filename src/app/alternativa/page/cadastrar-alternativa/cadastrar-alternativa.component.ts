@@ -30,7 +30,7 @@ export class CadastrarAlternativaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
     this.idQuestao = this.activatedRoute.snapshot.params['id'];
     console.log('idQuestao | ' + this.idQuestao);
     this.getQuestaoById();

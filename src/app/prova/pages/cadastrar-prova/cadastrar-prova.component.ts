@@ -35,14 +35,14 @@ export class CadastrarProvaComponent implements OnInit {
     private router: Router,
     private alertas: AlertasService,
     private provaService: ProvaServiceService,
-    
+
     private categoriaProvaService: CategoriaProvaService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.findAllCategoriaProva();
 

@@ -48,7 +48,7 @@ export class CadastrarCategoriaQuestaoComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
 
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     //dispatch faz um envio para a action
     // this.store.dispatch(fromCategoriaQuestaoAction.getAllCategoriaQuestao());

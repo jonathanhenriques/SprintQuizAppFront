@@ -25,7 +25,7 @@ export class DeletarProvaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idProva = this.activatedRoute.snapshot.params['id'];
     this.findByIdProva();

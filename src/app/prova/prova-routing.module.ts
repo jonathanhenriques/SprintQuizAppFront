@@ -6,6 +6,7 @@ import { DeletarProvaComponent } from './pages/deletar-prova/deletar-prova.compo
 import { GaleriaProvasComponent } from './pages/galeriaprovas/galeria-provas.component';
 import { MuralProvasComponent } from './pages/mural-provas/mural-provas.component';
 import { MuralSprintsComponent } from './pages/mural-sprints/mural-sprints.component';
+import { FazerProvaComponent } from './pages/fazer-prova/fazer-prova.component';
 
 const routes: Routes = [
   {path:'cadastrar-prova', component: CadastrarProvaComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:'deletar-prova/:id', component: DeletarProvaComponent},
   { path: 'mural-provas', component: MuralProvasComponent },
   { path: 'galeria-provas', component: GaleriaProvasComponent },
-  { path: 'mural-sprints', component: MuralSprintsComponent }
+  { path: 'mural-sprints', component: MuralSprintsComponent },
+  { path: 'fazer-prova', component: FazerProvaComponent }
 ];
 
 @NgModule({

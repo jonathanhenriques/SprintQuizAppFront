@@ -22,7 +22,7 @@ export class DeletarQuestaoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idQuestao = this.activatedRoute.snapshot.params['id'];
     this.findByIdQuestao();

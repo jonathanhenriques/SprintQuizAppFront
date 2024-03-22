@@ -68,15 +68,15 @@ import { appEffects, appReducer } from './store/app-state';
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
-    
+
   ],
 
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptorService,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })

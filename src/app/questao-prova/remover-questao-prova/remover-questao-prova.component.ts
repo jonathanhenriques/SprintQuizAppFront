@@ -5,7 +5,7 @@ import { Prova } from 'src/app/prova/model/Prova';
 import { Questao, createQuestao } from 'src/app/questao/model/Questao';
 import { QuestaoProva, createQuestaoProva } from '../model/QuestaoProva';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { UsuarioService } from 'src/app/service/usuario.service';
+// import { UsuarioService } from 'src/app/service/usuario.service';
 import { ProvaServiceService } from 'src/app/prova/service/prova-service.service';
 import { QuestaoProvaService } from '../service/questao-prova.service';
 import { QuestaoService } from 'src/app/questao/service/questao.service';
@@ -37,12 +37,12 @@ export class RemoverQuestaoProvaComponent implements OnInit {
     private questoesService: QuestaoService,
     private provaService: ProvaServiceService,
     private questaoProvaService: QuestaoProvaService,
-    private UsuarioService: UsuarioService,
+    // private UsuarioService: UsuarioService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
 
     this.idProva = this.activatedRoute.snapshot.params['id'];
     // this.questao.

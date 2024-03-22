@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Usuario, createUsuario } from '../usuario/model/Usuario';
 import { UsuarioLogin } from '../usuario/model/UsuarioLogin';
 import { AlertasService } from 'src/app/shared/services/alertas.service';
-import { UsuarioService } from 'src/app/usuario/service/usuario.service';
+import { UsuarioService, logarUsuario } from 'src/app/usuario/service/usuario.service';
 import { environment } from 'src/environments/environment.prod';
 import { HttpResponse } from '@angular/common/http';
 import { UsuarioTokenService } from '../usuario/service/usuario-token.service';
@@ -22,7 +22,7 @@ export class EntrarComponent implements OnInit {
   emailUsuario: string = '';
 
   usuario: Usuario = createUsuario()
-  usuarioLoginForm: UsuarioLogin = new UsuarioLogin();
+  usuarioLoginForm: logarUsuario = new logarUsuario();
   tipoCampoSenha: string = 'password';
   mostrarSenha: boolean = false;
 
@@ -42,8 +42,8 @@ export class EntrarComponent implements OnInit {
       {
         // usuario: ['', [Validators.required, Validators.email],],
         // senha: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(14)],]
-        email: ['', [Validators.required]],
-        senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
+        username: ['', [Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
 
       }
     );

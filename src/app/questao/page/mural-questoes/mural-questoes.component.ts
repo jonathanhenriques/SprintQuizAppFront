@@ -25,7 +25,8 @@ export class MuralQuestoesComponent implements OnInit {
   categoriaQuestao: CategoriaQuestao = createCategoriaQuestao();
 
 
-  idUsuario: number = environment.id;
+  // idUsuario: number = environment.id;
+  idUsuario: number = 1;
   idQuestao: number = 0;
   idCategoriaQuestao: number = 0;
   criadorQuestao: Usuario = createUsuario();
@@ -44,7 +45,7 @@ export class MuralQuestoesComponent implements OnInit {
 
   ngOnInit() {
 
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
     this.usuario.id = this.idUsuario;
     this.findByIdUsuario();
     this.findQuestoesByCriadorId();

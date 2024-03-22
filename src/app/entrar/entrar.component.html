@@ -15,10 +15,10 @@
               name="email"
               id="email"
               placeholder="email..."
-              formControlName="email"
+              formControlName="username"
               required
             />
-            <app-mensagem *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched"
+            <app-mensagem *ngIf="loginForm.get('username')?.errors && loginForm.get('username')?.touched"
               mensagem="email obrigatório"
             ></app-mensagem>
           </div>
@@ -30,15 +30,15 @@
               name="senha"
               id="senha"
               placeholder="senha..."
-              formControlName="senha"
-              
+              formControlName="password"
+
             />
-            <app-mensagem *ngIf="loginForm.get('senha')?.errors && loginForm.get('senha')?.touched"
+            <app-mensagem *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched"
               mensagem="senha obrigatório"
             ></app-mensagem>
           </div>
 
-          
+
 
           <div class="text-center">
             <button class="btn btn-success" type="submit">Entrar</button>
@@ -48,8 +48,8 @@
         <hr class="m-5" />
 
         <p class="mt-5 ml-5 mr-5">
-          Não tem uma conta? Sem 
-          problemas 
+          Não tem uma conta? Sem
+          problemas
           <a routerLink="/usuario/cadastrar-usuario" >cadastre-se</a>
         </p>
       </div>

@@ -44,8 +44,31 @@ export class UsuarioService {
 
 
 
-   entrar(usuarioLogin: UsuarioLogin): Observable<HttpResponse<UsuarioLogin>> {
+  //  entrar(usuarioLogin: UsuarioLogin): Observable<HttpResponse<UsuarioLogin>> {
+  //   console.log('retTok - ' + this.tokenService.retornaToken())
+  //   console.log('json' + JSON.stringify(usuarioLogin))
+  //     return this.http.post<UsuarioLogin>(
+  //       //environment.url +
+  //       this.url + '/logar',
+  //       usuarioLogin
+  //       ,{observe: 'response'}
+  //     )
+  //     .pipe(
+  //       tap((resp) => {
+  //         console.table(resp.body)
+  //         console.table(resp.headers)
+  //         console.log('passsouuu')
+  //         const authToken = resp.headers.get('x-access-token') ?? ''
+  //         this.usuarioTokenService.salvaToken(resp.body.token)
+  //       }
+  //       )
+  //     )
+  //     .pipe(tap((resp) => console.log('entrarServ - ' + JSON.stringify(resp,null,2))))
+  //   }
+
+  entrar(usuarioLogin: logarUsuario): Observable<HttpResponse<UsuarioLogin>> {
     console.log('retTok - ' + this.tokenService.retornaToken())
+    console.log('json' + JSON.stringify(usuarioLogin))
       return this.http.post<UsuarioLogin>(
         //environment.url +
         this.url + '/logar',
@@ -86,13 +109,13 @@ export class UsuarioService {
 
   getByIdUsuario(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(
-      environment.url + this.url + `/${id}`,
+      this.url + `/${id}`,
       this.token
     );
   }
 
   getByEmailUsuario(usuarioEmail: string): Observable<Usuario> {
-    return this.http.get<Usuario>(environment.url + this.url + `/email/${usuarioEmail}`, this.token
+    return this.http.get<Usuario>(this.url + `/email/${usuarioEmail}`, this.token
     )
   }
 
@@ -120,5 +143,11 @@ export class UsuarioService {
   }
 
 
+}
+
+
+export class logarUsuario{
+  username: string;
+  password: string;
 }
 

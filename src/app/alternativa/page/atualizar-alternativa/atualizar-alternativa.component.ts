@@ -29,7 +29,7 @@ export class AtualizarAlternativaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    UsuarioService.verificaLogado(this.alertas, this.router);
+    // UsuarioService.verificaLogado(this.alertas, this.router);
     this.idAlternativa = this.activatedRoute.snapshot.params['id'];
 
     this.getAlternativaById();
