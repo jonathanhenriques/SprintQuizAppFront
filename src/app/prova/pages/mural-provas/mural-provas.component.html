@@ -16,7 +16,8 @@
         <div class="card-body">
           <h5 class="card-title texto">{{ prova.nome }}</h5>
           <p class="card-text">{{ prova.descricao }}</p>
-          <a  [routerLink]="['/fazer-prova', prova.id]"  class="btn btn-primary">fazer</a>
+          <p class="card-text">{{ prova.id }}</p>
+          <a [routerLink]="['/prova/fazer-prova', prova.id]"  class="btn btn-primary">fazer</a>
         </div>
       </div>
     </div>

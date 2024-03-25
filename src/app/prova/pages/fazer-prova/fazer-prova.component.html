@@ -6,19 +6,59 @@
   </div>
 </div>
 
-<div class="container my-5">
-  <div class="row d-flex align-items-center">
-    <div
-      class="card col-md-4 d-flex align-items-strech m-1 my-1 p-0"
-      *ngFor="let prova of listaQuestoes"
-    >
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title texto">{{ prova.texto }}</h5>
-          <p class="card-text">{{ prova.dificuldade }}</p>
-          <a href="prova/fazer-prova" class="btn btn-primary">fazer</a>
+<div class="container my-5" >
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title texto">{{ prova?.nome }}</h5>
+      <p class="card-text">{{ prova?.descricao }}</p>
+        <p class="card-text">{{ prova?.id }}</p>
+      <a href="prova/fazer-prova" class="btn btn-primary">fazer</a>
+
+      <!-- questoes -->
+      <div class="container my-5">
+        <div class="row d-flex align-items-center">
+          <div
+            class="card col-md-4 d-flex align-items-strech m-1 my-1 p-0"
+            *ngFor="let questao of listaQuestoes"
+          >
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title texto">{{ questao?.texto }}</h5>
+                <p class="card-text">{{ questao?.dificuldade }}</p>
+                <p class="card-text">{{ questao?.id }}</p>
+                <a href="prova/fazer-prova" class="btn btn-primary">fazer</a>
+
+
+                <!-- alternativas -->
+                <div class="container my-5">
+                  <div class="row d-flex align-items-center">
+                    <div
+                      class="card col-md-4 d-flex align-items-strech m-1 my-1 p-0"
+                      *ngFor="let alternativa of questao.alternativas"
+                    >
+                      <div class="card">
+                        <div class="card-body"  >
+                          <h5 class="card-title texto">{{ alternativa?.id }}</h5>
+                          <p class="card-text">{{ alternativa?.texto }}</p>
+                          <p class="card-text">{{ alternativa?.isResposta }}</p>
+                          <a href="prova/fazer-prova" class="btn btn-primary">fazer</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+
     </div>
   </div>
 </div>
+
+

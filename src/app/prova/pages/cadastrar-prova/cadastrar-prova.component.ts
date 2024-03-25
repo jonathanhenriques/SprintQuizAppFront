@@ -20,7 +20,7 @@ export class CadastrarProvaComponent implements OnInit {
 
   usuario: Usuario = createUsuario();
   // prova: Prova = new Prova();
-  prova: Prova = new Prova();
+  prova: Prova;
   categoriaProva: CategoriaProva = createCategoriaProva();
 
   idUsuario: number = environment.id;

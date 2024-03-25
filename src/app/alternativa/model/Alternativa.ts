@@ -15,6 +15,7 @@ export interface Alternativa {
    texto: string;
    foto: string;
    questao: Questao;
+   isResposta: boolean;
 }
 
 export function createAlternativa() : Alternativa {
@@ -22,6 +23,7 @@ export function createAlternativa() : Alternativa {
     id: null,
     texto: '',
     foto: '',
-    questao: null
+    questao: null,
+    isResposta: false,
   }
 }

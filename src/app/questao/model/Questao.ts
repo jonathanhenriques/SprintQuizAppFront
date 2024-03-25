@@ -4,16 +4,16 @@ import { Usuario } from "src/app/usuario/model/Usuario";
 
 export interface Questao {
 
-   id: number;
-   instituicao: string;
-   ano: Date | undefined;
-   texto: string;
-   imagem: string;
+   id?: number;
+   instituicao?: string;
+   ano?: Date | undefined;
+   texto?: string;
+   imagem?: string;
    dificuldade?: number;
-   alternativas: Alternativa[];
-   resposta: Alternativa;
-   categoria: CategoriaQuestao;
-   criador: Usuario;
+   alternativas?: Alternativa[];
+   resposta?: Alternativa;
+   categoria?: CategoriaQuestao;
+   criador?: Usuario;
 }
 
 export function createQuestao(): Questao {

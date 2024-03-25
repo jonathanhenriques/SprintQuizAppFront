@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'mural-provas', component: MuralProvasComponent },
   { path: 'galeria-provas', component: GaleriaProvasComponent },
   { path: 'mural-sprints', component: MuralSprintsComponent },
-  { path: 'fazer-prova', component: FazerProvaComponent }
+  { path: 'fazer-prova/:id', component: FazerProvaComponent }
 ];
 
 @NgModule({
